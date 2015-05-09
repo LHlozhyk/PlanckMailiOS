@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		842E2FEA1AFEB13400B0C8DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E2FE91AFEB13400B0C8DB /* main.m */; };
+		842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E2FEC1AFEB13400B0C8DB /* AppDelegate.m */; };
+		842E2FF01AFEB13400B0C8DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E2FEF1AFEB13400B0C8DB /* ViewController.m */; };
+		842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842E2FF11AFEB13400B0C8DB /* Main.storyboard */; };
+		842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842E2FF41AFEB13400B0C8DB /* Images.xcassets */; };
+		842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842E2FF61AFEB13400B0C8DB /* LaunchScreen.xib */; };
+		842E30041AFEB13400B0C8DB /* planckMailiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E30031AFEB13400B0C8DB /* planckMailiOSTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		842E2FFE1AFEB13400B0C8DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 842E2FDC1AFEB13300B0C8DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842E2FE31AFEB13400B0C8DB;
+			remoteInfo = planckMailiOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		842E2FE41AFEB13400B0C8DB /* planckMailiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = planckMailiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		842E2FE81AFEB13400B0C8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842E2FE91AFEB13400B0C8DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		842E2FEB1AFEB13400B0C8DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		842E2FEC1AFEB13400B0C8DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		842E2FEE1AFEB13400B0C8DB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		842E2FEF1AFEB13400B0C8DB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		842E2FF21AFEB13400B0C8DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		842E2FF41AFEB13400B0C8DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		842E2FF71AFEB13400B0C8DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		842E2FFD1AFEB13400B0C8DB /* planckMailiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = planckMailiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		842E30021AFEB13400B0C8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842E30031AFEB13400B0C8DB /* planckMailiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = planckMailiOSTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		842E2FE11AFEB13400B0C8DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842E2FFA1AFEB13400B0C8DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		842E2FDB1AFEB13300B0C8DB = {
+			isa = PBXGroup;
+			children = (
+				842E2FE61AFEB13400B0C8DB /* planckMailiOS */,
+				842E30001AFEB13400B0C8DB /* planckMailiOSTests */,
+				842E2FE51AFEB13400B0C8DB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		842E2FE51AFEB13400B0C8DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				842E2FE41AFEB13400B0C8DB /* planckMailiOS.app */,
+				842E2FFD1AFEB13400B0C8DB /* planckMailiOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		842E2FE61AFEB13400B0C8DB /* planckMailiOS */ = {
+			isa = PBXGroup;
+			children = (
+				842E2FEB1AFEB13400B0C8DB /* AppDelegate.h */,
+				842E2FEC1AFEB13400B0C8DB /* AppDelegate.m */,
+				842E2FEE1AFEB13400B0C8DB /* ViewController.h */,
+				842E2FEF1AFEB13400B0C8DB /* ViewController.m */,
+				842E2FF11AFEB13400B0C8DB /* Main.storyboard */,
+				842E2FF41AFEB13400B0C8DB /* Images.xcassets */,
+				842E2FF61AFEB13400B0C8DB /* LaunchScreen.xib */,
+				842E2FE71AFEB13400B0C8DB /* Supporting Files */,
+			);
+			path = planckMailiOS;
+			sourceTree = "<group>";
+		};
+		842E2FE71AFEB13400B0C8DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				842E2FE81AFEB13400B0C8DB /* Info.plist */,
+				842E2FE91AFEB13400B0C8DB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		842E30001AFEB13400B0C8DB /* planckMailiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				842E30031AFEB13400B0C8DB /* planckMailiOSTests.m */,
+				842E30011AFEB13400B0C8DB /* Supporting Files */,
+			);
+			path = planckMailiOSTests;
+			sourceTree = "<group>";
+		};
+		842E30011AFEB13400B0C8DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				842E30021AFEB13400B0C8DB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		842E2FE31AFEB13400B0C8DB /* planckMailiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842E30071AFEB13400B0C8DB /* Build configuration list for PBXNativeTarget "planckMailiOS" */;
+			buildPhases = (
+				842E2FE01AFEB13400B0C8DB /* Sources */,
+				842E2FE11AFEB13400B0C8DB /* Frameworks */,
+				842E2FE21AFEB13400B0C8DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = planckMailiOS;
+			productName = planckMailiOS;
+			productReference = 842E2FE41AFEB13400B0C8DB /* planckMailiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		842E2FFC1AFEB13400B0C8DB /* planckMailiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842E300A1AFEB13400B0C8DB /* Build configuration list for PBXNativeTarget "planckMailiOSTests" */;
+			buildPhases = (
+				842E2FF91AFEB13400B0C8DB /* Sources */,
+				842E2FFA1AFEB13400B0C8DB /* Frameworks */,
+				842E2FFB1AFEB13400B0C8DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842E2FFF1AFEB13400B0C8DB /* PBXTargetDependency */,
+			);
+			name = planckMailiOSTests;
+			productName = planckMailiOSTests;
+			productReference = 842E2FFD1AFEB13400B0C8DB /* planckMailiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		842E2FDC1AFEB13300B0C8DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = LHlozhyk;
+				TargetAttributes = {
+					842E2FE31AFEB13400B0C8DB = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					842E2FFC1AFEB13400B0C8DB = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 842E2FE31AFEB13400B0C8DB;
+					};
+				};
+			};
+			buildConfigurationList = 842E2FDF1AFEB13300B0C8DB /* Build configuration list for PBXProject "planckMailiOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 842E2FDB1AFEB13300B0C8DB;
+			productRefGroup = 842E2FE51AFEB13400B0C8DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				842E2FE31AFEB13400B0C8DB /* planckMailiOS */,
+				842E2FFC1AFEB13400B0C8DB /* planckMailiOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		842E2FE21AFEB13400B0C8DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */,
+				842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */,
+				842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842E2FFB1AFEB13400B0C8DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		842E2FE01AFEB13400B0C8DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842E2FF01AFEB13400B0C8DB /* ViewController.m in Sources */,
+				842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */,
+				842E2FEA1AFEB13400B0C8DB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842E2FF91AFEB13400B0C8DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				842E30041AFEB13400B0C8DB /* planckMailiOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		842E2FFF1AFEB13400B0C8DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842E2FE31AFEB13400B0C8DB /* planckMailiOS */;
+			targetProxy = 842E2FFE1AFEB13400B0C8DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		842E2FF11AFEB13400B0C8DB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				842E2FF21AFEB13400B0C8DB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		842E2FF61AFEB13400B0C8DB /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				842E2FF71AFEB13400B0C8DB /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		842E30051AFEB13400B0C8DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		842E30061AFEB13400B0C8DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		842E30081AFEB13400B0C8DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = planckMailiOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		842E30091AFEB13400B0C8DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = planckMailiOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		842E300B1AFEB13400B0C8DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = planckMailiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/planckMailiOS.app/planckMailiOS";
+			};
+			name = Debug;
+		};
+		842E300C1AFEB13400B0C8DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = planckMailiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/planckMailiOS.app/planckMailiOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		842E2FDF1AFEB13300B0C8DB /* Build configuration list for PBXProject "planckMailiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842E30051AFEB13400B0C8DB /* Debug */,
+				842E30061AFEB13400B0C8DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842E30071AFEB13400B0C8DB /* Build configuration list for PBXNativeTarget "planckMailiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842E30081AFEB13400B0C8DB /* Debug */,
+				842E30091AFEB13400B0C8DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		842E300A1AFEB13400B0C8DB /* Build configuration list for PBXNativeTarget "planckMailiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842E300B1AFEB13400B0C8DB /* Debug */,
+				842E300C1AFEB13400B0C8DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 842E2FDC1AFEB13300B0C8DB /* Project object */;
+}
