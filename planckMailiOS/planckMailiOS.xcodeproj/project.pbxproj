@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		842E2FEA1AFEB13400B0C8DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E2FE91AFEB13400B0C8DB /* main.m */; };
 		842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E2FEC1AFEB13400B0C8DB /* AppDelegate.m */; };
-		842E2FF01AFEB13400B0C8DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E2FEF1AFEB13400B0C8DB /* ViewController.m */; };
 		842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842E2FF11AFEB13400B0C8DB /* Main.storyboard */; };
 		842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842E2FF41AFEB13400B0C8DB /* Images.xcassets */; };
 		842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842E2FF61AFEB13400B0C8DB /* LaunchScreen.xib */; };
 		842E30041AFEB13400B0C8DB /* planckMailiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E30031AFEB13400B0C8DB /* planckMailiOSTests.m */; };
+		84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D11AFF718300331CC0 /* PMMainVC.m */; };
+		84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D71AFF74C000331CC0 /* PMAPIManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +33,18 @@
 		842E2FE91AFEB13400B0C8DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		842E2FEB1AFEB13400B0C8DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		842E2FEC1AFEB13400B0C8DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		842E2FEE1AFEB13400B0C8DB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		842E2FEF1AFEB13400B0C8DB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		842E2FF21AFEB13400B0C8DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		842E2FF41AFEB13400B0C8DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		842E2FF71AFEB13400B0C8DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		842E2FFD1AFEB13400B0C8DB /* planckMailiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = planckMailiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		842E30021AFEB13400B0C8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842E30031AFEB13400B0C8DB /* planckMailiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = planckMailiOSTests.m; sourceTree = "<group>"; };
+		84B751D01AFF718300331CC0 /* PMMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMainVC.h; path = ViewControllers/MainVC/PMMainVC.h; sourceTree = "<group>"; };
+		84B751D11AFF718300331CC0 /* PMMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMainVC.m; path = ViewControllers/MainVC/PMMainVC.m; sourceTree = "<group>"; };
+		84B751D31AFF72A400331CC0 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		84B751D41AFF72E400331CC0 /* planckMailiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "planckMailiOS-Prefix.pch"; sourceTree = "<group>"; };
+		84B751D61AFF74C000331CC0 /* PMAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMAPIManager.h; path = Communication/APIManager/PMAPIManager.h; sourceTree = "<group>"; };
+		84B751D71AFF74C000331CC0 /* PMAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMAPIManager.m; path = Communication/APIManager/PMAPIManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +86,11 @@
 		842E2FE61AFEB13400B0C8DB /* planckMailiOS */ = {
 			isa = PBXGroup;
 			children = (
+				84B751D31AFF72A400331CC0 /* Global.h */,
 				842E2FEB1AFEB13400B0C8DB /* AppDelegate.h */,
 				842E2FEC1AFEB13400B0C8DB /* AppDelegate.m */,
-				842E2FEE1AFEB13400B0C8DB /* ViewController.h */,
-				842E2FEF1AFEB13400B0C8DB /* ViewController.m */,
-				842E2FF11AFEB13400B0C8DB /* Main.storyboard */,
-				842E2FF41AFEB13400B0C8DB /* Images.xcassets */,
-				842E2FF61AFEB13400B0C8DB /* LaunchScreen.xib */,
+				84B751CD1AFF6FB700331CC0 /* Communication */,
+				84B751CC1AFF6FAA00331CC0 /* ViewControllers */,
 				842E2FE71AFEB13400B0C8DB /* Supporting Files */,
 			);
 			path = planckMailiOS;
@@ -96,6 +99,8 @@
 		842E2FE71AFEB13400B0C8DB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84B751CE1AFF700A00331CC0 /* Resources */,
+				84B751D41AFF72E400331CC0 /* planckMailiOS-Prefix.pch */,
 				842E2FE81AFEB13400B0C8DB /* Info.plist */,
 				842E2FE91AFEB13400B0C8DB /* main.m */,
 			);
@@ -117,6 +122,42 @@
 				842E30021AFEB13400B0C8DB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84B751CC1AFF6FAA00331CC0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				84B751CF1AFF701F00331CC0 /* MainVC */,
+				842E2FF11AFEB13400B0C8DB /* Main.storyboard */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		84B751CD1AFF6FB700331CC0 /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				84B751D61AFF74C000331CC0 /* PMAPIManager.h */,
+				84B751D71AFF74C000331CC0 /* PMAPIManager.m */,
+			);
+			name = Communication;
+			sourceTree = "<group>";
+		};
+		84B751CE1AFF700A00331CC0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				842E2FF41AFEB13400B0C8DB /* Images.xcassets */,
+				842E2FF61AFEB13400B0C8DB /* LaunchScreen.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		84B751CF1AFF701F00331CC0 /* MainVC */ = {
+			isa = PBXGroup;
+			children = (
+				84B751D01AFF718300331CC0 /* PMMainVC.h */,
+				84B751D11AFF718300331CC0 /* PMMainVC.m */,
+			);
+			name = MainVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +204,7 @@
 		842E2FDC1AFEB13300B0C8DB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = PM;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = LHlozhyk;
 				TargetAttributes = {
@@ -219,9 +261,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				842E2FF01AFEB13400B0C8DB /* ViewController.m in Sources */,
+				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
 				842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */,
 				842E2FEA1AFEB13400B0C8DB /* main.m in Sources */,
+				84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +390,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -357,7 +403,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -416,6 +465,7 @@
 				842E30091AFEB13400B0C8DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		842E300A1AFEB13400B0C8DB /* Build configuration list for PBXNativeTarget "planckMailiOSTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +474,7 @@
 				842E300C1AFEB13400B0C8DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
