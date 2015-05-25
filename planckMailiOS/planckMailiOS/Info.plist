@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>PM.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>com.planckMailiOS</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -18,8 +18,29 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>inboxapp</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>in-6xda9nyqs9mll7mx2ecojy112</string>
+			</array>
+			<key>INAPIPath</key>
+			<string>http://localhost:5555/</string>
+			<key>INAppID</key>
+			<string>6xda9nyqs9mll7mx2ecojy112</string>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>INAPIPath</key>
+	<string>https://api.inboxapp.com/</string>
+	<key>INAppID</key>
+	<string>6xda9nyqs9mll7mx2ecojy112</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

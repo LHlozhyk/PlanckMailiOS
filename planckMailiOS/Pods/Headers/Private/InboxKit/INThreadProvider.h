@@ -1,0 +1,1 @@
+../../../InboxKit/InboxFramework/Inbox/Models/INThreadProvider.h

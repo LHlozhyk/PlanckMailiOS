@@ -13,8 +13,24 @@
 		842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842E2FF41AFEB13400B0C8DB /* Images.xcassets */; };
 		842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842E2FF61AFEB13400B0C8DB /* LaunchScreen.xib */; };
 		842E30041AFEB13400B0C8DB /* planckMailiOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E30031AFEB13400B0C8DB /* planckMailiOSTests.m */; };
+		844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 844F3BF51B12A882009634D2 /* PMPeopleVC.m */; };
+		846096171B13061400924B61 /* CLContactLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 846096151B13061400924B61 /* CLContactLibrary.m */; };
+		8460961C1B13063300924B61 /* CLPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460961B1B13063300924B61 /* CLPerson.m */; };
+		8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8479B7131B11B852006E4235 /* PMLoginVC.m */; };
 		84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D11AFF718300331CC0 /* PMMainVC.m */; };
 		84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D71AFF74C000331CC0 /* PMAPIManager.m */; };
+		84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA4261B134C1800770F88 /* planckMailiOS.xcdatamodeld */; };
+		84ECA42C1B134E5400770F88 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA42B1B134E5400770F88 /* DBManager.m */; };
+		84ECA4301B13500000770F88 /* DBNamespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA42F1B13500000770F88 /* DBNamespace.m */; };
+		84ECA4341B13550D00770F88 /* OPDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA4331B13550D00770F88 /* OPDataLoader.m */; };
+		84F4286C1B1256820006B530 /* PMSettigsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4286B1B1256820006B530 /* PMSettigsTVC.m */; };
+		84F9A9801B11E08D0067C3D0 /* PMRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A97F1B11E08D0067C3D0 /* PMRequest.m */; };
+		84F9A9841B11F6D10067C3D0 /* PMMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A9831B11F6D10067C3D0 /* PMMailVC.m */; };
+		84F9A9881B11F7270067C3D0 /* PMMailMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A9871B11F7270067C3D0 /* PMMailMenuView.m */; };
+		84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F9A9891B11F78E0067C3D0 /* PMMailMenuView.xib */; };
+		84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */; };
+		84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */; };
+		F264A5F132A3A914AC722FF2 /* libPods-planckMailiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		763F57E5DD2A49875129C79A /* Pods-planckMailiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-planckMailiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-planckMailiOS/Pods-planckMailiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		842E2FE41AFEB13400B0C8DB /* planckMailiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = planckMailiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842E2FE81AFEB13400B0C8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842E2FE91AFEB13400B0C8DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -39,12 +56,43 @@
 		842E2FFD1AFEB13400B0C8DB /* planckMailiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = planckMailiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		842E30021AFEB13400B0C8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842E30031AFEB13400B0C8DB /* planckMailiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = planckMailiOSTests.m; sourceTree = "<group>"; };
+		844F3BF41B12A882009634D2 /* PMPeopleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPeopleVC.h; path = ViewControllers/PeopleVC/PMPeopleVC.h; sourceTree = "<group>"; };
+		844F3BF51B12A882009634D2 /* PMPeopleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPeopleVC.m; path = ViewControllers/PeopleVC/PMPeopleVC.m; sourceTree = "<group>"; };
+		846096141B13061400924B61 /* CLContactLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLContactLibrary.h; path = Communication/ContactsManager/CLContactLibrary.h; sourceTree = "<group>"; };
+		846096151B13061400924B61 /* CLContactLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLContactLibrary.m; path = Communication/ContactsManager/CLContactLibrary.m; sourceTree = "<group>"; };
+		8460961A1B13063300924B61 /* CLPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPerson.h; sourceTree = "<group>"; };
+		8460961B1B13063300924B61 /* CLPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPerson.m; sourceTree = "<group>"; };
+		8479B7121B11B852006E4235 /* PMLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLoginVC.h; path = ViewControllers/LoginVC/PMLoginVC.h; sourceTree = "<group>"; };
+		8479B7131B11B852006E4235 /* PMLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMLoginVC.m; path = ViewControllers/LoginVC/PMLoginVC.m; sourceTree = "<group>"; };
 		84B751D01AFF718300331CC0 /* PMMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMainVC.h; path = ViewControllers/MainVC/PMMainVC.h; sourceTree = "<group>"; };
 		84B751D11AFF718300331CC0 /* PMMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMainVC.m; path = ViewControllers/MainVC/PMMainVC.m; sourceTree = "<group>"; };
 		84B751D31AFF72A400331CC0 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		84B751D41AFF72E400331CC0 /* planckMailiOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "planckMailiOS-Prefix.pch"; sourceTree = "<group>"; };
 		84B751D61AFF74C000331CC0 /* PMAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMAPIManager.h; path = Communication/APIManager/PMAPIManager.h; sourceTree = "<group>"; };
 		84B751D71AFF74C000331CC0 /* PMAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMAPIManager.m; path = Communication/APIManager/PMAPIManager.m; sourceTree = "<group>"; };
+		84ECA4271B134C1800770F88 /* planckMailiOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = planckMailiOS.xcdatamodel; sourceTree = "<group>"; };
+		84ECA42A1B134E5400770F88 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		84ECA42B1B134E5400770F88 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		84ECA42E1B13500000770F88 /* DBNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBNamespace.h; path = Communication/DB/DBNamespace/DBNamespace.h; sourceTree = "<group>"; };
+		84ECA42F1B13500000770F88 /* DBNamespace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBNamespace.m; path = Communication/DB/DBNamespace/DBNamespace.m; sourceTree = "<group>"; };
+		84ECA4321B13550D00770F88 /* OPDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPDataLoader.h; sourceTree = "<group>"; };
+		84ECA4331B13550D00770F88 /* OPDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPDataLoader.m; sourceTree = "<group>"; };
+		84F4286A1B1256820006B530 /* PMSettigsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMSettigsTVC.h; path = ViewControllers/SettigsVC/PMSettigsTVC.h; sourceTree = "<group>"; };
+		84F4286B1B1256820006B530 /* PMSettigsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMSettigsTVC.m; path = ViewControllers/SettigsVC/PMSettigsTVC.m; sourceTree = "<group>"; };
+		84F9A97E1B11E08D0067C3D0 /* PMRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMRequest.h; path = Communication/Request/PMRequest.h; sourceTree = "<group>"; };
+		84F9A97F1B11E08D0067C3D0 /* PMRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMRequest.m; path = Communication/Request/PMRequest.m; sourceTree = "<group>"; };
+		84F9A9811B11E0DA0067C3D0 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		84F9A9821B11F6D10067C3D0 /* PMMailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailVC.h; path = ViewControllers/MailVC/PMMailVC.h; sourceTree = "<group>"; };
+		84F9A9831B11F6D10067C3D0 /* PMMailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMailVC.m; path = ViewControllers/MailVC/PMMailVC.m; sourceTree = "<group>"; };
+		84F9A9861B11F7270067C3D0 /* PMMailMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailMenuView.h; path = ViewControllers/MailVC/MailMenuView/PMMailMenuView.h; sourceTree = "<group>"; };
+		84F9A9871B11F7270067C3D0 /* PMMailMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMailMenuView.m; path = ViewControllers/MailVC/MailMenuView/PMMailMenuView.m; sourceTree = "<group>"; };
+		84F9A9891B11F78E0067C3D0 /* PMMailMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMMailMenuView.xib; path = ViewControllers/MailVC/MailMenuView/PMMailMenuView.xib; sourceTree = "<group>"; };
+		84F9A98D1B1214DB0067C3D0 /* UIView+PMViewCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+PMViewCreator.h"; path = "Categories/UIView+PMViewCreator/UIView+PMViewCreator.h"; sourceTree = "<group>"; };
+		84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+PMViewCreator.m"; path = "Categories/UIView+PMViewCreator/UIView+PMViewCreator.m"; sourceTree = "<group>"; };
+		84F9A9911B1215FC0067C3D0 /* UIViewController+PMStoryboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+PMStoryboard.h"; path = "Categories/UIViewController+PMStoryboard/UIViewController+PMStoryboard.h"; sourceTree = "<group>"; };
+		84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+PMStoryboard.m"; path = "Categories/UIViewController+PMStoryboard/UIViewController+PMStoryboard.m"; sourceTree = "<group>"; };
+		CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF494C6A5E8B85BC338CBD3F /* Pods-planckMailiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-planckMailiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-planckMailiOS/Pods-planckMailiOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F264A5F132A3A914AC722FF2 /* libPods-planckMailiOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,12 +114,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		204B35CD81019211FC52ED92 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				763F57E5DD2A49875129C79A /* Pods-planckMailiOS.debug.xcconfig */,
+				DF494C6A5E8B85BC338CBD3F /* Pods-planckMailiOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		26F3D1D23964D69F4B927C4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		842E2FDB1AFEB13300B0C8DB = {
 			isa = PBXGroup;
 			children = (
 				842E2FE61AFEB13400B0C8DB /* planckMailiOS */,
 				842E30001AFEB13400B0C8DB /* planckMailiOSTests */,
 				842E2FE51AFEB13400B0C8DB /* Products */,
+				204B35CD81019211FC52ED92 /* Pods */,
+				26F3D1D23964D69F4B927C4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,8 +155,10 @@
 			isa = PBXGroup;
 			children = (
 				84B751D31AFF72A400331CC0 /* Global.h */,
+				84F9A9811B11E0DA0067C3D0 /* Config.h */,
 				842E2FEB1AFEB13400B0C8DB /* AppDelegate.h */,
 				842E2FEC1AFEB13400B0C8DB /* AppDelegate.m */,
+				84F9A98B1B1214700067C3D0 /* Categories */,
 				84B751CD1AFF6FB700331CC0 /* Communication */,
 				84B751CC1AFF6FAA00331CC0 /* ViewControllers */,
 				842E2FE71AFEB13400B0C8DB /* Supporting Files */,
@@ -124,10 +194,87 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		846096131B13058E00924B61 /* ContactsManager */ = {
+			isa = PBXGroup;
+			children = (
+				846096191B13063300924B61 /* PersonModel */,
+				846096141B13061400924B61 /* CLContactLibrary.h */,
+				846096151B13061400924B61 /* CLContactLibrary.m */,
+			);
+			name = ContactsManager;
+			sourceTree = "<group>";
+		};
+		846096191B13063300924B61 /* PersonModel */ = {
+			isa = PBXGroup;
+			children = (
+				8460961A1B13063300924B61 /* CLPerson.h */,
+				8460961B1B13063300924B61 /* CLPerson.m */,
+			);
+			name = PersonModel;
+			path = Communication/ContactsManager/PersonModel;
+			sourceTree = "<group>";
+		};
+		8479B7111B11B74F006E4235 /* LoginVC */ = {
+			isa = PBXGroup;
+			children = (
+				8479B7121B11B852006E4235 /* PMLoginVC.h */,
+				8479B7131B11B852006E4235 /* PMLoginVC.m */,
+			);
+			name = LoginVC;
+			sourceTree = "<group>";
+		};
+		8479B7161B11B90C006E4235 /* MailVC */ = {
+			isa = PBXGroup;
+			children = (
+				84F9A9851B11F6EB0067C3D0 /* MailMenuView */,
+				84F9A9821B11F6D10067C3D0 /* PMMailVC.h */,
+				84F9A9831B11F6D10067C3D0 /* PMMailVC.m */,
+			);
+			name = MailVC;
+			sourceTree = "<group>";
+		};
+		8479B7171B11B91A006E4235 /* SettingsTVC */ = {
+			isa = PBXGroup;
+			children = (
+				84F4286A1B1256820006B530 /* PMSettigsTVC.h */,
+				84F4286B1B1256820006B530 /* PMSettigsTVC.m */,
+			);
+			name = SettingsTVC;
+			sourceTree = "<group>";
+		};
+		8479B7181B11B930006E4235 /* PeopleVC */ = {
+			isa = PBXGroup;
+			children = (
+				844F3BF41B12A882009634D2 /* PMPeopleVC.h */,
+				844F3BF51B12A882009634D2 /* PMPeopleVC.m */,
+			);
+			name = PeopleVC;
+			sourceTree = "<group>";
+		};
+		8479B7191B11B958006E4235 /* FilesVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FilesVC;
+			sourceTree = "<group>";
+		};
+		8479B71A1B11B962006E4235 /* CalendarVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CalendarVC;
+			sourceTree = "<group>";
+		};
 		84B751CC1AFF6FAA00331CC0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				84B751CF1AFF701F00331CC0 /* MainVC */,
+				8479B7111B11B74F006E4235 /* LoginVC */,
+				8479B7161B11B90C006E4235 /* MailVC */,
+				8479B71A1B11B962006E4235 /* CalendarVC */,
+				8479B7191B11B958006E4235 /* FilesVC */,
+				8479B7181B11B930006E4235 /* PeopleVC */,
+				8479B7171B11B91A006E4235 /* SettingsTVC */,
 				842E2FF11AFEB13400B0C8DB /* Main.storyboard */,
 			);
 			name = ViewControllers;
@@ -136,6 +283,10 @@
 		84B751CD1AFF6FB700331CC0 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
+				84ECA4311B13550D00770F88 /* DataLoader */,
+				846096131B13058E00924B61 /* ContactsManager */,
+				84F407981B12710700AA627B /* DB */,
+				84F9A97D1B11E05D0067C3D0 /* Request */,
 				84B751D61AFF74C000331CC0 /* PMAPIManager.h */,
 				84B751D71AFF74C000331CC0 /* PMAPIManager.m */,
 			);
@@ -160,6 +311,91 @@
 			name = MainVC;
 			sourceTree = "<group>";
 		};
+		84ECA4291B134E5400770F88 /* DBManager */ = {
+			isa = PBXGroup;
+			children = (
+				84ECA42A1B134E5400770F88 /* DBManager.h */,
+				84ECA42B1B134E5400770F88 /* DBManager.m */,
+			);
+			name = DBManager;
+			path = Communication/DB/DBManager;
+			sourceTree = "<group>";
+		};
+		84ECA42D1B134EF900770F88 /* DBNamespace */ = {
+			isa = PBXGroup;
+			children = (
+				84ECA42E1B13500000770F88 /* DBNamespace.h */,
+				84ECA42F1B13500000770F88 /* DBNamespace.m */,
+			);
+			name = DBNamespace;
+			sourceTree = "<group>";
+		};
+		84ECA4311B13550D00770F88 /* DataLoader */ = {
+			isa = PBXGroup;
+			children = (
+				84ECA4321B13550D00770F88 /* OPDataLoader.h */,
+				84ECA4331B13550D00770F88 /* OPDataLoader.m */,
+			);
+			name = DataLoader;
+			path = Communication/DataLoader;
+			sourceTree = "<group>";
+		};
+		84F407981B12710700AA627B /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				84ECA42D1B134EF900770F88 /* DBNamespace */,
+				84ECA4291B134E5400770F88 /* DBManager */,
+				84ECA4261B134C1800770F88 /* planckMailiOS.xcdatamodeld */,
+			);
+			name = DB;
+			sourceTree = "<group>";
+		};
+		84F9A97D1B11E05D0067C3D0 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				84F9A97E1B11E08D0067C3D0 /* PMRequest.h */,
+				84F9A97F1B11E08D0067C3D0 /* PMRequest.m */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		84F9A9851B11F6EB0067C3D0 /* MailMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				84F9A9861B11F7270067C3D0 /* PMMailMenuView.h */,
+				84F9A9871B11F7270067C3D0 /* PMMailMenuView.m */,
+				84F9A9891B11F78E0067C3D0 /* PMMailMenuView.xib */,
+			);
+			name = MailMenuView;
+			sourceTree = "<group>";
+		};
+		84F9A98B1B1214700067C3D0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				84F9A9901B1215240067C3D0 /* UIViewController+PMStoryboard */,
+				84F9A98C1B12147C0067C3D0 /* UIVIew+PMViewCreator */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		84F9A98C1B12147C0067C3D0 /* UIVIew+PMViewCreator */ = {
+			isa = PBXGroup;
+			children = (
+				84F9A98D1B1214DB0067C3D0 /* UIView+PMViewCreator.h */,
+				84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */,
+			);
+			name = "UIVIew+PMViewCreator";
+			sourceTree = "<group>";
+		};
+		84F9A9901B1215240067C3D0 /* UIViewController+PMStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				84F9A9911B1215FC0067C3D0 /* UIViewController+PMStoryboard.h */,
+				84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */,
+			);
+			name = "UIViewController+PMStoryboard";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,9 +403,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 842E30071AFEB13400B0C8DB /* Build configuration list for PBXNativeTarget "planckMailiOS" */;
 			buildPhases = (
+				069196CD30E0B507FA7266B2 /* Check Pods Manifest.lock */,
 				842E2FE01AFEB13400B0C8DB /* Sources */,
 				842E2FE11AFEB13400B0C8DB /* Frameworks */,
 				842E2FE21AFEB13400B0C8DB /* Resources */,
+				9043F08CFE5FE154209C81EC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,6 +448,7 @@
 				TargetAttributes = {
 					842E2FE31AFEB13400B0C8DB = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 3HF5675724;
 					};
 					842E2FFC1AFEB13400B0C8DB = {
 						CreatedOnToolsVersion = 6.3;
@@ -244,6 +483,7 @@
 				842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */,
 				842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */,
 				842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */,
+				84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,15 +496,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		069196CD30E0B507FA7266B2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9043F08CFE5FE154209C81EC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-planckMailiOS/Pods-planckMailiOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		842E2FE01AFEB13400B0C8DB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */,
+				84ECA4341B13550D00770F88 /* OPDataLoader.m in Sources */,
 				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
+				844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */,
+				846096171B13061400924B61 /* CLContactLibrary.m in Sources */,
+				84F9A9841B11F6D10067C3D0 /* PMMailVC.m in Sources */,
 				842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */,
+				84F9A9881B11F7270067C3D0 /* PMMailMenuView.m in Sources */,
+				84ECA42C1B134E5400770F88 /* DBManager.m in Sources */,
+				8460961C1B13063300924B61 /* CLPerson.m in Sources */,
+				84F9A9801B11E08D0067C3D0 /* PMRequest.m in Sources */,
+				84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */,
+				8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */,
+				84F4286C1B1256820006B530 /* PMSettigsTVC.m in Sources */,
 				842E2FEA1AFEB13400B0C8DB /* main.m in Sources */,
 				84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */,
+				84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */,
+				84ECA4301B13500000770F88 /* DBNamespace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,27 +675,37 @@
 		};
 		842E30081AFEB13400B0C8DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 763F57E5DD2A49875129C79A /* Pods-planckMailiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "76ccc534-4701-4925-afc9-4a10be00d2ba";
 			};
 			name = Debug;
 		};
 		842E30091AFEB13400B0C8DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF494C6A5E8B85BC338CBD3F /* Pods-planckMailiOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "76ccc534-4701-4925-afc9-4a10be00d2ba";
 			};
 			name = Release;
 		};
@@ -477,6 +774,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84ECA4261B134C1800770F88 /* planckMailiOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84ECA4271B134C1800770F88 /* planckMailiOS.xcdatamodel */,
+			);
+			currentVersion = 84ECA4271B134C1800770F88 /* planckMailiOS.xcdatamodel */;
+			name = planckMailiOS.xcdatamodeld;
+			path = Communication/DB/planckMailiOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 842E2FDC1AFEB13300B0C8DB /* Project object */;
 }

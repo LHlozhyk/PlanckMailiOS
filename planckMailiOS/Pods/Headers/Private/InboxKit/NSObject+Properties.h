@@ -1,0 +1,1 @@
+../../../InboxKit/InboxFramework/Inbox/Categories/NSObject+Properties.h

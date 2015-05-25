@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PMRequest.h"
 
 @interface PMAPIManager : NSObject
++ (PMAPIManager *)shared;
+
+- (void)saveNamespaceIdFromToken:(NSString *)token;
 
 @end

@@ -1,0 +1,2050 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0429592A57B41C686293743E /* NSError+InboxErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E96FD53B36F489EAC9C290 /* NSError+InboxErrors.m */; };
+		04CDE617A1662B73CE5F1CD0 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D148EEF6740342EAE7A96B4 /* AFURLRequestSerialization.h */; };
+		05A4A17FE6D9C8CC4F9A0C50 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBB88108DBB3D898A6911B2 /* AFHTTPSessionManager.m */; };
+		07140643206A294ECA0FFC95 /* Pods-planckMailiOS-InboxKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB1D38D23CE575C50385893 /* Pods-planckMailiOS-InboxKit-dummy.m */; };
+		07EE72F18EADE2BECC13088B /* NSError+InboxErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = BDE8E63D1A67E2DEB9EF358C /* NSError+InboxErrors.h */; };
+		08D326AC046C51ACEB28C91D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D69823944EF97925BE8B81 /* MobileCoreServices.framework */; };
+		0A83C0164FA143A7CE2CC724 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E95A194FE7C7F382EA531F90 /* SystemConfiguration.framework */; };
+		0B2B203429330AD4F34C4206 /* INModelProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = EDADC6E0780DFE904CD395C7 /* INModelProvider.h */; };
+		0C1E4155DE17F64355DBE0F9 /* INUploadFileTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A914C70249A9FAC62C71FB /* INUploadFileTask.h */; };
+		0C41347DD6D872116D1CA2E1 /* UIView+FrameAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F7C6EBC98A382DA04696270 /* UIView+FrameAdditions.h */; };
+		114FDEBE9C0F01B34159719D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440AA3883C35965F1B6188D7 /* Foundation.framework */; };
+		11EC7C2FB8CB8E1AB74853E7 /* DTTimePeriodGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 15AF36B0558FDAF103C804F6 /* DTTimePeriodGroup.h */; };
+		1500C4F06AEF798B4890EA23 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = BCAA55CD952489F3D6253491 /* AFSecurityPolicy.h */; };
+		1777116AEFC01C3ABECC5A13 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BD76F58BBA61341200F702A9 /* AFURLSessionManager.m */; };
+		19FCA55C667A739C983B686F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440AA3883C35965F1B6188D7 /* Foundation.framework */; };
+		1A45BA7263E1A25FC717473B /* NSObject+AssociatedObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 19AE40160E66EBE6C1E0D2FE /* NSObject+AssociatedObjects.h */; };
+		1C2B1CC80C6B7E7C8F451136 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E30900458F4F52F5047665E /* AFNetworking.h */; };
+		1D3E6E3D8BB0AF72073BF59C /* INFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B0DA618C53C95CAA2F9C7F /* INFile.m */; };
+		1F586426AC8C0EA8B4646C4B /* Pods-planckMailiOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A96F421A0DF2C8903533D2B /* Pods-planckMailiOS-dummy.m */; };
+		21DCE68A0CB6B96CC6A520CD /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 54F248F4171DC40C524D83BE /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		25D213F59700B2543B5FCD8A /* INAPITask.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A4CB5E35F46C28913E31CA /* INAPITask.m */; };
+		2C217442A730AADB045086A4 /* Pods-planckMailiOS-SWTableViewCell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA4346F1BFC513298D3A1C /* Pods-planckMailiOS-SWTableViewCell-dummy.m */; };
+		300D8B9F48094A628E78DE54 /* DTError.m in Sources */ = {isa = PBXBuildFile; fileRef = 4439E2C9D2C8B58FC8116289 /* DTError.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3655408DD352E423E822146A /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0D6CC256D9E25EA336923 /* AFNetworkReachabilityManager.m */; };
+		3BD063ED95E6E2EB199FCB94 /* INModelObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 552D19BB223C54600B67D77D /* INModelObject.h */; };
+		3DED167C10166593873D3495 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D760598D9E95C39F7C26F222 /* UIWebView+AFNetworking.m */; };
+		3FB5E52D16D991BB99AC4D06 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D51A45E6D2713B7B11E825E2 /* AFURLConnectionOperation.m */; };
+		41500506C282856F4587DE75 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 69D47062AB4C1327E34F165C /* UIImageView+AFNetworking.h */; };
+		416DE5B844D1190AE30948C1 /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 982DE80719A40A8C9DA00FBC /* UIKit+AFNetworking.h */; };
+		41D80F622EABE01FE728C8F7 /* INPredicateToQueryParamConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 354A59A39717226C6A98546F /* INPredicateToQueryParamConverter.m */; };
+		4216842A31568F7CF415522F /* INFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C374552043EC518297E814D /* INFile.h */; };
+		42C1EAAFB0D4F0D653066845 /* INDatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A32889A2B43FC9B7D87BAA1 /* INDatabaseManager.h */; };
+		4435E1461CFE0043C0998265 /* INDeleteDraftTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 133B18AC7BEDED0FC48BEA2C /* INDeleteDraftTask.m */; };
+		446D2049357E7DEA8B00CAB4 /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DBE2B92BCB9082DCF7E441 /* SWTableViewCell.m */; };
+		44C236803135CD8D673BD987 /* INTag.h in Headers */ = {isa = PBXBuildFile; fileRef = B75D11C06A5836618BCC0B00 /* INTag.h */; };
+		48ABD32FDF37102358849C6D /* NSString+FormatConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F547C0205CBD64AB082E00A /* NSString+FormatConversion.h */; };
+		48F9C57A36D58F23F5805DD4 /* INMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = ED363964FFD2AC1D38D02DC4 /* INMessage.h */; };
+		4B80B97B21F71B26B461DC00 /* DTTimePeriod.h in Headers */ = {isa = PBXBuildFile; fileRef = B32274929ADE2584571DD216 /* DTTimePeriod.h */; };
+		4C2E1D5070B8AB0582BE4BFB /* INAPIManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FF08C30B4A0481F05A63BC30 /* INAPIManager.h */; };
+		4D91A955535E1F7CA75AE65E /* SWLongPressGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = D624D9F0B457FE8598715EF5 /* SWLongPressGestureRecognizer.h */; };
+		4DC9A6EAFDC47938F90E7F97 /* FMResultSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 047461058AED033F1BEA6159 /* FMResultSet.h */; };
+		51EFCD251A4433C3916A40E3 /* DTTimePeriodCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = DFAFC352BFC0D3B14A9BB0FC /* DTTimePeriodCollection.h */; };
+		52CA671BFE6E61083846E49E /* Pods-planckMailiOS-UIAlertView+Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D0F01E9A119D66BE08E616 /* Pods-planckMailiOS-UIAlertView+Blocks-dummy.m */; };
+		52DCEE3BB7F8D3E32BF96FCD /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB407461AA12DCF039EDBFE /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		58A15CD3EE9FBA893C3A3A5D /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5D9E610F149A72D3BB3675 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5A8882722FA69254544DC909 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6583706A2A39EB0E942020C1 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5B319D8A2BA1D3D6B7177615 /* INNamespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C958A74198431E71409620A /* INNamespace.m */; };
+		5BD2BA0C4B33B1127FF110A8 /* INContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3FF9102F5C8AC79879AB48 /* INContact.m */; };
+		5D35FE60A36C9D11ECF1C5BB /* NSObject+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CAE96C855952526EEA6DAF /* NSObject+Properties.m */; };
+		5D60E50CF2B4684F62A9AEBB /* INSaveDraftTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A80ED940DC4C0F088CF4B3F /* INSaveDraftTask.h */; };
+		5E74B6E9A50B7D02670409AF /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D8EE2B8F9211616E9CC0F94 /* AFNetworkReachabilityManager.h */; };
+		6036830F3F24052B8764A577 /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 6103BEEFF700B660A5508BEC /* UIRefreshControl+AFNetworking.h */; };
+		60805D8F00D5CB25E17A0437 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBCD2F982371EB5EDC2AEBE /* SWUtilityButtonTapGestureRecognizer.m */; };
+		60D97D7BEFD8308DB968C51A /* NSDictionary+FormatConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = D5FA1F3C898F4C5464719CA6 /* NSDictionary+FormatConversion.m */; };
+		6152680A68FA7DAC3BE7AD59 /* INThread.h in Headers */ = {isa = PBXBuildFile; fileRef = B53D1034678CE9A253AB3595 /* INThread.h */; };
+		61F0415A0300F3D9C5D98BAD /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E576B4348A81C2D3F62A954 /* UIActivityIndicatorView+AFNetworking.m */; };
+		6392AA62D317D2DF65838AB1 /* DTError.h in Headers */ = {isa = PBXBuildFile; fileRef = 90DB0FF1D91000C9793BC370 /* DTError.h */; };
+		65B5D688D952CB534D20A64E /* INSaveTagTask.h in Headers */ = {isa = PBXBuildFile; fileRef = D20AFD4BDE475A950B10305D /* INSaveTagTask.h */; };
+		66F90199BC2A562D92A75A85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151F7C1233E6CE247626DBED /* CoreGraphics.framework */; };
+		692E88D33F50669A61C4798D /* INDeleteDraftTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 937F4878D3258B30AEC251ED /* INDeleteDraftTask.h */; };
+		6A19E8513487889E8BB24ACF /* INModelProvider+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A99629C257449BF6E5A1824 /* INModelProvider+Private.h */; };
+		6BAE6E88DE8F0555F32503DA /* SWCellScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = CDEFD2C419F86197705DF1C8 /* SWCellScrollView.h */; };
+		6BCBC3FD1DA7C18E35366924 /* NSObject+AssociatedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 985C48D6DBCEB77AD6FA4319 /* NSObject+AssociatedObjects.m */; };
+		6DF0CFD1AAD775A6613D42C6 /* FMResultSet+INModelQueries.h in Headers */ = {isa = PBXBuildFile; fileRef = E687A1B076610D37958C94D5 /* FMResultSet+INModelQueries.h */; };
+		701917C52D8C26A4610A3350 /* Pods-planckMailiOS-MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7356BE8BDCC7E9F429988185 /* Pods-planckMailiOS-MBProgressHUD-dummy.m */; };
+		711A600F9260595799CB58FC /* NSPredicate+Inspection.h in Headers */ = {isa = PBXBuildFile; fileRef = 142F277A78EA5167A5727711 /* NSPredicate+Inspection.h */; };
+		72D4092A3C3227DBBB5DB9BB /* INMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C92B9D2BF2ACECB105AE806 /* INMessage.m */; };
+		7379598BD6C9EDC0F06BD7F2 /* INSendDraftTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 0388F5A783ED591B4B764F76 /* INSendDraftTask.h */; };
+		73B76138636403F8A899F883 /* DTTimePeriodGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BF70A17316C6280AB53597 /* DTTimePeriodGroup.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7637971706AB2747E97CEB03 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7EB8D754339BDD828B0F81 /* SWCellScrollView.m */; };
+		7679FC137BC70E1D477DA6FA /* INAddRemoveTagsTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B5B788B9DBA649B07CB81D /* INAddRemoveTagsTask.h */; };
+		77D7972ADA6B1354326C430A /* INThreadProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 23948107E01D8A15F72539C5 /* INThreadProvider.m */; };
+		77E2C1D15B81C1FF427BD7D6 /* INRecipientsLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5855DC18BA4DC851EB9E846C /* INRecipientsLabel.m */; };
+		780A6C99CFE349FADB3A0C23 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD1716A758DB946C7A5D3F7 /* AFHTTPSessionManager.h */; };
+		7900FB98656E6C22AC1AF073 /* PDKeychainBindingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7152519E13CD1A771FCB8 /* PDKeychainBindingsController.m */; };
+		7A9E93586F14857840D12554 /* INModelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F5817FFF6D62C605BDE96932 /* INModelProvider.m */; };
+		7C9B5D8BBB9671090E2A5B0F /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = E823E12B5067C0F90A88EC8A /* UIButton+AFNetworking.h */; };
+		7CDDFA2D7C7E13F71AEE0BAC /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 819D30EFCDB8EC135A50FE43 /* UIImageView+AFNetworking.m */; };
+		7D33B76061172294C9A7DC55 /* INModelObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 328E5F0DE439233A7402C5EF /* INModelObject.m */; };
+		7DC8BCE2AD734ED42EB9F294 /* DTConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 737687C0F4CB8996C3BBA659 /* DTConstants.h */; };
+		813CDB21E7730EEA1CC7F29C /* INDraft.h in Headers */ = {isa = PBXBuildFile; fileRef = DE90A1872E8A8F0B6972F692 /* INDraft.h */; };
+		81D9EE9FC2DC673DC11BC741 /* AFHTTPRequestOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B119685FBAD15ACD1C63E4F /* AFHTTPRequestOperationManager.h */; };
+		82B5AB66E3545270D8331CE0 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 95942056C81BA48FF9350529 /* AFNetworkActivityIndicatorManager.h */; };
+		82D5E4715F7AEDAEB5BDD531 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 045E3FDC7E8EC1D14F20223F /* AFHTTPRequestOperation.m */; };
+		830E9DC023DFFA7E05B7B753 /* FMDB.h in Headers */ = {isa = PBXBuildFile; fileRef = DB4D9E6D66F8018578FB69E8 /* FMDB.h */; };
+		84E065271BDEDAB9BD1E3F28 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B8462145F2FAEE96284674 /* AFHTTPRequestOperationManager.m */; };
+		87F011F546DE67B79754194E /* PDKeychainBindingsController.h in Headers */ = {isa = PBXBuildFile; fileRef = B8B731A8E4597CE6BCC1EF97 /* PDKeychainBindingsController.h */; };
+		89256EEEB7597149FA1F46EE /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FD4FD5ECEAF0D7B4CD798A8 /* UIProgressView+AFNetworking.h */; };
+		8A1A181D4C291CC7E02FDC2B /* PDKeychainBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC0FA0DAE9782DC469E763A /* PDKeychainBindings.m */; };
+		8C0F3C26F2CE946DC2C0DAF5 /* NSDate+DateTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 948DBC77286F41865189F79C /* NSDate+DateTools.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8CF7BBED62D2501F905A3D4F /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 44CE67F84C131FF192EA6293 /* AFHTTPRequestOperation.h */; };
+		8D07A0842E08DF1F635FF106 /* UIActionSheet+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = A8C2853853DF4E6D96AF8FC1 /* UIActionSheet+Blocks.h */; };
+		8D4AC5899D52D34F509A0199 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E049A6E5ACF419D2E4AFA98 /* MBProgressHUD.h */; };
+		8D9AB15895BEC3E25F06154B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D079F44970CE18DEA7008D38 /* Security.framework */; };
+		8FEE4F07B51CAF017110D0B8 /* INMessageProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B98029CFAF7527DC5C150F8 /* INMessageProvider.h */; };
+		90CD06ABFFE5EE14A2A41E82 /* PDKeychainBindings.h in Headers */ = {isa = PBXBuildFile; fileRef = FFE00C422C78B87411F9627C /* PDKeychainBindings.h */; };
+		91EB9B0FED7B5E85CAE811BF /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ABE2FBA462235E06F0AEDDE /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		93EBE04EFD455FEC30A1052A /* INThreadProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = D9F2F1BA7DA3D7801DBBA0D9 /* INThreadProvider.h */; };
+		9465A2FC4B97B446F2496307 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = BAABCBBE06182308D208FA73 /* AFURLConnectionOperation.h */; };
+		948C643C1C88E8535C865CC3 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BD49C3C6FB8DC5BC6A8EEF /* UIAlertView+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		95D5DD35A4CAB89F37C1BA6C /* DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = C651F8DAE315AE4A8B6FBB1E /* DateTools.h */; };
+		96CC9228C14BC3B87BFA8A6A /* INNamespace.h in Headers */ = {isa = PBXBuildFile; fileRef = 779A3BD419E2AEC280FE3272 /* INNamespace.h */; };
+		97BEE77BE5CC4CBB11EFB142 /* INModelResponseSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = F50DA273D67838E7705ACFB2 /* INModelResponseSerializer.h */; };
+		99897A60005999AD17C5C442 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB3E1783419FA7F349BEC8A /* UIButton+AFNetworking.m */; };
+		9C30472DE144036B394DA8EE /* INMarkMessageAsReadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 8261FA8C0AD20A70C32AED73 /* INMarkMessageAsReadTask.m */; };
+		9DBB32A5CF9035DB548F185C /* DTTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFA8C5FACB0E1B07DE45E75 /* DTTimePeriod.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A09158C8C1ACD07E708B0261 /* NSString+FormatConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1E16800BE542646216D51E /* NSString+FormatConversion.m */; };
+		A0DE6B445BCF785794E96855 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440AA3883C35965F1B6188D7 /* Foundation.framework */; };
+		A2472D57A742865CA087A662 /* INSaveTagTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4128B787C09D8A170D99E32A /* INSaveTagTask.m */; };
+		A37F086FD384D21D1718CB27 /* FMDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 195641E7274F0ACE02FCE731 /* FMDatabaseQueue.h */; };
+		A56828A893C6C31B534E995F /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9FB41D482F22DAA749468 /* AFURLRequestSerialization.m */; };
+		A5DF13789A91F56AD4A67F96 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151F7C1233E6CE247626DBED /* CoreGraphics.framework */; };
+		A6260CCE6941AC0BD245D3B2 /* NSDictionary+FormatConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 6189E527370F37D6001F6F04 /* NSDictionary+FormatConversion.h */; };
+		AB821E66B85BD87407A14365 /* FMDatabase+INModelQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = EFB285EB9C22236B4BDFE700 /* FMDatabase+INModelQueries.m */; };
+		ABFB8CB4C4A0CEE4C94E2B0B /* INSendDraftTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 661018B423F3F4B839F41BEC /* INSendDraftTask.m */; };
+		AD9AFCF5AF36D6D60840577F /* FMDatabase+INModelQueries.h in Headers */ = {isa = PBXBuildFile; fileRef = EB20762B898396A673A4A429 /* FMDatabase+INModelQueries.h */; };
+		AE33E5BB41FA305904C60FB5 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC87EA511C945C7C844433A /* UIRefreshControl+AFNetworking.m */; };
+		AEDA056CA49BFF42E31E1E4F /* INAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4913FBF185E5A0FE98A5 /* INAPIManager.m */; };
+		B18B5F4BB5CAECB43A190DA0 /* INAPITask.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D351DD7E11659F5F8E5870A /* INAPITask.h */; };
+		B6B221922BF5103DD0EBB3FC /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32E2A4C4D9E5FFF7942A131A /* AFNetworkActivityIndicatorManager.m */; };
+		B6FD7E5B0B0615D7E2EF1047 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A1086B8FBBB0747B5C112E /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B80FEB4EA53808361C2976AC /* INModelObject+Uniquing.h in Headers */ = {isa = PBXBuildFile; fileRef = 5462BA1AED933E49957DA503 /* INModelObject+Uniquing.h */; };
+		B89019935A787BA16194E78E /* NSObject+Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = 453D7BEF26FC27DD17CCE4EA /* NSObject+Properties.h */; };
+		B8AC2EAD1EF46AE8E235C4D0 /* INUploadFileTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 75382343BB10BD2BE9E5370E /* INUploadFileTask.m */; };
+		B8CD50EBB03D57676F2A3E4E /* INPredicateToSQLConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 675C87F0882A700FE64864E3 /* INPredicateToSQLConverter.h */; };
+		B9A06AC56D794A89B39D7E37 /* INPredicateToSQLConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A8F896B6526C2775CCE677 /* INPredicateToSQLConverter.m */; };
+		BAEFE8382723E2C16D0BF1BD /* UIView+FrameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A48B95B21476545AEA976BA /* UIView+FrameAdditions.m */; };
+		BAF0F54DF517A77DF7B7AB8B /* DTTimePeriodChain.h in Headers */ = {isa = PBXBuildFile; fileRef = EC6112DD3C1FFBFE6F88127F /* DTTimePeriodChain.h */; };
+		BB80CC0C378BAB275ED0B127 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E401E8F950AE81C4E55B97C8 /* UIActionSheet+Blocks.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BBDFC630986080657B6CDBD5 /* DTTimePeriodChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 10094C5C86B0ABEBF731E612 /* DTTimePeriodChain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BD5AD1FA580F68146FD65A08 /* INModelResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BB5B5A7EF7F4C0802902BA /* INModelResponseSerializer.m */; };
+		C3062786B936BA44ACD15699 /* DTTimePeriodCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E16AB1A139B41E319F9DB89 /* DTTimePeriodCollection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C5A18C5003E4A0A113132B96 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440AA3883C35965F1B6188D7 /* Foundation.framework */; };
+		C715CF1FE98BACE61DF614CA /* SWUtilityButtonView.h in Headers */ = {isa = PBXBuildFile; fileRef = 199DE5DB3AA21EEA44BDA2CB /* SWUtilityButtonView.h */; };
+		C946743A52C3C160407B042E /* NSDate+DateTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 08AD6543AFB28DABD5093086 /* NSDate+DateTools.h */; };
+		CA2884C76FE051A13E3D74FA /* INSaveDraftTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D00C88E909BA3ACB8DEE439 /* INSaveDraftTask.m */; };
+		CAD00078A91E5D7655E75629 /* Pods-planckMailiOS-AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F701AD6459DBC68EDDE4A6 /* Pods-planckMailiOS-AFNetworking-dummy.m */; };
+		CBA1D5E1B03F6C3A412A72AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440AA3883C35965F1B6188D7 /* Foundation.framework */; };
+		CBDA95B50E6FB860159D5628 /* Pods-planckMailiOS-FMDB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3C2228C9016FBB7FB69D55 /* Pods-planckMailiOS-FMDB-dummy.m */; };
+		CC47654D1131AA52DB671283 /* Pods-planckMailiOS-UIActionSheet+Blocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF89F0B9FCCAE69E8CC3FC9 /* Pods-planckMailiOS-UIActionSheet+Blocks-dummy.m */; };
+		CCD50E374C4D3D107320347C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440AA3883C35965F1B6188D7 /* Foundation.framework */; };
+		D2545292815EF0EBF52EBA52 /* NSPredicate+Inspection.m in Sources */ = {isa = PBXBuildFile; fileRef = 876E95EA6977B2D57DBCE5F5 /* NSPredicate+Inspection.m */; };
+		D41D4DFFC8E9323A98A18F9F /* SWTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 75C9712FDA140BD74CB3BCF1 /* SWTableViewCell.h */; };
+		D59513B1CFCEF76E1E09F3C0 /* INMarkMessageAsReadTask.h in Headers */ = {isa = PBXBuildFile; fileRef = FF21DA3BCF36D1CDC227BBFF /* INMarkMessageAsReadTask.h */; };
+		D5F63E5970262CDE5562C11A /* FMDatabaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 9659532A5DB76DC76E269F7D /* FMDatabaseAdditions.h */; };
+		D9750B65A0F85EDEF3633691 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440AA3883C35965F1B6188D7 /* Foundation.framework */; };
+		D9CEACDC88C10A6F8E9E9BA2 /* FMDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 04156050992B39442F2C17AD /* FMDatabase.h */; };
+		DB25AEAFD21EFF8120AE6840 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4D734485C275E72CB2845A /* UIProgressView+AFNetworking.m */; };
+		DE0BDD876F5D7B0B32877ACD /* UIAlertView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = CD436DDCBF0DAFC2A5E3EB13 /* UIAlertView+AFNetworking.h */; };
+		DEAD3DBCB1D595E75ECFF998 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = B3071BEFA439F576B1B650F0 /* AFURLResponseSerialization.h */; };
+		E1039D321E97E2DE346614FF /* Pods-planckMailiOS-DateTools-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3518CC8062141C185DE2B9 /* Pods-planckMailiOS-DateTools-dummy.m */; };
+		E1A814B6B1EE66A26CC95339 /* INContact.h in Headers */ = {isa = PBXBuildFile; fileRef = 738C844307D00E78F218ADBB /* INContact.h */; };
+		E1CEDA04FF4B120C907C2949 /* INMessageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 32742C402D8A3F1DE58D1947 /* INMessageProvider.m */; };
+		E23276B9C75E3622376F470D /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = FD5E675ABDDDCC445B9AF5CD /* AFURLSessionManager.h */; };
+		E2445C357BE1D6D7CA2380CD /* INTag.m in Sources */ = {isa = PBXBuildFile; fileRef = C1DDA3EBA8AA98B01C425F53 /* INTag.m */; };
+		E3509CE92163B62CC747F0E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440AA3883C35965F1B6188D7 /* Foundation.framework */; };
+		E4077267D0F149D5DA08886F /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 9040A2D9E63432E12811A6A4 /* UIWebView+AFNetworking.h */; };
+		E4DF2CE5FD04F9026C291DFE /* INThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D07B96F7E0999E0244B941 /* INThread.m */; };
+		E7E9D6C3211D5E5CAB181024 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2BCC6FDCC58F7651339005F /* SWUtilityButtonView.m */; };
+		E85C7E4FCC4F60B298EB161D /* INDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D6E8441C08F5EA57983777 /* INDraft.m */; };
+		EA1C9A9B2BBDF4B21F53EA30 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = EB45E05EE5AF3BA510E86DCD /* NSMutableArray+SWUtilityButtons.m */; };
+		EB51918B08AF500E8590BC11 /* INRecipientsLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 11473A209A7532373B3EF62F /* INRecipientsLabel.h */; };
+		EB981833507BB99F52E0ACA3 /* INModelObject+Uniquing.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EFCC7877CD6FFE00696109 /* INModelObject+Uniquing.m */; };
+		ECAC3200C4C1602C28F22E8E /* NSMutableArray+SWUtilityButtons.h in Headers */ = {isa = PBXBuildFile; fileRef = DAF19382B7F74599F3CC12CA /* NSMutableArray+SWUtilityButtons.h */; };
+		EEE1FF6A715BAFA81B70F53F /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = B9826904A7ED2AD50948DEF4 /* UIAlertView+AFNetworking.m */; };
+		EF4E668A6C813A6B892C9CBB /* FMResultSet+INModelQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E61B3807677284AD9A5D44A /* FMResultSet+INModelQueries.m */; };
+		F136E9F3567030D037E12399 /* INMessageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0D41FC9F683DD260D06218 /* INMessageContentView.m */; };
+		F3C223DCE5D9E982F7D17EA7 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE55F3AC94B3F28882A842 /* AFURLResponseSerialization.m */; };
+		F3E70121E42195487E6B32AA /* INDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6720F8E6B9F7F9DBA34C3B /* INDatabaseManager.m */; };
+		F3FBED3DFC86D50508BDE1E4 /* Inbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 64057362A2E01EE80623ED17 /* Inbox.h */; };
+		F4D0839978ACA16D62F16122 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5C013F626D820A706790A3 /* AFSecurityPolicy.m */; };
+		F5BC0FB629C8BA5BF47729B8 /* UIAlertView+Blocks.h in Headers */ = {isa = PBXBuildFile; fileRef = FBBF82F86B2D3323F7AD1443 /* UIAlertView+Blocks.h */; };
+		FA439B87F2D372944A5F5E41 /* INAddRemoveTagsTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD6BE6C73508A7210F45545 /* INAddRemoveTagsTask.m */; };
+		FB80599365CB1E266D174FF6 /* FMDatabasePool.h in Headers */ = {isa = PBXBuildFile; fileRef = 429F3BDDA2A7FB2DBC1C3C59 /* FMDatabasePool.h */; };
+		FB8D51682C566DE459F30154 /* INThread+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812A6861A1CCB079CECC0D7 /* INThread+Private.m */; };
+		FBAC9A43942D762D9E576DB7 /* INThread+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = A3BB7550F11EB607F03D70CC /* INThread+Private.h */; };
+		FD0D56861E776284D52AD78F /* INMessageContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = E0148CA278A37ADD8D426A8D /* INMessageContentView.h */; };
+		FD6F1E2BD2701B7A49FE21EB /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 57B8295AD47F785979898DAA /* UIActivityIndicatorView+AFNetworking.h */; };
+		FD8E0EBBA508D46CB66685FD /* INSyncEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0029D34F9C5E2A0A40EC30A1 /* INSyncEngine.h */; };
+		FE2D8FE94F4BE869938B6302 /* INPredicateToQueryParamConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 13D8F6333847854EFFEFE010 /* INPredicateToQueryParamConverter.h */; };
+		FE449EA266D11EB81D7C7450 /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0B794F45303A2E03926830 /* SWLongPressGestureRecognizer.m */; };
+		FE74FB254A39B97DAA119F51 /* SWUtilityButtonTapGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8370160C905E0FFA7DAADC70 /* SWUtilityButtonTapGestureRecognizer.h */; };
+		FFE34D60789E68CDA65FD10B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440AA3883C35965F1B6188D7 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1259CDB042239FAF9242B47E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86362DB047E7AFD8339FEBBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0558B77F3A38F1DA897C4201;
+			remoteInfo = "Pods-planckMailiOS-UIActionSheet+Blocks";
+		};
+		2E521DE55D6A20E75D6AF53A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86362DB047E7AFD8339FEBBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5B4DD4356200553F09F07CD;
+			remoteInfo = "Pods-planckMailiOS-AFNetworking";
+		};
+		2EEFBAAF391A68B6B20BC858 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86362DB047E7AFD8339FEBBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E6F44DDCCB584CD5A466CB7;
+			remoteInfo = "Pods-planckMailiOS-FMDB";
+		};
+		49CCBFF1A2D3248CE4E0467A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86362DB047E7AFD8339FEBBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5B4DD4356200553F09F07CD;
+			remoteInfo = "Pods-planckMailiOS-AFNetworking";
+		};
+		5CC7BB14DD44588C6E01F3E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86362DB047E7AFD8339FEBBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D8704E5D5130A32A065C133;
+			remoteInfo = "Pods-planckMailiOS-InboxKit";
+		};
+		870102E380DC0DC192E5CE20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86362DB047E7AFD8339FEBBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0654507A4CA6D0BE1EDF9474;
+			remoteInfo = "Pods-planckMailiOS-UIAlertView+Blocks";
+		};
+		9655439FF914C59409F6511B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86362DB047E7AFD8339FEBBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D14615339199ED532FB13F26;
+			remoteInfo = "Pods-planckMailiOS-DateTools";
+		};
+		D5C4048ADABDF31697492CC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86362DB047E7AFD8339FEBBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E6F44DDCCB584CD5A466CB7;
+			remoteInfo = "Pods-planckMailiOS-FMDB";
+		};
+		DCDE5C28BE4CA0740A8D06E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86362DB047E7AFD8339FEBBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF3FF3D6B1F71DE33E0D3ECF;
+			remoteInfo = "Pods-planckMailiOS-SWTableViewCell";
+		};
+		EA157C0A6C37079845CEBB40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86362DB047E7AFD8339FEBBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E599BE99D055ADD6EFA238C9;
+			remoteInfo = "Pods-planckMailiOS-MBProgressHUD";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0029D34F9C5E2A0A40EC30A1 /* INSyncEngine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INSyncEngine.h; path = InboxFramework/Inbox/INSyncEngine.h; sourceTree = "<group>"; };
+		01614F18AA66A0EE88554DE5 /* Pods-planckMailiOS-AFNetworking-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-AFNetworking-Private.xcconfig"; sourceTree = "<group>"; };
+		02A8F896B6526C2775CCE677 /* INPredicateToSQLConverter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INPredicateToSQLConverter.m; path = InboxFramework/Inbox/Helpers/INPredicateToSQLConverter.m; sourceTree = "<group>"; };
+		02D07B96F7E0999E0244B941 /* INThread.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INThread.m; path = "InboxFramework/Inbox/Models/Concrete Classes/INThread.m"; sourceTree = "<group>"; };
+		0388F5A783ED591B4B764F76 /* INSendDraftTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INSendDraftTask.h; path = "InboxFramework/Inbox/Models/API Calls/INSendDraftTask.h"; sourceTree = "<group>"; };
+		04156050992B39442F2C17AD /* FMDatabase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = src/fmdb/FMDatabase.h; sourceTree = "<group>"; };
+		045E3FDC7E8EC1D14F20223F /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		047461058AED033F1BEA6159 /* FMResultSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = src/fmdb/FMResultSet.h; sourceTree = "<group>"; };
+		05B8462145F2FAEE96284674 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperationManager.m; path = AFNetworking/AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		08AD6543AFB28DABD5093086 /* NSDate+DateTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+DateTools.h"; path = "DateTools/NSDate+DateTools.h"; sourceTree = "<group>"; };
+		0A32889A2B43FC9B7D87BAA1 /* INDatabaseManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INDatabaseManager.h; path = InboxFramework/Inbox/INDatabaseManager.h; sourceTree = "<group>"; };
+		0C0D41FC9F683DD260D06218 /* INMessageContentView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INMessageContentView.m; path = InboxFramework/InboxUI/Views/INMessageContentView.m; sourceTree = "<group>"; };
+		0D00C88E909BA3ACB8DEE439 /* INSaveDraftTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INSaveDraftTask.m; path = "InboxFramework/Inbox/Models/API Calls/INSaveDraftTask.m"; sourceTree = "<group>"; };
+		0DC43D03FD7E2DE4B19DF289 /* Pods-planckMailiOS-UIAlertView+Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-planckMailiOS-UIAlertView+Blocks-prefix.pch"; sourceTree = "<group>"; };
+		0FFA8C5FACB0E1B07DE45E75 /* DTTimePeriod.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriod.m; path = DateTools/DTTimePeriod.m; sourceTree = "<group>"; };
+		10094C5C86B0ABEBF731E612 /* DTTimePeriodChain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodChain.m; path = DateTools/DTTimePeriodChain.m; sourceTree = "<group>"; };
+		11473A209A7532373B3EF62F /* INRecipientsLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INRecipientsLabel.h; path = InboxFramework/InboxUI/Views/INRecipientsLabel.h; sourceTree = "<group>"; };
+		118938FE1D1284BCB27CA6B8 /* Pods-planckMailiOS-MBProgressHUD-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-MBProgressHUD-Private.xcconfig"; sourceTree = "<group>"; };
+		133B18AC7BEDED0FC48BEA2C /* INDeleteDraftTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INDeleteDraftTask.m; path = "InboxFramework/Inbox/Models/API Calls/INDeleteDraftTask.m"; sourceTree = "<group>"; };
+		13A78A0A04C922D7630DA05E /* Pods-planckMailiOS-UIAlertView+Blocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-UIAlertView+Blocks-Private.xcconfig"; sourceTree = "<group>"; };
+		13D8F6333847854EFFEFE010 /* INPredicateToQueryParamConverter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INPredicateToQueryParamConverter.h; path = InboxFramework/Inbox/Helpers/INPredicateToQueryParamConverter.h; sourceTree = "<group>"; };
+		142F277A78EA5167A5727711 /* NSPredicate+Inspection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSPredicate+Inspection.h"; path = "InboxFramework/Inbox/Categories/NSPredicate+Inspection.h"; sourceTree = "<group>"; };
+		151F7C1233E6CE247626DBED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		15AF36B0558FDAF103C804F6 /* DTTimePeriodGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodGroup.h; path = DateTools/DTTimePeriodGroup.h; sourceTree = "<group>"; };
+		195641E7274F0ACE02FCE731 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = src/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		199DE5DB3AA21EEA44BDA2CB /* SWUtilityButtonView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWUtilityButtonView.h; path = SWTableViewCell/PodFiles/SWUtilityButtonView.h; sourceTree = "<group>"; };
+		19AE40160E66EBE6C1E0D2FE /* NSObject+AssociatedObjects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+AssociatedObjects.h"; path = "InboxFramework/Inbox/Categories/NSObject+AssociatedObjects.h"; sourceTree = "<group>"; };
+		1C798627FD83B5DA45B22E0E /* Pods-planckMailiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1D351DD7E11659F5F8E5870A /* INAPITask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INAPITask.h; path = "InboxFramework/Inbox/Models/API Calls/INAPITask.h"; sourceTree = "<group>"; };
+		1D8EE2B8F9211616E9CC0F94 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		1E61B3807677284AD9A5D44A /* FMResultSet+INModelQueries.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FMResultSet+INModelQueries.m"; path = "InboxFramework/Inbox/Categories/FMResultSet+INModelQueries.m"; sourceTree = "<group>"; };
+		21056E7456A19A68C2BC2E89 /* Pods-planckMailiOS-UIActionSheet+Blocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-UIActionSheet+Blocks-Private.xcconfig"; sourceTree = "<group>"; };
+		23948107E01D8A15F72539C5 /* INThreadProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INThreadProvider.m; path = InboxFramework/Inbox/Models/INThreadProvider.m; sourceTree = "<group>"; };
+		23BD49C3C6FB8DC5BC6A8EEF /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		2A99629C257449BF6E5A1824 /* INModelProvider+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "INModelProvider+Private.h"; path = "InboxFramework/Inbox/Models/INModelProvider+Private.h"; sourceTree = "<group>"; };
+		2AE7152519E13CD1A771FCB8 /* PDKeychainBindingsController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDKeychainBindingsController.m; path = InboxFramework/Submodules/PDKeychainBindingsController/PDKeychainBindingsController/PDKeychainBindingsController.m; sourceTree = "<group>"; };
+		2BBCD2F982371EB5EDC2AEBE /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonTapGestureRecognizer.m; path = SWTableViewCell/PodFiles/SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
+		2E16AB1A139B41E319F9DB89 /* DTTimePeriodCollection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodCollection.m; path = DateTools/DTTimePeriodCollection.m; sourceTree = "<group>"; };
+		32742C402D8A3F1DE58D1947 /* INMessageProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INMessageProvider.m; path = InboxFramework/Inbox/Models/INMessageProvider.m; sourceTree = "<group>"; };
+		328E5F0DE439233A7402C5EF /* INModelObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INModelObject.m; path = InboxFramework/Inbox/Models/INModelObject.m; sourceTree = "<group>"; };
+		32E2A4C4D9E5FFF7942A131A /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
+		354A59A39717226C6A98546F /* INPredicateToQueryParamConverter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INPredicateToQueryParamConverter.m; path = InboxFramework/Inbox/Helpers/INPredicateToQueryParamConverter.m; sourceTree = "<group>"; };
+		3565E6CE7BE31AEBC8C8C2A0 /* Pods-planckMailiOS-SWTableViewCell-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-planckMailiOS-SWTableViewCell-prefix.pch"; sourceTree = "<group>"; };
+		36B0DA618C53C95CAA2F9C7F /* INFile.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INFile.m; path = "InboxFramework/Inbox/Models/Concrete Classes/INFile.m"; sourceTree = "<group>"; };
+		392346F1EDDD2C8760D1A4AF /* Pods-planckMailiOS-InboxKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-InboxKit.xcconfig"; sourceTree = "<group>"; };
+		3B119685FBAD15ACD1C63E4F /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = AFNetworking/AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		3CA9FB41D482F22DAA749468 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		3D148EEF6740342EAE7A96B4 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		3ED988151016ADB452FF18A0 /* libPods-planckMailiOS-MBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS-MBProgressHUD.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F7C6EBC98A382DA04696270 /* UIView+FrameAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+FrameAdditions.h"; path = "InboxFramework/InboxUI/Categories/UIView+FrameAdditions.h"; sourceTree = "<group>"; };
+		4128B787C09D8A170D99E32A /* INSaveTagTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INSaveTagTask.m; path = "InboxFramework/Inbox/Models/API Calls/INSaveTagTask.m"; sourceTree = "<group>"; };
+		42674BED5A63F39DA64F5312 /* libPods-planckMailiOS-FMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS-FMDB.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		429F3BDDA2A7FB2DBC1C3C59 /* FMDatabasePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
+		43D69823944EF97925BE8B81 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		440AA3883C35965F1B6188D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4439E2C9D2C8B58FC8116289 /* DTError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTError.m; path = DateTools/DTError.m; sourceTree = "<group>"; };
+		44CE67F84C131FF192EA6293 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		453D7BEF26FC27DD17CCE4EA /* NSObject+Properties.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+Properties.h"; path = "InboxFramework/Inbox/Categories/NSObject+Properties.h"; sourceTree = "<group>"; };
+		467CD4D5A56599DBE7C2D0DE /* libPods-planckMailiOS-SWTableViewCell.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS-SWTableViewCell.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47A4CB5E35F46C28913E31CA /* INAPITask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INAPITask.m; path = "InboxFramework/Inbox/Models/API Calls/INAPITask.m"; sourceTree = "<group>"; };
+		48429D3E86843C63A1EBA476 /* Pods-planckMailiOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-planckMailiOS-resources.sh"; sourceTree = "<group>"; };
+		4A3C2228C9016FBB7FB69D55 /* Pods-planckMailiOS-FMDB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-planckMailiOS-FMDB-dummy.m"; sourceTree = "<group>"; };
+		4CF89F0B9FCCAE69E8CC3FC9 /* Pods-planckMailiOS-UIActionSheet+Blocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-planckMailiOS-UIActionSheet+Blocks-dummy.m"; sourceTree = "<group>"; };
+		4DC87EA511C945C7C844433A /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
+		4E30900458F4F52F5047665E /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		4EEE55F3AC94B3F28882A842 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		50899637DF6DB68EC9E3A0A2 /* Pods-planckMailiOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-planckMailiOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		52A914C70249A9FAC62C71FB /* INUploadFileTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INUploadFileTask.h; path = "InboxFramework/Inbox/Models/API Calls/INUploadFileTask.h"; sourceTree = "<group>"; };
+		5462BA1AED933E49957DA503 /* INModelObject+Uniquing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "INModelObject+Uniquing.h"; path = "InboxFramework/Inbox/Models/INModelObject+Uniquing.h"; sourceTree = "<group>"; };
+		54F248F4171DC40C524D83BE /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		552D19BB223C54600B67D77D /* INModelObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INModelObject.h; path = InboxFramework/Inbox/Models/INModelObject.h; sourceTree = "<group>"; };
+		57B8295AD47F785979898DAA /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		5812A6861A1CCB079CECC0D7 /* INThread+Private.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "INThread+Private.m"; path = "InboxFramework/Inbox/Models/Concrete Classes/INThread+Private.m"; sourceTree = "<group>"; };
+		5855DC18BA4DC851EB9E846C /* INRecipientsLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INRecipientsLabel.m; path = InboxFramework/InboxUI/Views/INRecipientsLabel.m; sourceTree = "<group>"; };
+		58D6E8441C08F5EA57983777 /* INDraft.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INDraft.m; path = "InboxFramework/Inbox/Models/Concrete Classes/INDraft.m"; sourceTree = "<group>"; };
+		5BC0D6CC256D9E25EA336923 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		5C374552043EC518297E814D /* INFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INFile.h; path = "InboxFramework/Inbox/Models/Concrete Classes/INFile.h"; sourceTree = "<group>"; };
+		5C6720F8E6B9F7F9DBA34C3B /* INDatabaseManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INDatabaseManager.m; path = InboxFramework/Inbox/INDatabaseManager.m; sourceTree = "<group>"; };
+		5F51A55039309A2A954D7BBF /* Pods-planckMailiOS-AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-planckMailiOS-AFNetworking-prefix.pch"; sourceTree = "<group>"; };
+		6103BEEFF700B660A5508BEC /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
+		6189E527370F37D6001F6F04 /* NSDictionary+FormatConversion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+FormatConversion.h"; path = "InboxFramework/Inbox/Categories/NSDictionary+FormatConversion.h"; sourceTree = "<group>"; };
+		62A35D682860DC9274190533 /* Pods-planckMailiOS-SWTableViewCell-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-SWTableViewCell-Private.xcconfig"; sourceTree = "<group>"; };
+		63AEB8E1CE2E9C15FA7A3BE0 /* Pods-planckMailiOS-MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-MBProgressHUD.xcconfig"; sourceTree = "<group>"; };
+		64057362A2E01EE80623ED17 /* Inbox.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Inbox.h; path = InboxFramework/Inbox/Inbox.h; sourceTree = "<group>"; };
+		6583706A2A39EB0E942020C1 /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
+		65BF70A17316C6280AB53597 /* DTTimePeriodGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTimePeriodGroup.m; path = DateTools/DTTimePeriodGroup.m; sourceTree = "<group>"; };
+		661018B423F3F4B839F41BEC /* INSendDraftTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INSendDraftTask.m; path = "InboxFramework/Inbox/Models/API Calls/INSendDraftTask.m"; sourceTree = "<group>"; };
+		675C87F0882A700FE64864E3 /* INPredicateToSQLConverter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INPredicateToSQLConverter.h; path = InboxFramework/Inbox/Helpers/INPredicateToSQLConverter.h; sourceTree = "<group>"; };
+		67A1086B8FBBB0747B5C112E /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		69D47062AB4C1327E34F165C /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		6B98029CFAF7527DC5C150F8 /* INMessageProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INMessageProvider.h; path = InboxFramework/Inbox/Models/INMessageProvider.h; sourceTree = "<group>"; };
+		6C92B9D2BF2ACECB105AE806 /* INMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INMessage.m; path = "InboxFramework/Inbox/Models/Concrete Classes/INMessage.m"; sourceTree = "<group>"; };
+		6E049A6E5ACF419D2E4AFA98 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		6FB3E1783419FA7F349BEC8A /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
+		72315686F576E0F2D9123153 /* DateTools.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = DateTools/DateTools.bundle; sourceTree = "<group>"; };
+		7356BE8BDCC7E9F429988185 /* Pods-planckMailiOS-MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-planckMailiOS-MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		737687C0F4CB8996C3BBA659 /* DTConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTConstants.h; path = DateTools/DTConstants.h; sourceTree = "<group>"; };
+		738C844307D00E78F218ADBB /* INContact.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INContact.h; path = "InboxFramework/Inbox/Models/Concrete Classes/INContact.h"; sourceTree = "<group>"; };
+		75382343BB10BD2BE9E5370E /* INUploadFileTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INUploadFileTask.m; path = "InboxFramework/Inbox/Models/API Calls/INUploadFileTask.m"; sourceTree = "<group>"; };
+		75C9712FDA140BD74CB3BCF1 /* SWTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWTableViewCell.h; path = SWTableViewCell/PodFiles/SWTableViewCell.h; sourceTree = "<group>"; };
+		76EA4346F1BFC513298D3A1C /* Pods-planckMailiOS-SWTableViewCell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-planckMailiOS-SWTableViewCell-dummy.m"; sourceTree = "<group>"; };
+		770902D79C214FFA1D8C675E /* libPods-planckMailiOS-DateTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS-DateTools.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		779A3BD419E2AEC280FE3272 /* INNamespace.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INNamespace.h; path = "InboxFramework/Inbox/Models/Concrete Classes/INNamespace.h"; sourceTree = "<group>"; };
+		78B5B788B9DBA649B07CB81D /* INAddRemoveTagsTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INAddRemoveTagsTask.h; path = "InboxFramework/Inbox/Models/API Calls/INAddRemoveTagsTask.h"; sourceTree = "<group>"; };
+		79DBE2B92BCB9082DCF7E441 /* SWTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWTableViewCell.m; path = SWTableViewCell/PodFiles/SWTableViewCell.m; sourceTree = "<group>"; };
+		7A48B95B21476545AEA976BA /* UIView+FrameAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+FrameAdditions.m"; path = "InboxFramework/InboxUI/Categories/UIView+FrameAdditions.m"; sourceTree = "<group>"; };
+		7A80ED940DC4C0F088CF4B3F /* INSaveDraftTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INSaveDraftTask.h; path = "InboxFramework/Inbox/Models/API Calls/INSaveDraftTask.h"; sourceTree = "<group>"; };
+		7ABE2FBA462235E06F0AEDDE /* FMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = src/fmdb/FMResultSet.m; sourceTree = "<group>"; };
+		7B3FF9102F5C8AC79879AB48 /* INContact.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INContact.m; path = "InboxFramework/Inbox/Models/Concrete Classes/INContact.m"; sourceTree = "<group>"; };
+		7C3518CC8062141C185DE2B9 /* Pods-planckMailiOS-DateTools-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-planckMailiOS-DateTools-dummy.m"; sourceTree = "<group>"; };
+		7C46937C8396C9649A742CBE /* Pods-planckMailiOS-UIAlertView+Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-UIAlertView+Blocks.xcconfig"; sourceTree = "<group>"; };
+		7C958A74198431E71409620A /* INNamespace.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INNamespace.m; path = "InboxFramework/Inbox/Models/Concrete Classes/INNamespace.m"; sourceTree = "<group>"; };
+		7F5D9E610F149A72D3BB3675 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = src/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		819D30EFCDB8EC135A50FE43 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		8261FA8C0AD20A70C32AED73 /* INMarkMessageAsReadTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INMarkMessageAsReadTask.m; path = "InboxFramework/Inbox/Models/API Calls/INMarkMessageAsReadTask.m"; sourceTree = "<group>"; };
+		8370160C905E0FFA7DAADC70 /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWUtilityButtonTapGestureRecognizer.h; path = SWTableViewCell/PodFiles/SWUtilityButtonTapGestureRecognizer.h; sourceTree = "<group>"; };
+		859A72E07F9AA0EDCD74BB10 /* Pods-planckMailiOS-DateTools-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-DateTools-Private.xcconfig"; sourceTree = "<group>"; };
+		85F701AD6459DBC68EDDE4A6 /* Pods-planckMailiOS-AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-planckMailiOS-AFNetworking-dummy.m"; sourceTree = "<group>"; };
+		876E95EA6977B2D57DBCE5F5 /* NSPredicate+Inspection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSPredicate+Inspection.m"; path = "InboxFramework/Inbox/Categories/NSPredicate+Inspection.m"; sourceTree = "<group>"; };
+		8A3E471B9EDE1A8728ED1ADC /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		8A96F421A0DF2C8903533D2B /* Pods-planckMailiOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-planckMailiOS-dummy.m"; sourceTree = "<group>"; };
+		8B98E210ACF8F8D63EA1E3D1 /* Pods-planckMailiOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-planckMailiOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8E576B4348A81C2D3F62A954 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		8E9EBE1F621E2C144EBF3DBC /* Pods-planckMailiOS-DateTools-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-planckMailiOS-DateTools-prefix.pch"; sourceTree = "<group>"; };
+		9040A2D9E63432E12811A6A4 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
+		90DB0FF1D91000C9793BC370 /* DTError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTError.h; path = DateTools/DTError.h; sourceTree = "<group>"; };
+		937F4878D3258B30AEC251ED /* INDeleteDraftTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INDeleteDraftTask.h; path = "InboxFramework/Inbox/Models/API Calls/INDeleteDraftTask.h"; sourceTree = "<group>"; };
+		948DBC77286F41865189F79C /* NSDate+DateTools.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+DateTools.m"; path = "DateTools/NSDate+DateTools.m"; sourceTree = "<group>"; };
+		95942056C81BA48FF9350529 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
+		9659532A5DB76DC76E269F7D /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		982DE80719A40A8C9DA00FBC /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
+		985C48D6DBCEB77AD6FA4319 /* NSObject+AssociatedObjects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+AssociatedObjects.m"; path = "InboxFramework/Inbox/Categories/NSObject+AssociatedObjects.m"; sourceTree = "<group>"; };
+		9BDF5873220B2EADFE996B88 /* libPods-planckMailiOS-UIActionSheet+Blocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS-UIActionSheet+Blocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DBB88108DBB3D898A6911B2 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		9F547C0205CBD64AB082E00A /* NSString+FormatConversion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+FormatConversion.h"; path = "InboxFramework/Inbox/Categories/NSString+FormatConversion.h"; sourceTree = "<group>"; };
+		9FA1A21A7A3F8C770FE75D97 /* Pods-planckMailiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS.release.xcconfig"; sourceTree = "<group>"; };
+		9FD4FD5ECEAF0D7B4CD798A8 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		A3BB7550F11EB607F03D70CC /* INThread+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "INThread+Private.h"; path = "InboxFramework/Inbox/Models/Concrete Classes/INThread+Private.h"; sourceTree = "<group>"; };
+		A8C2853853DF4E6D96AF8FC1 /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		AC0B794F45303A2E03926830 /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWLongPressGestureRecognizer.m; path = SWTableViewCell/PodFiles/SWLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		ACD027815B16851F58044E88 /* Pods-planckMailiOS-FMDB.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-FMDB.xcconfig"; sourceTree = "<group>"; };
+		B29FD37FE1AF2930056555FD /* libPods-planckMailiOS-UIAlertView+Blocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS-UIAlertView+Blocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3071BEFA439F576B1B650F0 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		B32274929ADE2584571DD216 /* DTTimePeriod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriod.h; path = DateTools/DTTimePeriod.h; sourceTree = "<group>"; };
+		B53D1034678CE9A253AB3595 /* INThread.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INThread.h; path = "InboxFramework/Inbox/Models/Concrete Classes/INThread.h"; sourceTree = "<group>"; };
+		B75D11C06A5836618BCC0B00 /* INTag.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INTag.h; path = "InboxFramework/Inbox/Models/Concrete Classes/INTag.h"; sourceTree = "<group>"; };
+		B7BB5B5A7EF7F4C0802902BA /* INModelResponseSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INModelResponseSerializer.m; path = InboxFramework/Inbox/Helpers/INModelResponseSerializer.m; sourceTree = "<group>"; };
+		B7DD4F3F4BD0042C5932702C /* libPods-planckMailiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7E96FD53B36F489EAC9C290 /* NSError+InboxErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+InboxErrors.m"; path = "InboxFramework/Inbox/Categories/NSError+InboxErrors.m"; sourceTree = "<group>"; };
+		B8B731A8E4597CE6BCC1EF97 /* PDKeychainBindingsController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDKeychainBindingsController.h; path = InboxFramework/Submodules/PDKeychainBindingsController/PDKeychainBindingsController/PDKeychainBindingsController.h; sourceTree = "<group>"; };
+		B8D0F01E9A119D66BE08E616 /* Pods-planckMailiOS-UIAlertView+Blocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-planckMailiOS-UIAlertView+Blocks-dummy.m"; sourceTree = "<group>"; };
+		B8F24B6FC033DEDC39098D11 /* Pods-planckMailiOS-InboxKit-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-InboxKit-Private.xcconfig"; sourceTree = "<group>"; };
+		B9826904A7ED2AD50948DEF4 /* UIAlertView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+AFNetworking.m"; path = "UIKit+AFNetworking/UIAlertView+AFNetworking.m"; sourceTree = "<group>"; };
+		B99C538DB3D0E9F509F38DA9 /* Pods-planckMailiOS-FMDB-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-planckMailiOS-FMDB-prefix.pch"; sourceTree = "<group>"; };
+		BA9E549039DAAD655E6F78F0 /* Pods-planckMailiOS-UIActionSheet+Blocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-planckMailiOS-UIActionSheet+Blocks-prefix.pch"; sourceTree = "<group>"; };
+		BAABCBBE06182308D208FA73 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		BAC0FA0DAE9782DC469E763A /* PDKeychainBindings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = PDKeychainBindings.m; path = InboxFramework/Submodules/PDKeychainBindingsController/PDKeychainBindingsController/PDKeychainBindings.m; sourceTree = "<group>"; };
+		BCAA55CD952489F3D6253491 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
+		BCBE5A0799794325D63C1540 /* Pods-planckMailiOS-InboxKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-planckMailiOS-InboxKit-prefix.pch"; sourceTree = "<group>"; };
+		BD76F58BBA61341200F702A9 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
+		BDE8E63D1A67E2DEB9EF358C /* NSError+InboxErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSError+InboxErrors.h"; path = "InboxFramework/Inbox/Categories/NSError+InboxErrors.h"; sourceTree = "<group>"; };
+		BF9D741F3C0D8952ECAC7A44 /* Pods-planckMailiOS-AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-AFNetworking.xcconfig"; sourceTree = "<group>"; };
+		C1DDA3EBA8AA98B01C425F53 /* INTag.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INTag.m; path = "InboxFramework/Inbox/Models/Concrete Classes/INTag.m"; sourceTree = "<group>"; };
+		C651F8DAE315AE4A8B6FBB1E /* DateTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DateTools.h; path = DateTools/DateTools.h; sourceTree = "<group>"; };
+		C7EFCC7877CD6FFE00696109 /* INModelObject+Uniquing.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "INModelObject+Uniquing.m"; path = "InboxFramework/Inbox/Models/INModelObject+Uniquing.m"; sourceTree = "<group>"; };
+		CC4D734485C275E72CB2845A /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		CCD1716A758DB946C7A5D3F7 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		CD436DDCBF0DAFC2A5E3EB13 /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+AFNetworking.h"; path = "UIKit+AFNetworking/UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
+		CDEFD2C419F86197705DF1C8 /* SWCellScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWCellScrollView.h; path = SWTableViewCell/PodFiles/SWCellScrollView.h; sourceTree = "<group>"; };
+		D079F44970CE18DEA7008D38 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		D1DB246EEEF2199F493D4C57 /* Pods-planckMailiOS-DateTools.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-DateTools.xcconfig"; sourceTree = "<group>"; };
+		D20AFD4BDE475A950B10305D /* INSaveTagTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INSaveTagTask.h; path = "InboxFramework/Inbox/Models/API Calls/INSaveTagTask.h"; sourceTree = "<group>"; };
+		D51A45E6D2713B7B11E825E2 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		D5FA1F3C898F4C5464719CA6 /* NSDictionary+FormatConversion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+FormatConversion.m"; path = "InboxFramework/Inbox/Categories/NSDictionary+FormatConversion.m"; sourceTree = "<group>"; };
+		D61443229577424CB6E9FABA /* Pods-planckMailiOS-SWTableViewCell.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-SWTableViewCell.xcconfig"; sourceTree = "<group>"; };
+		D624D9F0B457FE8598715EF5 /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWLongPressGestureRecognizer.h; path = SWTableViewCell/PodFiles/SWLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		D760598D9E95C39F7C26F222 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		D9F2F1BA7DA3D7801DBBA0D9 /* INThreadProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INThreadProvider.h; path = InboxFramework/Inbox/Models/INThreadProvider.h; sourceTree = "<group>"; };
+		DAF19382B7F74599F3CC12CA /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+SWUtilityButtons.h"; path = "SWTableViewCell/PodFiles/NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
+		DB1E16800BE542646216D51E /* NSString+FormatConversion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+FormatConversion.m"; path = "InboxFramework/Inbox/Categories/NSString+FormatConversion.m"; sourceTree = "<group>"; };
+		DB4D9E6D66F8018578FB69E8 /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
+		DC5C013F626D820A706790A3 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
+		DD7EB8D754339BDD828B0F81 /* SWCellScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWCellScrollView.m; path = SWTableViewCell/PodFiles/SWCellScrollView.m; sourceTree = "<group>"; };
+		DE90A1872E8A8F0B6972F692 /* INDraft.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INDraft.h; path = "InboxFramework/Inbox/Models/Concrete Classes/INDraft.h"; sourceTree = "<group>"; };
+		DEE7FF25DAFCF79E679166C4 /* Pods-planckMailiOS-FMDB-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-FMDB-Private.xcconfig"; sourceTree = "<group>"; };
+		DFAFC352BFC0D3B14A9BB0FC /* DTTimePeriodCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodCollection.h; path = DateTools/DTTimePeriodCollection.h; sourceTree = "<group>"; };
+		E0148CA278A37ADD8D426A8D /* INMessageContentView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INMessageContentView.h; path = InboxFramework/InboxUI/Views/INMessageContentView.h; sourceTree = "<group>"; };
+		E2BCC6FDCC58F7651339005F /* SWUtilityButtonView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWUtilityButtonView.m; path = SWTableViewCell/PodFiles/SWUtilityButtonView.m; sourceTree = "<group>"; };
+		E318293296D794D2DA665030 /* libPods-planckMailiOS-AFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS-AFNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E401E8F950AE81C4E55B97C8 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		E687A1B076610D37958C94D5 /* FMResultSet+INModelQueries.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FMResultSet+INModelQueries.h"; path = "InboxFramework/Inbox/Categories/FMResultSet+INModelQueries.h"; sourceTree = "<group>"; };
+		E823E12B5067C0F90A88EC8A /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		E95A194FE7C7F382EA531F90 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		EB20762B898396A673A4A429 /* FMDatabase+INModelQueries.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FMDatabase+INModelQueries.h"; path = "InboxFramework/Inbox/Categories/FMDatabase+INModelQueries.h"; sourceTree = "<group>"; };
+		EB45E05EE5AF3BA510E86DCD /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+SWUtilityButtons.m"; path = "SWTableViewCell/PodFiles/NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
+		EBB407461AA12DCF039EDBFE /* FMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = src/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		EC6112DD3C1FFBFE6F88127F /* DTTimePeriodChain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTimePeriodChain.h; path = DateTools/DTTimePeriodChain.h; sourceTree = "<group>"; };
+		ED23E569B588A8956CA89738 /* Pods-planckMailiOS-UIActionSheet+Blocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-planckMailiOS-UIActionSheet+Blocks.xcconfig"; sourceTree = "<group>"; };
+		ED363964FFD2AC1D38D02DC4 /* INMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INMessage.h; path = "InboxFramework/Inbox/Models/Concrete Classes/INMessage.h"; sourceTree = "<group>"; };
+		EDADC6E0780DFE904CD395C7 /* INModelProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INModelProvider.h; path = InboxFramework/Inbox/Models/INModelProvider.h; sourceTree = "<group>"; };
+		EF7537FA074CA96EC910D810 /* libPods-planckMailiOS-InboxKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS-InboxKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFB285EB9C22236B4BDFE700 /* FMDatabase+INModelQueries.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FMDatabase+INModelQueries.m"; path = "InboxFramework/Inbox/Categories/FMDatabase+INModelQueries.m"; sourceTree = "<group>"; };
+		F2AB4913FBF185E5A0FE98A5 /* INAPIManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INAPIManager.m; path = InboxFramework/Inbox/INAPIManager.m; sourceTree = "<group>"; };
+		F2CAE96C855952526EEA6DAF /* NSObject+Properties.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Properties.m"; path = "InboxFramework/Inbox/Categories/NSObject+Properties.m"; sourceTree = "<group>"; };
+		F301A29B45CBF979B22B319D /* Pods-planckMailiOS-MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-planckMailiOS-MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		F50DA273D67838E7705ACFB2 /* INModelResponseSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INModelResponseSerializer.h; path = InboxFramework/Inbox/Helpers/INModelResponseSerializer.h; sourceTree = "<group>"; };
+		F5817FFF6D62C605BDE96932 /* INModelProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INModelProvider.m; path = InboxFramework/Inbox/Models/INModelProvider.m; sourceTree = "<group>"; };
+		FAB1D38D23CE575C50385893 /* Pods-planckMailiOS-InboxKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-planckMailiOS-InboxKit-dummy.m"; sourceTree = "<group>"; };
+		FAD6BE6C73508A7210F45545 /* INAddRemoveTagsTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = INAddRemoveTagsTask.m; path = "InboxFramework/Inbox/Models/API Calls/INAddRemoveTagsTask.m"; sourceTree = "<group>"; };
+		FBBF82F86B2D3323F7AD1443 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		FCE6043D3689855CC99454B8 /* Pods-planckMailiOS-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-planckMailiOS-environment.h"; sourceTree = "<group>"; };
+		FD5E675ABDDDCC445B9AF5CD /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
+		FF08C30B4A0481F05A63BC30 /* INAPIManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INAPIManager.h; path = InboxFramework/Inbox/INAPIManager.h; sourceTree = "<group>"; };
+		FF21DA3BCF36D1CDC227BBFF /* INMarkMessageAsReadTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = INMarkMessageAsReadTask.h; path = "InboxFramework/Inbox/Models/API Calls/INMarkMessageAsReadTask.h"; sourceTree = "<group>"; };
+		FFE00C422C78B87411F9627C /* PDKeychainBindings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PDKeychainBindings.h; path = InboxFramework/Submodules/PDKeychainBindingsController/PDKeychainBindingsController/PDKeychainBindings.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03BC618BCAD89720E6ED5BF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFE34D60789E68CDA65FD10B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E9499EC6E23CF0E68BD04EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCD50E374C4D3D107320347C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37EAB76AF8303365FEF7E141 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3509CE92163B62CC747F0E8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		445DE25AC9D4338BEB9258B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0DE6B445BCF785794E96855 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DA2A86395E9E9FD935FC73E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5A18C5003E4A0A113132B96 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67C137DBB41F7F80BACE0A70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBA1D5E1B03F6C3A412A72AD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F5E6A75C7B404D85B780C94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5DF13789A91F56AD4A67F96 /* CoreGraphics.framework in Frameworks */,
+				114FDEBE9C0F01B34159719D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B39C939AD6273E4EF9E8040 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9750B65A0F85EDEF3633691 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8F1552337D7881E1DF6BB65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66F90199BC2A562D92A75A85 /* CoreGraphics.framework in Frameworks */,
+				19FCA55C667A739C983B686F /* Foundation.framework in Frameworks */,
+				08D326AC046C51ACEB28C91D /* MobileCoreServices.framework in Frameworks */,
+				8D9AB15895BEC3E25F06154B /* Security.framework in Frameworks */,
+				0A83C0164FA143A7CE2CC724 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02A6C5663E744F2B79723981 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				95942056C81BA48FF9350529 /* AFNetworkActivityIndicatorManager.h */,
+				32E2A4C4D9E5FFF7942A131A /* AFNetworkActivityIndicatorManager.m */,
+				57B8295AD47F785979898DAA /* UIActivityIndicatorView+AFNetworking.h */,
+				8E576B4348A81C2D3F62A954 /* UIActivityIndicatorView+AFNetworking.m */,
+				CD436DDCBF0DAFC2A5E3EB13 /* UIAlertView+AFNetworking.h */,
+				B9826904A7ED2AD50948DEF4 /* UIAlertView+AFNetworking.m */,
+				E823E12B5067C0F90A88EC8A /* UIButton+AFNetworking.h */,
+				6FB3E1783419FA7F349BEC8A /* UIButton+AFNetworking.m */,
+				69D47062AB4C1327E34F165C /* UIImageView+AFNetworking.h */,
+				819D30EFCDB8EC135A50FE43 /* UIImageView+AFNetworking.m */,
+				982DE80719A40A8C9DA00FBC /* UIKit+AFNetworking.h */,
+				9FD4FD5ECEAF0D7B4CD798A8 /* UIProgressView+AFNetworking.h */,
+				CC4D734485C275E72CB2845A /* UIProgressView+AFNetworking.m */,
+				6103BEEFF700B660A5508BEC /* UIRefreshControl+AFNetworking.h */,
+				4DC87EA511C945C7C844433A /* UIRefreshControl+AFNetworking.m */,
+				9040A2D9E63432E12811A6A4 /* UIWebView+AFNetworking.h */,
+				D760598D9E95C39F7C26F222 /* UIWebView+AFNetworking.m */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		0E8BFD521F10D8C40F2BF72C /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				30709279524A2BB26B0484B8 /* Pods-planckMailiOS */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		1489BAC931F2A21E644806B6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D1DB246EEEF2199F493D4C57 /* Pods-planckMailiOS-DateTools.xcconfig */,
+				859A72E07F9AA0EDCD74BB10 /* Pods-planckMailiOS-DateTools-Private.xcconfig */,
+				7C3518CC8062141C185DE2B9 /* Pods-planckMailiOS-DateTools-dummy.m */,
+				8E9EBE1F621E2C144EBF3DBC /* Pods-planckMailiOS-DateTools-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-planckMailiOS-DateTools";
+			sourceTree = "<group>";
+		};
+		19A56EBF023F132D1F72C183 /* DateTools */ = {
+			isa = PBXGroup;
+			children = (
+				737687C0F4CB8996C3BBA659 /* DTConstants.h */,
+				90DB0FF1D91000C9793BC370 /* DTError.h */,
+				4439E2C9D2C8B58FC8116289 /* DTError.m */,
+				B32274929ADE2584571DD216 /* DTTimePeriod.h */,
+				0FFA8C5FACB0E1B07DE45E75 /* DTTimePeriod.m */,
+				EC6112DD3C1FFBFE6F88127F /* DTTimePeriodChain.h */,
+				10094C5C86B0ABEBF731E612 /* DTTimePeriodChain.m */,
+				DFAFC352BFC0D3B14A9BB0FC /* DTTimePeriodCollection.h */,
+				2E16AB1A139B41E319F9DB89 /* DTTimePeriodCollection.m */,
+				15AF36B0558FDAF103C804F6 /* DTTimePeriodGroup.h */,
+				65BF70A17316C6280AB53597 /* DTTimePeriodGroup.m */,
+				C651F8DAE315AE4A8B6FBB1E /* DateTools.h */,
+				08AD6543AFB28DABD5093086 /* NSDate+DateTools.h */,
+				948DBC77286F41865189F79C /* NSDate+DateTools.m */,
+				72F464D1F195DEAEBF652F59 /* Resources */,
+				1489BAC931F2A21E644806B6 /* Support Files */,
+			);
+			path = DateTools;
+			sourceTree = "<group>";
+		};
+		2A932252703ADB13235CA4C4 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				DB4D9E6D66F8018578FB69E8 /* FMDB.h */,
+				04156050992B39442F2C17AD /* FMDatabase.h */,
+				EBB407461AA12DCF039EDBFE /* FMDatabase.m */,
+				9659532A5DB76DC76E269F7D /* FMDatabaseAdditions.h */,
+				7F5D9E610F149A72D3BB3675 /* FMDatabaseAdditions.m */,
+				429F3BDDA2A7FB2DBC1C3C59 /* FMDatabasePool.h */,
+				6583706A2A39EB0E942020C1 /* FMDatabasePool.m */,
+				195641E7274F0ACE02FCE731 /* FMDatabaseQueue.h */,
+				54F248F4171DC40C524D83BE /* FMDatabaseQueue.m */,
+				047461058AED033F1BEA6159 /* FMResultSet.h */,
+				7ABE2FBA462235E06F0AEDDE /* FMResultSet.m */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		2E96362AB8F91BFB0DB1C57E /* UIAlertView+Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				FBBF82F86B2D3323F7AD1443 /* UIAlertView+Blocks.h */,
+				23BD49C3C6FB8DC5BC6A8EEF /* UIAlertView+Blocks.m */,
+				D9366B873C88787A3D8157B3 /* Support Files */,
+			);
+			path = "UIAlertView+Blocks";
+			sourceTree = "<group>";
+		};
+		30709279524A2BB26B0484B8 /* Pods-planckMailiOS */ = {
+			isa = PBXGroup;
+			children = (
+				8B98E210ACF8F8D63EA1E3D1 /* Pods-planckMailiOS-acknowledgements.markdown */,
+				50899637DF6DB68EC9E3A0A2 /* Pods-planckMailiOS-acknowledgements.plist */,
+				8A96F421A0DF2C8903533D2B /* Pods-planckMailiOS-dummy.m */,
+				FCE6043D3689855CC99454B8 /* Pods-planckMailiOS-environment.h */,
+				48429D3E86843C63A1EBA476 /* Pods-planckMailiOS-resources.sh */,
+				1C798627FD83B5DA45B22E0E /* Pods-planckMailiOS.debug.xcconfig */,
+				9FA1A21A7A3F8C770FE75D97 /* Pods-planckMailiOS.release.xcconfig */,
+			);
+			name = "Pods-planckMailiOS";
+			path = "Target Support Files/Pods-planckMailiOS";
+			sourceTree = "<group>";
+		};
+		4BD972174284D4CF38FE92C6 /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				3D148EEF6740342EAE7A96B4 /* AFURLRequestSerialization.h */,
+				3CA9FB41D482F22DAA749468 /* AFURLRequestSerialization.m */,
+				B3071BEFA439F576B1B650F0 /* AFURLResponseSerialization.h */,
+				4EEE55F3AC94B3F28882A842 /* AFURLResponseSerialization.m */,
+			);
+			name = Serialization;
+			sourceTree = "<group>";
+		};
+		4BDB67957E1384F920227A76 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				392346F1EDDD2C8760D1A4AF /* Pods-planckMailiOS-InboxKit.xcconfig */,
+				B8F24B6FC033DEDC39098D11 /* Pods-planckMailiOS-InboxKit-Private.xcconfig */,
+				FAB1D38D23CE575C50385893 /* Pods-planckMailiOS-InboxKit-dummy.m */,
+				BCBE5A0799794325D63C1540 /* Pods-planckMailiOS-InboxKit-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-planckMailiOS-InboxKit";
+			sourceTree = "<group>";
+		};
+		4BF4DE81008D5C58E2BFABA3 /* NSURLConnection */ = {
+			isa = PBXGroup;
+			children = (
+				44CE67F84C131FF192EA6293 /* AFHTTPRequestOperation.h */,
+				045E3FDC7E8EC1D14F20223F /* AFHTTPRequestOperation.m */,
+				3B119685FBAD15ACD1C63E4F /* AFHTTPRequestOperationManager.h */,
+				05B8462145F2FAEE96284674 /* AFHTTPRequestOperationManager.m */,
+				BAABCBBE06182308D208FA73 /* AFURLConnectionOperation.h */,
+				D51A45E6D2713B7B11E825E2 /* AFURLConnectionOperation.m */,
+			);
+			name = NSURLConnection;
+			sourceTree = "<group>";
+		};
+		4E0E4F0D17880AC83666C119 /* NSURLSession */ = {
+			isa = PBXGroup;
+			children = (
+				CCD1716A758DB946C7A5D3F7 /* AFHTTPSessionManager.h */,
+				9DBB88108DBB3D898A6911B2 /* AFHTTPSessionManager.m */,
+				FD5E675ABDDDCC445B9AF5CD /* AFURLSessionManager.h */,
+				BD76F58BBA61341200F702A9 /* AFURLSessionManager.m */,
+			);
+			name = NSURLSession;
+			sourceTree = "<group>";
+		};
+		533BCBD9F2BE54413CF0B608 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				151F7C1233E6CE247626DBED /* CoreGraphics.framework */,
+				440AA3883C35965F1B6188D7 /* Foundation.framework */,
+				43D69823944EF97925BE8B81 /* MobileCoreServices.framework */,
+				D079F44970CE18DEA7008D38 /* Security.framework */,
+				E95A194FE7C7F382EA531F90 /* SystemConfiguration.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		53BB97BEF2C3218E1FEBC4CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				533BCBD9F2BE54413CF0B608 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		584A3A40645924B1DFE299BC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ACD027815B16851F58044E88 /* Pods-planckMailiOS-FMDB.xcconfig */,
+				DEE7FF25DAFCF79E679166C4 /* Pods-planckMailiOS-FMDB-Private.xcconfig */,
+				4A3C2228C9016FBB7FB69D55 /* Pods-planckMailiOS-FMDB-dummy.m */,
+				B99C538DB3D0E9F509F38DA9 /* Pods-planckMailiOS-FMDB-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-planckMailiOS-FMDB";
+			sourceTree = "<group>";
+		};
+		64CB4F1F19E1DE01CF980EFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F51DB344A5B157584F321A3A /* AFNetworking */,
+				19A56EBF023F132D1F72C183 /* DateTools */,
+				888F45117E2F4A6A356FA0E0 /* FMDB */,
+				6D1B37910805A1D88C9AA736 /* InboxKit */,
+				97A30A00F090BCB57DDECBF6 /* MBProgressHUD */,
+				964FBF335CCFD3F5FE90B254 /* SWTableViewCell */,
+				E91B2D02FE361D99E964F542 /* UIActionSheet+Blocks */,
+				2E96362AB8F91BFB0DB1C57E /* UIAlertView+Blocks */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6D1B37910805A1D88C9AA736 /* InboxKit */ = {
+			isa = PBXGroup;
+			children = (
+				EB20762B898396A673A4A429 /* FMDatabase+INModelQueries.h */,
+				EFB285EB9C22236B4BDFE700 /* FMDatabase+INModelQueries.m */,
+				E687A1B076610D37958C94D5 /* FMResultSet+INModelQueries.h */,
+				1E61B3807677284AD9A5D44A /* FMResultSet+INModelQueries.m */,
+				FF08C30B4A0481F05A63BC30 /* INAPIManager.h */,
+				F2AB4913FBF185E5A0FE98A5 /* INAPIManager.m */,
+				1D351DD7E11659F5F8E5870A /* INAPITask.h */,
+				47A4CB5E35F46C28913E31CA /* INAPITask.m */,
+				78B5B788B9DBA649B07CB81D /* INAddRemoveTagsTask.h */,
+				FAD6BE6C73508A7210F45545 /* INAddRemoveTagsTask.m */,
+				738C844307D00E78F218ADBB /* INContact.h */,
+				7B3FF9102F5C8AC79879AB48 /* INContact.m */,
+				0A32889A2B43FC9B7D87BAA1 /* INDatabaseManager.h */,
+				5C6720F8E6B9F7F9DBA34C3B /* INDatabaseManager.m */,
+				937F4878D3258B30AEC251ED /* INDeleteDraftTask.h */,
+				133B18AC7BEDED0FC48BEA2C /* INDeleteDraftTask.m */,
+				DE90A1872E8A8F0B6972F692 /* INDraft.h */,
+				58D6E8441C08F5EA57983777 /* INDraft.m */,
+				5C374552043EC518297E814D /* INFile.h */,
+				36B0DA618C53C95CAA2F9C7F /* INFile.m */,
+				FF21DA3BCF36D1CDC227BBFF /* INMarkMessageAsReadTask.h */,
+				8261FA8C0AD20A70C32AED73 /* INMarkMessageAsReadTask.m */,
+				ED363964FFD2AC1D38D02DC4 /* INMessage.h */,
+				6C92B9D2BF2ACECB105AE806 /* INMessage.m */,
+				E0148CA278A37ADD8D426A8D /* INMessageContentView.h */,
+				0C0D41FC9F683DD260D06218 /* INMessageContentView.m */,
+				6B98029CFAF7527DC5C150F8 /* INMessageProvider.h */,
+				32742C402D8A3F1DE58D1947 /* INMessageProvider.m */,
+				552D19BB223C54600B67D77D /* INModelObject.h */,
+				328E5F0DE439233A7402C5EF /* INModelObject.m */,
+				5462BA1AED933E49957DA503 /* INModelObject+Uniquing.h */,
+				C7EFCC7877CD6FFE00696109 /* INModelObject+Uniquing.m */,
+				EDADC6E0780DFE904CD395C7 /* INModelProvider.h */,
+				F5817FFF6D62C605BDE96932 /* INModelProvider.m */,
+				2A99629C257449BF6E5A1824 /* INModelProvider+Private.h */,
+				F50DA273D67838E7705ACFB2 /* INModelResponseSerializer.h */,
+				B7BB5B5A7EF7F4C0802902BA /* INModelResponseSerializer.m */,
+				779A3BD419E2AEC280FE3272 /* INNamespace.h */,
+				7C958A74198431E71409620A /* INNamespace.m */,
+				13D8F6333847854EFFEFE010 /* INPredicateToQueryParamConverter.h */,
+				354A59A39717226C6A98546F /* INPredicateToQueryParamConverter.m */,
+				675C87F0882A700FE64864E3 /* INPredicateToSQLConverter.h */,
+				02A8F896B6526C2775CCE677 /* INPredicateToSQLConverter.m */,
+				11473A209A7532373B3EF62F /* INRecipientsLabel.h */,
+				5855DC18BA4DC851EB9E846C /* INRecipientsLabel.m */,
+				7A80ED940DC4C0F088CF4B3F /* INSaveDraftTask.h */,
+				0D00C88E909BA3ACB8DEE439 /* INSaveDraftTask.m */,
+				D20AFD4BDE475A950B10305D /* INSaveTagTask.h */,
+				4128B787C09D8A170D99E32A /* INSaveTagTask.m */,
+				0388F5A783ED591B4B764F76 /* INSendDraftTask.h */,
+				661018B423F3F4B839F41BEC /* INSendDraftTask.m */,
+				0029D34F9C5E2A0A40EC30A1 /* INSyncEngine.h */,
+				B75D11C06A5836618BCC0B00 /* INTag.h */,
+				C1DDA3EBA8AA98B01C425F53 /* INTag.m */,
+				B53D1034678CE9A253AB3595 /* INThread.h */,
+				02D07B96F7E0999E0244B941 /* INThread.m */,
+				A3BB7550F11EB607F03D70CC /* INThread+Private.h */,
+				5812A6861A1CCB079CECC0D7 /* INThread+Private.m */,
+				D9F2F1BA7DA3D7801DBBA0D9 /* INThreadProvider.h */,
+				23948107E01D8A15F72539C5 /* INThreadProvider.m */,
+				52A914C70249A9FAC62C71FB /* INUploadFileTask.h */,
+				75382343BB10BD2BE9E5370E /* INUploadFileTask.m */,
+				64057362A2E01EE80623ED17 /* Inbox.h */,
+				6189E527370F37D6001F6F04 /* NSDictionary+FormatConversion.h */,
+				D5FA1F3C898F4C5464719CA6 /* NSDictionary+FormatConversion.m */,
+				BDE8E63D1A67E2DEB9EF358C /* NSError+InboxErrors.h */,
+				B7E96FD53B36F489EAC9C290 /* NSError+InboxErrors.m */,
+				19AE40160E66EBE6C1E0D2FE /* NSObject+AssociatedObjects.h */,
+				985C48D6DBCEB77AD6FA4319 /* NSObject+AssociatedObjects.m */,
+				453D7BEF26FC27DD17CCE4EA /* NSObject+Properties.h */,
+				F2CAE96C855952526EEA6DAF /* NSObject+Properties.m */,
+				142F277A78EA5167A5727711 /* NSPredicate+Inspection.h */,
+				876E95EA6977B2D57DBCE5F5 /* NSPredicate+Inspection.m */,
+				9F547C0205CBD64AB082E00A /* NSString+FormatConversion.h */,
+				DB1E16800BE542646216D51E /* NSString+FormatConversion.m */,
+				FFE00C422C78B87411F9627C /* PDKeychainBindings.h */,
+				BAC0FA0DAE9782DC469E763A /* PDKeychainBindings.m */,
+				B8B731A8E4597CE6BCC1EF97 /* PDKeychainBindingsController.h */,
+				2AE7152519E13CD1A771FCB8 /* PDKeychainBindingsController.m */,
+				3F7C6EBC98A382DA04696270 /* UIView+FrameAdditions.h */,
+				7A48B95B21476545AEA976BA /* UIView+FrameAdditions.m */,
+				4BDB67957E1384F920227A76 /* Support Files */,
+			);
+			path = InboxKit;
+			sourceTree = "<group>";
+		};
+		72F464D1F195DEAEBF652F59 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				72315686F576E0F2D9123153 /* DateTools.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		888F45117E2F4A6A356FA0E0 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				584A3A40645924B1DFE299BC /* Support Files */,
+				2A932252703ADB13235CA4C4 /* common */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		903AF8D3DC52D342ADB8BBE4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF9D741F3C0D8952ECAC7A44 /* Pods-planckMailiOS-AFNetworking.xcconfig */,
+				01614F18AA66A0EE88554DE5 /* Pods-planckMailiOS-AFNetworking-Private.xcconfig */,
+				85F701AD6459DBC68EDDE4A6 /* Pods-planckMailiOS-AFNetworking-dummy.m */,
+				5F51A55039309A2A954D7BBF /* Pods-planckMailiOS-AFNetworking-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-planckMailiOS-AFNetworking";
+			sourceTree = "<group>";
+		};
+		964FBF335CCFD3F5FE90B254 /* SWTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DAF19382B7F74599F3CC12CA /* NSMutableArray+SWUtilityButtons.h */,
+				EB45E05EE5AF3BA510E86DCD /* NSMutableArray+SWUtilityButtons.m */,
+				CDEFD2C419F86197705DF1C8 /* SWCellScrollView.h */,
+				DD7EB8D754339BDD828B0F81 /* SWCellScrollView.m */,
+				D624D9F0B457FE8598715EF5 /* SWLongPressGestureRecognizer.h */,
+				AC0B794F45303A2E03926830 /* SWLongPressGestureRecognizer.m */,
+				75C9712FDA140BD74CB3BCF1 /* SWTableViewCell.h */,
+				79DBE2B92BCB9082DCF7E441 /* SWTableViewCell.m */,
+				8370160C905E0FFA7DAADC70 /* SWUtilityButtonTapGestureRecognizer.h */,
+				2BBCD2F982371EB5EDC2AEBE /* SWUtilityButtonTapGestureRecognizer.m */,
+				199DE5DB3AA21EEA44BDA2CB /* SWUtilityButtonView.h */,
+				E2BCC6FDCC58F7651339005F /* SWUtilityButtonView.m */,
+				A639323A1674CC3A72E1A449 /* Support Files */,
+			);
+			path = SWTableViewCell;
+			sourceTree = "<group>";
+		};
+		97A30A00F090BCB57DDECBF6 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				6E049A6E5ACF419D2E4AFA98 /* MBProgressHUD.h */,
+				67A1086B8FBBB0747B5C112E /* MBProgressHUD.m */,
+				ADC58A0549A0B5FF7919A0D7 /* Support Files */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		A639323A1674CC3A72E1A449 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D61443229577424CB6E9FABA /* Pods-planckMailiOS-SWTableViewCell.xcconfig */,
+				62A35D682860DC9274190533 /* Pods-planckMailiOS-SWTableViewCell-Private.xcconfig */,
+				76EA4346F1BFC513298D3A1C /* Pods-planckMailiOS-SWTableViewCell-dummy.m */,
+				3565E6CE7BE31AEBC8C8C2A0 /* Pods-planckMailiOS-SWTableViewCell-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-planckMailiOS-SWTableViewCell";
+			sourceTree = "<group>";
+		};
+		ADC58A0549A0B5FF7919A0D7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				63AEB8E1CE2E9C15FA7A3BE0 /* Pods-planckMailiOS-MBProgressHUD.xcconfig */,
+				118938FE1D1284BCB27CA6B8 /* Pods-planckMailiOS-MBProgressHUD-Private.xcconfig */,
+				7356BE8BDCC7E9F429988185 /* Pods-planckMailiOS-MBProgressHUD-dummy.m */,
+				F301A29B45CBF979B22B319D /* Pods-planckMailiOS-MBProgressHUD-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-planckMailiOS-MBProgressHUD";
+			sourceTree = "<group>";
+		};
+		B6CA4F8178C788F4AAFA6880 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B7DD4F3F4BD0042C5932702C /* libPods-planckMailiOS.a */,
+				E318293296D794D2DA665030 /* libPods-planckMailiOS-AFNetworking.a */,
+				770902D79C214FFA1D8C675E /* libPods-planckMailiOS-DateTools.a */,
+				42674BED5A63F39DA64F5312 /* libPods-planckMailiOS-FMDB.a */,
+				EF7537FA074CA96EC910D810 /* libPods-planckMailiOS-InboxKit.a */,
+				3ED988151016ADB452FF18A0 /* libPods-planckMailiOS-MBProgressHUD.a */,
+				467CD4D5A56599DBE7C2D0DE /* libPods-planckMailiOS-SWTableViewCell.a */,
+				9BDF5873220B2EADFE996B88 /* libPods-planckMailiOS-UIActionSheet+Blocks.a */,
+				B29FD37FE1AF2930056555FD /* libPods-planckMailiOS-UIAlertView+Blocks.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B826B344D375A9FA7BA96657 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				BCAA55CD952489F3D6253491 /* AFSecurityPolicy.h */,
+				DC5C013F626D820A706790A3 /* AFSecurityPolicy.m */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
+		C1D3DE55F5EE485152C74B16 = {
+			isa = PBXGroup;
+			children = (
+				8A3E471B9EDE1A8728ED1ADC /* Podfile */,
+				53BB97BEF2C3218E1FEBC4CF /* Frameworks */,
+				64CB4F1F19E1DE01CF980EFC /* Pods */,
+				B6CA4F8178C788F4AAFA6880 /* Products */,
+				0E8BFD521F10D8C40F2BF72C /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		CA16B9D11AE859957BFC5E34 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				1D8EE2B8F9211616E9CC0F94 /* AFNetworkReachabilityManager.h */,
+				5BC0D6CC256D9E25EA336923 /* AFNetworkReachabilityManager.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
+		D9366B873C88787A3D8157B3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C46937C8396C9649A742CBE /* Pods-planckMailiOS-UIAlertView+Blocks.xcconfig */,
+				13A78A0A04C922D7630DA05E /* Pods-planckMailiOS-UIAlertView+Blocks-Private.xcconfig */,
+				B8D0F01E9A119D66BE08E616 /* Pods-planckMailiOS-UIAlertView+Blocks-dummy.m */,
+				0DC43D03FD7E2DE4B19DF289 /* Pods-planckMailiOS-UIAlertView+Blocks-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-planckMailiOS-UIAlertView+Blocks";
+			sourceTree = "<group>";
+		};
+		E3C775EAA2414092B735EBE1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED23E569B588A8956CA89738 /* Pods-planckMailiOS-UIActionSheet+Blocks.xcconfig */,
+				21056E7456A19A68C2BC2E89 /* Pods-planckMailiOS-UIActionSheet+Blocks-Private.xcconfig */,
+				4CF89F0B9FCCAE69E8CC3FC9 /* Pods-planckMailiOS-UIActionSheet+Blocks-dummy.m */,
+				BA9E549039DAAD655E6F78F0 /* Pods-planckMailiOS-UIActionSheet+Blocks-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-planckMailiOS-UIActionSheet+Blocks";
+			sourceTree = "<group>";
+		};
+		E91B2D02FE361D99E964F542 /* UIActionSheet+Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				A8C2853853DF4E6D96AF8FC1 /* UIActionSheet+Blocks.h */,
+				E401E8F950AE81C4E55B97C8 /* UIActionSheet+Blocks.m */,
+				E3C775EAA2414092B735EBE1 /* Support Files */,
+			);
+			path = "UIActionSheet+Blocks";
+			sourceTree = "<group>";
+		};
+		F51DB344A5B157584F321A3A /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				4E30900458F4F52F5047665E /* AFNetworking.h */,
+				4BF4DE81008D5C58E2BFABA3 /* NSURLConnection */,
+				4E0E4F0D17880AC83666C119 /* NSURLSession */,
+				CA16B9D11AE859957BFC5E34 /* Reachability */,
+				B826B344D375A9FA7BA96657 /* Security */,
+				4BD972174284D4CF38FE92C6 /* Serialization */,
+				903AF8D3DC52D342ADB8BBE4 /* Support Files */,
+				02A6C5663E744F2B79723981 /* UIKit */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		059A50138127C9D0AED39FF1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECAC3200C4C1602C28F22E8E /* NSMutableArray+SWUtilityButtons.h in Headers */,
+				6BAE6E88DE8F0555F32503DA /* SWCellScrollView.h in Headers */,
+				4D91A955535E1F7CA75AE65E /* SWLongPressGestureRecognizer.h in Headers */,
+				D41D4DFFC8E9323A98A18F9F /* SWTableViewCell.h in Headers */,
+				FE74FB254A39B97DAA119F51 /* SWUtilityButtonTapGestureRecognizer.h in Headers */,
+				C715CF1FE98BACE61DF614CA /* SWUtilityButtonView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A747A637D91C871741DE347 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD9AFCF5AF36D6D60840577F /* FMDatabase+INModelQueries.h in Headers */,
+				6DF0CFD1AAD775A6613D42C6 /* FMResultSet+INModelQueries.h in Headers */,
+				4C2E1D5070B8AB0582BE4BFB /* INAPIManager.h in Headers */,
+				B18B5F4BB5CAECB43A190DA0 /* INAPITask.h in Headers */,
+				7679FC137BC70E1D477DA6FA /* INAddRemoveTagsTask.h in Headers */,
+				E1A814B6B1EE66A26CC95339 /* INContact.h in Headers */,
+				42C1EAAFB0D4F0D653066845 /* INDatabaseManager.h in Headers */,
+				692E88D33F50669A61C4798D /* INDeleteDraftTask.h in Headers */,
+				813CDB21E7730EEA1CC7F29C /* INDraft.h in Headers */,
+				4216842A31568F7CF415522F /* INFile.h in Headers */,
+				D59513B1CFCEF76E1E09F3C0 /* INMarkMessageAsReadTask.h in Headers */,
+				48F9C57A36D58F23F5805DD4 /* INMessage.h in Headers */,
+				FD0D56861E776284D52AD78F /* INMessageContentView.h in Headers */,
+				8FEE4F07B51CAF017110D0B8 /* INMessageProvider.h in Headers */,
+				B80FEB4EA53808361C2976AC /* INModelObject+Uniquing.h in Headers */,
+				3BD063ED95E6E2EB199FCB94 /* INModelObject.h in Headers */,
+				6A19E8513487889E8BB24ACF /* INModelProvider+Private.h in Headers */,
+				0B2B203429330AD4F34C4206 /* INModelProvider.h in Headers */,
+				97BEE77BE5CC4CBB11EFB142 /* INModelResponseSerializer.h in Headers */,
+				96CC9228C14BC3B87BFA8A6A /* INNamespace.h in Headers */,
+				FE2D8FE94F4BE869938B6302 /* INPredicateToQueryParamConverter.h in Headers */,
+				B8CD50EBB03D57676F2A3E4E /* INPredicateToSQLConverter.h in Headers */,
+				EB51918B08AF500E8590BC11 /* INRecipientsLabel.h in Headers */,
+				5D60E50CF2B4684F62A9AEBB /* INSaveDraftTask.h in Headers */,
+				65B5D688D952CB534D20A64E /* INSaveTagTask.h in Headers */,
+				7379598BD6C9EDC0F06BD7F2 /* INSendDraftTask.h in Headers */,
+				FD8E0EBBA508D46CB66685FD /* INSyncEngine.h in Headers */,
+				44C236803135CD8D673BD987 /* INTag.h in Headers */,
+				FBAC9A43942D762D9E576DB7 /* INThread+Private.h in Headers */,
+				6152680A68FA7DAC3BE7AD59 /* INThread.h in Headers */,
+				93EBE04EFD455FEC30A1052A /* INThreadProvider.h in Headers */,
+				0C1E4155DE17F64355DBE0F9 /* INUploadFileTask.h in Headers */,
+				F3FBED3DFC86D50508BDE1E4 /* Inbox.h in Headers */,
+				A6260CCE6941AC0BD245D3B2 /* NSDictionary+FormatConversion.h in Headers */,
+				07EE72F18EADE2BECC13088B /* NSError+InboxErrors.h in Headers */,
+				1A45BA7263E1A25FC717473B /* NSObject+AssociatedObjects.h in Headers */,
+				B89019935A787BA16194E78E /* NSObject+Properties.h in Headers */,
+				711A600F9260595799CB58FC /* NSPredicate+Inspection.h in Headers */,
+				48ABD32FDF37102358849C6D /* NSString+FormatConversion.h in Headers */,
+				90CD06ABFFE5EE14A2A41E82 /* PDKeychainBindings.h in Headers */,
+				87F011F546DE67B79754194E /* PDKeychainBindingsController.h in Headers */,
+				0C41347DD6D872116D1CA2E1 /* UIView+FrameAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		10EADB997DDFB80AAFC4308E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D4AC5899D52D34F509A0199 /* MBProgressHUD.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		416143F189491C233C0EF53D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				830E9DC023DFFA7E05B7B753 /* FMDB.h in Headers */,
+				D9CEACDC88C10A6F8E9E9BA2 /* FMDatabase.h in Headers */,
+				D5F63E5970262CDE5562C11A /* FMDatabaseAdditions.h in Headers */,
+				FB80599365CB1E266D174FF6 /* FMDatabasePool.h in Headers */,
+				A37F086FD384D21D1718CB27 /* FMDatabaseQueue.h in Headers */,
+				4DC9A6EAFDC47938F90E7F97 /* FMResultSet.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		532DB2A731EE0EBE499EF916 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5BC0FB629C8BA5BF47729B8 /* UIAlertView+Blocks.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E7D3BAF22774AB12938C2EE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DC8BCE2AD734ED42EB9F294 /* DTConstants.h in Headers */,
+				6392AA62D317D2DF65838AB1 /* DTError.h in Headers */,
+				4B80B97B21F71B26B461DC00 /* DTTimePeriod.h in Headers */,
+				BAF0F54DF517A77DF7B7AB8B /* DTTimePeriodChain.h in Headers */,
+				51EFCD251A4433C3916A40E3 /* DTTimePeriodCollection.h in Headers */,
+				11EC7C2FB8CB8E1AB74853E7 /* DTTimePeriodGroup.h in Headers */,
+				95D5DD35A4CAB89F37C1BA6C /* DateTools.h in Headers */,
+				C946743A52C3C160407B042E /* NSDate+DateTools.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AF394B136B4C9BD3713F71A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CF7BBED62D2501F905A3D4F /* AFHTTPRequestOperation.h in Headers */,
+				81D9EE9FC2DC673DC11BC741 /* AFHTTPRequestOperationManager.h in Headers */,
+				780A6C99CFE349FADB3A0C23 /* AFHTTPSessionManager.h in Headers */,
+				82B5AB66E3545270D8331CE0 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				5E74B6E9A50B7D02670409AF /* AFNetworkReachabilityManager.h in Headers */,
+				1C2B1CC80C6B7E7C8F451136 /* AFNetworking.h in Headers */,
+				1500C4F06AEF798B4890EA23 /* AFSecurityPolicy.h in Headers */,
+				9465A2FC4B97B446F2496307 /* AFURLConnectionOperation.h in Headers */,
+				04CDE617A1662B73CE5F1CD0 /* AFURLRequestSerialization.h in Headers */,
+				DEAD3DBCB1D595E75ECFF998 /* AFURLResponseSerialization.h in Headers */,
+				E23276B9C75E3622376F470D /* AFURLSessionManager.h in Headers */,
+				FD6F1E2BD2701B7A49FE21EB /* UIActivityIndicatorView+AFNetworking.h in Headers */,
+				DE0BDD876F5D7B0B32877ACD /* UIAlertView+AFNetworking.h in Headers */,
+				7C9B5D8BBB9671090E2A5B0F /* UIButton+AFNetworking.h in Headers */,
+				41500506C282856F4587DE75 /* UIImageView+AFNetworking.h in Headers */,
+				416DE5B844D1190AE30948C1 /* UIKit+AFNetworking.h in Headers */,
+				89256EEEB7597149FA1F46EE /* UIProgressView+AFNetworking.h in Headers */,
+				6036830F3F24052B8764A577 /* UIRefreshControl+AFNetworking.h in Headers */,
+				E4077267D0F149D5DA08886F /* UIWebView+AFNetworking.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0B8A33F0B1C10DDC5793CD3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D07A0842E08DF1F635FF106 /* UIActionSheet+Blocks.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0558B77F3A38F1DA897C4201 /* Pods-planckMailiOS-UIActionSheet+Blocks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F412D25751CCFC014B9D9CFD /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-UIActionSheet+Blocks" */;
+			buildPhases = (
+				1630F08912CA760B5FE02964 /* Sources */,
+				03BC618BCAD89720E6ED5BF3 /* Frameworks */,
+				F0B8A33F0B1C10DDC5793CD3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-planckMailiOS-UIActionSheet+Blocks";
+			productName = "Pods-planckMailiOS-UIActionSheet+Blocks";
+			productReference = 9BDF5873220B2EADFE996B88 /* libPods-planckMailiOS-UIActionSheet+Blocks.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		0654507A4CA6D0BE1EDF9474 /* Pods-planckMailiOS-UIAlertView+Blocks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB7FB8E21BEEDF5F9F7D1CDB /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-UIAlertView+Blocks" */;
+			buildPhases = (
+				F6BBFBF89E0F4F4AB7AE8498 /* Sources */,
+				1E9499EC6E23CF0E68BD04EF /* Frameworks */,
+				532DB2A731EE0EBE499EF916 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-planckMailiOS-UIAlertView+Blocks";
+			productName = "Pods-planckMailiOS-UIAlertView+Blocks";
+			productReference = B29FD37FE1AF2930056555FD /* libPods-planckMailiOS-UIAlertView+Blocks.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3E6F44DDCCB584CD5A466CB7 /* Pods-planckMailiOS-FMDB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22250A4D3AEC0E50C1F05FA1 /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-FMDB" */;
+			buildPhases = (
+				E2CE270AD182FBEAAF805DDD /* Sources */,
+				4DA2A86395E9E9FD935FC73E /* Frameworks */,
+				416143F189491C233C0EF53D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-planckMailiOS-FMDB";
+			productName = "Pods-planckMailiOS-FMDB";
+			productReference = 42674BED5A63F39DA64F5312 /* libPods-planckMailiOS-FMDB.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7D8704E5D5130A32A065C133 /* Pods-planckMailiOS-InboxKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF4BC2CA1575AD60AE35934E /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-InboxKit" */;
+			buildPhases = (
+				37389F8794D1E71A1E95220A /* Sources */,
+				445DE25AC9D4338BEB9258B4 /* Frameworks */,
+				0A747A637D91C871741DE347 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				92905EB77ED2770D36878C21 /* PBXTargetDependency */,
+				585E799B9EBD4C99D4F4710C /* PBXTargetDependency */,
+			);
+			name = "Pods-planckMailiOS-InboxKit";
+			productName = "Pods-planckMailiOS-InboxKit";
+			productReference = EF7537FA074CA96EC910D810 /* libPods-planckMailiOS-InboxKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		AD8BDF25C52E886BF9D081BE /* Pods-planckMailiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 276400EF27CFEB7E4CCA3CCA /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS" */;
+			buildPhases = (
+				F7D120A3C1A3B4A3D3508B92 /* Sources */,
+				37EAB76AF8303365FEF7E141 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4A34F3FE936104B2CAC7A9E /* PBXTargetDependency */,
+				FF28E6819705448F72C392C2 /* PBXTargetDependency */,
+				0B1F6A3BF3DE0E84E3F18714 /* PBXTargetDependency */,
+				3DEDF4B5CD54B4B8B34C3883 /* PBXTargetDependency */,
+				65CCEDC4D72FCE6B1DA6022C /* PBXTargetDependency */,
+				A49F8421D7C67EE318547878 /* PBXTargetDependency */,
+				3F68EC8A671B4EE213A6EF50 /* PBXTargetDependency */,
+				BFB4D97C85D3E768F1060C2B /* PBXTargetDependency */,
+			);
+			name = "Pods-planckMailiOS";
+			productName = "Pods-planckMailiOS";
+			productReference = B7DD4F3F4BD0042C5932702C /* libPods-planckMailiOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BF3FF3D6B1F71DE33E0D3ECF /* Pods-planckMailiOS-SWTableViewCell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8CD00C060C02CBDBF8FA0FD /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-SWTableViewCell" */;
+			buildPhases = (
+				126DBABC6E99F8AFA43188BE /* Sources */,
+				9B39C939AD6273E4EF9E8040 /* Frameworks */,
+				059A50138127C9D0AED39FF1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-planckMailiOS-SWTableViewCell";
+			productName = "Pods-planckMailiOS-SWTableViewCell";
+			productReference = 467CD4D5A56599DBE7C2D0DE /* libPods-planckMailiOS-SWTableViewCell.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C5B4DD4356200553F09F07CD /* Pods-planckMailiOS-AFNetworking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF4CB84A55149606FD9C527E /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-AFNetworking" */;
+			buildPhases = (
+				FDD07984F78A002C98975C42 /* Sources */,
+				C8F1552337D7881E1DF6BB65 /* Frameworks */,
+				9AF394B136B4C9BD3713F71A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-planckMailiOS-AFNetworking";
+			productName = "Pods-planckMailiOS-AFNetworking";
+			productReference = E318293296D794D2DA665030 /* libPods-planckMailiOS-AFNetworking.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D14615339199ED532FB13F26 /* Pods-planckMailiOS-DateTools */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15738293AA9A0952A99576C6 /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-DateTools" */;
+			buildPhases = (
+				4BB8D9CFC645217D8504DE81 /* Sources */,
+				67C137DBB41F7F80BACE0A70 /* Frameworks */,
+				5E7D3BAF22774AB12938C2EE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-planckMailiOS-DateTools";
+			productName = "Pods-planckMailiOS-DateTools";
+			productReference = 770902D79C214FFA1D8C675E /* libPods-planckMailiOS-DateTools.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E599BE99D055ADD6EFA238C9 /* Pods-planckMailiOS-MBProgressHUD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3B58BDAFD8D1D648358543B /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-MBProgressHUD" */;
+			buildPhases = (
+				2A1E022CF6452C821E8E06C0 /* Sources */,
+				7F5E6A75C7B404D85B780C94 /* Frameworks */,
+				10EADB997DDFB80AAFC4308E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-planckMailiOS-MBProgressHUD";
+			productName = "Pods-planckMailiOS-MBProgressHUD";
+			productReference = 3ED988151016ADB452FF18A0 /* libPods-planckMailiOS-MBProgressHUD.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		86362DB047E7AFD8339FEBBD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = 79CFBE59B4184972FCA0313D /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C1D3DE55F5EE485152C74B16;
+			productRefGroup = B6CA4F8178C788F4AAFA6880 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD8BDF25C52E886BF9D081BE /* Pods-planckMailiOS */,
+				C5B4DD4356200553F09F07CD /* Pods-planckMailiOS-AFNetworking */,
+				D14615339199ED532FB13F26 /* Pods-planckMailiOS-DateTools */,
+				3E6F44DDCCB584CD5A466CB7 /* Pods-planckMailiOS-FMDB */,
+				7D8704E5D5130A32A065C133 /* Pods-planckMailiOS-InboxKit */,
+				E599BE99D055ADD6EFA238C9 /* Pods-planckMailiOS-MBProgressHUD */,
+				BF3FF3D6B1F71DE33E0D3ECF /* Pods-planckMailiOS-SWTableViewCell */,
+				0558B77F3A38F1DA897C4201 /* Pods-planckMailiOS-UIActionSheet+Blocks */,
+				0654507A4CA6D0BE1EDF9474 /* Pods-planckMailiOS-UIAlertView+Blocks */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		126DBABC6E99F8AFA43188BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA1C9A9B2BBDF4B21F53EA30 /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				2C217442A730AADB045086A4 /* Pods-planckMailiOS-SWTableViewCell-dummy.m in Sources */,
+				7637971706AB2747E97CEB03 /* SWCellScrollView.m in Sources */,
+				FE449EA266D11EB81D7C7450 /* SWLongPressGestureRecognizer.m in Sources */,
+				446D2049357E7DEA8B00CAB4 /* SWTableViewCell.m in Sources */,
+				60805D8F00D5CB25E17A0437 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
+				E7E9D6C3211D5E5CAB181024 /* SWUtilityButtonView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1630F08912CA760B5FE02964 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC47654D1131AA52DB671283 /* Pods-planckMailiOS-UIActionSheet+Blocks-dummy.m in Sources */,
+				BB80CC0C378BAB275ED0B127 /* UIActionSheet+Blocks.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A1E022CF6452C821E8E06C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6FD7E5B0B0615D7E2EF1047 /* MBProgressHUD.m in Sources */,
+				701917C52D8C26A4610A3350 /* Pods-planckMailiOS-MBProgressHUD-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37389F8794D1E71A1E95220A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB821E66B85BD87407A14365 /* FMDatabase+INModelQueries.m in Sources */,
+				EF4E668A6C813A6B892C9CBB /* FMResultSet+INModelQueries.m in Sources */,
+				AEDA056CA49BFF42E31E1E4F /* INAPIManager.m in Sources */,
+				25D213F59700B2543B5FCD8A /* INAPITask.m in Sources */,
+				FA439B87F2D372944A5F5E41 /* INAddRemoveTagsTask.m in Sources */,
+				5BD2BA0C4B33B1127FF110A8 /* INContact.m in Sources */,
+				F3E70121E42195487E6B32AA /* INDatabaseManager.m in Sources */,
+				4435E1461CFE0043C0998265 /* INDeleteDraftTask.m in Sources */,
+				E85C7E4FCC4F60B298EB161D /* INDraft.m in Sources */,
+				1D3E6E3D8BB0AF72073BF59C /* INFile.m in Sources */,
+				9C30472DE144036B394DA8EE /* INMarkMessageAsReadTask.m in Sources */,
+				72D4092A3C3227DBBB5DB9BB /* INMessage.m in Sources */,
+				F136E9F3567030D037E12399 /* INMessageContentView.m in Sources */,
+				E1CEDA04FF4B120C907C2949 /* INMessageProvider.m in Sources */,
+				EB981833507BB99F52E0ACA3 /* INModelObject+Uniquing.m in Sources */,
+				7D33B76061172294C9A7DC55 /* INModelObject.m in Sources */,
+				7A9E93586F14857840D12554 /* INModelProvider.m in Sources */,
+				BD5AD1FA580F68146FD65A08 /* INModelResponseSerializer.m in Sources */,
+				5B319D8A2BA1D3D6B7177615 /* INNamespace.m in Sources */,
+				41D80F622EABE01FE728C8F7 /* INPredicateToQueryParamConverter.m in Sources */,
+				B9A06AC56D794A89B39D7E37 /* INPredicateToSQLConverter.m in Sources */,
+				77E2C1D15B81C1FF427BD7D6 /* INRecipientsLabel.m in Sources */,
+				CA2884C76FE051A13E3D74FA /* INSaveDraftTask.m in Sources */,
+				A2472D57A742865CA087A662 /* INSaveTagTask.m in Sources */,
+				ABFB8CB4C4A0CEE4C94E2B0B /* INSendDraftTask.m in Sources */,
+				E2445C357BE1D6D7CA2380CD /* INTag.m in Sources */,
+				FB8D51682C566DE459F30154 /* INThread+Private.m in Sources */,
+				E4DF2CE5FD04F9026C291DFE /* INThread.m in Sources */,
+				77D7972ADA6B1354326C430A /* INThreadProvider.m in Sources */,
+				B8AC2EAD1EF46AE8E235C4D0 /* INUploadFileTask.m in Sources */,
+				60D97D7BEFD8308DB968C51A /* NSDictionary+FormatConversion.m in Sources */,
+				0429592A57B41C686293743E /* NSError+InboxErrors.m in Sources */,
+				6BCBC3FD1DA7C18E35366924 /* NSObject+AssociatedObjects.m in Sources */,
+				5D35FE60A36C9D11ECF1C5BB /* NSObject+Properties.m in Sources */,
+				D2545292815EF0EBF52EBA52 /* NSPredicate+Inspection.m in Sources */,
+				A09158C8C1ACD07E708B0261 /* NSString+FormatConversion.m in Sources */,
+				8A1A181D4C291CC7E02FDC2B /* PDKeychainBindings.m in Sources */,
+				7900FB98656E6C22AC1AF073 /* PDKeychainBindingsController.m in Sources */,
+				07140643206A294ECA0FFC95 /* Pods-planckMailiOS-InboxKit-dummy.m in Sources */,
+				BAEFE8382723E2C16D0BF1BD /* UIView+FrameAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4BB8D9CFC645217D8504DE81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300D8B9F48094A628E78DE54 /* DTError.m in Sources */,
+				9DBB32A5CF9035DB548F185C /* DTTimePeriod.m in Sources */,
+				BBDFC630986080657B6CDBD5 /* DTTimePeriodChain.m in Sources */,
+				C3062786B936BA44ACD15699 /* DTTimePeriodCollection.m in Sources */,
+				73B76138636403F8A899F883 /* DTTimePeriodGroup.m in Sources */,
+				8C0F3C26F2CE946DC2C0DAF5 /* NSDate+DateTools.m in Sources */,
+				E1039D321E97E2DE346614FF /* Pods-planckMailiOS-DateTools-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2CE270AD182FBEAAF805DDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52DCEE3BB7F8D3E32BF96FCD /* FMDatabase.m in Sources */,
+				58A15CD3EE9FBA893C3A3A5D /* FMDatabaseAdditions.m in Sources */,
+				5A8882722FA69254544DC909 /* FMDatabasePool.m in Sources */,
+				21DCE68A0CB6B96CC6A520CD /* FMDatabaseQueue.m in Sources */,
+				91EB9B0FED7B5E85CAE811BF /* FMResultSet.m in Sources */,
+				CBDA95B50E6FB860159D5628 /* Pods-planckMailiOS-FMDB-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6BBFBF89E0F4F4AB7AE8498 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52CA671BFE6E61083846E49E /* Pods-planckMailiOS-UIAlertView+Blocks-dummy.m in Sources */,
+				948C643C1C88E8535C865CC3 /* UIAlertView+Blocks.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7D120A3C1A3B4A3D3508B92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F586426AC8C0EA8B4646C4B /* Pods-planckMailiOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDD07984F78A002C98975C42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82D5E4715F7AEDAEB5BDD531 /* AFHTTPRequestOperation.m in Sources */,
+				84E065271BDEDAB9BD1E3F28 /* AFHTTPRequestOperationManager.m in Sources */,
+				05A4A17FE6D9C8CC4F9A0C50 /* AFHTTPSessionManager.m in Sources */,
+				B6B221922BF5103DD0EBB3FC /* AFNetworkActivityIndicatorManager.m in Sources */,
+				3655408DD352E423E822146A /* AFNetworkReachabilityManager.m in Sources */,
+				F4D0839978ACA16D62F16122 /* AFSecurityPolicy.m in Sources */,
+				3FB5E52D16D991BB99AC4D06 /* AFURLConnectionOperation.m in Sources */,
+				A56828A893C6C31B534E995F /* AFURLRequestSerialization.m in Sources */,
+				F3C223DCE5D9E982F7D17EA7 /* AFURLResponseSerialization.m in Sources */,
+				1777116AEFC01C3ABECC5A13 /* AFURLSessionManager.m in Sources */,
+				CAD00078A91E5D7655E75629 /* Pods-planckMailiOS-AFNetworking-dummy.m in Sources */,
+				61F0415A0300F3D9C5D98BAD /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				EEE1FF6A715BAFA81B70F53F /* UIAlertView+AFNetworking.m in Sources */,
+				99897A60005999AD17C5C442 /* UIButton+AFNetworking.m in Sources */,
+				7CDDFA2D7C7E13F71AEE0BAC /* UIImageView+AFNetworking.m in Sources */,
+				DB25AEAFD21EFF8120AE6840 /* UIProgressView+AFNetworking.m in Sources */,
+				AE33E5BB41FA305904C60FB5 /* UIRefreshControl+AFNetworking.m in Sources */,
+				3DED167C10166593873D3495 /* UIWebView+AFNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0B1F6A3BF3DE0E84E3F18714 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-planckMailiOS-FMDB";
+			target = 3E6F44DDCCB584CD5A466CB7 /* Pods-planckMailiOS-FMDB */;
+			targetProxy = D5C4048ADABDF31697492CC7 /* PBXContainerItemProxy */;
+		};
+		3DEDF4B5CD54B4B8B34C3883 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-planckMailiOS-InboxKit";
+			target = 7D8704E5D5130A32A065C133 /* Pods-planckMailiOS-InboxKit */;
+			targetProxy = 5CC7BB14DD44588C6E01F3E8 /* PBXContainerItemProxy */;
+		};
+		3F68EC8A671B4EE213A6EF50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-planckMailiOS-UIActionSheet+Blocks";
+			target = 0558B77F3A38F1DA897C4201 /* Pods-planckMailiOS-UIActionSheet+Blocks */;
+			targetProxy = 1259CDB042239FAF9242B47E /* PBXContainerItemProxy */;
+		};
+		585E799B9EBD4C99D4F4710C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-planckMailiOS-FMDB";
+			target = 3E6F44DDCCB584CD5A466CB7 /* Pods-planckMailiOS-FMDB */;
+			targetProxy = 2EEFBAAF391A68B6B20BC858 /* PBXContainerItemProxy */;
+		};
+		65CCEDC4D72FCE6B1DA6022C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-planckMailiOS-MBProgressHUD";
+			target = E599BE99D055ADD6EFA238C9 /* Pods-planckMailiOS-MBProgressHUD */;
+			targetProxy = EA157C0A6C37079845CEBB40 /* PBXContainerItemProxy */;
+		};
+		92905EB77ED2770D36878C21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-planckMailiOS-AFNetworking";
+			target = C5B4DD4356200553F09F07CD /* Pods-planckMailiOS-AFNetworking */;
+			targetProxy = 49CCBFF1A2D3248CE4E0467A /* PBXContainerItemProxy */;
+		};
+		A49F8421D7C67EE318547878 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-planckMailiOS-SWTableViewCell";
+			target = BF3FF3D6B1F71DE33E0D3ECF /* Pods-planckMailiOS-SWTableViewCell */;
+			targetProxy = DCDE5C28BE4CA0740A8D06E6 /* PBXContainerItemProxy */;
+		};
+		BFB4D97C85D3E768F1060C2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-planckMailiOS-UIAlertView+Blocks";
+			target = 0654507A4CA6D0BE1EDF9474 /* Pods-planckMailiOS-UIAlertView+Blocks */;
+			targetProxy = 870102E380DC0DC192E5CE20 /* PBXContainerItemProxy */;
+		};
+		F4A34F3FE936104B2CAC7A9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-planckMailiOS-AFNetworking";
+			target = C5B4DD4356200553F09F07CD /* Pods-planckMailiOS-AFNetworking */;
+			targetProxy = 2E521DE55D6A20E75D6AF53A /* PBXContainerItemProxy */;
+		};
+		FF28E6819705448F72C392C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-planckMailiOS-DateTools";
+			target = D14615339199ED532FB13F26 /* Pods-planckMailiOS-DateTools */;
+			targetProxy = 9655439FF914C59409F6511B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1557CCD56C4BC54A7BCC18CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01614F18AA66A0EE88554DE5 /* Pods-planckMailiOS-AFNetworking-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-AFNetworking/Pods-planckMailiOS-AFNetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		2E9634AFA0D538922FF6C612 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEE7FF25DAFCF79E679166C4 /* Pods-planckMailiOS-FMDB-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-FMDB/Pods-planckMailiOS-FMDB-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		53E855D2E6600E76387AB6B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F24B6FC033DEDC39098D11 /* Pods-planckMailiOS-InboxKit-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-InboxKit/Pods-planckMailiOS-InboxKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		89EAB8AFDC7F10FCCAA0EFA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 859A72E07F9AA0EDCD74BB10 /* Pods-planckMailiOS-DateTools-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-DateTools/Pods-planckMailiOS-DateTools-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A614971557C1C0612E136112 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8F24B6FC033DEDC39098D11 /* Pods-planckMailiOS-InboxKit-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-InboxKit/Pods-planckMailiOS-InboxKit-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A65518FB7F053DD0038C1149 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01614F18AA66A0EE88554DE5 /* Pods-planckMailiOS-AFNetworking-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-AFNetworking/Pods-planckMailiOS-AFNetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AAC65F3B69001E47BD95AA2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		AB495B403F1544071C7FC3D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C798627FD83B5DA45B22E0E /* Pods-planckMailiOS.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AD481FB1171171E4586EF3BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13A78A0A04C922D7630DA05E /* Pods-planckMailiOS-UIAlertView+Blocks-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-UIAlertView+Blocks/Pods-planckMailiOS-UIAlertView+Blocks-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B4045517DF1C58376B2ABBCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 118938FE1D1284BCB27CA6B8 /* Pods-planckMailiOS-MBProgressHUD-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-MBProgressHUD/Pods-planckMailiOS-MBProgressHUD-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		BF3BE6F2C705C1F1A35B278E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0E0EF97722D792BDCEA1CB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21056E7456A19A68C2BC2E89 /* Pods-planckMailiOS-UIActionSheet+Blocks-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-UIActionSheet+Blocks/Pods-planckMailiOS-UIActionSheet+Blocks-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C6976B7F3DFE67455B0E87F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13A78A0A04C922D7630DA05E /* Pods-planckMailiOS-UIAlertView+Blocks-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-UIAlertView+Blocks/Pods-planckMailiOS-UIAlertView+Blocks-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D09E56BF641977671EA2DBF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62A35D682860DC9274190533 /* Pods-planckMailiOS-SWTableViewCell-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-SWTableViewCell/Pods-planckMailiOS-SWTableViewCell-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D2504A784F80F6B957C04140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21056E7456A19A68C2BC2E89 /* Pods-planckMailiOS-UIActionSheet+Blocks-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-UIActionSheet+Blocks/Pods-planckMailiOS-UIActionSheet+Blocks-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D756BF74C2211FB98F17E7FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62A35D682860DC9274190533 /* Pods-planckMailiOS-SWTableViewCell-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-SWTableViewCell/Pods-planckMailiOS-SWTableViewCell-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E68A79792A37BF5CB21549E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 118938FE1D1284BCB27CA6B8 /* Pods-planckMailiOS-MBProgressHUD-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-MBProgressHUD/Pods-planckMailiOS-MBProgressHUD-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E8F2BBC99D796E79F1991452 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FA1A21A7A3F8C770FE75D97 /* Pods-planckMailiOS.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F1648851F0DE032301291A1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEE7FF25DAFCF79E679166C4 /* Pods-planckMailiOS-FMDB-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-FMDB/Pods-planckMailiOS-FMDB-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		FAAD9A3939940D9108646E5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 859A72E07F9AA0EDCD74BB10 /* Pods-planckMailiOS-DateTools-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-planckMailiOS-DateTools/Pods-planckMailiOS-DateTools-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15738293AA9A0952A99576C6 /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-DateTools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89EAB8AFDC7F10FCCAA0EFA3 /* Debug */,
+				FAAD9A3939940D9108646E5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22250A4D3AEC0E50C1F05FA1 /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-FMDB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E9634AFA0D538922FF6C612 /* Debug */,
+				F1648851F0DE032301291A1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		276400EF27CFEB7E4CCA3CCA /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB495B403F1544071C7FC3D1 /* Debug */,
+				E8F2BBC99D796E79F1991452 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79CFBE59B4184972FCA0313D /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAC65F3B69001E47BD95AA2B /* Debug */,
+				BF3BE6F2C705C1F1A35B278E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF4BC2CA1575AD60AE35934E /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-InboxKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A614971557C1C0612E136112 /* Debug */,
+				53E855D2E6600E76387AB6B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3B58BDAFD8D1D648358543B /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-MBProgressHUD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E68A79792A37BF5CB21549E9 /* Debug */,
+				B4045517DF1C58376B2ABBCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8CD00C060C02CBDBF8FA0FD /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-SWTableViewCell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D09E56BF641977671EA2DBF5 /* Debug */,
+				D756BF74C2211FB98F17E7FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF4CB84A55149606FD9C527E /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-AFNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A65518FB7F053DD0038C1149 /* Debug */,
+				1557CCD56C4BC54A7BCC18CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB7FB8E21BEEDF5F9F7D1CDB /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-UIAlertView+Blocks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6976B7F3DFE67455B0E87F9 /* Debug */,
+				AD481FB1171171E4586EF3BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F412D25751CCFC014B9D9CFD /* Build configuration list for PBXNativeTarget "Pods-planckMailiOS-UIActionSheet+Blocks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2504A784F80F6B957C04140 /* Debug */,
+				C0E0EF97722D792BDCEA1CB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 86362DB047E7AFD8339FEBBD /* Project object */;
+}

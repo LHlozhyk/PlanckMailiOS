@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "DBManager.h"
 
 @interface AppDelegate ()
 @end
@@ -16,6 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSArray *lNamespacesArray = [[DBManager instance] namespaces];
+
+    if (lNamespacesArray > 0) {
+        UITabBarController * lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
+        [(UINavigationController *)self.window.rootViewController setNavigationBarHidden:YES];
+        [(UINavigationController *)self.window.rootViewController pushViewController:lMainTabBar animated:NO];
+    }
     return YES;
 }
 
