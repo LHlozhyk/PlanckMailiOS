@@ -10,4 +10,5 @@
 
 @interface PMLoginVC : UIViewController
 - (void)backBtnPressed:(id)sender;
+- (void)setAdditionalAccoutn:(BOOL)state;
 @end

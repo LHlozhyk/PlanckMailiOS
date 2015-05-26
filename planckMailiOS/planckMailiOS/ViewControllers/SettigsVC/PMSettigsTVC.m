@@ -8,13 +8,16 @@
 
 #import "PMSettigsTVC.h"
 #import "PMLoginVC.h"
-
+#import "DBManager.h"
 #import "UIViewController+PMStoryboard.h"
 
 #define DYNAMIC_SECTION 0
 #define CELL_IDENTIFIER @"journalTVCell"
 
-@interface PMSettigsTVC ()
+@interface PMSettigsTVC () <UIActionSheetDelegate> {
+    NSArray *_itemsArray;
+    NSIndexPath *_selectedIndex;
+}
 - (IBAction)addAccountBtnPressed:(id)sender;
 @end
 
@@ -22,12 +25,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    _itemsArray = [[DBManager instance] getNamespaces];
+    [self.tableView reloadData];
 }
 
 - (void)addAccountBtnPressed:(id)sender {
     PMLoginVC *lNewLoginVC = [[PMLoginVC alloc] initWithStoryboard];
-    
+    [lNewLoginVC setAdditionalAccoutn:YES];
     UINavigationController *lNav = [[UINavigationController alloc] initWithRootViewController:lNewLoginVC];
     
     UIBarButtonItem *customBtn=[[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:lNewLoginVC action:@selector(backBtnPressed:)];
@@ -55,7 +65,7 @@
 #pragma mark - Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return [_itemsArray count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -72,8 +82,8 @@
         if (lTableViewCell == nil) {
             lTableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
         }
-        
-         lTableViewCell.textLabel.text = @"";
+        DBNamespace *lItemModel = [_itemsArray objectAtIndex:indexPath.row];
+        lTableViewCell.textLabel.text = lItemModel.email_address;
     }
     
     return lTableViewCell;
@@ -85,6 +95,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    _selectedIndex = indexPath;
+    UIActionSheet *lNewActionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete Account " delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
+    [lNewActionSheet showInView:self.view];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -93,6 +106,23 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"ACCOUNT SETTINGS";
+}
+
+#pragma mark - UIActionSheet delegates
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        DBNamespace *lSelectedNamespace = [_itemsArray objectAtIndex:_selectedIndex.row];
+        [DBManager deleteNamespace:lSelectedNamespace];
+        _itemsArray = [[DBManager instance] getNamespaces];
+        
+        if (_itemsArray.count > 0) {
+            [self.tableView reloadData];
+        } else {
+            [self.tabBarController.navigationController popToRootViewControllerAnimated:YES];
+            [self.tabBarController.navigationController setNavigationBarHidden:NO];
+        }
+    }
 }
 
 @end

@@ -16,7 +16,10 @@
 		844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 844F3BF51B12A882009634D2 /* PMPeopleVC.m */; };
 		846096171B13061400924B61 /* CLContactLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 846096151B13061400924B61 /* CLContactLibrary.m */; };
 		8460961C1B13063300924B61 /* CLPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460961B1B13063300924B61 /* CLPerson.m */; };
+		84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F061B1428A00020AB6E /* PMInboxMailModel.m */; };
+		84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F0A1B1447610020AB6E /* PMLoadMoreTVCell.m */; };
 		8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8479B7131B11B852006E4235 /* PMLoginVC.m */; };
+		848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848C50FD1B13DBF200515E47 /* PMMailTVCell.m */; };
 		84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D11AFF718300331CC0 /* PMMainVC.m */; };
 		84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D71AFF74C000331CC0 /* PMAPIManager.m */; };
 		84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA4261B134C1800770F88 /* planckMailiOS.xcdatamodeld */; };
@@ -62,8 +65,14 @@
 		846096151B13061400924B61 /* CLContactLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLContactLibrary.m; path = Communication/ContactsManager/CLContactLibrary.m; sourceTree = "<group>"; };
 		8460961A1B13063300924B61 /* CLPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPerson.h; sourceTree = "<group>"; };
 		8460961B1B13063300924B61 /* CLPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPerson.m; sourceTree = "<group>"; };
+		84776F051B1428A00020AB6E /* PMInboxMailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMInboxMailModel.h; path = Communication/Models/InboxMailModel/PMInboxMailModel.h; sourceTree = "<group>"; };
+		84776F061B1428A00020AB6E /* PMInboxMailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMInboxMailModel.m; path = Communication/Models/InboxMailModel/PMInboxMailModel.m; sourceTree = "<group>"; };
+		84776F091B1447610020AB6E /* PMLoadMoreTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLoadMoreTVCell.h; path = ViewControllers/MailVC/LoadMoreTVCell/PMLoadMoreTVCell.h; sourceTree = "<group>"; };
+		84776F0A1B1447610020AB6E /* PMLoadMoreTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMLoadMoreTVCell.m; path = ViewControllers/MailVC/LoadMoreTVCell/PMLoadMoreTVCell.m; sourceTree = "<group>"; };
 		8479B7121B11B852006E4235 /* PMLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLoginVC.h; path = ViewControllers/LoginVC/PMLoginVC.h; sourceTree = "<group>"; };
 		8479B7131B11B852006E4235 /* PMLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMLoginVC.m; path = ViewControllers/LoginVC/PMLoginVC.m; sourceTree = "<group>"; };
+		848C50FC1B13DBF200515E47 /* PMMailTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailTVCell.h; path = ViewControllers/MailVC/MailTVCell/PMMailTVCell.h; sourceTree = "<group>"; };
+		848C50FD1B13DBF200515E47 /* PMMailTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMailTVCell.m; path = ViewControllers/MailVC/MailTVCell/PMMailTVCell.m; sourceTree = "<group>"; };
 		84B751D01AFF718300331CC0 /* PMMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMainVC.h; path = ViewControllers/MainVC/PMMainVC.h; sourceTree = "<group>"; };
 		84B751D11AFF718300331CC0 /* PMMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMainVC.m; path = ViewControllers/MainVC/PMMainVC.m; sourceTree = "<group>"; };
 		84B751D31AFF72A400331CC0 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
@@ -214,6 +223,32 @@
 			path = Communication/ContactsManager/PersonModel;
 			sourceTree = "<group>";
 		};
+		84776F031B14283B0020AB6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				84776F041B1428460020AB6E /* InboxMailModel */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		84776F041B1428460020AB6E /* InboxMailModel */ = {
+			isa = PBXGroup;
+			children = (
+				84776F051B1428A00020AB6E /* PMInboxMailModel.h */,
+				84776F061B1428A00020AB6E /* PMInboxMailModel.m */,
+			);
+			name = InboxMailModel;
+			sourceTree = "<group>";
+		};
+		84776F081B1447350020AB6E /* LoadMoreTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				84776F091B1447610020AB6E /* PMLoadMoreTVCell.h */,
+				84776F0A1B1447610020AB6E /* PMLoadMoreTVCell.m */,
+			);
+			name = LoadMoreTVCell;
+			sourceTree = "<group>";
+		};
 		8479B7111B11B74F006E4235 /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +261,8 @@
 		8479B7161B11B90C006E4235 /* MailVC */ = {
 			isa = PBXGroup;
 			children = (
+				84776F081B1447350020AB6E /* LoadMoreTVCell */,
+				848C50FB1B13DBB600515E47 /* MailTVCell */,
 				84F9A9851B11F6EB0067C3D0 /* MailMenuView */,
 				84F9A9821B11F6D10067C3D0 /* PMMailVC.h */,
 				84F9A9831B11F6D10067C3D0 /* PMMailVC.m */,
@@ -265,6 +302,15 @@
 			name = CalendarVC;
 			sourceTree = "<group>";
 		};
+		848C50FB1B13DBB600515E47 /* MailTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				848C50FC1B13DBF200515E47 /* PMMailTVCell.h */,
+				848C50FD1B13DBF200515E47 /* PMMailTVCell.m */,
+			);
+			name = MailTVCell;
+			sourceTree = "<group>";
+		};
 		84B751CC1AFF6FAA00331CC0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +329,7 @@
 		84B751CD1AFF6FB700331CC0 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
+				84776F031B14283B0020AB6E /* Models */,
 				84ECA4311B13550D00770F88 /* DataLoader */,
 				846096131B13058E00924B61 /* ContactsManager */,
 				84F407981B12710700AA627B /* DB */,
@@ -538,7 +585,9 @@
 				84ECA4341B13550D00770F88 /* OPDataLoader.m in Sources */,
 				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
 				844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */,
+				84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */,
 				846096171B13061400924B61 /* CLContactLibrary.m in Sources */,
+				848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */,
 				84F9A9841B11F6D10067C3D0 /* PMMailVC.m in Sources */,
 				842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */,
 				84F9A9881B11F7270067C3D0 /* PMMailMenuView.m in Sources */,
@@ -547,6 +596,7 @@
 				84F9A9801B11E08D0067C3D0 /* PMRequest.m in Sources */,
 				84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */,
 				8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */,
+				84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */,
 				84F4286C1B1256820006B530 /* PMSettigsTVC.m in Sources */,
 				842E2FEA1AFEB13400B0C8DB /* main.m in Sources */,
 				84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */,

@@ -15,4 +15,8 @@
 
 + (NSString*)namespaces;
 
++ (NSString *)inboxMailWithNamespaceId:(NSString*)namespaceId
+                                 limit:(NSUInteger)limit
+                                offset:(NSUInteger)offset;
+
 @end

@@ -22,4 +22,8 @@
     return [NSString stringWithFormat:@"%@/n", APP_SERVER_LINK];
 }
 
++ (NSString *)inboxMailWithNamespaceId:(NSString*)namespaceId limit:(NSUInteger)limit offset:(NSUInteger)offset {
+    return [NSString stringWithFormat:@"%@/n/%@/threads?tag=inbox&limit=%lu&offset=%lu", APP_SERVER_LINK, namespaceId, (unsigned long)limit, (unsigned long)offset];
+}
+
 @end

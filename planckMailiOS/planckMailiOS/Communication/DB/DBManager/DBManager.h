@@ -22,7 +22,7 @@
 - (NSArray *)getNamespaces;
 
 + (void)deleteAllDataFromDB;
-
++ (void)deleteNamespace:(DBNamespace *)item;
 + (DBManager *)instance;
 + (DBNamespace *)createNewNamespace;
 

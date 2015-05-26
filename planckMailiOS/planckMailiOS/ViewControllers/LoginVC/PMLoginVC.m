@@ -14,12 +14,22 @@
 
 @interface PMLoginVC () <UIWebViewDelegate> {
     __weak IBOutlet UIWebView *_webView;
+    
+    BOOL _isAddtionalAccount;
 }
 @end
 
 @implementation PMLoginVC
 
 #pragma mark - PMLoginVC lifecycle
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _isAddtionalAccount = NO;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +42,10 @@
 }
 
 #pragma mark - Additional methods
+
+- (void)setAdditionalAccoutn:(BOOL)state {
+    _isAddtionalAccount = state;
+}
 
 - (void)goToMainVC {
     UITabBarController *lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
@@ -46,18 +60,29 @@
 #pragma mark - UIWebView delegates
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    
+    BOOL lResult = YES;
     NSLog(@"shouldStartLoadWithRequest - %@", request.URL.absoluteString);
     NSString *lUrlString = request.URL.absoluteString;
     
     if ([lUrlString hasPrefix:@"in-8lh2dc493h6aq0trdu973kkow://app/auth-response?"]) {
         NSArray *lItems = [lUrlString componentsSeparatedByString:@"="];
-        [[PMAPIManager shared] saveNamespaceIdFromToken:[lItems lastObject]];
-        [self goToMainVC];
+        [[PMAPIManager shared] saveNamespaceIdFromToken:[lItems lastObject] completion:^(id error, BOOL success) {
+            if (success) {
+                if (_isAddtionalAccount) {
+                    [self backBtnPressed:nil];
+                } else {
+                    [self goToMainVC];
+                }
+            } else {
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+            }
+        }];
+
+        lResult = NO;
     } else if ([lUrlString hasPrefix:@"about:"]) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }
-    return YES;
+    return lResult;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {

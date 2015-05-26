@@ -8,8 +8,9 @@
         <attribute name="namespace_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="object" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="provider" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DBNamespace" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="DBNamespace" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

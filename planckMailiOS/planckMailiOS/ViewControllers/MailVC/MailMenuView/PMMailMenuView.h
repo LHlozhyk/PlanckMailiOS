@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "UIView+PMViewCreator.h"
+#import "DBManager.h"
+
+@protocol PMMailMenuViewDelegate <NSObject>
+- (void)PMMailMenuViewSelectNamespace:(DBNamespace *)item;
+@end
 
 @interface PMMailMenuView : UIView
 - (void)showInView:(UIView *)view;
+
+@property(nonatomic, weak) id<PMMailMenuViewDelegate> delegate;
 @end

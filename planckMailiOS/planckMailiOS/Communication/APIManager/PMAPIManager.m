@@ -9,6 +9,7 @@
 #import "PMAPIManager.h"
 #import "OPDataLoader.h"
 #import "PMRequest.h"
+#import "PMInboxMailModel.h"
 
 #define TOKEN @"namespaces"
 
@@ -24,15 +25,74 @@
     return sharedManager;
 }
 
-- (void)saveNamespaceIdFromToken:(NSString *)token {
+
+
+- (void)saveNamespaceIdFromToken:(NSString *)token completion:(BasicBlockHandler)handler {
     SAVE_VALUE(token, TOKEN);
     
     OPDataLoader *lDataLoader = [OPDataLoader new];
     [lDataLoader loadUrlWithGETMethod:[PMRequest namespaces] handler:^(NSData *loadData, NSError *error, BOOL success) {
         NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
         NSLog(@"User ID is   %@ in - %s", response, __PRETTY_FUNCTION__);
+        
+        NSError *errorJson = nil;
+        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
+        NSArray *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
+        
+        if (lResponse.count > 0) {
+            NSDictionary *lFirstItem = [lResponse objectAtIndex:0];
+            DBNamespace *lNewNamespace = [DBManager createNewNamespace];
+            
+            lNewNamespace.id = lFirstItem[@"id"];
+            lNewNamespace.account_id = lFirstItem[@"account_id"];
+            lNewNamespace.email_address = lFirstItem[@"email_address"];
+            lNewNamespace.name = lFirstItem[@"name"];
+            lNewNamespace.namespace_id = lFirstItem[@"namespace_id"];
+            lNewNamespace.object = lFirstItem[@"object"];
+            lNewNamespace.provider = lFirstItem[@"provider"];
+            lNewNamespace.token = token;
+            [[DBManager instance] save];
+            
+            handler(nil, YES);
+        } else {
+            handler(nil, NO);
+        }
     }];
+}
+
+- (void)getInboxMailWithNamespaceId:(NSString*)namespaceId limit:(NSUInteger)limit offset:(NSUInteger)offset completion:(ExtendedBlockHandler)handler {
     
+    OPDataLoader *lDataLoader = [OPDataLoader new];
+    [lDataLoader loadUrlWithGETMethod:[PMRequest inboxMailWithNamespaceId:namespaceId limit:limit offset:offset] handler:^(NSData *loadData, NSError *error, BOOL success) {
+        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
+        NSLog(@"User ID is   %@ in - %s", response, __PRETTY_FUNCTION__);
+        
+        NSError *errorJson = nil;
+        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
+        NSArray *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
+        
+        NSMutableArray *lResultItems = [NSMutableArray new];
+        for (NSDictionary *item in lResponse) {
+            
+            PMInboxMailModel *lNewItem = [PMInboxMailModel new];
+            lNewItem.ownerName = [item[@"participants"] firstObject][@"name"];
+//            if ([lNewItem.ownerName isEqualToString:@""]) {
+//                lNewItem.ownerName = [item[@"participants"] objectAtIndex:1][@"name"];
+//            }
+            
+            lNewItem.snippet = item[@"snippet"];
+            lNewItem.subject = item[@"subject"];
+            
+            [lResultItems addObject:lNewItem];
+            
+        }
+        handler(lResultItems, nil, YES);
+        
+    }];
+}
+
+- (void)setActiveNamespace:(DBNamespace *)item {
+    SAVE_VALUE(item.token, TOKEN);
 }
 
 @end

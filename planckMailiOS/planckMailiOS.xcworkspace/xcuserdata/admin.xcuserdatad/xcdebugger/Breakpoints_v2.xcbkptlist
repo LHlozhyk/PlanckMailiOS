@@ -16,16 +16,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "planckMailiOS/Communication/APIManager/PMAPIManager.m"
-            timestampString = "454252614.193951"
+            timestampString = "454317528.551168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-saveNamespaceIdFromToken:"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-getInboxMailWithNamespaceId:limit:offset:completion:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -9,7 +9,7 @@
 #ifndef planckMailiOS_Config_h
 #define planckMailiOS_Config_h
 
-#define APP_SERVER_LINK @"https://www.inboxapp.com"
+#define APP_SERVER_LINK @"https://api.nylas.com"
 #define APP_ID @"8lh2dc493h6aq0trdu973kkow"
 
 

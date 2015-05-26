@@ -79,6 +79,7 @@
     lForm.email_address = @"";
     lForm.name = @"";
     lForm.provider = @"";
+    lForm.token = @"";
 
     return lForm;
 }
@@ -110,7 +111,7 @@
 //    return _forms;
 //}
 
-- (NSArray *)getForms {
+- (NSArray *)getNamespaces {
     NSError *lError;
     NSFetchRequest *lFetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:DB_FORM
@@ -138,9 +139,17 @@
     [lDBManager.managedObjectContext save:&saveError];
 }
 
++ (void)deleteNamespace:(DBNamespace *)item {
+    DBManager *lDBManager = [DBManager instance];
+    [lDBManager.managedObjectContext deleteObject:item];
+    
+    NSError *saveError = nil;
+    [lDBManager.managedObjectContext save:&saveError];
+}
+
 #pragma mark - instance
 
-+ (DBManager*)instance {
++ (DBManager *)instance {
     static DBManager *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

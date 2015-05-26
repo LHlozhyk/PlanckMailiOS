@@ -17,9 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    NSArray *lNamespacesArray = [[DBManager instance] namespaces];
+    NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
 
-    if (lNamespacesArray > 0) {
+    if (lNamespacesArray.count > 0) {
         UITabBarController * lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
         [(UINavigationController *)self.window.rootViewController setNavigationBarHidden:YES];
         [(UINavigationController *)self.window.rootViewController pushViewController:lMainTabBar animated:NO];

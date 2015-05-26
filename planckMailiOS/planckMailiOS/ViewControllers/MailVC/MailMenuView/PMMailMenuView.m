@@ -8,6 +8,7 @@
 
 #import "PMMailMenuView.h"
 
+
 #define KEY_WINDOW ((UIWindow*)[[[UIApplication sharedApplication] windows] objectAtIndex:0])
 #define CELL_IDENTIFIER @"itemTVCell"
 #define CELL_HEIGHT 65.0f
@@ -18,6 +19,8 @@
     __weak IBOutlet UITableView *_tableView;
     
     IBOutlet NSLayoutConstraint *_contentViewLeftPosition;
+    
+    NSArray *_itemsArray;
 }
 @end
 
@@ -33,6 +36,13 @@
     
     //delete empty separate lines for tableView
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    _itemsArray = [[DBManager instance] getNamespaces];
+    
+    NSIndexPath * lselectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [_tableView selectRowAtIndexPath:lselectedIndexPath
+                           animated:NO
+                     scrollPosition:UITableViewScrollPositionMiddle];
 }
 
 - (void)showInView:(UIView *)view {
@@ -105,21 +115,32 @@
     if (lTableViewCell == nil) {
         lTableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
     }
-
+    DBNamespace *lItemModel = [_itemsArray objectAtIndex:indexPath.row];
+    
+    lTableViewCell.textLabel.text = lItemModel.email_address;
+    lTableViewCell.textLabel.font = [UIFont systemFontOfSize:14];
     
     return lTableViewCell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return  3;
+    return [_itemsArray count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return  55;
+    return 55;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     [self configureCell:cell];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DBNamespace *lSelectedNamespace = [_itemsArray objectAtIndex:indexPath.row];
+    if (_delegate && [_delegate respondsToSelector:@selector(PMMailMenuViewSelectNamespace:)]) {
+        [_delegate PMMailMenuViewSelectNamespace:lSelectedNamespace];
+    }
+    [self hide];
 }
 
 @end
