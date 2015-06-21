@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3E6F44DDCCB584CD5A466CB7"
+               BlueprintIdentifier = "B92E27B3C9E237D084BB7CF1"
                BuildableName = "libPods-planckMailiOS-FMDB.a"
                BlueprintName = "Pods-planckMailiOS-FMDB"
                ReferencedContainer = "container:Pods.xcodeproj">

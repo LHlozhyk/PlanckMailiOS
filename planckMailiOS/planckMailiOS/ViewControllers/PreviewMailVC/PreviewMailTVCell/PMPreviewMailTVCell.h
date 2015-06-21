@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PMPreviewContentView.h"
 
 @interface PMPreviewMailTVCell : UITableViewCell
-
+- (void)updateCellWithInfo:(NSDictionary *)dataInfo;
+- (NSInteger)height;
 @end

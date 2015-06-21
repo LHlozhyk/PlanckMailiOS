@@ -40,6 +40,16 @@ static CLContactLibrary  *object;
             else
                 people.lastName = (__bridge NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
             
+            ABMultiValueRef phoneNumbers = ABRecordCopyValue(person,
+                                                             kABPersonPhoneProperty);
+            
+            if (ABMultiValueGetCount(phoneNumbers) > 0) {
+                people.phoneNumber = (__bridge_transfer NSString*)
+                ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
+            } else {
+                people.phoneNumber = @"None";
+            }
+            
             people.email = (__bridge_transfer NSString *)ABMultiValueCopyValueAtIndex(emails, 0);
             people.personImage = [UIImage imageWithData:(__bridge NSData *)ABPersonCopyImageData(person)];
             people.fullName = [NSString stringWithFormat:@"%@ %@", people.firstName, people.lastName];

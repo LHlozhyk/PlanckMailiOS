@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C5B4DD4356200553F09F07CD"
+               BlueprintIdentifier = "F907571A1F015696418B9007"
                BuildableName = "libPods-planckMailiOS-AFNetworking.a"
                BlueprintName = "Pods-planckMailiOS-AFNetworking"
                ReferencedContainer = "container:Pods.xcodeproj">

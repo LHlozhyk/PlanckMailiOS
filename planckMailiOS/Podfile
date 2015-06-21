@@ -7,5 +7,6 @@ target "planckMailiOS" do
     pod 'AFNetworking'
     pod 'UIAlertView+Blocks'
     pod 'SWTableViewCell', '~> 0.3.7'
+    
 end
 

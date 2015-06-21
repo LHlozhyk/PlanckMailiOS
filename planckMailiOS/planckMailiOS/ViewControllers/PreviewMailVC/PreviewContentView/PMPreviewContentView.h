@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PMPreviewContentView : UIView
+#import "UIView+PMViewCreator.h"
 
+@interface PMPreviewContentView : UIView
+- (void)showDetail:(NSString*)dataDetail;
+
+- (NSInteger)contentHeight;
 @end

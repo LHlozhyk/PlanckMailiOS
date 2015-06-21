@@ -223,6 +223,7 @@
         
         [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId namespacesId:lSelectedModel.namespaceId completion:^(id data, id error, BOOL success) {
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            NSLog(@"data - %@", data);
             lNewMailPreviewVC.detailMail = data;
             [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
         }];

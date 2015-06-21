@@ -8,12 +8,15 @@
 
 #import "PMPreviewMailVC.h"
 
+#import "PMPreviewMailTVCell.h"
+
 @interface PMPreviewMailVC () <UITableViewDelegate, UITableViewDataSource> {
     __weak IBOutlet UITableView *_tableView;
     __weak IBOutlet UILabel *_titleLabel;
     __weak IBOutlet NSLayoutConstraint *_titleHeightConstraint;
     
     NSMutableArray *_currentSelectedArray;
+    NSInteger _cellHeight;
 }
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
@@ -63,33 +66,38 @@
 #pragma mark - UITableView data source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *lTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    PMPreviewMailTVCell *lTableViewCell = (PMPreviewMailTVCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PMPreviewMailTVCell class])];
     
-    if (lTableViewCell == nil) {
-        lTableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    }
+//    if (lTableViewCell == nil) {
+//        lTableViewCell = [[PMPreviewMailTVCell alloc] crea];
+//    }
+    //lTableViewCell.textLabel.text = @"dfdf";
+    [lTableViewCell updateCellWithInfo:_detailMail];
     return lTableViewCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([_currentSelectedArray containsObject:indexPath]) {
-        return  300;
-    } else return 90;
+        
+        return _cellHeight;
+    } else return 80;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 1;
 }
 
 #pragma mark - UITableView delegates
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([_currentSelectedArray containsObject:indexPath]) {
         [_currentSelectedArray removeObject:indexPath];
         [tableView reloadRowsAtIndexPaths:_currentSelectedArray withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else {;
+    } else {
+        PMPreviewMailTVCell *myCell = (PMPreviewMailTVCell *)[_tableView cellForRowAtIndexPath:indexPath];
+        _cellHeight = [myCell height];
         [_currentSelectedArray addObject:indexPath];
         [tableView reloadRowsAtIndexPaths:_currentSelectedArray withRowAnimation:UITableViewRowAnimationFade];
     }

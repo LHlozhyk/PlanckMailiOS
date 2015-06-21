@@ -24,6 +24,9 @@
     [self setTitle:_currentPerson.fullName];
     
     _itemsArray = [NSMutableArray new];
+    _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _tableView.scrollEnabled = NO;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,16 +36,24 @@
 
 #pragma mark - UITableView data source 
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 5;
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *lTableViewCell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    if (lTableViewCell == nil) {
+        lTableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+    }
+    lTableViewCell.textLabel.text = @"Mobile";
+    lTableViewCell.detailTextLabel.text = _currentPerson.phoneNumber;
+    NSLog(@"phone- %@", _currentPerson.phoneNumber);
+    return lTableViewCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
 
 @end

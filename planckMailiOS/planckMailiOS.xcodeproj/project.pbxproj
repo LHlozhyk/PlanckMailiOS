@@ -186,6 +186,7 @@
 		842E2FE61AFEB13400B0C8DB /* planckMailiOS */ = {
 			isa = PBXGroup;
 			children = (
+				8497B11E1B37298A009CEC5E /* Utils */,
 				84B751D31AFF72A400331CC0 /* Global.h */,
 				84F9A9811B11E0DA0067C3D0 /* Config.h */,
 				842E2FEB1AFEB13400B0C8DB /* AppDelegate.h */,
@@ -360,6 +361,13 @@
 				8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */,
 			);
 			name = PreviewContentView;
+			sourceTree = "<group>";
+		};
+		8497B11E1B37298A009CEC5E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		84B751CC1AFF6FAA00331CC0 /* ViewControllers */ = {
@@ -785,15 +793,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f3ce1d16-dc39-4ab8-8117-96bcd0853ce1";
+				PROVISIONING_PROFILE = "9ea70a70-ff56-4fba-8f6b-ea286584b983";
 			};
 			name = Debug;
 		};
@@ -803,15 +811,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f3ce1d16-dc39-4ab8-8117-96bcd0853ce1";
+				PROVISIONING_PROFILE = "9ea70a70-ff56-4fba-8f6b-ea286584b983";
 			};
 			name = Release;
 		};
