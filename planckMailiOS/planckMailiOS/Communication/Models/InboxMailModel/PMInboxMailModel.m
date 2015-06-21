@@ -16,6 +16,8 @@
         _ownerName = @"";
         _snippet = @"";
         _subject = @"";
+        _namespaceId = @"";
+        _messageId = @"";
     }
     return self;
 }

@@ -15,6 +15,7 @@
 #import "PMMailTVCell.h"
 #import "PMInboxMailModel.h"
 #import "PMLoadMoreTVCell.h"
+#import "PMPreviewMailVC.h"
 
 #define CELL_IDENTIFIER @"mailCell"
 
@@ -26,8 +27,8 @@
     NSString *_currentNamespaeId;
     
     NSUInteger _offesetMails;
-    
     NSMutableArray *_itemMailArray;
+    NSIndexPath *_selectedIndex;
 }
 
 - (IBAction)menuBtnPressed:(id)sender;
@@ -41,6 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setTitle:@"INBOX"];
     //[self addGesture];
     _itemMailArray = [NSMutableArray new];
     NSArray *lItemsArray = [[DBManager instance] getNamespaces];
@@ -212,7 +214,18 @@
         _offesetMails = indexPath.row - 1;
         [self updateMails];
     } else {
+        _selectedIndex = indexPath;
         
+        PMPreviewMailVC *lNewMailPreviewVC = [[PMPreviewMailVC alloc] initWithStoryboard];
+        PMInboxMailModel *lSelectedModel = _itemMailArray[_selectedIndex.row];
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId namespacesId:lSelectedModel.namespaceId completion:^(id data, id error, BOOL success) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            lNewMailPreviewVC.detailMail = data;
+            [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
+        }];
     }
 }
 
@@ -222,7 +235,6 @@
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor]
                                                 title:@"Archive"];
-    
     return rightUtilityButtons;
 }
 
@@ -247,5 +259,6 @@
         [self updateMails];
     }
 }
+
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840156DB1B27A51600E92CA7 /* PMPreviewMailVC.m */; };
 		842E2FEA1AFEB13400B0C8DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E2FE91AFEB13400B0C8DB /* main.m */; };
 		842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E2FEC1AFEB13400B0C8DB /* AppDelegate.m */; };
 		842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842E2FF11AFEB13400B0C8DB /* Main.storyboard */; };
@@ -18,8 +19,11 @@
 		8460961C1B13063300924B61 /* CLPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460961B1B13063300924B61 /* CLPerson.m */; };
 		84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F061B1428A00020AB6E /* PMInboxMailModel.m */; };
 		84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F0A1B1447610020AB6E /* PMLoadMoreTVCell.m */; };
+		8478A0571B36A1C4003C09AF /* PMPreviewMailTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478A0561B36A1C4003C09AF /* PMPreviewMailTVCell.m */; };
 		8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8479B7131B11B852006E4235 /* PMLoginVC.m */; };
+		848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 848C11061B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m */; };
 		848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848C50FD1B13DBF200515E47 /* PMMailTVCell.m */; };
+		8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */; };
 		84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D11AFF718300331CC0 /* PMMainVC.m */; };
 		84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D71AFF74C000331CC0 /* PMAPIManager.m */; };
 		84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA4261B134C1800770F88 /* planckMailiOS.xcdatamodeld */; };
@@ -48,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		763F57E5DD2A49875129C79A /* Pods-planckMailiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-planckMailiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-planckMailiOS/Pods-planckMailiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		840156DA1B27A51600E92CA7 /* PMPreviewMailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPreviewMailVC.h; path = ViewControllers/PreviewMailVC/PMPreviewMailVC.h; sourceTree = "<group>"; };
+		840156DB1B27A51600E92CA7 /* PMPreviewMailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewMailVC.m; path = ViewControllers/PreviewMailVC/PMPreviewMailVC.m; sourceTree = "<group>"; };
 		842E2FE41AFEB13400B0C8DB /* planckMailiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = planckMailiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842E2FE81AFEB13400B0C8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842E2FE91AFEB13400B0C8DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -69,10 +75,16 @@
 		84776F061B1428A00020AB6E /* PMInboxMailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMInboxMailModel.m; path = Communication/Models/InboxMailModel/PMInboxMailModel.m; sourceTree = "<group>"; };
 		84776F091B1447610020AB6E /* PMLoadMoreTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLoadMoreTVCell.h; path = ViewControllers/MailVC/LoadMoreTVCell/PMLoadMoreTVCell.h; sourceTree = "<group>"; };
 		84776F0A1B1447610020AB6E /* PMLoadMoreTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMLoadMoreTVCell.m; path = ViewControllers/MailVC/LoadMoreTVCell/PMLoadMoreTVCell.m; sourceTree = "<group>"; };
+		8478A0551B36A1C4003C09AF /* PMPreviewMailTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPreviewMailTVCell.h; path = ViewControllers/PreviewMailVC/PreviewMailTVCell/PMPreviewMailTVCell.h; sourceTree = "<group>"; };
+		8478A0561B36A1C4003C09AF /* PMPreviewMailTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewMailTVCell.m; path = ViewControllers/PreviewMailVC/PreviewMailTVCell/PMPreviewMailTVCell.m; sourceTree = "<group>"; };
 		8479B7121B11B852006E4235 /* PMLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLoginVC.h; path = ViewControllers/LoginVC/PMLoginVC.h; sourceTree = "<group>"; };
 		8479B7131B11B852006E4235 /* PMLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMLoginVC.m; path = ViewControllers/LoginVC/PMLoginVC.m; sourceTree = "<group>"; };
+		848C11051B2F6CF7000D3CA2 /* PMPreviewPeopleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPreviewPeopleVC.h; path = ViewControllers/PeopleVC/PreviewPeopleVC/PMPreviewPeopleVC.h; sourceTree = "<group>"; };
+		848C11061B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewPeopleVC.m; path = ViewControllers/PeopleVC/PreviewPeopleVC/PMPreviewPeopleVC.m; sourceTree = "<group>"; };
 		848C50FC1B13DBF200515E47 /* PMMailTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailTVCell.h; path = ViewControllers/MailVC/MailTVCell/PMMailTVCell.h; sourceTree = "<group>"; };
 		848C50FD1B13DBF200515E47 /* PMMailTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMailTVCell.m; path = ViewControllers/MailVC/MailTVCell/PMMailTVCell.m; sourceTree = "<group>"; };
+		8497B1191B370CD5009CEC5E /* PMPreviewContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPreviewContentView.h; path = ViewControllers/PreviewMailVC/PreviewContentView/PMPreviewContentView.h; sourceTree = "<group>"; };
+		8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewContentView.m; path = ViewControllers/PreviewMailVC/PreviewContentView/PMPreviewContentView.m; sourceTree = "<group>"; };
 		84B751D01AFF718300331CC0 /* PMMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMainVC.h; path = ViewControllers/MainVC/PMMainVC.h; sourceTree = "<group>"; };
 		84B751D11AFF718300331CC0 /* PMMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMainVC.m; path = ViewControllers/MainVC/PMMainVC.m; sourceTree = "<group>"; };
 		84B751D31AFF72A400331CC0 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
@@ -138,6 +150,17 @@
 				CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		840156D91B27A48100E92CA7 /* PreviewMailVC */ = {
+			isa = PBXGroup;
+			children = (
+				8497B1181B370C7E009CEC5E /* PreviewContentView */,
+				8478A0541B369F3E003C09AF /* PreviewMailTVCell */,
+				840156DA1B27A51600E92CA7 /* PMPreviewMailVC.h */,
+				840156DB1B27A51600E92CA7 /* PMPreviewMailVC.m */,
+			);
+			name = PreviewMailVC;
 			sourceTree = "<group>";
 		};
 		842E2FDB1AFEB13300B0C8DB = {
@@ -249,6 +272,15 @@
 			name = LoadMoreTVCell;
 			sourceTree = "<group>";
 		};
+		8478A0541B369F3E003C09AF /* PreviewMailTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				8478A0551B36A1C4003C09AF /* PMPreviewMailTVCell.h */,
+				8478A0561B36A1C4003C09AF /* PMPreviewMailTVCell.m */,
+			);
+			name = PreviewMailTVCell;
+			sourceTree = "<group>";
+		};
 		8479B7111B11B74F006E4235 /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +314,7 @@
 		8479B7181B11B930006E4235 /* PeopleVC */ = {
 			isa = PBXGroup;
 			children = (
+				848C11041B2F6CB6000D3CA2 /* PreviewPeopleVC */,
 				844F3BF41B12A882009634D2 /* PMPeopleVC.h */,
 				844F3BF51B12A882009634D2 /* PMPeopleVC.m */,
 			);
@@ -302,6 +335,15 @@
 			name = CalendarVC;
 			sourceTree = "<group>";
 		};
+		848C11041B2F6CB6000D3CA2 /* PreviewPeopleVC */ = {
+			isa = PBXGroup;
+			children = (
+				848C11051B2F6CF7000D3CA2 /* PMPreviewPeopleVC.h */,
+				848C11061B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m */,
+			);
+			name = PreviewPeopleVC;
+			sourceTree = "<group>";
+		};
 		848C50FB1B13DBB600515E47 /* MailTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,9 +353,19 @@
 			name = MailTVCell;
 			sourceTree = "<group>";
 		};
+		8497B1181B370C7E009CEC5E /* PreviewContentView */ = {
+			isa = PBXGroup;
+			children = (
+				8497B1191B370CD5009CEC5E /* PMPreviewContentView.h */,
+				8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */,
+			);
+			name = PreviewContentView;
+			sourceTree = "<group>";
+		};
 		84B751CC1AFF6FAA00331CC0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				840156D91B27A48100E92CA7 /* PreviewMailVC */,
 				84B751CF1AFF701F00331CC0 /* MainVC */,
 				8479B7111B11B74F006E4235 /* LoginVC */,
 				8479B7161B11B90C006E4235 /* MailVC */,
@@ -584,9 +636,13 @@
 				84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */,
 				84ECA4341B13550D00770F88 /* OPDataLoader.m in Sources */,
 				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
+				840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */,
+				8478A0571B36A1C4003C09AF /* PMPreviewMailTVCell.m in Sources */,
 				844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */,
 				84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */,
+				848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */,
 				846096171B13061400924B61 /* CLContactLibrary.m in Sources */,
+				8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */,
 				848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */,
 				84F9A9841B11F6D10067C3D0 /* PMMailVC.m in Sources */,
 				842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */,
@@ -729,7 +785,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
@@ -737,7 +793,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "76ccc534-4701-4925-afc9-4a10be00d2ba";
+				PROVISIONING_PROFILE = "f3ce1d16-dc39-4ab8-8117-96bcd0853ce1";
 			};
 			name = Debug;
 		};
@@ -747,7 +803,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
@@ -755,7 +811,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "76ccc534-4701-4925-afc9-4a10be00d2ba";
+				PROVISIONING_PROFILE = "f3ce1d16-dc39-4ab8-8117-96bcd0853ce1";
 			};
 			name = Release;
 		};

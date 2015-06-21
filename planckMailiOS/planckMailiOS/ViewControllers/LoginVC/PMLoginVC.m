@@ -65,8 +65,9 @@
     NSString *lUrlString = request.URL.absoluteString;
     
     if ([lUrlString hasPrefix:@"in-8lh2dc493h6aq0trdu973kkow://app/auth-response?"]) {
-        NSArray *lItems = [lUrlString componentsSeparatedByString:@"="];
-        [[PMAPIManager shared] saveNamespaceIdFromToken:[lItems lastObject] completion:^(id error, BOOL success) {
+        NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"=&"];
+        NSArray *lItems = [lUrlString componentsSeparatedByCharactersInSet:set];
+        [[PMAPIManager shared] saveNamespaceIdFromToken:lItems[1] completion:^(id error, BOOL success) {
             if (success) {
                 if (_isAddtionalAccount) {
                     [self backBtnPressed:nil];

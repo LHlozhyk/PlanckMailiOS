@@ -23,6 +23,10 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                              offset:(NSUInteger)offset
                          completion:(ExtendedBlockHandler)handler;
 
+- (void)getDetailWithMessageId:(NSString *)messageId
+                  namespacesId:(NSString *)namespacesId
+                    completion:(ExtendedBlockHandler)handle;
+
 - (void)setActiveNamespace:(DBNamespace*)item;
 
 @end

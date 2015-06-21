@@ -161,7 +161,8 @@
 
 - (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
     if ([challenge previousFailureCount] == 0) {
-        NSURLCredential *lCredential = [NSURLCredential credentialWithUser:GET_VALUE(@"namespaces")
+        NSString *lUser = GET_VALUE(@"namespaces");
+        NSURLCredential *lCredential = [NSURLCredential credentialWithUser:lUser
                                        password:@""
                                     persistence:NSURLCredentialPersistenceNone];
         [[challenge sender] useCredential:lCredential forAuthenticationChallenge:challenge];

@@ -8,11 +8,12 @@
 
 #import "PMPeopleVC.h"
 #import "CLContactLibrary.h"
+#import "PMPreviewPeopleVC.h"
 
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
-#define CELL_IDENTIFIER @"journalTVCell"
+#define CELL_IDENTIFIER @"peopleCell"
 
 #define LETTERS @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"#"];
 
@@ -159,6 +160,15 @@
     [searchBar resignFirstResponder];
     filtered = NO;
     [_tableView reloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:NSStringFromClass([PMPreviewPeopleVC class])]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        CLPerson *lNewPerson = [_itemsArray objectAtIndex:indexPath.row];
+        PMPreviewPeopleVC *lPreviewPeople = segue.destinationViewController;
+        lPreviewPeople.currentPerson = lNewPerson;
+    }
 }
 
 @end

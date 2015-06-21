@@ -82,12 +82,26 @@
             
             lNewItem.snippet = item[@"snippet"];
             lNewItem.subject = item[@"subject"];
+            lNewItem.namespaceId = item[@"namespace_id"];
+            lNewItem.messageId = item[@"message_ids"][0];
             
             [lResultItems addObject:lNewItem];
             
         }
         handler(lResultItems, nil, YES);
         
+    }];
+}
+
+- (void)getDetailWithMessageId:(NSString *)messageId namespacesId:(NSString *)namespacesId completion:(ExtendedBlockHandler)handler {
+    
+    OPDataLoader *lDataLoader = [OPDataLoader new];
+    [lDataLoader loadUrlWithGETMethod:[PMRequest messageId:messageId namespacesId:namespacesId]  handler:^(NSData *loadData, NSError *error, BOOL success) {
+        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
+        NSError *errorJson = nil;
+        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
+        NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
+        handler(lResponse, error, success);
     }];
 }
 

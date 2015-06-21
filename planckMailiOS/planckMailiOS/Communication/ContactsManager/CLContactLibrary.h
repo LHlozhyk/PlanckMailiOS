@@ -15,7 +15,7 @@
 @protocol APContactLibraryDelegate;
 
 @protocol APContactLibraryDelegate <NSObject>
--(void)apGetContactArray:(NSArray *)contactArray;
+- (void)apGetContactArray:(NSArray *)contactArray;
 @end
 
 @interface CLContactLibrary : NSObject
@@ -23,7 +23,7 @@
 
 @property(nonatomic,weak)id <APContactLibraryDelegate> delegate;
 
--(void)getContactArray;
+- (void)getContactArray;
 
-+(CLContactLibrary *)sharedInstance;
++ (CLContactLibrary *)sharedInstance;
 @end

@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self setUpCustomDesign];
+    
     NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
 
     if (lNamespacesArray.count > 0) {
@@ -47,6 +49,12 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Private methods
+
+- (void)setUpCustomDesign {
+   [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
 }
 
 @end

@@ -12,4 +12,6 @@
 @property(nonatomic, copy)NSString *ownerName;
 @property(nonatomic, copy)NSString *snippet;
 @property(nonatomic, copy)NSString *subject;
+@property(nonatomic, copy)NSString *messageId;
+@property(nonatomic, copy)NSString *namespaceId;
 @end

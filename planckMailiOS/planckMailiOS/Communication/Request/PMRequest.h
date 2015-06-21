@@ -19,4 +19,7 @@
                                  limit:(NSUInteger)limit
                                 offset:(NSUInteger)offset;
 
++ (NSString *)messageId:(NSString *)messageId
+           namespacesId:(NSString *)namespacesId;
+
 @end
