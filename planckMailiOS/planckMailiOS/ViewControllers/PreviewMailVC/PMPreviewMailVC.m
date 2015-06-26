@@ -9,6 +9,7 @@
 #import "PMPreviewMailVC.h"
 
 #import "PMPreviewMailTVCell.h"
+#import "PMMailComposeVC.h"
 
 @interface PMPreviewMailVC () <UITableViewDelegate, UITableViewDataSource> {
     __weak IBOutlet UITableView *_tableView;
@@ -18,6 +19,8 @@
     NSMutableArray *_currentSelectedArray;
     NSInteger _cellHeight;
 }
+
+- (IBAction)replyBtnPressed:(id)sender;
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
 @end
@@ -44,6 +47,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)replyBtnPressed:(id)sender {
+    PMMailComposeVC *lNewMailComposeVC = [[PMMailComposeVC alloc] initWithStoryboard];
+    [self.tabBarController.navigationController presentViewController:lNewMailComposeVC animated:YES completion:nil];
 }
 
 #pragma mark - Private methods

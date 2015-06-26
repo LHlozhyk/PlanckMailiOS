@@ -156,6 +156,145 @@
             </objects>
             <point key="canvasLocation" x="1996" y="-1020"/>
         </scene>
+        <!--Mail ComposeVC-->
+        <scene sceneID="iXs-8h-dYc">
+            <objects>
+                <viewController storyboardIdentifier="PMMailComposeVC" id="YMw-hX-x5i" customClass="PMMailComposeVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zo6-8n-rjD"/>
+                        <viewControllerLayoutGuide type="bottom" id="PkK-To-8Fg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7dn-L0-1oj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuI-r7-B68">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="ZS2-fc-yyc"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="dHk-al-vsv">
+                                        <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" image="closeIcon" id="IB5-e8-gjv">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="closeBtnPressed:" destination="YMw-hX-x5i" id="m98-J4-GVx"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PdH-jW-OoE">
+                                            <rect key="frame" x="54" y="27" width="212" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="lyubomyr.hlozhyk@gmail.com">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="selectMailBtnPressed:" destination="YMw-hX-x5i" eventType="touchUpInside" id="3YG-dh-hYC"/>
+                                            </connections>
+                                        </button>
+                                        <barButtonItem key="rightBarButtonItem" image="sentIcon" id="QWm-c7-zP3">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="sentBtnPressed:" destination="YMw-hX-x5i" id="iQU-ea-1sx"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="htx-nW-Kyq">
+                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="toCell" textLabel="s2f-Hx-8ak" style="IBUITableViewCellStyleDefault" id="bCc-qI-JYF">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bCc-qI-JYF" id="ru6-ng-sp7">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="To:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s2f-Hx-8ak">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CcCell" textLabel="QgZ-OT-2H9" style="IBUITableViewCellStyleDefault" id="YUA-Tr-5zB">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YUA-Tr-5zB" id="7XA-Vb-94l">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Cc/Bcc:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QgZ-OT-2H9">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubjectCell" textLabel="cn1-5k-QFf" style="IBUITableViewCellStyleDefault" id="D8V-aI-HOc">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D8V-aI-HOc" id="cch-kd-TfZ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subject:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cn1-5k-QFf">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextViewCell" rowHeight="194" id="dm8-mL-KRR">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dm8-mL-KRR" id="cmZ-X2-r0z">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bu1-BQ-DDd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="193"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">
+Sent from PlanckMailiOS</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YMw-hX-x5i" id="BCX-cW-RT6"/>
+                                    <outlet property="delegate" destination="YMw-hX-x5i" id="1QE-9H-VkB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PkK-To-8Fg" firstAttribute="top" secondItem="htx-nW-Kyq" secondAttribute="bottom" id="0eD-74-WC8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="htx-nW-Kyq" secondAttribute="trailing" constant="-16" id="9pj-xp-4B5"/>
+                            <constraint firstItem="htx-nW-Kyq" firstAttribute="leading" secondItem="7dn-L0-1oj" secondAttribute="leadingMargin" constant="-16" id="DMT-00-sbU"/>
+                            <constraint firstItem="htx-nW-Kyq" firstAttribute="top" secondItem="QuI-r7-B68" secondAttribute="bottom" constant="1" id="eml-7F-rE6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QuI-r7-B68" secondAttribute="trailing" constant="-16" id="kvP-y6-JMO"/>
+                            <constraint firstItem="QuI-r7-B68" firstAttribute="top" secondItem="7dn-L0-1oj" secondAttribute="topMargin" id="pje-1h-2tT"/>
+                            <constraint firstItem="QuI-r7-B68" firstAttribute="leading" secondItem="7dn-L0-1oj" secondAttribute="leadingMargin" constant="-16" id="sw7-kD-F8d"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="_sentBarBtn" destination="QWm-c7-zP3" id="bJj-9A-Xyk"/>
+                        <outlet property="_tableView" destination="htx-nW-Kyq" id="wPL-ec-rq2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jFP-M3-AdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2830" y="-1674"/>
+        </scene>
         <!--Files-->
         <scene sceneID="e6V-M6-QxY">
             <objects>
@@ -636,6 +775,9 @@
                                         <state key="normal" image="createMailIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="createMailBtnPressed:" destination="jvz-4f-ywC" eventType="touchUpInside" id="pdS-3d-3ko"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -705,18 +847,27 @@
                                             <state key="normal" image="leftArrowIcon">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="replyBtnPressed:" destination="ccR-rO-z97" eventType="touchUpInside" id="urn-s0-fxK"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zX-4w-gby">
                                             <rect key="frame" x="216" y="0.0" width="96" height="50"/>
                                             <state key="normal" image="rightArrowIcon">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="replyBtnPressed:" destination="ccR-rO-z97" eventType="touchUpInside" id="sd3-Ol-B2g"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNz-N0-UWr">
                                             <rect key="frame" x="112" y="0.0" width="96" height="50"/>
                                             <state key="normal" image="doubleArrowIcon">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="replyBtnPressed:" destination="ccR-rO-z97" eventType="touchUpInside" id="ce7-q4-h0n"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -842,6 +993,7 @@
     <resources>
         <image name="attachedIcon" width="40" height="40"/>
         <image name="calendarIcon" width="21" height="21"/>
+        <image name="closeIcon" width="21" height="21"/>
         <image name="createMailIcon" width="42" height="42"/>
         <image name="doubleArrowIcon" width="21" height="21"/>
         <image name="filesIcon" width="21" height="21"/>
@@ -853,6 +1005,7 @@
         <image name="replyIcon" width="40" height="40"/>
         <image name="rightArrowIcon" width="21" height="21"/>
         <image name="searchIcon" width="21" height="21"/>
+        <image name="sentIcon" width="21" height="21"/>
         <image name="settingsIcon" width="21" height="21"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -15,6 +15,8 @@
 
 @implementation PMAPIManager
 
+#pragma mark - static methods
+
 + (PMAPIManager *)shared {
     static PMAPIManager *sharedManager = nil;
     static dispatch_once_t onceToken;
@@ -25,7 +27,7 @@
     return sharedManager;
 }
 
-
+#pragma mark - pablic methods
 
 - (void)saveNamespaceIdFromToken:(NSString *)token completion:(BasicBlockHandler)handler {
     SAVE_VALUE(token, TOKEN);
@@ -108,5 +110,8 @@
 - (void)setActiveNamespace:(DBNamespace *)item {
     SAVE_VALUE(item.token, TOKEN);
 }
+
+
+#pragma mark - Private methods
 
 @end

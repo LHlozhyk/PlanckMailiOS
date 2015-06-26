@@ -34,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _itemsArray = [NSArray new];
     _itemsArrayFiltered = [NSArray new];
     

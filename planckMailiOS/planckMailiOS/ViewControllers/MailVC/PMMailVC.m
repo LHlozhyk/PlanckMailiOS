@@ -17,6 +17,8 @@
 #import "PMLoadMoreTVCell.h"
 #import "PMPreviewMailVC.h"
 
+#import "PMMailComposeVC.h"
+
 #define CELL_IDENTIFIER @"mailCell"
 
 @interface PMMailVC () <UIGestureRecognizerDelegate, SWTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, PMMailMenuViewDelegate> {
@@ -32,6 +34,7 @@
 }
 
 - (IBAction)menuBtnPressed:(id)sender;
+- (IBAction)createMailBtnPressed:(id)sender;
 
 @property(nonatomic, strong) PMMailMenuView *mailMenu;
 @end
@@ -101,6 +104,11 @@
 
 - (void)menuBtnPressed:(id)sender {
     [self.mailMenu showInView:self.view];
+}
+
+- (void)createMailBtnPressed:(id)sender {
+    PMMailComposeVC *lNewMailComposeVC = [[PMMailComposeVC alloc] initWithStoryboard];
+    [self.tabBarController.navigationController presentViewController:lNewMailComposeVC animated:YES completion:nil];
 }
 
 #pragma mark - Additional methods
