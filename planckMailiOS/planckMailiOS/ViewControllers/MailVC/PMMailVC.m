@@ -81,6 +81,8 @@ IB_DESIGNABLE
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.navigationController.navigationBarHidden = NO;
+    
     NSArray *lItemsArray = [[DBManager instance] getNamespaces];
     
     _titleView.subTitle = ((DBNamespace*)[lItemsArray firstObject]).email_address;

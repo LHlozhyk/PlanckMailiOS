@@ -21,6 +21,7 @@
 }
 
 - (IBAction)replyBtnPressed:(id)sender;
+- (IBAction)backBtnPressed:(id)sender;
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
 @end
@@ -44,12 +45,18 @@
     _titleLabel.text = _detailMail[@"subject"];
     
     
-    self.navigationController.navigationBarHidden 
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - IBAction selectors
+
+- (void)backBtnPressed:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)replyBtnPressed:(id)sender {
