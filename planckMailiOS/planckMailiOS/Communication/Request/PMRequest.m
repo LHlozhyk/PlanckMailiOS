@@ -30,4 +30,9 @@
     return [NSString stringWithFormat:@"%@/n/%@/messages/%@", APP_SERVER_LINK, namespacesId, messageId];
 }
 
++ (NSString *)searchMailWithKeyword:(NSString *)keyword namespacesId:(NSString *)namespacesId {
+    return [NSString stringWithFormat:@"%@/n/%@/threads?any_email=%@", APP_SERVER_LINK, namespacesId, keyword];
+}
+
+
 @end

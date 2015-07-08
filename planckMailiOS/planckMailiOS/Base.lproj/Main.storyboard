@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Odl-Dh-Cj7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Odl-Dh-Cj7">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -215,7 +215,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="To:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s2f-Hx-8ak">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -230,7 +230,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Cc/Bcc:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QgZ-OT-2H9">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -245,7 +245,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subject:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cn1-5k-QFf">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -598,7 +598,62 @@ Sent from PlanckMailiOS</string>
             </objects>
             <point key="canvasLocation" x="1576" y="-1674"/>
         </scene>
-        <!--INBOX-->
+        <!--Search MailVC-->
+        <scene sceneID="AfS-wd-F08">
+            <objects>
+                <viewController storyboardIdentifier="PMSearchMailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N2t-t6-FSs" customClass="PMSearchMailVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oVD-Dc-GZG"/>
+                        <viewControllerLayoutGuide type="bottom" id="yWB-MP-tbv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bZL-5B-glJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Gu2-dn-emu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="40" id="ynd-85-1KD" customClass="PMLoadMoreTVCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ynd-85-1KD" id="wA9-ky-2ag">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="47m-US-10o">
+                                                    <rect key="frame" x="292" y="9" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="47m-US-10o" firstAttribute="trailing" secondItem="wA9-ky-2ag" secondAttribute="trailingMargin" id="H2k-py-YDq"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="47m-US-10o" secondAttribute="bottom" constant="2" id="M7L-gY-ghW"/>
+                                                <constraint firstItem="47m-US-10o" firstAttribute="top" secondItem="wA9-ky-2ag" secondAttribute="topMargin" constant="1" id="Zne-3F-RRg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="_activity" destination="47m-US-10o" id="wU0-wd-kTd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gu2-dn-emu" secondAttribute="trailing" constant="-16" id="83l-Dt-2dr"/>
+                            <constraint firstItem="Gu2-dn-emu" firstAttribute="top" secondItem="bZL-5B-glJ" secondAttribute="topMargin" id="eQI-Tp-JBm"/>
+                            <constraint firstItem="yWB-MP-tbv" firstAttribute="top" secondItem="Gu2-dn-emu" secondAttribute="bottom" id="s6D-lN-z8y"/>
+                            <constraint firstItem="Gu2-dn-emu" firstAttribute="leading" secondItem="bZL-5B-glJ" secondAttribute="leadingMargin" constant="-16" id="z1r-8G-2BB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="_tableViewConstraintBottom" destination="s6D-lN-z8y" id="cty-RX-Lgf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BhI-Ht-ajC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2016" y="-2337"/>
+        </scene>
+        <!--MailVC-->
         <scene sceneID="uvM-8f-OcW">
             <objects>
                 <viewController storyboardIdentifier="PMMailVC" automaticallyAdjustsScrollViewInsets="NO" id="jvz-4f-ywC" customClass="PMMailVC" sceneMemberID="viewController">
@@ -612,7 +667,16 @@ Sent from PlanckMailiOS</string>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GS1-cL-nYo">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcU-3i-iYF">
+                                        <rect key="frame" x="8" y="1" width="60" height="42"/>
+                                        <state key="normal" title="Focused">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Iqm-XA-C2o"/>
                                 </constraints>
@@ -742,7 +806,8 @@ Sent from PlanckMailiOS</string>
                             <constraint firstItem="6zB-Pt-tjM" firstAttribute="top" secondItem="ohL-qI-9n2" secondAttribute="bottom" id="lhc-MT-NQS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="INBOX" id="Ftr-8e-eiA">
+                    <navigationItem key="navigationItem" id="Ftr-8e-eiA">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Cuq-TD-hKs">
                             <view key="customView" contentMode="scaleToFill" id="IPG-G3-mpN">
                                 <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>
@@ -751,6 +816,9 @@ Sent from PlanckMailiOS</string>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-vs-YDp">
                                         <rect key="frame" x="41" y="3" width="30" height="30"/>
                                         <state key="normal" image="searchIcon"/>
+                                        <connections>
+                                            <action selector="searchBtnPressed:" destination="jvz-4f-ywC" eventType="touchUpInside" id="HOA-TC-vAz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vb8-dn-z4E">
                                         <rect key="frame" x="0.0" y="3" width="30" height="30"/>
@@ -765,6 +833,38 @@ Sent from PlanckMailiOS</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </barButtonItem>
+                        <view key="titleView" contentMode="scaleToFill" id="axE-sd-ZNV" customClass="PMMailTitleView">
+                            <rect key="frame" x="93" y="4" width="134" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Fjt-PY-ybi">
+                                    <rect key="frame" x="0.0" y="18" width="134" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="INBOX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56B-LF-Chh">
+                                    <rect key="frame" x="0.0" y="0.0" width="134" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Fjt-PY-ybi" secondAttribute="trailing" id="786-Bc-m0K"/>
+                                <constraint firstAttribute="bottom" secondItem="Fjt-PY-ybi" secondAttribute="bottom" id="DUq-sF-FmQ"/>
+                                <constraint firstItem="Fjt-PY-ybi" firstAttribute="leading" secondItem="axE-sd-ZNV" secondAttribute="leading" id="FtQ-7q-CQT"/>
+                                <constraint firstItem="56B-LF-Chh" firstAttribute="leading" secondItem="axE-sd-ZNV" secondAttribute="leading" id="IoL-6D-Z0l"/>
+                                <constraint firstAttribute="trailing" secondItem="56B-LF-Chh" secondAttribute="trailing" id="UJl-fj-DrE"/>
+                                <constraint firstItem="Fjt-PY-ybi" firstAttribute="top" secondItem="56B-LF-Chh" secondAttribute="bottom" id="soV-Mp-E6p"/>
+                                <constraint firstItem="56B-LF-Chh" firstAttribute="top" secondItem="axE-sd-ZNV" secondAttribute="top" id="uHc-ql-40Z"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="_subTitleLable" destination="Fjt-PY-ybi" id="abA-BT-L7t"/>
+                                <outlet property="_titleLable" destination="56B-LF-Chh" id="g2s-KS-J5P"/>
+                            </connections>
+                        </view>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="nNY-pZ-OPf">
                             <view key="customView" contentMode="scaleToFill" id="Of9-Um-rpy">
                                 <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>
@@ -786,6 +886,7 @@ Sent from PlanckMailiOS</string>
                     </navigationItem>
                     <connections>
                         <outlet property="_tableView" destination="ohL-qI-9n2" id="NMG-O5-TrS"/>
+                        <outlet property="_titleView" destination="axE-sd-ZNV" id="XzS-ds-A4u"/>
                         <outlet property="view" destination="9lc-oA-Amo" id="mBo-wm-miL"/>
                     </connections>
                 </viewController>
@@ -805,9 +906,49 @@ Sent from PlanckMailiOS</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moN-kj-eGN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="6iT-qe-hPB"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem id="OOP-8z-vVj">
+                                        <barButtonItem key="backBarButtonItem" title="Back" id="eZL-bu-una"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="oZL-Er-45h">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="xaB-P8-m5D">
+                                            <view key="customView" contentMode="scaleToFill" id="Zje-4o-a1s">
+                                                <rect key="frame" x="174" y="20" width="130" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <toolbar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKJ-6a-Awb">
+                                                        <rect key="frame" x="0.0" y="2" width="130" height="44"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <items>
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="8XY-UI-yAD"/>
+                                                            <barButtonItem image="dots" id="u9l-WQ-fsX">
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </barButtonItem>
+                                                            <barButtonItem systemItem="trash" id="Pmv-Ls-1JU">
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </barButtonItem>
+                                                            <barButtonItem image="archive" id="cXY-iV-bIN">
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </barButtonItem>
+                                                        </items>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </toolbar>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Zv-5q-RKV">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="XC1-ip-BSB">
                                     <rect key="frame" x="10" y="74" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -815,7 +956,7 @@ Sent from PlanckMailiOS</string>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RE: Microsoft acquisitio of productivity app - wunderlist" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwU-Ic-H7M">
                                             <rect key="frame" x="8" y="8" width="274" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sr-v8-HA2">
@@ -921,7 +1062,7 @@ Sent from PlanckMailiOS</string>
                                                                 <constraint firstAttribute="height" constant="21" id="95u-SH-mwo"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbN-9w-TBf">
@@ -972,7 +1113,10 @@ Sent from PlanckMailiOS</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4Zv-5q-RKV" firstAttribute="top" secondItem="kDt-Zh-0jB" secondAttribute="bottom" id="Dtg-7W-lOp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="moN-kj-eGN" secondAttribute="trailing" constant="-16" id="8Bv-H0-iKU"/>
+                            <constraint firstItem="4Zv-5q-RKV" firstAttribute="top" secondItem="moN-kj-eGN" secondAttribute="bottom" id="8v1-Ot-Cgh"/>
+                            <constraint firstItem="moN-kj-eGN" firstAttribute="leading" secondItem="TD4-c4-FHC" secondAttribute="leadingMargin" constant="-16" id="8z7-dh-PI4"/>
+                            <constraint firstItem="moN-kj-eGN" firstAttribute="top" secondItem="kDt-Zh-0jB" secondAttribute="bottom" constant="-20" id="Pch-aq-hfq"/>
                             <constraint firstItem="QtR-MV-KDn" firstAttribute="top" secondItem="4Zv-5q-RKV" secondAttribute="bottom" id="bKK-MT-zSw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Zv-5q-RKV" secondAttribute="trailing" constant="-16" id="hIb-t1-MeD"/>
                             <constraint firstItem="4Zv-5q-RKV" firstAttribute="leading" secondItem="TD4-c4-FHC" secondAttribute="leadingMargin" constant="-16" id="trb-BG-b8P"/>
@@ -986,15 +1130,18 @@ Sent from PlanckMailiOS</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTE-iU-dV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Item" id="dPV-DJ-BgV"/>
             </objects>
             <point key="canvasLocation" x="2420" y="-1674"/>
         </scene>
     </scenes>
     <resources>
+        <image name="archive" width="21" height="21"/>
         <image name="attachedIcon" width="40" height="40"/>
         <image name="calendarIcon" width="21" height="21"/>
         <image name="closeIcon" width="21" height="21"/>
         <image name="createMailIcon" width="42" height="42"/>
+        <image name="dots" width="21" height="21"/>
         <image name="doubleArrowIcon" width="21" height="21"/>
         <image name="filesIcon" width="21" height="21"/>
         <image name="flagIconNormal" width="21" height="21"/>

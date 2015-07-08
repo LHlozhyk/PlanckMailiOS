@@ -42,6 +42,9 @@
     });
     
     _titleLabel.text = _detailMail[@"subject"];
+    
+    
+    self.navigationController.navigationBarHidden 
 }
 
 - (void)didReceiveMemoryWarning {

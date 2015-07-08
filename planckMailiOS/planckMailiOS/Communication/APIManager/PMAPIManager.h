@@ -27,6 +27,10 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                   namespacesId:(NSString *)namespacesId
                     completion:(ExtendedBlockHandler)handle;
 
+- (void)searchMailWithKeyword:(NSString *)keyword
+                 namespacesId:(NSString *)namespacesId
+                   completion:(ExtendedBlockHandler)handler;
+
 - (void)setActiveNamespace:(DBNamespace*)item;
 
 @end

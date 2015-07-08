@@ -9,17 +9,20 @@
 #import <Foundation/Foundation.h>
 
 @interface PMRequest : NSObject
-+ (NSString*)loginWithAppId:(NSString*)appId
++ (NSString*)loginWithAppId:(NSString *)appId
                        mail:(NSString *)mail
                 redirectUri:(NSString *)uri;
 
 + (NSString*)namespaces;
 
-+ (NSString *)inboxMailWithNamespaceId:(NSString*)namespaceId
++ (NSString *)inboxMailWithNamespaceId:(NSString *)namespaceId
                                  limit:(NSUInteger)limit
                                 offset:(NSUInteger)offset;
 
 + (NSString *)messageId:(NSString *)messageId
            namespacesId:(NSString *)namespacesId;
+
++ (NSString *)searchMailWithKeyword:(NSString *)keyword
+                       namespacesId:(NSString *)namespacesId;
 
 @end

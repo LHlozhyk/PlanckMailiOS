@@ -18,13 +18,17 @@
 #import "PMPreviewMailVC.h"
 
 #import "PMMailComposeVC.h"
+#import "PMSearchMailVC.h"
+#import "PMMailTitleView.h"
 
 #define CELL_IDENTIFIER @"mailCell"
 
+IB_DESIGNABLE
 @interface PMMailVC () <UIGestureRecognizerDelegate, SWTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, PMMailMenuViewDelegate> {
     CGFloat _centerX;
     
     __weak IBOutlet UITableView *_tableView;
+    __weak IBOutlet PMMailTitleView *_titleView;
     
     NSString *_currentNamespaeId;
     
@@ -33,10 +37,13 @@
     NSIndexPath *_selectedIndex;
 }
 
+- (IBAction)searchBtnPressed:(id)sender;
 - (IBAction)menuBtnPressed:(id)sender;
 - (IBAction)createMailBtnPressed:(id)sender;
 
 @property(nonatomic, strong) PMMailMenuView *mailMenu;
+
+@property(nonatomic) IBInspectable UIColor *color;
 @end
 
 @implementation PMMailVC
@@ -45,7 +52,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTitle:@"INBOX"];
+    _titleView.title = @"INBOX";
+    
     //[self addGesture];
     _itemMailArray = [NSMutableArray new];
     NSArray *lItemsArray = [[DBManager instance] getNamespaces];
@@ -61,6 +69,10 @@
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
+- (void)setColor:(UIColor *)color {
+    self.view.backgroundColor = color;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -70,6 +82,8 @@
     [super viewWillAppear:animated];
     
     NSArray *lItemsArray = [[DBManager instance] getNamespaces];
+    
+    _titleView.subTitle = ((DBNamespace*)[lItemsArray firstObject]).email_address;
     BOOL lResult = NO;
     for (DBNamespace *item in lItemsArray) {
         if ([_currentNamespaeId isEqualToString:item.namespace_id]) {
@@ -89,7 +103,6 @@
             [self updateMails];
         }
     }
-    
 }
 
 - (void)updateMails {
@@ -101,6 +114,14 @@
 }
 
 #pragma mark - IBAction selectors
+
+- (void)searchBtnPressed:(id)sender {
+    PMSearchMailVC *lNewSearchMailVC = [[PMSearchMailVC alloc] initWithStoryboard];
+    
+    UINavigationController *lNavControler = [[UINavigationController alloc] initWithRootViewController:lNewSearchMailVC];
+    
+    [self.tabBarController presentViewController:lNavControler animated:YES completion:nil];
+}
 
 - (void)menuBtnPressed:(id)sender {
     [self.mailMenu showInView:self.view];
@@ -180,7 +201,7 @@
     
      if ([tableView numberOfRowsInSection:indexPath.section]  - 1 == indexPath.row) {
          
-          cell = (PMLoadMoreTVCell *)[tableView dequeueReusableCellWithIdentifier:@"loadMoreCell"];
+         cell = (PMLoadMoreTVCell *)[tableView dequeueReusableCellWithIdentifier:@"loadMoreCell"];
          [(PMLoadMoreTVCell*)cell show];
      } else {
          cell = (PMMailTVCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
@@ -262,6 +283,7 @@
     if (![item.namespace_id isEqualToString:_currentNamespaeId]) {
         _offesetMails = 0;
         _currentNamespaeId = item.namespace_id;
+        _titleView.subTitle = item.email_address;
         [[PMAPIManager shared] setActiveNamespace:item];
         [_itemMailArray removeAllObjects];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
