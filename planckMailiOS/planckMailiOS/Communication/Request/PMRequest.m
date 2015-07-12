@@ -27,7 +27,7 @@
 }
 
 + (NSString *)messageId:(NSString *)messageId namespacesId:(NSString *)namespacesId {
-    return [NSString stringWithFormat:@"%@/n/%@/messages/%@", APP_SERVER_LINK, namespacesId, messageId];
+    return [NSString stringWithFormat:@"%@/n/%@/messages?thread_id=%@", APP_SERVER_LINK, namespacesId, messageId];
 }
 
 + (NSString *)searchMailWithKeyword:(NSString *)keyword namespacesId:(NSString *)namespacesId {

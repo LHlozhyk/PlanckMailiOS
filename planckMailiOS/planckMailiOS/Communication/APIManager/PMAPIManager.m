@@ -84,7 +84,7 @@
             lNewItem.snippet = item[@"snippet"];
             lNewItem.subject = item[@"subject"];
             lNewItem.namespaceId = item[@"namespace_id"];
-            lNewItem.messageId = item[@"message_ids"][0];
+            lNewItem.messageId = item[@"id"];
             
             [lResultItems addObject:lNewItem];
             

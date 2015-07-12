@@ -10,6 +10,7 @@
 
 #import "PMPreviewMailTVCell.h"
 #import "PMMailComposeVC.h"
+#import "PMMessageModel.h"
 
 @interface PMPreviewMailVC () <UITableViewDelegate, UITableViewDataSource> {
     __weak IBOutlet UITableView *_tableView;
@@ -42,15 +43,13 @@
         lRect;
     });
     
-    _titleLabel.text = _detailMail[@"subject"];
-    
+    //_titleLabel.text = _detailMail[@"subject"];
     
     self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - IBAction selectors
@@ -90,7 +89,8 @@
 //        lTableViewCell = [[PMPreviewMailTVCell alloc] crea];
 //    }
     //lTableViewCell.textLabel.text = @"dfdf";
-    [lTableViewCell updateCellWithInfo:_detailMail];
+    NSDictionary *lItem = _messages[indexPath.row];
+    [lTableViewCell updateCellWithInfo:lItem];
     return lTableViewCell;
 }
 
@@ -103,7 +103,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return _messages.count;
 }
 
 #pragma mark - UITableView delegates

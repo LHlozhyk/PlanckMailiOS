@@ -85,8 +85,7 @@
     } else if (indexPath.row == 3) {
         lCell = [tableView dequeueReusableCellWithIdentifier:@"TextViewCell"];
     }
-    
-    
+
     return lCell;
 }
 

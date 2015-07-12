@@ -10,5 +10,5 @@
 #import "UIViewController+PMStoryboard.h"
 
 @interface PMPreviewMailVC : UIViewController
-@property(nonatomic, strong) NSDictionary *detailMail;
+@property(nonatomic, strong) NSArray *messages;
 @end
