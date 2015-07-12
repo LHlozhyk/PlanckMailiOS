@@ -10,11 +10,15 @@
 
 #import "PMAPIManager.h"
 #import "PMMailTVCell.h"
+#import "PMPreviewMailVC.h"
+#import "MBProgressHUD.h"
+
+#define CELL_IDENTIFIER @"mailCell"
 
 @interface PMSearchMailVC () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
     UISearchBar *_searchBar;
     NSMutableArray *_itemsArray;
-    
+    __weak IBOutlet UITableView *_tableView;
     IBOutlet NSLayoutConstraint *_tableViewConstraintBottom;
 }
 - (void)keyboardWillShow:(NSNotification *)notification;
@@ -40,6 +44,17 @@
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -61,9 +76,19 @@
     [self.view layoutIfNeeded];
 }
 
+- (void)keyboardWillHide:(NSNotification *)notification {
+    _tableViewConstraintBottom.constant = 0;
+    [self.view layoutIfNeeded];
+}
+
 - (void)startSearchWithEmail:(NSString *)email {
-    [[PMAPIManager shared] searchMailWithKeyword:email namespacesId:@"3qcfrz797tl4hj2kvsr2dbfgu" completion:^(id data, id error, BOOL success) {
-        
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[PMAPIManager shared] searchMailWithKeyword:email namespacesId:[[PMAPIManager shared] namespaceId] completion:^(id data, id error, BOOL success) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        _itemsArray = data;
+        [_tableView reloadData];
     }];
 }
 
@@ -81,17 +106,45 @@
 #pragma mark - UITableView data source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+   PMMailTVCell* cell = (PMMailTVCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+    
+    if (cell == nil) {
+        cell = [[PMMailTVCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_IDENTIFIER];
+    }
+    PMInboxMailModel *lItem = [_itemsArray objectAtIndex:indexPath.row];
+    [(PMMailTVCell *)cell updateWithModel:lItem];
+    
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return _itemsArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat lHeight = 90;
+    if (_itemsArray.count == indexPath.row) {
+        lHeight = 40;
+    }
+    return  lHeight;
 }
 
 #pragma mark - UITableView delegates
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    PMPreviewMailVC *lNewMailPreviewVC = [[PMPreviewMailVC alloc] initWithStoryboard];
+
+    PMInboxMailModel *lSelectedModel = _itemsArray[indexPath.row];
+    lNewMailPreviewVC.inboxMailModel = lSelectedModel;
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId namespacesId:lSelectedModel.namespaceId completion:^(id data, id error, BOOL success) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        NSLog(@"data - %@", data);
+        lNewMailPreviewVC.messages = data;
+        [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
+    }];
 }
 
 @end

@@ -111,10 +111,27 @@
     OPDataLoader *lDataLoader = [OPDataLoader new];
     [lDataLoader loadUrlWithGETMethod:[PMRequest searchMailWithKeyword:keyword namespacesId:namespacesId]  handler:^(NSData *loadData, NSError *error, BOOL success) {
         NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
+        NSLog(@"User ID is   %@ in - %s", response, __PRETTY_FUNCTION__);
+        
         NSError *errorJson = nil;
         NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
-        NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
-        handler(lResponse, error, success);
+        NSArray *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
+        
+        NSMutableArray *lResultItems = [NSMutableArray new];
+        for (NSDictionary *item in lResponse) {
+            
+            PMInboxMailModel *lNewItem = [PMInboxMailModel new];
+            lNewItem.ownerName = [item[@"participants"] firstObject][@"name"];
+            lNewItem.snippet = item[@"snippet"];
+            lNewItem.subject = item[@"subject"];
+            lNewItem.namespaceId = item[@"namespace_id"];
+            lNewItem.messageId = item[@"id"];
+            
+            
+            [lResultItems addObject:lNewItem];
+            
+        }
+        handler(lResultItems, nil, YES);
     }];
 }
 
@@ -142,6 +159,7 @@
 
 - (void)setActiveNamespace:(DBNamespace *)item {
     SAVE_VALUE(item.token, TOKEN);
+    _namespaceId = item.namespace_id;
 }
 
 #pragma mark - Private methods

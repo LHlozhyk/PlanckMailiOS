@@ -614,6 +614,88 @@ Sent from PlanckMailiOS</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mailCell" rowHeight="90" id="bFO-O9-BOk" customClass="PMMailTVCell">
+                                        <rect key="frame" x="0.0" y="239" width="320" height="90"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bFO-O9-BOk" id="Ehg-7n-qxW">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Raj Kumar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzi-Mj-2UJ">
+                                                    <rect key="frame" x="24" y="8" width="239" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="x9s-mJ-dk6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHw-V3-Zjz">
+                                                    <rect key="frame" x="264" y="8" width="48" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="axB-5E-sJf"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="link to Zero Mail Feed App :https://itunes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaF-bg-EiT">
+                                                    <rect key="frame" x="24" y="25" width="288" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lik to Zero Mail Feed App : https://itunes.apple.com/us/app/zero-inbox-zero-" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCI-B0-ifY">
+                                                    <rect key="frame" x="24" y="44" width="288" height="37"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attachedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="HYj-FS-8D0">
+                                                    <rect key="frame" x="0.0" y="9" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="k14-im-9Me"/>
+                                                        <constraint firstAttribute="height" constant="20" id="nNQ-ds-myp"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="replyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nwS-g6-A1Z">
+                                                    <rect key="frame" x="0.0" y="26" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="9MI-xx-IbM"/>
+                                                        <constraint firstAttribute="width" constant="20" id="KXN-D6-E12"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iHw-V3-Zjz" firstAttribute="leading" secondItem="nzi-Mj-2UJ" secondAttribute="trailing" constant="1" id="3AW-DC-lOG"/>
+                                                <constraint firstItem="CCI-B0-ifY" firstAttribute="leading" secondItem="Ehg-7n-qxW" secondAttribute="leadingMargin" constant="16" id="6VM-Xv-kmy"/>
+                                                <constraint firstItem="nwS-g6-A1Z" firstAttribute="top" secondItem="Ehg-7n-qxW" secondAttribute="topMargin" constant="18" id="745-rx-Zvp"/>
+                                                <constraint firstItem="nwS-g6-A1Z" firstAttribute="bottom" secondItem="VaF-bg-EiT" secondAttribute="bottom" id="9PI-rD-nWK"/>
+                                                <constraint firstItem="nzi-Mj-2UJ" firstAttribute="top" secondItem="Ehg-7n-qxW" secondAttribute="topMargin" id="Ebh-Ea-anp"/>
+                                                <constraint firstItem="nzi-Mj-2UJ" firstAttribute="leading" secondItem="HYj-FS-8D0" secondAttribute="trailing" constant="4" id="JsJ-v4-ipd"/>
+                                                <constraint firstItem="iHw-V3-Zjz" firstAttribute="top" secondItem="Ehg-7n-qxW" secondAttribute="topMargin" id="NPE-S6-mrg"/>
+                                                <constraint firstItem="VaF-bg-EiT" firstAttribute="trailing" secondItem="Ehg-7n-qxW" secondAttribute="trailingMargin" id="Nuo-F2-6QT"/>
+                                                <constraint firstItem="nwS-g6-A1Z" firstAttribute="leading" secondItem="Ehg-7n-qxW" secondAttribute="leadingMargin" constant="-8" id="UnI-a1-iI6"/>
+                                                <constraint firstItem="HYj-FS-8D0" firstAttribute="leading" secondItem="nwS-g6-A1Z" secondAttribute="trailing" constant="-20" id="Yn7-aL-HRh"/>
+                                                <constraint firstItem="VaF-bg-EiT" firstAttribute="leading" secondItem="nwS-g6-A1Z" secondAttribute="trailing" constant="4" id="aVd-Dj-SIB"/>
+                                                <constraint firstItem="CCI-B0-ifY" firstAttribute="top" secondItem="VaF-bg-EiT" secondAttribute="bottom" constant="-2" id="cEC-sE-3TB"/>
+                                                <constraint firstItem="VaF-bg-EiT" firstAttribute="top" secondItem="nzi-Mj-2UJ" secondAttribute="bottom" constant="-4" id="d7W-hb-Jb4"/>
+                                                <constraint firstItem="VaF-bg-EiT" firstAttribute="top" secondItem="iHw-V3-Zjz" secondAttribute="bottom" constant="-4" id="juA-PL-Nlp"/>
+                                                <constraint firstItem="iHw-V3-Zjz" firstAttribute="trailing" secondItem="Ehg-7n-qxW" secondAttribute="trailingMargin" id="koU-o3-qhB"/>
+                                                <constraint firstItem="HYj-FS-8D0" firstAttribute="top" secondItem="Ehg-7n-qxW" secondAttribute="topMargin" constant="1" id="lyz-XL-IlF"/>
+                                                <constraint firstItem="CCI-B0-ifY" firstAttribute="bottom" secondItem="Ehg-7n-qxW" secondAttribute="bottomMargin" id="rgm-wK-p50"/>
+                                                <constraint firstItem="HYj-FS-8D0" firstAttribute="leading" secondItem="Ehg-7n-qxW" secondAttribute="leadingMargin" constant="-8" id="v8K-jW-SXL"/>
+                                                <constraint firstItem="CCI-B0-ifY" firstAttribute="trailing" secondItem="Ehg-7n-qxW" secondAttribute="trailingMargin" id="zjT-bq-eJn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="_attachedFileImageView" destination="HYj-FS-8D0" id="KCF-hF-9X1"/>
+                                            <outlet property="_personNameLabel" destination="nzi-Mj-2UJ" id="mwp-Up-8Y2"/>
+                                            <outlet property="_replyImageView" destination="nwS-g6-A1Z" id="Z1E-jt-kyt"/>
+                                            <outlet property="_titleNameLabel" destination="VaF-bg-EiT" id="VQX-AM-FWN"/>
+                                            <outlet property="descriptionLabel" destination="CCI-B0-ifY" id="sOC-cd-Ndb"/>
+                                            <outlet property="timeLabel" destination="iHw-V3-Zjz" id="GIB-bc-8Dh"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="40" id="ynd-85-1KD" customClass="PMLoadMoreTVCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -635,6 +717,10 @@ Sent from PlanckMailiOS</string>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="N2t-t6-FSs" id="a4N-G5-QMp"/>
+                                    <outlet property="delegate" destination="N2t-t6-FSs" id="lN8-DT-CW0"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -646,6 +732,7 @@ Sent from PlanckMailiOS</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="_tableView" destination="Gu2-dn-emu" id="GwS-Hg-mb3"/>
                         <outlet property="_tableViewConstraintBottom" destination="s6D-lN-z8y" id="cty-RX-Lgf"/>
                     </connections>
                 </viewController>
