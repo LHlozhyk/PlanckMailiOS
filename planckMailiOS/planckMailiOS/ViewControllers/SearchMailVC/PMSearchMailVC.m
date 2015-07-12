@@ -21,7 +21,9 @@
     __weak IBOutlet UITableView *_tableView;
     IBOutlet NSLayoutConstraint *_tableViewConstraintBottom;
 }
+
 - (void)keyboardWillShow:(NSNotification *)notification;
+
 @end
 
 @implementation PMSearchMailVC
@@ -53,7 +55,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     self.navigationController.navigationBarHidden = NO;
 }
 
