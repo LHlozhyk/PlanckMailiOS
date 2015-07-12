@@ -90,7 +90,6 @@
             
         }
         handler(lResultItems, nil, YES);
-        
     }];
 }
 
