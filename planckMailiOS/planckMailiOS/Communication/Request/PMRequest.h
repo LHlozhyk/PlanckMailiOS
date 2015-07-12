@@ -25,4 +25,7 @@
 + (NSString *)searchMailWithKeyword:(NSString *)keyword
                        namespacesId:(NSString *)namespacesId;
 
++ (NSString *)deleteMailWithThreadId:(NSString *)threadId
+                        namespacesId:(NSString *)namespacesId;
+
 @end

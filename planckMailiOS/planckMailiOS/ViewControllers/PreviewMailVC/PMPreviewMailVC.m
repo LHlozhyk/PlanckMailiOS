@@ -11,8 +11,9 @@
 #import "PMPreviewMailTVCell.h"
 #import "PMMailComposeVC.h"
 #import "PMMessageModel.h"
+#import "PMAPIManager.h"
 
-@interface PMPreviewMailVC () <UITableViewDelegate, UITableViewDataSource> {
+@interface PMPreviewMailVC () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
     __weak IBOutlet UITableView *_tableView;
     __weak IBOutlet UILabel *_titleLabel;
     __weak IBOutlet NSLayoutConstraint *_titleHeightConstraint;
@@ -21,10 +22,13 @@
     NSInteger _cellHeight;
 }
 
+- (IBAction)deleteMailBtnPressed:(id)sender;
+- (IBAction)archiveMailBtnPressed:(id)sender;
 - (IBAction)replyBtnPressed:(id)sender;
 - (IBAction)backBtnPressed:(id)sender;
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
+
 @end
 
 @implementation PMPreviewMailVC
@@ -43,7 +47,7 @@
         lRect;
     });
     
-    //_titleLabel.text = _detailMail[@"subject"];
+    _titleLabel.text = _inboxMailModel.subject;
     
     self.navigationController.navigationBarHidden = YES;
 }
@@ -61,6 +65,18 @@
 - (void)replyBtnPressed:(id)sender {
     PMMailComposeVC *lNewMailComposeVC = [[PMMailComposeVC alloc] initWithStoryboard];
     [self.tabBarController.navigationController presentViewController:lNewMailComposeVC animated:YES completion:nil];
+}
+
+- (void)deleteMailBtnPressed:(id)sender {
+    UIAlertView *lNewAlert = [[UIAlertView alloc] initWithTitle:@"Delete message" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    lNewAlert.tag = 0;
+    [lNewAlert show];
+}
+
+- (void)archiveMailBtnPressed:(id)sender {
+   UIAlertView *lNewAlert = [[UIAlertView alloc] initWithTitle:@"Archive message" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    lNewAlert.tag = 1;
+    [lNewAlert show];
 }
 
 #pragma mark - Private methods
@@ -85,10 +101,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PMPreviewMailTVCell *lTableViewCell = (PMPreviewMailTVCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PMPreviewMailTVCell class])];
     
-//    if (lTableViewCell == nil) {
-//        lTableViewCell = [[PMPreviewMailTVCell alloc] crea];
-//    }
-    //lTableViewCell.textLabel.text = @"dfdf";
     NSDictionary *lItem = _messages[indexPath.row];
     [lTableViewCell updateCellWithInfo:lItem];
     return lTableViewCell;
@@ -97,7 +109,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([_currentSelectedArray containsObject:indexPath]) {
-        
         return _cellHeight;
     } else return 80;
 }
@@ -110,6 +121,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if ([_currentSelectedArray containsObject:indexPath]) {
         [_currentSelectedArray removeObject:indexPath];
         [tableView reloadRowsAtIndexPaths:_currentSelectedArray withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -118,6 +130,40 @@
         _cellHeight = [myCell height];
         [_currentSelectedArray addObject:indexPath];
         [tableView reloadRowsAtIndexPaths:_currentSelectedArray withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+#pragma mark - UIAlertView delegate 
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        
+        switch (alertView.tag) {
+            case 0: {
+                [[PMAPIManager shared] deleteMailWithThreadId:_inboxMailModel.messageId namespacesId:_inboxMailModel.namespaceId completion:^(id data, id error, BOOL success) {
+                    
+                    NSLog(@"deleteMailWithThreadId - %@", data);
+                    if (_delegate && [_delegate respondsToSelector:@selector(PMPreviewMailVCDelegateAction:mail:)]) {
+                        [_delegate PMPreviewMailVCDelegateAction:PMPreviewMailVCTypeActionDelete mail:_inboxMailModel];
+                    }
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+                break;
+            }
+            case 1: {
+                [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel.messageId namespacesId:_inboxMailModel.namespaceId completion:^(id data, id error, BOOL success) {
+                    
+                    NSLog(@"archiveMailWithThreadId - %@", data);
+                    if (_delegate && [_delegate respondsToSelector:@selector(PMPreviewMailVCDelegateAction:mail:)]) {
+                        [_delegate PMPreviewMailVCDelegateAction:PMPreviewMailVCTypeActionArchive mail:_inboxMailModel];
+                    }
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+                break;
+            }
+            default:
+                break;
+        }
     }
 }
 

@@ -924,7 +924,7 @@ Sent from PlanckMailiOS</string>
                                                 <rect key="frame" x="174" y="20" width="130" height="43"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yyr-TN-0Cc" userLabel="dotsBtn">
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yyr-TN-0Cc" userLabel="dotsBtn">
                                                         <rect key="frame" x="0.0" y="7" width="32" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="32" id="5s1-W8-s3D"/>
@@ -943,6 +943,9 @@ Sent from PlanckMailiOS</string>
                                                         <state key="normal" image="trashIcon">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="deleteMailBtnPressed:" destination="ccR-rO-z97" eventType="touchUpInside" id="Tgl-Ye-o7b"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smz-1w-750" userLabel="urchiveBtn">
                                                         <rect key="frame" x="98" y="7" width="32" height="32"/>
@@ -953,6 +956,9 @@ Sent from PlanckMailiOS</string>
                                                         <state key="normal" image="archive">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="archiveMailBtnPressed:" destination="ccR-rO-z97" eventType="touchUpInside" id="vav-kw-VYQ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

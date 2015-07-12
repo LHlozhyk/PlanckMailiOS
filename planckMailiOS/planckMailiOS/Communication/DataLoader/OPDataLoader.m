@@ -89,7 +89,6 @@
     [self startLoadWithRequest:lRequest];
 }
 
-
 - (void)loadUrlWithPOSTMethod:(NSString *)strUrl
                JSONStringParameters:(NSString*)jsonSting
                 authorization:(NSString *)authorization
@@ -106,6 +105,28 @@
                                                     @"Authorization":authorization,
                                                     @"Content-Length":lPostLength}
                                          HTTPBody:lPostData];
+    [self startLoadWithRequest:lRequest];
+}
+
+- (void)loadUrlWithPUTMethod:(NSString *)strUrl
+               JSONParameters:(NSDictionary *)jsonDic
+                      handler:(GetDataLoaderHandler)handler {
+    
+    self.OnGetDataLoader = handler;
+    
+    NSError *error;
+    NSData *lPostData = [NSJSONSerialization dataWithJSONObject:jsonDic
+                                                        options:NSJSONWritingPrettyPrinted
+                                                          error:&error];
+    
+    NSString *lRequestData = [[NSString alloc] initWithData:lPostData encoding:NSUTF8StringEncoding];
+    NSString *lPostLength = [NSString stringWithFormat:@"%lu",(unsigned long)[lRequestData length]];
+    
+    NSURLRequest *lRequest = [self requestWithURL:[NSURL URLWithString:strUrl]
+                                       HTTPMethod:@"PUT"
+                                       HTTPHeader:@{@"Content-Type":@"application/json",
+                                                    @"Content-Length":lPostLength}
+                                         HTTPBody:[lRequestData dataUsingEncoding:NSUTF8StringEncoding]];
     [self startLoadWithRequest:lRequest];
 }
 

@@ -34,5 +34,8 @@
     return [NSString stringWithFormat:@"%@/n/%@/threads?any_email=%@", APP_SERVER_LINK, namespacesId, keyword];
 }
 
++ (NSString *)deleteMailWithThreadId:(NSString *)threadId namespacesId:(NSString *)namespacesId {
+    return [NSString stringWithFormat:@"%@/n/%@/threads/%@", APP_SERVER_LINK, namespacesId, threadId];
+}
 
 @end

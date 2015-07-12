@@ -31,6 +31,14 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                  namespacesId:(NSString *)namespacesId
                    completion:(ExtendedBlockHandler)handler;
 
+- (void)deleteMailWithThreadId:(NSString *)threadId
+                  namespacesId:(NSString *)namespacesId
+                    completion:(ExtendedBlockHandler)handler;
+
+- (void)archiveMailWithThreadId:(NSString *)threadId
+                   namespacesId:(NSString *)namespacesId
+                     completion:(ExtendedBlockHandler)handler;
+
 - (void)setActiveNamespace:(DBNamespace*)item;
 
 @end

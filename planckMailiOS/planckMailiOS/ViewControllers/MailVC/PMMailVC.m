@@ -24,7 +24,7 @@
 #define CELL_IDENTIFIER @"mailCell"
 
 IB_DESIGNABLE
-@interface PMMailVC () <UIGestureRecognizerDelegate, SWTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, PMMailMenuViewDelegate> {
+@interface PMMailVC () <UIGestureRecognizerDelegate, SWTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, PMMailMenuViewDelegate, PMPreviewMailVCDelegate> {
     CGFloat _centerX;
     
     __weak IBOutlet UITableView *_tableView;
@@ -248,7 +248,9 @@ IB_DESIGNABLE
         _selectedIndex = indexPath;
         
         PMPreviewMailVC *lNewMailPreviewVC = [[PMPreviewMailVC alloc] initWithStoryboard];
+        lNewMailPreviewVC.delegate = self;
         PMInboxMailModel *lSelectedModel = _itemMailArray[_selectedIndex.row];
+        lNewMailPreviewVC.inboxMailModel = lSelectedModel;
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
@@ -259,6 +261,13 @@ IB_DESIGNABLE
             [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
         }];
     }
+}
+
+#pragma mark - PMPreviewMailVC delegate
+
+- (void)PMPreviewMailVCDelegateAction:(PMPreviewMailVCTypeAction)typeAction mail:(PMInboxMailModel *)model {
+    [_itemMailArray removeObject:model];
+    [_tableView reloadData];
 }
 
 #pragma mark - SWTableView delegates

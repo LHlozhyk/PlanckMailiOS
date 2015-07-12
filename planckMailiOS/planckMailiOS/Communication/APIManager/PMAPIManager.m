@@ -86,6 +86,7 @@
             lNewItem.namespaceId = item[@"namespace_id"];
             lNewItem.messageId = item[@"id"];
             
+            
             [lResultItems addObject:lNewItem];
             
         }
@@ -109,6 +110,28 @@
 
     OPDataLoader *lDataLoader = [OPDataLoader new];
     [lDataLoader loadUrlWithGETMethod:[PMRequest searchMailWithKeyword:keyword namespacesId:namespacesId]  handler:^(NSData *loadData, NSError *error, BOOL success) {
+        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
+        NSError *errorJson = nil;
+        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
+        NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
+        handler(lResponse, error, success);
+    }];
+}
+
+- (void)deleteMailWithThreadId:(NSString *)threadId namespacesId:(NSString *)namespacesId completion:(ExtendedBlockHandler)handler {
+    OPDataLoader *lDataLoader = [OPDataLoader new];
+    [lDataLoader loadUrlWithPUTMethod:[PMRequest deleteMailWithThreadId:threadId namespacesId:namespacesId] JSONParameters:@{@"add_tags":@[@"trash"]} handler:^(NSData *loadData, NSError *error, BOOL success) {
+        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
+        NSError *errorJson = nil;
+        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
+        NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
+        handler(lResponse, error, success);
+    }];
+}
+
+- (void)archiveMailWithThreadId:(NSString *)threadId namespacesId:(NSString *)namespacesId completion:(ExtendedBlockHandler)handler {
+    OPDataLoader *lDataLoader = [OPDataLoader new];
+    [lDataLoader loadUrlWithPUTMethod:[PMRequest deleteMailWithThreadId:threadId namespacesId:namespacesId] JSONParameters:@{@"add_tags":@[@"archive"]} handler:^(NSData *loadData, NSError *error, BOOL success) {
         NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
         NSError *errorJson = nil;
         NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];

@@ -38,4 +38,8 @@ typedef void (^GetDataLoaderHandler)(NSData *loadData, NSError *error, BOOL succ
 
 - (void)loadUrlWithPOSTMethod:(NSString *)strUrl JSONStringParameters:(NSString*)jsonSting authorization:(NSString *)authorization handler:(GetDataLoaderHandler)handler;
 
+- (void)loadUrlWithPUTMethod:(NSString *)strUrl
+              JSONParameters:(NSDictionary *)jsonDic
+                     handler:(GetDataLoaderHandler)handlerl;
+
 @end
