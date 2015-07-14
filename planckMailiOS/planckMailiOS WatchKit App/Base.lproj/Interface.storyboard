@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <table alignment="left" id="PeK-x3-ILJ">
+                            <items>
+                                <tableRow identifier="plainType" id="wlC-sT-qZJ" customClass="WKPlainRow">
+                                    <group key="rootItem" width="1" alignment="left" id="BUY-9B-9bx">
+                                        <items>
+                                            <label alignment="right" verticalAlignment="center" text="10" textAlignment="right" id="A0N-uH-59Y"/>
+                                            <label width="101" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="AFw-p6-IHq"/>
+                                        </items>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="titleLable" destination="AFw-p6-IHq" id="7vC-xF-jAE"/>
+                                        <outlet property="unreadLable" destination="A0N-uH-59Y" id="LIR-AZ-yBa"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableView" destination="PeK-x3-ILJ" id="mCQ-i0-oo9"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--emailListController-->
+        <scene sceneID="bNc-xC-MJB">
+            <objects>
+                <controller identifier="emailListController" id="2LA-rQ-Xva" customClass="WKEmailListController">
+                    <items>
+                        <table alignment="left" id="REJ-3i-4sm">
+                            <items>
+                                <tableRow identifier="emailType" id="7iv-ML-Eap" customClass="WKEmailRow">
+                                    <group key="rootItem" width="1" height="76.5" alignment="left" layout="vertical" id="G2r-zn-11b">
+                                        <items>
+                                            <group width="1" alignment="left" id="O5s-Ry-Sfd">
+                                                <items>
+                                                    <imageView width="15" height="15" alignment="left" verticalAlignment="center" hidden="YES" image="unread_indicator.png" id="MMw-h8-i63"/>
+                                                    <label width="1" widthAdjustment="-7" height="15.5" alignment="left" verticalAlignment="center" text="Label" id="dAu-8u-fvp">
+                                                        <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <group width="1" alignment="left" layout="vertical" id="G8z-Ab-PiA">
+                                                <items>
+                                                    <label width="1" alignment="left" text="Label" id="CP6-51-tEy">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                    </label>
+                                                    <label width="1" alignment="left" verticalAlignment="bottom" text="Label" textAlignment="right" id="oeE-1P-4zk">
+                                                        <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="dateLabel" destination="oeE-1P-4zk" id="QmR-8K-LLw"/>
+                                        <outlet property="subjectLabel" destination="CP6-51-tEy" id="DGv-YT-bqq"/>
+                                        <outlet property="titleLabel" destination="dAu-8u-fvp" id="q30-Mt-1DW"/>
+                                        <outlet property="unreadIndicator" destination="MMw-h8-i63" id="fO5-sI-Db7"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableView" destination="REJ-3i-4sm" id="tUP-TD-CNc"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="449" y="345"/>
+        </scene>
+        <!--emailController-->
+        <scene sceneID="9AO-tj-UcN">
+            <objects>
+                <controller identifier="emailController" id="2ko-XT-grL" customClass="WKEmailController"/>
+            </objects>
+            <point key="canvasLocation" x="637" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label height="22.5" alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>
