@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Notification - planckMailiOS WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>planckMailiOS WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>planckMailiOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>842E2FFC1AFEB13400B0C8DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C3FF0E5D1B5596880041B70E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
