@@ -12,4 +12,5 @@
 @interface PMPreviewMailTVCell : UITableViewCell
 - (void)updateCellWithInfo:(NSDictionary *)dataInfo;
 - (NSInteger)height;
+
 @end

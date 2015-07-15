@@ -28,6 +28,7 @@
 - (IBAction)backBtnPressed:(id)sender;
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
+@property (nonatomic, strong) PMPreviewMailTVCell *prototypeCell;
 
 @end
 
@@ -50,6 +51,12 @@
     _titleLabel.text = _inboxMailModel.subject;
     
     self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSIndexPath *lIndex = [NSIndexPath indexPathForRow:_messages.count - 1 inSection:0];
+    [self tableView:_tableView didSelectRowAtIndexPath:lIndex];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +88,16 @@
 
 #pragma mark - Private methods
 
+- (PMPreviewMailTVCell *)prototypeCell {
+    if (_prototypeCell == nil) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            _prototypeCell = (PMPreviewMailTVCell *)[_tableView dequeueReusableCellWithIdentifier:NSStringFromClass([PMPreviewMailTVCell class])];
+        });
+    }
+    return _prototypeCell;
+}
+
 - (CGFloat)getLabelHeight:(UILabel*)label {
     CGSize constraint = CGSizeMake(label.frame.size.width, 20000.0f);
     CGSize size;
@@ -103,11 +120,12 @@
     
     NSDictionary *lItem = _messages[indexPath.row];
     [lTableViewCell updateCellWithInfo:lItem];
+    
     return lTableViewCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+   
     if ([_currentSelectedArray containsObject:indexPath]) {
         return _cellHeight;
     } else return 80;
@@ -124,11 +142,14 @@
     
     if ([_currentSelectedArray containsObject:indexPath]) {
         [_currentSelectedArray removeObject:indexPath];
+        //NSArray *lIndexPathObjects = [_currentSelectedArray allObjects];
         [tableView reloadRowsAtIndexPaths:_currentSelectedArray withRowAnimation:UITableViewRowAnimationAutomatic];
     } else {
-        PMPreviewMailTVCell *myCell = (PMPreviewMailTVCell *)[_tableView cellForRowAtIndexPath:indexPath];
-        _cellHeight = [myCell height];
         [_currentSelectedArray addObject:indexPath];
+        PMPreviewMailTVCell *myCell = (PMPreviewMailTVCell *)[_tableView cellForRowAtIndexPath:indexPath];
+
+        _cellHeight = [myCell height];
+        
         [tableView reloadRowsAtIndexPaths:_currentSelectedArray withRowAnimation:UITableViewRowAnimationFade];
     }
 }
