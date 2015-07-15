@@ -52,22 +52,22 @@
   
   NSArray *emails = @[[PMEmailContainer initWithTitle:@"Apple"
                                               subject:@"ololo"
-                                                 text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between \"a system as the ability of the speakers to communicate using verbal and gestural signs\" and \"text being understood as the product of this ability\" is more fitting for the language-definition as separated into \"langue\" and \"parole\" (french) like deSaussure did."
+                                                 text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between (french) like deSaussure did."
                                                  date:nil
                                              isUnread:NO],
                       [PMEmailContainer initWithTitle:@"Dima"
                                               subject:@"sd vsd v"
-                                                 text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between \"a system as the ability of the speakers to communicate using verbal and gestural signs\" and \"text being understood as the product of this ability\" is more fitting for the language-definition as separated into \"langue\" and \"parole\" (french) like deSaussure did."
+                                                 text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between a system as the ability of the speakers to communicate using verbal and gestural signstext being understood as the product of this ability is more fitting for the language-definition as separated into  like deSaussure did."
                                                  date:nil
                                              isUnread:YES],
                       [PMEmailContainer initWithTitle:@"Lybomyr"
                                               subject:@"s dv dfv "
-                                                 text:@""
+                                                 text:@"e. Your differenciation between a system as the ability of the speakers to communicate using verbal and gestural signs and text being understood as the product of this ability is more fitting f"
                                                  date:nil
                                              isUnread:NO],
                       [PMEmailContainer initWithTitle:@"Raj"
                                               subject:@"sdfvsdf sdf vsd"
-                                                 text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between \"a system as the ability of the speakers to communicate using verbal and gestural signs\" and \"text being understood as the product of this ability\" is more fitting for the language-definition as separated into \"langue\" and \"parole\" (french) like deSaussure did."
+                                                 text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between a system as the ability of the speakers to communicate using verbal and gestural signs and text being understood as the product of this ability is more fitting for the language-definition as separated into langue and parole (french) like deSaussure did."
                                                  date:nil
                                              isUnread:YES]];
   [context setObject:emails forKey:CONTENT];

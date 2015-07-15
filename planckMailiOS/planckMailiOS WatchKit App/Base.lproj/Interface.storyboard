@@ -45,10 +45,10 @@
                                 <tableRow identifier="emailType" id="7iv-ML-Eap" customClass="WKEmailRow">
                                     <group key="rootItem" width="1" height="76.5" alignment="left" layout="vertical" id="G2r-zn-11b">
                                         <items>
-                                            <group width="1" alignment="left" id="O5s-Ry-Sfd">
+                                            <group width="1" height="21.5" alignment="left" id="O5s-Ry-Sfd">
                                                 <items>
                                                     <imageView width="15" height="15" alignment="left" verticalAlignment="center" hidden="YES" image="unread_indicator.png" id="MMw-h8-i63"/>
-                                                    <label width="1" widthAdjustment="-7" height="15.5" alignment="left" verticalAlignment="center" text="Label" id="dAu-8u-fvp">
+                                                    <label width="1" widthAdjustment="-7" height="19.5" alignment="left" verticalAlignment="center" text="Label" id="dAu-8u-fvp">
                                                         <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                                     </label>
                                                 </items>
@@ -85,7 +85,29 @@
         <!--emailController-->
         <scene sceneID="9AO-tj-UcN">
             <objects>
-                <controller identifier="emailController" id="2ko-XT-grL" customClass="WKEmailController"/>
+                <controller identifier="emailController" id="2ko-XT-grL" customClass="WKEmailController">
+                    <items>
+                        <label width="1" alignment="left" text="Label" id="L5k-cy-9Uu">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <label width="1" alignment="left" text="Label" id="lsJ-qw-zSx">
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                        </label>
+                        <label width="1" alignment="left" text="Label" textAlignment="right" id="10M-le-pej">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <separator alignment="left" id="xLh-v0-mIN">
+                            <color key="color" red="0.0" green="0.013395852052074275" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                        </separator>
+                        <label width="1" alignment="left" text="Label" numberOfLines="0" minimumScaleFactor="0.70000000000000007" id="7Q9-UZ-Zat"/>
+                    </items>
+                    <connections>
+                        <outlet property="dateLabel" destination="10M-le-pej" id="Zaf-CY-hBq"/>
+                        <outlet property="subjectLabel" destination="lsJ-qw-zSx" id="QlO-n4-P8i"/>
+                        <outlet property="textLabel" destination="7Q9-UZ-Zat" id="UMe-D0-dRh"/>
+                        <outlet property="titleLabel" destination="L5k-cy-9Uu" id="eAK-6f-kDk"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="637" y="345"/>
         </scene>
