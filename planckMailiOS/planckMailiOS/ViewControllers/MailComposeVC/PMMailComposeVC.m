@@ -93,6 +93,12 @@
     return 4;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 3) {
+        return 1000;
+    } else return 44;
+}
+
 #pragma mark - UITableView delegates
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
