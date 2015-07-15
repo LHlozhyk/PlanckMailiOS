@@ -9,7 +9,13 @@
 #import "WKEmailController.h"
 #import "PMEmailContainer.h"
 
-@interface WKEmailController ()
+#define SEGUE_GO_TO_REPLAY @"goToReplyIdentifier"
+
+@interface WKEmailController () {
+  PMEmailContainer *emailContainer;
+}
+
+
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *subjectLabel;
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *dateLabel;
@@ -23,15 +29,22 @@
   [super awakeWithContext:context];
   
   if(context) {
-    PMEmailContainer *container = (PMEmailContainer *)context;
+    emailContainer = (PMEmailContainer *)context;
     
-    [self.titleLabel setText:container.title];
-    [self.subjectLabel setText:container.subject];
-    [self.dateLabel setText:[NSString stringWithFormat:@"%@", container.date]];
-    [self.textLabel setText:container.text];
+    [self.titleLabel setText:emailContainer.title];
+    [self.subjectLabel setText:emailContainer.subject];
+    [self.dateLabel setText:[NSString stringWithFormat:@"%@", emailContainer.date]];
+    [self.textLabel setText:emailContainer.text];
   }
   
   // Configure interface objects here.
+}
+
+- (id)contextForSegueWithIdentifier:(NSString *)segueIdentifier {
+  if([segueIdentifier isEqualToString:SEGUE_GO_TO_REPLAY]) {
+    return emailContainer;
+  }
+  return nil;
 }
 
 - (void)willActivate {
