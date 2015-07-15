@@ -48,6 +48,8 @@
 		84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */; };
 		84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */; };
 		C3908D071B55D36800939ADC /* WKEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D061B55D36800939ADC /* WKEmailController.m */; };
+		C3908D0B1B56C39A00939ADC /* microphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3908D0A1B56C39A00939ADC /* microphone@2x.png */; };
+		C3908D0F1B56C52000939ADC /* WKReplyController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D0E1B56C52000939ADC /* WKReplyController.m */; };
 		C3FF0E561B5596880041B70E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E551B5596880041B70E /* InterfaceController.m */; };
 		C3FF0E591B5596880041B70E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E581B5596880041B70E /* NotificationController.m */; };
 		C3FF0E5B1B5596880041B70E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5A1B5596880041B70E /* Images.xcassets */; };
@@ -179,6 +181,9 @@
 		84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+PMStoryboard.m"; path = "Categories/UIViewController+PMStoryboard/UIViewController+PMStoryboard.m"; sourceTree = "<group>"; };
 		C3908D051B55D36800939ADC /* WKEmailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKEmailController.h; sourceTree = "<group>"; };
 		C3908D061B55D36800939ADC /* WKEmailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKEmailController.m; sourceTree = "<group>"; };
+		C3908D0A1B56C39A00939ADC /* microphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone@2x.png"; sourceTree = "<group>"; };
+		C3908D0D1B56C52000939ADC /* WKReplyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKReplyController.h; sourceTree = "<group>"; };
+		C3908D0E1B56C52000939ADC /* WKReplyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKReplyController.m; sourceTree = "<group>"; };
 		C3FF0E4F1B5596880041B70E /* planckMailiOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "planckMailiOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FF0E521B5596880041B70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3FF0E531B5596880041B70E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -682,11 +687,21 @@
 			path = EmailController;
 			sourceTree = "<group>";
 		};
+		C3908D0C1B56C50900939ADC /* ReplyController */ = {
+			isa = PBXGroup;
+			children = (
+				C3908D0D1B56C52000939ADC /* WKReplyController.h */,
+				C3908D0E1B56C52000939ADC /* WKReplyController.m */,
+			);
+			path = ReplyController;
+			sourceTree = "<group>";
+		};
 		C3FF0E501B5596880041B70E /* planckMailiOS WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
 				C3FF0E781B55A2170041B70E /* ListController */,
 				C3908D041B55D34500939ADC /* EmailController */,
+				C3908D0C1B56C50900939ADC /* ReplyController */,
 				C3FF0E541B5596880041B70E /* InterfaceController.h */,
 				C3FF0E551B5596880041B70E /* InterfaceController.m */,
 				C3FF0E571B5596880041B70E /* NotificationController.h */,
@@ -777,6 +792,7 @@
 		C3FF0E8F1B55C7960041B70E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C3908D0A1B56C39A00939ADC /* microphone@2x.png */,
 				C3FF0E901B55C7A10041B70E /* unread_indicator@2x.png */,
 			);
 			path = Images;
@@ -944,6 +960,7 @@
 			files = (
 				C3FF0E911B55C7A10041B70E /* unread_indicator@2x.png in Resources */,
 				C3FF0E671B5596880041B70E /* Interface.storyboard in Resources */,
+				C3908D0B1B56C39A00939ADC /* microphone@2x.png in Resources */,
 				C3FF0E691B5596880041B70E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1042,6 +1059,7 @@
 				C3FF0E591B5596880041B70E /* NotificationController.m in Sources */,
 				C3FF0E871B55B6340041B70E /* PMTypeContainer.m in Sources */,
 				C3FF0E561B5596880041B70E /* InterfaceController.m in Sources */,
+				C3908D0F1B56C52000939ADC /* WKReplyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

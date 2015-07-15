@@ -15,5 +15,6 @@
 @interface WKPlainRow : NSObject
 
 - (void)setTypeContainer:(PMTypeContainer *)typeContainer;
+- (void)setTitle:(NSString *)title;
 
 @end

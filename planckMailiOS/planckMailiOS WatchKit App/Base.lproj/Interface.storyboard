@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="449" y="345"/>
         </scene>
-        <!--emailController-->
+        <!--Message-->
         <scene sceneID="9AO-tj-UcN">
             <objects>
-                <controller identifier="emailController" id="2ko-XT-grL" customClass="WKEmailController">
+                <controller identifier="emailController" title="Message" id="2ko-XT-grL" customClass="WKEmailController">
                     <items>
                         <label width="1" alignment="left" text="Label" id="L5k-cy-9Uu">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
@@ -100,6 +100,11 @@
                             <color key="color" red="0.0" green="0.013395852052074275" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                         </separator>
                         <label width="1" alignment="left" text="Label" numberOfLines="0" minimumScaleFactor="0.70000000000000007" id="7Q9-UZ-Zat"/>
+                        <button width="1" alignment="left" title="Reply" id="dEY-H0-96j">
+                            <connections>
+                                <segue destination="Voy-Hc-dVW" kind="push" identifier="goToReplyIdentifier" id="8lJ-lF-Hwd"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
                         <outlet property="dateLabel" destination="10M-le-pej" id="Zaf-CY-hBq"/>
@@ -110,6 +115,51 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="637" y="345"/>
+        </scene>
+        <!--Reply Controller-->
+        <scene sceneID="rPZ-7C-a4t">
+            <objects>
+                <controller id="Voy-Hc-dVW" customClass="WKReplyController">
+                    <items>
+                        <table alignment="center" id="3C6-Q1-jid">
+                            <items>
+                                <tableRow identifier="plainType" id="1Wq-Gz-7N9" customClass="WKPlainRow">
+                                    <group key="rootItem" width="1" alignment="left" id="wza-gH-qoz">
+                                        <items>
+                                            <label alignment="right" verticalAlignment="center" hidden="YES" text="10" textAlignment="right" id="0TR-Xo-As9"/>
+                                            <label width="101" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="W99-sb-z6C"/>
+                                        </items>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="titleLable" destination="W99-sb-z6C" id="jd1-TY-6J8"/>
+                                        <outlet property="unreadLable" destination="0TR-Xo-As9" id="0H6-cy-gXr"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <group width="1" height="37.5" alignment="left" verticalAlignment="bottom" radius="6" id="fJ2-FW-502">
+                            <items>
+                                <button width="1" widthAdjustment="-65" alignment="left" title="😀" id="Mme-gd-L5D">
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </button>
+                                <group width="1" widthAdjustment="-68" height="1" alignment="left" contentMode="center" radius="6" id="K97-Q7-LuX">
+                                    <items>
+                                        <button alignment="center" verticalAlignment="center" backgroundImage="microphone.png" id="Lbh-8Q-gKU">
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </button>
+                                    </items>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="tableView" destination="3C6-Q1-jid" id="oC2-A7-v2g"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="871" y="345"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

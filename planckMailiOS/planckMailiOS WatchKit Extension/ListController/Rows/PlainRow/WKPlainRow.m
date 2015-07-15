@@ -30,4 +30,9 @@
   }
 }
 
+- (void)setTitle:(NSString *)title {
+  [self.titleLable setText:title];
+  [self.unreadLable setHidden:YES];
+}
+
 @end
