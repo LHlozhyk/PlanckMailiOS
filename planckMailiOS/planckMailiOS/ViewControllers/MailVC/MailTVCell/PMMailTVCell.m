@@ -32,8 +32,9 @@
 }
 
 - (void)updateWithModel:(PMInboxMailModel *)model {
+    
     _attachedFileImageView.hidden = YES;
-    _replyImageView.hidden = YES;
+    _replyImageView.hidden = !model.isUnread;
     timeLabel.hidden = YES;
     _personNameLabel.text = model.ownerName;
     _titleNameLabel.text = model.subject;

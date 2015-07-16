@@ -39,6 +39,11 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                    namespacesId:(NSString *)namespacesId
                      completion:(ExtendedBlockHandler)handler;
 
+- (void)getDetailWithMessageId:(NSString *)messageId
+                  namespacesId:(NSString *)namespacesId
+                        unread:(BOOL)unread
+                    completion:(ExtendedBlockHandler)handler;
+
 - (void)setActiveNamespace:(DBNamespace *)item;
 
 @property (nonatomic, readonly) NSString *namespaceId;

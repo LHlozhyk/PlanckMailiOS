@@ -14,4 +14,5 @@
 @property(nonatomic, copy)NSString *subject;
 @property(nonatomic, copy)NSString *messageId;
 @property(nonatomic, copy)NSString *namespaceId;
+@property(nonatomic) BOOL isUnread;
 @end

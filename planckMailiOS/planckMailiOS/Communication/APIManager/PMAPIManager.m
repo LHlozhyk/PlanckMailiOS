@@ -85,7 +85,15 @@
             lNewItem.subject = item[@"subject"];
             lNewItem.namespaceId = item[@"namespace_id"];
             lNewItem.messageId = item[@"id"];
+            lNewItem.isUnread = NO;
             
+            NSArray *lTagsArray =  item[@"tags"];
+            
+            for (NSDictionary *itemTag in lTagsArray) {
+                if ([itemTag[@"id"] isEqualToString:@"unread"]) {
+                    lNewItem.isUnread = YES;
+                }
+            }
             
             [lResultItems addObject:lNewItem];
             
@@ -94,16 +102,25 @@
     }];
 }
 
-- (void)getDetailWithMessageId:(NSString *)messageId namespacesId:(NSString *)namespacesId completion:(ExtendedBlockHandler)handler {
+- (void)getDetailWithMessageId:(NSString *)messageId namespacesId:(NSString *)namespacesId unread:(BOOL)unread completion:(ExtendedBlockHandler)handler {
     
-    OPDataLoader *lDataLoader = [OPDataLoader new];
-    [lDataLoader loadUrlWithGETMethod:[PMRequest messageId:messageId namespacesId:namespacesId]  handler:^(NSData *loadData, NSError *error, BOOL success) {
-        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
-        NSError *errorJson = nil;
-        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
-        NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
-        handler(lResponse, error, success);
-    }];
+        OPDataLoader *lDataLoader = [OPDataLoader new];
+        [lDataLoader loadUrlWithGETMethod:[PMRequest messageId:messageId namespacesId:namespacesId]  handler:^(NSData *loadData, NSError *error, BOOL success) {
+            
+            NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
+            NSError *errorJson = nil;
+            NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
+            NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
+
+            if (success && unread) {
+                OPDataLoader *lLoadUnred = [OPDataLoader new];
+                [lLoadUnred loadUrlWithPUTMethod:[PMRequest deleteMailWithThreadId:messageId namespacesId:namespacesId] JSONParameters:@{@"remove_tags":@[@"unread"]} handler:^(NSData *loadData, NSError *error, BOOL success) {
+                    handler(lResponse, error, success);
+                }];
+            } else {
+                handler(lResponse, error, success);
+            }
+        }];
 }
 
 - (void)searchMailWithKeyword:(NSString *)keyword namespacesId:(NSString *)namespacesId completion:(ExtendedBlockHandler)handler {
@@ -126,7 +143,15 @@
             lNewItem.subject = item[@"subject"];
             lNewItem.namespaceId = item[@"namespace_id"];
             lNewItem.messageId = item[@"id"];
+            lNewItem.isUnread = NO;
             
+            NSArray *lTagsArray =  item[@"tags"];
+            
+            for (NSDictionary *itemTag in lTagsArray) {
+                if ([itemTag[@"id"] isEqualToString:@"unread"]) {
+                    lNewItem.isUnread = YES;
+                }
+            }
             
             [lResultItems addObject:lNewItem];
             
