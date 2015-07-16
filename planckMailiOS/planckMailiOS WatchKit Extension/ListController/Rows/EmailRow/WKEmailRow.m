@@ -8,6 +8,7 @@
 
 #import "WKEmailRow.h"
 #import "PMEmailContainer.h"
+#import "NSDate+DateConverter.h"
 
 @interface WKEmailRow ()
 
@@ -23,7 +24,7 @@
 - (void)setEmailContainer:(PMEmailContainer *)emailContainer {
   [self.titleLabel setText:emailContainer.title];
   [self.subjectLabel setText:emailContainer.subject];
-  [self.dateLabel setText:[NSString stringWithFormat:@"%@", emailContainer.date]];
+  [self.dateLabel setText:[emailContainer.date convertedStringValue]];
   
   [self.unreadIndicator setHidden:!emailContainer.isUnread];
 }

@@ -46,6 +46,12 @@
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex {
   if(rowIndex > 2) return;
   
+  NSDate *date = [NSDate date];
+  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  [formatter setDateFormat:@"MMM dd, yyy"];
+  date = [formatter dateFromString:@"Apr 7, 2011"];
+  NSLog(@"%@", [formatter stringFromDate:date]);
+  
   PMTypeContainer *container = dataSource[rowIndex];
   NSMutableDictionary *context = [NSMutableDictionary new];
   [context setObject:container.title forKeyedSubscript:TITLE];
@@ -53,22 +59,22 @@
   NSArray *emails = @[[PMEmailContainer initWithTitle:@"Apple"
                                               subject:@"ololo"
                                                  text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between (french) like deSaussure did."
-                                                 date:nil
+                                                 date:[formatter dateFromString:@"Jul 16, 2015"]
                                              isUnread:NO],
                       [PMEmailContainer initWithTitle:@"Dima"
                                               subject:@"sd vsd v"
                                                  text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between a system as the ability of the speakers to communicate using verbal and gestural signstext being understood as the product of this ability is more fitting for the language-definition as separated into  like deSaussure did."
-                                                 date:nil
+                                                 date:[formatter dateFromString:@"Apr 7, 2015"]
                                              isUnread:YES],
                       [PMEmailContainer initWithTitle:@"Lybomyr"
                                               subject:@"s dv dfv "
                                                  text:@"e. Your differenciation between a system as the ability of the speakers to communicate using verbal and gestural signs and text being understood as the product of this ability is more fitting f"
-                                                 date:nil
+                                                 date:[formatter dateFromString:@"Apr 7, 2014"]
                                              isUnread:NO],
                       [PMEmailContainer initWithTitle:@"Raj"
                                               subject:@"sdfvsdf sdf vsd"
                                                  text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between a system as the ability of the speakers to communicate using verbal and gestural signs and text being understood as the product of this ability is more fitting for the language-definition as separated into langue and parole (french) like deSaussure did."
-                                                 date:nil
+                                                 date:[formatter dateFromString:@"Apr 7, 2011"]
                                              isUnread:YES]];
   [context setObject:emails forKey:CONTENT];
   

@@ -1,0 +1,17 @@
+//
+//  WKSelectedAnswerController.h
+//  planckMailiOS
+//
+//  Created by Dmytro Nosulich on 7/16/15.
+//  Copyright (c) 2015 LHlozhyk. All rights reserved.
+//
+
+#import <WatchKit/WatchKit.h>
+#import <Foundation/Foundation.h>
+
+#define SELECTED_ANSWER_IDENTIFIER @"selectedAnswer"
+#define SELECTED_ANSWER_RETAKE @"selectedAnswerRetake"
+
+@interface WKSelectedAnswerController : WKInterfaceController
+
+@end
