@@ -21,9 +21,7 @@
     NSArray *_itemsArray;
     
     NSArray *_itemsArrayFiltered;
-    
-    
-    
+
     UISearchBar *_searchBar;
     BOOL filtered;
 }
@@ -165,8 +163,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:NSStringFromClass([PMPreviewPeopleVC class])]) {
+        [_searchBar resignFirstResponder];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        CLPerson *lNewPerson = [_itemsArray objectAtIndex:indexPath.row];
+        CLPerson *lNewPerson =  (filtered) ? [_itemsArrayFiltered objectAtIndex:indexPath.row] : [_itemsArray objectAtIndex:indexPath.row];
         PMPreviewPeopleVC *lPreviewPeople = segue.destinationViewController;
         lPreviewPeople.currentPerson = lNewPerson;
     }

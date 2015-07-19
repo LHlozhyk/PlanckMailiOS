@@ -33,6 +33,7 @@
 		848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848C50FD1B13DBF200515E47 /* PMMailTVCell.m */; };
 		8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */; };
 		84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A037C31B49F2850076491A /* PMMailTitleView.m */; };
+		84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3BCB81B5ACBF1005A244F /* PMCalendarVC.m */; };
 		84A9A0E01B52C6A80005F5AF /* PMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9A0DF1B52C6A80005F5AF /* PMMessageModel.m */; };
 		84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D11AFF718300331CC0 /* PMMainVC.m */; };
 		84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D71AFF74C000331CC0 /* PMAPIManager.m */; };
@@ -152,6 +153,8 @@
 		8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewContentView.m; path = ViewControllers/PreviewMailVC/PreviewContentView/PMPreviewContentView.m; sourceTree = "<group>"; };
 		84A037C21B49F2850076491A /* PMMailTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailTitleView.h; path = ViewControllers/MailVC/MailTitleView/PMMailTitleView.h; sourceTree = "<group>"; };
 		84A037C31B49F2850076491A /* PMMailTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMailTitleView.m; path = ViewControllers/MailVC/MailTitleView/PMMailTitleView.m; sourceTree = "<group>"; };
+		84A3BCB71B5ACBF1005A244F /* PMCalendarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMCalendarVC.h; path = ViewControllers/CalendarVC/PMCalendarVC.h; sourceTree = "<group>"; };
+		84A3BCB81B5ACBF1005A244F /* PMCalendarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMCalendarVC.m; path = ViewControllers/CalendarVC/PMCalendarVC.m; sourceTree = "<group>"; };
 		84A9A0DE1B52C6A80005F5AF /* PMMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMessageModel.h; path = Communication/Models/MessageModel/PMMessageModel.h; sourceTree = "<group>"; };
 		84A9A0DF1B52C6A80005F5AF /* PMMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMessageModel.m; path = Communication/Models/MessageModel/PMMessageModel.m; sourceTree = "<group>"; };
 		84B751D01AFF718300331CC0 /* PMMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMainVC.h; path = ViewControllers/MainVC/PMMainVC.h; sourceTree = "<group>"; };
@@ -444,6 +447,8 @@
 		8479B71A1B11B962006E4235 /* CalendarVC */ = {
 			isa = PBXGroup;
 			children = (
+				84A3BCB71B5ACBF1005A244F /* PMCalendarVC.h */,
+				84A3BCB81B5ACBF1005A244F /* PMCalendarVC.m */,
 			);
 			name = CalendarVC;
 			sourceTree = "<group>";
@@ -1043,6 +1048,7 @@
 				8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */,
 				84A9A0E01B52C6A80005F5AF /* PMMessageModel.m in Sources */,
 				847D68271B43A87B005FE7EF /* PMSearchMailTVCell.m in Sources */,
+				84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */,
 				848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */,
 				84F9A9841B11F6D10067C3D0 /* PMMailVC.m in Sources */,
 				C35652521B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */,

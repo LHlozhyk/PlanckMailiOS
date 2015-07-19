@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6B7205E129054A2611D3AE9"
+               BlueprintIdentifier = "C24B905E942CF6C47ED1F425"
                BuildableName = "libPods-planckMailiOS-InboxKit.a"
                BlueprintName = "Pods-planckMailiOS-InboxKit"
                ReferencedContainer = "container:Pods.xcodeproj">
