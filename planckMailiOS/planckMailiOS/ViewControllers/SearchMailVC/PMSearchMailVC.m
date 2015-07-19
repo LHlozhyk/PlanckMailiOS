@@ -15,7 +15,7 @@
 
 #define CELL_IDENTIFIER @"mailCell"
 
-@interface PMSearchMailVC () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface PMSearchMailVC () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, PMPreviewMailVCDelegate> {
     UISearchBar *_searchBar;
     NSMutableArray *_itemsArray;
     __weak IBOutlet UITableView *_tableView;
@@ -56,6 +56,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+    [_tableView reloadData];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -134,18 +135,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     PMPreviewMailVC *lNewMailPreviewVC = [[PMPreviewMailVC alloc] initWithStoryboard];
-
+    lNewMailPreviewVC.delegate = self;
     PMInboxMailModel *lSelectedModel = _itemsArray[indexPath.row];
     lNewMailPreviewVC.inboxMailModel = lSelectedModel;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId namespacesId:lSelectedModel.namespaceId completion:^(id data, id error, BOOL success) {
+    [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId namespacesId:lSelectedModel.namespaceId unread:lSelectedModel.isUnread completion:^(id data, id error, BOOL success) {
+        
+        if (success) {
+            lSelectedModel.isUnread = NO;
+        }
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         NSLog(@"data - %@", data);
         lNewMailPreviewVC.messages = data;
         [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
     }];
+}
+
+
+#pragma mark - PMPreviewMailVC delegate
+
+- (void)PMPreviewMailVCDelegateAction:(PMPreviewMailVCTypeAction)typeAction mail:(PMInboxMailModel *)model {
+    [_tableView reloadData];
 }
 
 @end

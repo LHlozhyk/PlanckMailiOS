@@ -154,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfc-y6-IxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1996" y="-1020"/>
+            <point key="canvasLocation" x="2016" y="-1020"/>
         </scene>
         <!--Mail ComposeVC-->
         <scene sceneID="iXs-8h-dYc">
@@ -222,6 +222,9 @@
                                                     <rect key="frame" x="42" y="7" width="270" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="YMw-hX-x5i" id="gXB-ed-0JU"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -701,11 +704,11 @@ Sent from PlanckMailiOS</string>
                                                         <constraint firstAttribute="height" constant="20" id="nNQ-ds-myp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="replyIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nwS-g6-A1Z">
-                                                    <rect key="frame" x="0.0" y="26" width="20" height="20"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unreadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nwS-g6-A1Z">
+                                                    <rect key="frame" x="1" y="26" width="18" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="9MI-xx-IbM"/>
-                                                        <constraint firstAttribute="width" constant="20" id="KXN-D6-E12"/>
+                                                        <constraint firstAttribute="height" constant="18" id="9MI-xx-IbM"/>
+                                                        <constraint firstAttribute="width" constant="18" id="KXN-D6-E12"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
@@ -713,14 +716,14 @@ Sent from PlanckMailiOS</string>
                                                 <constraint firstItem="iHw-V3-Zjz" firstAttribute="leading" secondItem="nzi-Mj-2UJ" secondAttribute="trailing" constant="1" id="3AW-DC-lOG"/>
                                                 <constraint firstItem="CCI-B0-ifY" firstAttribute="leading" secondItem="Ehg-7n-qxW" secondAttribute="leadingMargin" constant="16" id="6VM-Xv-kmy"/>
                                                 <constraint firstItem="nwS-g6-A1Z" firstAttribute="top" secondItem="Ehg-7n-qxW" secondAttribute="topMargin" constant="18" id="745-rx-Zvp"/>
-                                                <constraint firstItem="nwS-g6-A1Z" firstAttribute="bottom" secondItem="VaF-bg-EiT" secondAttribute="bottom" id="9PI-rD-nWK"/>
+                                                <constraint firstItem="nwS-g6-A1Z" firstAttribute="bottom" secondItem="VaF-bg-EiT" secondAttribute="bottom" constant="-2" id="9PI-rD-nWK"/>
                                                 <constraint firstItem="nzi-Mj-2UJ" firstAttribute="top" secondItem="Ehg-7n-qxW" secondAttribute="topMargin" id="Ebh-Ea-anp"/>
                                                 <constraint firstItem="nzi-Mj-2UJ" firstAttribute="leading" secondItem="HYj-FS-8D0" secondAttribute="trailing" constant="4" id="JsJ-v4-ipd"/>
                                                 <constraint firstItem="iHw-V3-Zjz" firstAttribute="top" secondItem="Ehg-7n-qxW" secondAttribute="topMargin" id="NPE-S6-mrg"/>
                                                 <constraint firstItem="VaF-bg-EiT" firstAttribute="trailing" secondItem="Ehg-7n-qxW" secondAttribute="trailingMargin" id="Nuo-F2-6QT"/>
-                                                <constraint firstItem="nwS-g6-A1Z" firstAttribute="leading" secondItem="Ehg-7n-qxW" secondAttribute="leadingMargin" constant="-8" id="UnI-a1-iI6"/>
-                                                <constraint firstItem="HYj-FS-8D0" firstAttribute="leading" secondItem="nwS-g6-A1Z" secondAttribute="trailing" constant="-20" id="Yn7-aL-HRh"/>
-                                                <constraint firstItem="VaF-bg-EiT" firstAttribute="leading" secondItem="nwS-g6-A1Z" secondAttribute="trailing" constant="4" id="aVd-Dj-SIB"/>
+                                                <constraint firstItem="nwS-g6-A1Z" firstAttribute="leading" secondItem="Ehg-7n-qxW" secondAttribute="leadingMargin" constant="-7" id="UnI-a1-iI6"/>
+                                                <constraint firstItem="HYj-FS-8D0" firstAttribute="leading" secondItem="nwS-g6-A1Z" secondAttribute="trailing" constant="-19" id="Yn7-aL-HRh"/>
+                                                <constraint firstItem="VaF-bg-EiT" firstAttribute="leading" secondItem="nwS-g6-A1Z" secondAttribute="trailing" constant="5" id="aVd-Dj-SIB"/>
                                                 <constraint firstItem="CCI-B0-ifY" firstAttribute="top" secondItem="VaF-bg-EiT" secondAttribute="bottom" constant="-2" id="cEC-sE-3TB"/>
                                                 <constraint firstItem="VaF-bg-EiT" firstAttribute="top" secondItem="nzi-Mj-2UJ" secondAttribute="bottom" constant="-4" id="d7W-hb-Jb4"/>
                                                 <constraint firstItem="VaF-bg-EiT" firstAttribute="top" secondItem="iHw-V3-Zjz" secondAttribute="bottom" constant="-4" id="juA-PL-Nlp"/>
@@ -1350,7 +1353,6 @@ Sent from PlanckMailiOS</string>
         <image name="menuIcon" width="21" height="21"/>
         <image name="messageIcon" width="170" height="170"/>
         <image name="peopleIcon" width="21" height="21"/>
-        <image name="replyIcon" width="40" height="40"/>
         <image name="rightArrowIcon" width="21" height="21"/>
         <image name="searchIcon" width="21" height="21"/>
         <image name="sentIcon" width="21" height="21"/>

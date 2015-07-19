@@ -15,6 +15,11 @@
     __weak IBOutlet UIBarButtonItem *_sentBarBtn;
     __weak IBOutlet UIButton *_emailBtn;
     __weak IBOutlet UITableView *_tableView;
+    
+    __weak IBOutlet UITextField *_toTextField;
+    __weak IBOutlet UITextField *_cCTextField;
+    __weak IBOutlet UITextField *_subjectTextField;
+    __weak IBOutlet UITextView *_bodyTextView;
 }
 - (IBAction)closeBtnPressed:(id)sender;
 - (IBAction)sentBtnPressed:(id)sender;
