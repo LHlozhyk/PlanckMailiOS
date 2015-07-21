@@ -28,4 +28,6 @@
 + (NSString *)deleteMailWithThreadId:(NSString *)threadId
                         namespacesId:(NSString *)namespacesId;
 
++ (NSString *)replyMessageWithNamespacesId:(NSString *)namespacesId;
+
 @end

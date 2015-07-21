@@ -26,15 +26,16 @@
 		8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8479B7131B11B852006E4235 /* PMLoginVC.m */; };
 		847D68271B43A87B005FE7EF /* PMSearchMailTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D68261B43A87B005FE7EF /* PMSearchMailTVCell.m */; };
 		847D87D11B4334EE0044A676 /* PMSearchMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D87D01B4334EE0044A676 /* PMSearchMailVC.m */; };
-		847F409F1B3C99C4002BAF93 /* PMMailComposeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F409E1B3C99C4002BAF93 /* PMMailComposeVC.m */; };
-		847F40A31B3CA725002BAF93 /* PMSelectionEmailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847F40A21B3CA725002BAF93 /* PMSelectionEmailView.m */; };
-		847F40A51B3CA75E002BAF93 /* PMSelectionEmailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847F40A41B3CA75E002BAF93 /* PMSelectionEmailView.xib */; };
 		848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 848C11061B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m */; };
 		848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848C50FD1B13DBF200515E47 /* PMMailTVCell.m */; };
 		8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */; };
 		84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A037C31B49F2850076491A /* PMMailTitleView.m */; };
 		84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3BCB81B5ACBF1005A244F /* PMCalendarVC.m */; };
 		84A9A0E01B52C6A80005F5AF /* PMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9A0DF1B52C6A80005F5AF /* PMMessageModel.m */; };
+		84A9E3711B5F02DD009DD409 /* PMSelectionEmailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9E36E1B5F02DD009DD409 /* PMSelectionEmailView.m */; };
+		84A9E3721B5F02DD009DD409 /* PMSelectionEmailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A9E36F1B5F02DD009DD409 /* PMSelectionEmailView.xib */; };
+		84A9E3731B5F02DD009DD409 /* PMMailComposeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9E3701B5F02DD009DD409 /* PMMailComposeVC.m */; };
+		84A9E3771B5F031A009DD409 /* PMMailComposeTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9E3761B5F031A009DD409 /* PMMailComposeTVCell.m */; };
 		84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D11AFF718300331CC0 /* PMMainVC.m */; };
 		84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D71AFF74C000331CC0 /* PMAPIManager.m */; };
 		84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA4261B134C1800770F88 /* planckMailiOS.xcdatamodeld */; };
@@ -140,11 +141,6 @@
 		847D68261B43A87B005FE7EF /* PMSearchMailTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMSearchMailTVCell.m; path = ViewControllers/SearchMailVC/SearchMailTVCell/PMSearchMailTVCell.m; sourceTree = "<group>"; };
 		847D87CF1B4334EE0044A676 /* PMSearchMailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMSearchMailVC.h; path = ViewControllers/SearchMailVC/PMSearchMailVC.h; sourceTree = "<group>"; };
 		847D87D01B4334EE0044A676 /* PMSearchMailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMSearchMailVC.m; path = ViewControllers/SearchMailVC/PMSearchMailVC.m; sourceTree = "<group>"; };
-		847F409D1B3C99C4002BAF93 /* PMMailComposeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailComposeVC.h; path = ViewControllers/MailComposeVC/PMMailComposeVC.h; sourceTree = "<group>"; };
-		847F409E1B3C99C4002BAF93 /* PMMailComposeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMailComposeVC.m; path = ViewControllers/MailComposeVC/PMMailComposeVC.m; sourceTree = "<group>"; };
-		847F40A11B3CA725002BAF93 /* PMSelectionEmailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMSelectionEmailView.h; path = ViewControllers/MailComposeVC/SelectionEmailView/PMSelectionEmailView.h; sourceTree = "<group>"; };
-		847F40A21B3CA725002BAF93 /* PMSelectionEmailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMSelectionEmailView.m; path = ViewControllers/MailComposeVC/SelectionEmailView/PMSelectionEmailView.m; sourceTree = "<group>"; };
-		847F40A41B3CA75E002BAF93 /* PMSelectionEmailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMSelectionEmailView.xib; path = ViewControllers/MailComposeVC/SelectionEmailView/PMSelectionEmailView.xib; sourceTree = "<group>"; };
 		848C11051B2F6CF7000D3CA2 /* PMPreviewPeopleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPreviewPeopleVC.h; path = ViewControllers/PeopleVC/PreviewPeopleVC/PMPreviewPeopleVC.h; sourceTree = "<group>"; };
 		848C11061B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewPeopleVC.m; path = ViewControllers/PeopleVC/PreviewPeopleVC/PMPreviewPeopleVC.m; sourceTree = "<group>"; };
 		848C50FC1B13DBF200515E47 /* PMMailTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailTVCell.h; path = ViewControllers/MailVC/MailTVCell/PMMailTVCell.h; sourceTree = "<group>"; };
@@ -157,6 +153,13 @@
 		84A3BCB81B5ACBF1005A244F /* PMCalendarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMCalendarVC.m; path = ViewControllers/CalendarVC/PMCalendarVC.m; sourceTree = "<group>"; };
 		84A9A0DE1B52C6A80005F5AF /* PMMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMessageModel.h; path = Communication/Models/MessageModel/PMMessageModel.h; sourceTree = "<group>"; };
 		84A9A0DF1B52C6A80005F5AF /* PMMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMessageModel.m; path = Communication/Models/MessageModel/PMMessageModel.m; sourceTree = "<group>"; };
+		84A9E36B1B5F02DD009DD409 /* PMMailComposeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMailComposeVC.h; sourceTree = "<group>"; };
+		84A9E36D1B5F02DD009DD409 /* PMSelectionEmailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSelectionEmailView.h; sourceTree = "<group>"; };
+		84A9E36E1B5F02DD009DD409 /* PMSelectionEmailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSelectionEmailView.m; sourceTree = "<group>"; };
+		84A9E36F1B5F02DD009DD409 /* PMSelectionEmailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMSelectionEmailView.xib; sourceTree = "<group>"; };
+		84A9E3701B5F02DD009DD409 /* PMMailComposeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMailComposeVC.m; sourceTree = "<group>"; };
+		84A9E3751B5F031A009DD409 /* PMMailComposeTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailComposeTVCell.h; path = MailComposeTVCell/PMMailComposeTVCell.h; sourceTree = "<group>"; };
+		84A9E3761B5F031A009DD409 /* PMMailComposeTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMailComposeTVCell.m; path = MailComposeTVCell/PMMailComposeTVCell.m; sourceTree = "<group>"; };
 		84B751D01AFF718300331CC0 /* PMMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMainVC.h; path = ViewControllers/MainVC/PMMainVC.h; sourceTree = "<group>"; };
 		84B751D11AFF718300331CC0 /* PMMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMainVC.m; path = ViewControllers/MainVC/PMMainVC.m; sourceTree = "<group>"; };
 		84B751D31AFF72A400331CC0 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
@@ -475,32 +478,12 @@
 		847D87CE1B4333080044A676 /* MailViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84A9E36A1B5F02DD009DD409 /* MailComposeVC */,
 				8479B7161B11B90C006E4235 /* MailVC */,
 				847D87CD1B4332B40044A676 /* SearchMailVC */,
 				840156D91B27A48100E92CA7 /* PreviewMailVC */,
-				847F409C1B3C98CF002BAF93 /* MailComposeVC */,
 			);
 			name = MailViewControllers;
-			sourceTree = "<group>";
-		};
-		847F409C1B3C98CF002BAF93 /* MailComposeVC */ = {
-			isa = PBXGroup;
-			children = (
-				847F40A01B3CA663002BAF93 /* SelectionEmailView */,
-				847F409D1B3C99C4002BAF93 /* PMMailComposeVC.h */,
-				847F409E1B3C99C4002BAF93 /* PMMailComposeVC.m */,
-			);
-			name = MailComposeVC;
-			sourceTree = "<group>";
-		};
-		847F40A01B3CA663002BAF93 /* SelectionEmailView */ = {
-			isa = PBXGroup;
-			children = (
-				847F40A11B3CA725002BAF93 /* PMSelectionEmailView.h */,
-				847F40A21B3CA725002BAF93 /* PMSelectionEmailView.m */,
-				847F40A41B3CA75E002BAF93 /* PMSelectionEmailView.xib */,
-			);
-			name = SelectionEmailView;
 			sourceTree = "<group>";
 		};
 		848C11041B2F6CB6000D3CA2 /* PreviewPeopleVC */ = {
@@ -553,6 +536,37 @@
 				84A9A0DF1B52C6A80005F5AF /* PMMessageModel.m */,
 			);
 			name = MessageModel;
+			sourceTree = "<group>";
+		};
+		84A9E36A1B5F02DD009DD409 /* MailComposeVC */ = {
+			isa = PBXGroup;
+			children = (
+				84A9E3741B5F02E5009DD409 /* MailComposeTVCell */,
+				84A9E36C1B5F02DD009DD409 /* SelectionEmailView */,
+				84A9E36B1B5F02DD009DD409 /* PMMailComposeVC.h */,
+				84A9E3701B5F02DD009DD409 /* PMMailComposeVC.m */,
+			);
+			name = MailComposeVC;
+			path = ViewControllers/MailComposeVC;
+			sourceTree = "<group>";
+		};
+		84A9E36C1B5F02DD009DD409 /* SelectionEmailView */ = {
+			isa = PBXGroup;
+			children = (
+				84A9E36D1B5F02DD009DD409 /* PMSelectionEmailView.h */,
+				84A9E36E1B5F02DD009DD409 /* PMSelectionEmailView.m */,
+				84A9E36F1B5F02DD009DD409 /* PMSelectionEmailView.xib */,
+			);
+			path = SelectionEmailView;
+			sourceTree = "<group>";
+		};
+		84A9E3741B5F02E5009DD409 /* MailComposeTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				84A9E3751B5F031A009DD409 /* PMMailComposeTVCell.h */,
+				84A9E3761B5F031A009DD409 /* PMMailComposeTVCell.m */,
+			);
+			name = MailComposeTVCell;
 			sourceTree = "<group>";
 		};
 		84B751CC1AFF6FAA00331CC0 /* ViewControllers */ = {
@@ -956,7 +970,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */,
-				847F40A51B3CA75E002BAF93 /* PMSelectionEmailView.xib in Resources */,
+				84A9E3721B5F02DD009DD409 /* PMSelectionEmailView.xib in Resources */,
 				842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */,
 				842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */,
 				84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */,
@@ -1038,7 +1052,6 @@
 				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
 				840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */,
 				8478A0571B36A1C4003C09AF /* PMPreviewMailTVCell.m in Sources */,
-				847F40A31B3CA725002BAF93 /* PMSelectionEmailView.m in Sources */,
 				844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */,
 				84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */,
 				848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */,
@@ -1046,7 +1059,9 @@
 				846096171B13061400924B61 /* CLContactLibrary.m in Sources */,
 				847D87D11B4334EE0044A676 /* PMSearchMailVC.m in Sources */,
 				8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */,
+				84A9E3771B5F031A009DD409 /* PMMailComposeTVCell.m in Sources */,
 				84A9A0E01B52C6A80005F5AF /* PMMessageModel.m in Sources */,
+				84A9E3731B5F02DD009DD409 /* PMMailComposeVC.m in Sources */,
 				847D68271B43A87B005FE7EF /* PMSearchMailTVCell.m in Sources */,
 				84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */,
 				848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */,
@@ -1057,11 +1072,11 @@
 				84ECA42C1B134E5400770F88 /* DBManager.m in Sources */,
 				8460961C1B13063300924B61 /* CLPerson.m in Sources */,
 				84F9A9801B11E08D0067C3D0 /* PMRequest.m in Sources */,
+				84A9E3711B5F02DD009DD409 /* PMSelectionEmailView.m in Sources */,
 				84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */,
 				8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */,
 				84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */,
 				84F4286C1B1256820006B530 /* PMSettigsTVC.m in Sources */,
-				847F409F1B3C99C4002BAF93 /* PMMailComposeVC.m in Sources */,
 				842E2FEA1AFEB13400B0C8DB /* main.m in Sources */,
 				84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */,
 				84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */,

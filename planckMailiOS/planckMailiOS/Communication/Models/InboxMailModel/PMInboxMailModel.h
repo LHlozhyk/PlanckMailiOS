@@ -14,5 +14,6 @@
 @property(nonatomic, copy)NSString *subject;
 @property(nonatomic, copy)NSString *messageId;
 @property(nonatomic, copy)NSString *namespaceId;
+@property(nonatomic, copy)NSString *lastMessageTimestamp;
 @property(nonatomic) BOOL isUnread;
 @end

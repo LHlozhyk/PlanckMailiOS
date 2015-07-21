@@ -24,6 +24,7 @@ typedef enum {
 @end
 
 @interface PMMailComposeVC : UIViewController
-@property(nonatomic, copy)NSString *emails;
+@property(nonatomic, copy) NSString *messageId;
+@property(nonatomic, copy) NSString *emails;
 @property(nonatomic, weak) id<PMMailComposeVCDelegate> mailComposeDelegate;
 @end

@@ -38,4 +38,8 @@
     return [NSString stringWithFormat:@"%@/n/%@/threads/%@", APP_SERVER_LINK, namespacesId, threadId];
 }
 
++ (NSString *)replyMessageWithNamespacesId:(NSString *)namespacesId {
+    return [NSString stringWithFormat:@"%@/n/%@/send", APP_SERVER_LINK, namespacesId];
+}
+
 @end

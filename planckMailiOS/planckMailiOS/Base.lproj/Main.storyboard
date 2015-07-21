@@ -206,7 +206,7 @@
                                 <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="toCell" textLabel="s2f-Hx-8ak" style="IBUITableViewCellStyleDefault" id="bCc-qI-JYF">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="toCell" textLabel="s2f-Hx-8ak" style="IBUITableViewCellStyleDefault" id="bCc-qI-JYF" customClass="PMMailComposeTVCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bCc-qI-JYF" id="ru6-ng-sp7">
@@ -223,7 +223,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="YMw-hX-x5i" id="gXB-ed-0JU"/>
+                                                        <outlet property="delegate" destination="bCc-qI-JYF" id="8JE-lb-6kw"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -233,8 +233,11 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="Xgu-HA-dDo" secondAttribute="trailing" id="lyQ-qX-pZE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="_textField" destination="Xgu-HA-dDo" id="1dz-Te-Chb"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CcCell" textLabel="QgZ-OT-2H9" style="IBUITableViewCellStyleDefault" id="YUA-Tr-5zB">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CcCell" textLabel="QgZ-OT-2H9" style="IBUITableViewCellStyleDefault" id="YUA-Tr-5zB" customClass="PMMailComposeTVCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YUA-Tr-5zB" id="7XA-Vb-94l">
@@ -250,6 +253,9 @@
                                                     <rect key="frame" x="78" y="7" width="234" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="YUA-Tr-5zB" id="os1-Yz-AE1"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -258,8 +264,11 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="Rnv-85-fc8" secondAttribute="trailing" id="rPm-JV-hf2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="_textField" destination="Rnv-85-fc8" id="AEe-og-k84"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubjectCell" textLabel="cn1-5k-QFf" style="IBUITableViewCellStyleDefault" id="D8V-aI-HOc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubjectCell" textLabel="cn1-5k-QFf" style="IBUITableViewCellStyleDefault" id="D8V-aI-HOc" customClass="PMMailComposeTVCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D8V-aI-HOc" id="cch-kd-TfZ">
@@ -275,6 +284,9 @@
                                                     <rect key="frame" x="79" y="7" width="233" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="D8V-aI-HOc" id="ZXg-ib-aq6"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -283,6 +295,9 @@
                                                 <constraint firstItem="ESl-NY-ucw" firstAttribute="top" secondItem="cch-kd-TfZ" secondAttribute="topMargin" constant="-1" id="o4B-bm-ed3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="_textField" destination="ESl-NY-ucw" id="kj8-jg-7ks"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextViewCell" rowHeight="194" id="dm8-mL-KRR">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

@@ -34,7 +34,7 @@
 #define STORYBOARD [UIStoryboard storyboardWithName:@"Main" bundle:nil]
 
 //debug log
-#ifndef DEBUG
+#ifdef DEBUG
 # define DLog(...) NSLog(__VA_ARGS__)
 #else
 # define DLog(...) /* */

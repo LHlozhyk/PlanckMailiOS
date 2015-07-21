@@ -71,6 +71,10 @@
 
 - (void)replyBtnPressed:(id)sender {
     PMMailComposeVC *lNewMailComposeVC = [[PMMailComposeVC alloc] initWithStoryboard];
+    
+    NSDictionary *lItem = [_messages lastObject];
+    lNewMailComposeVC.messageId = lItem[@"id"];
+    
     [self.tabBarController.navigationController presentViewController:lNewMailComposeVC animated:YES completion:nil];
 }
 

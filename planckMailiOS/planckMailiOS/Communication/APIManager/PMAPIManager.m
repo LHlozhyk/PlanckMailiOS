@@ -182,6 +182,13 @@
     }];
 }
 
+- (void)replyMessage:(NSDictionary *)message completion:(ExtendedBlockHandler)handler {
+    OPDataLoader *lDataLoader = [OPDataLoader new];
+    [lDataLoader loadUrlWithPOSTMethod:[PMRequest replyMessageWithNamespacesId:self.namespaceId] JSONParameters:message handler:^(NSData *loadData, NSError *error, BOOL success) {
+        
+    }];
+}
+
 - (void)setActiveNamespace:(DBNamespace *)item {
     SAVE_VALUE(item.token, TOKEN);
     _namespaceId = item.namespace_id;

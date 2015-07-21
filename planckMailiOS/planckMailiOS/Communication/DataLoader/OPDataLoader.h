@@ -26,7 +26,9 @@ typedef void (^GetDataLoaderHandler)(NSData *loadData, NSError *error, BOOL succ
 
 - (void)loadUrlWithPOSTMethod:(NSString *)strUrl parameterString:(NSString *)parameterString handler:(GetDataLoaderHandler)handler; /*!< method that get data from url with POST method and input parameters of Url */
 
-- (void)loadUrlWithPOSTMethod:(NSString *)strUrl JSONParameters:(NSDictionary*)jsonDic authorization:(NSString *)authorization handler:(GetDataLoaderHandler)handler;
+- (void)loadUrlWithPOSTMethod:(NSString *)strUrl
+               JSONParameters:(NSDictionary*)jsonDic
+                      handler:(GetDataLoaderHandler)handler;
 
 - (void)loadUrlWithGETMethod:(NSString *)strUrl handler:(GetDataLoaderHandler)handler;
 

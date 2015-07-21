@@ -18,6 +18,7 @@
         _subject = @"";
         _namespaceId = @"";
         _messageId = @"";
+        _lastMessageTimestamp = @"";
     }
     return self;
 }

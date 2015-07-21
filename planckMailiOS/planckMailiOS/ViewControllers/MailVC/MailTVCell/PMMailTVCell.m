@@ -7,6 +7,7 @@
 //
 
 #import "PMMailTVCell.h"
+#import "NSDate+DateConverter.h"
 
 @interface PMMailTVCell () {
     __weak IBOutlet UIImageView *_attachedFileImageView;
@@ -16,7 +17,6 @@
     __weak IBOutlet UILabel *descriptionLabel;
     __weak IBOutlet UILabel *timeLabel;
 }
-
 @end
 
 @implementation PMMailTVCell
@@ -27,14 +27,15 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 
 - (void)updateWithModel:(PMInboxMailModel *)model {
-    
     _attachedFileImageView.hidden = YES;
     _replyImageView.hidden = !model.isUnread;
+    
+    //nsdate *lNewDate = [NSDate dateWithTimeIntervalSince1970:model.]
+    
     timeLabel.hidden = YES;
     _personNameLabel.text = model.ownerName;
     _titleNameLabel.text = model.subject;

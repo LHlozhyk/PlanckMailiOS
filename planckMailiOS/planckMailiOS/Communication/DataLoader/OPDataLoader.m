@@ -67,7 +67,6 @@
 
 - (void)loadUrlWithPOSTMethod:(NSString *)strUrl
                JSONParameters:(NSDictionary*)jsonDic
-                authorization:(NSString *)authorization
                       handler:(GetDataLoaderHandler)handler {
     
     self.OnGetDataLoader = handler;
@@ -83,7 +82,6 @@
     NSURLRequest *lRequest = [self requestWithURL:[NSURL URLWithString:strUrl]
                                          HTTPMethod:@"POST"
                                          HTTPHeader:@{@"Content-Type":@"application/json",
-                                                      @"Authorization":authorization,
                                                       @"Content-Length":lPostLength}
                                            HTTPBody:[lRequestData dataUsingEncoding:NSUTF8StringEncoding]];
     [self startLoadWithRequest:lRequest];
