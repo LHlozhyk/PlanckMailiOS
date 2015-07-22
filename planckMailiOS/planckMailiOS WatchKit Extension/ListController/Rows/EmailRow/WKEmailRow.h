@@ -11,9 +11,9 @@
 
 #define EMAIL_ROW_IDENTIFIER @"emailType"
 
-@class PMEmailContainer;
+@class PMInboxMailModel;
 @interface WKEmailRow : NSObject
 
-- (void)setEmailContainer:(PMEmailContainer *)emailContainer;
+- (void)setEmailContainer:(PMInboxMailModel *)emailContainer;
 
 @end

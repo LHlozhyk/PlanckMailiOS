@@ -7,15 +7,14 @@
 //
 
 #import "WKEmailController.h"
-#import "PMEmailContainer.h"
+#import "PMInboxMailModel.h"
 #import "WKSelectedAnswerController.h"
 #import "NSDate+DateConverter.h"
 
 #define SEGUE_GO_TO_REPLAY @"goToReplyIdentifier"
 
 @interface WKEmailController () {
-  PMEmailContainer *emailContainer;
-  NSArray *preDeterminedMessages;
+  PMInboxMailModel *emailContainer;
   BOOL retakePressed;
 }
 
@@ -32,18 +31,14 @@
 - (void)awakeWithContext:(id)context {
   [super awakeWithContext:context];
   
-  preDeterminedMessages = @[@"OK", @"Thanks", @"Got it", @"Running late", @"On my way", @"I will get back to you soon", @"Sounds good", @"I am on it", @"Yes", @"No", @"+1"];
-  
   if(context) {
-    emailContainer = (PMEmailContainer *)context;
+    emailContainer = (PMInboxMailModel *)context;
     
-    [self.titleLabel setText:emailContainer.title];
+    [self.titleLabel setText:emailContainer.ownerName];
     [self.subjectLabel setText:emailContainer.subject];
-    [self.dateLabel setText:[emailContainer.date convertedStringValue]];
-    [self.textLabel setText:emailContainer.text];
+    [self.dateLabel setText:[[NSDate date] convertedStringValue]];
+    [self.textLabel setText:emailContainer.snippet];
   }
-  
-  // Configure interface objects here.
 }
 
 - (id)contextForSegueWithIdentifier:(NSString *)segueIdentifier {
@@ -54,7 +49,10 @@
 }
 
 - (IBAction)replyDidPressed {
-  [self presentTextInputControllerWithSuggestions:preDeterminedMessages allowedInputMode:WKTextInputModeAllowEmoji completion:^(NSArray *results) {
+  NSArray *preDeterminedMessages = @[@"OK", @"Thanks", @"Got it", @"Running late", @"On my way", @"I will get back to you soon", @"Sounds good", @"I am on it", @"Yes", @"No", @"+1"];
+  [self presentTextInputControllerWithSuggestions:preDeterminedMessages
+                                 allowedInputMode:WKTextInputModeAllowEmoji
+                                       completion:^(NSArray *results) {
     if([results count]) {
       [self pushControllerWithName:SELECTED_ANSWER_IDENTIFIER context:[results firstObject]];
       
@@ -74,6 +72,7 @@
   if(retakePressed) {
     [self replyDidPressed];
   }
+  retakePressed = NO;
 }
 
 - (void)didDeactivate {

@@ -51,9 +51,14 @@
 		84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */; };
 		C35652521B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */; };
 		C35652531B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */; };
+		C35652591B5811D3000ECF99 /* unread_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C35652581B5811D3000ECF99 /* unread_indicator@2x.png */; };
+		C35BC1DF1B5EF9D100CCDC4D /* PMTypeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E861B55B6340041B70E /* PMTypeContainer.m */; };
+		C35BC1E01B5FCEB500CCDC4D /* PMInboxMailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F061B1428A00020AB6E /* PMInboxMailModel.m */; };
+		C35BC1E11B5FDE5800CCDC4D /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA42B1B134E5400770F88 /* DBManager.m */; };
 		C3908D071B55D36800939ADC /* WKEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D061B55D36800939ADC /* WKEmailController.m */; };
 		C3908D0B1B56C39A00939ADC /* microphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3908D0A1B56C39A00939ADC /* microphone@2x.png */; };
 		C3908D161B57A2EE00939ADC /* WKSelectedAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D151B57A2EE00939ADC /* WKSelectedAnswerController.m */; };
+		C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DDB8411B5E7539002131FA /* PMWatchRequestHandler.m */; };
 		C3FF0E561B5596880041B70E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E551B5596880041B70E /* InterfaceController.m */; };
 		C3FF0E591B5596880041B70E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E581B5596880041B70E /* NotificationController.m */; };
 		C3FF0E5B1B5596880041B70E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5A1B5596880041B70E /* Images.xcassets */; };
@@ -66,7 +71,6 @@
 		C3FF0E871B55B6340041B70E /* PMTypeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E861B55B6340041B70E /* PMTypeContainer.m */; };
 		C3FF0E8A1B55BC8A0041B70E /* PMEmailContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E891B55BC8A0041B70E /* PMEmailContainer.m */; };
 		C3FF0E8D1B55BFAB0041B70E /* WKEmailListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E8C1B55BFAB0041B70E /* WKEmailListController.m */; };
-		C3FF0E911B55C7A10041B70E /* unread_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E901B55C7A10041B70E /* unread_indicator@2x.png */; };
 		F264A5F132A3A914AC722FF2 /* libPods-planckMailiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */; };
 /* End PBXBuildFile section */
 
@@ -189,11 +193,15 @@
 		84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+PMStoryboard.m"; path = "Categories/UIViewController+PMStoryboard/UIViewController+PMStoryboard.m"; sourceTree = "<group>"; };
 		C35652501B57F9FF000ECF99 /* NSDate+DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateConverter.h"; sourceTree = "<group>"; };
 		C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateConverter.m"; sourceTree = "<group>"; };
+		C35652581B5811D3000ECF99 /* unread_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unread_indicator@2x.png"; sourceTree = "<group>"; };
 		C3908D051B55D36800939ADC /* WKEmailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKEmailController.h; sourceTree = "<group>"; };
 		C3908D061B55D36800939ADC /* WKEmailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKEmailController.m; sourceTree = "<group>"; };
 		C3908D0A1B56C39A00939ADC /* microphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone@2x.png"; sourceTree = "<group>"; };
 		C3908D141B57A2EE00939ADC /* WKSelectedAnswerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKSelectedAnswerController.h; path = "planckMailiOS WatchKit Extension/ReplyController/WKSelectedAnswerController.h"; sourceTree = SOURCE_ROOT; };
 		C3908D151B57A2EE00939ADC /* WKSelectedAnswerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKSelectedAnswerController.m; path = "planckMailiOS WatchKit Extension/ReplyController/WKSelectedAnswerController.m"; sourceTree = SOURCE_ROOT; };
+		C3DDB83F1B5906F5002131FA /* WatchKitDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchKitDefines.h; sourceTree = "<group>"; };
+		C3DDB8401B5E7539002131FA /* PMWatchRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMWatchRequestHandler.h; sourceTree = "<group>"; };
+		C3DDB8411B5E7539002131FA /* PMWatchRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMWatchRequestHandler.m; sourceTree = "<group>"; };
 		C3FF0E4F1B5596880041B70E /* planckMailiOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "planckMailiOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FF0E521B5596880041B70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3FF0E531B5596880041B70E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -216,7 +224,6 @@
 		C3FF0E891B55BC8A0041B70E /* PMEmailContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMEmailContainer.m; sourceTree = "<group>"; };
 		C3FF0E8B1B55BFAB0041B70E /* WKEmailListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKEmailListController.h; sourceTree = "<group>"; };
 		C3FF0E8C1B55BFAB0041B70E /* WKEmailListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKEmailListController.m; sourceTree = "<group>"; };
-		C3FF0E901B55C7A10041B70E /* unread_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unread_indicator@2x.png"; sourceTree = "<group>"; };
 		CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planckMailiOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF494C6A5E8B85BC338CBD3F /* Pods-planckMailiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-planckMailiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-planckMailiOS/Pods-planckMailiOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -592,6 +599,7 @@
 				846096131B13058E00924B61 /* ContactsManager */,
 				84F407981B12710700AA627B /* DB */,
 				84F9A97D1B11E05D0067C3D0 /* Request */,
+				C3DDB83E1B5906D6002131FA /* WatchKit */,
 				84B751D61AFF74C000331CC0 /* PMAPIManager.h */,
 				84B751D71AFF74C000331CC0 /* PMAPIManager.m */,
 			);
@@ -737,6 +745,17 @@
 			path = ReplyController;
 			sourceTree = "<group>";
 		};
+		C3DDB83E1B5906D6002131FA /* WatchKit */ = {
+			isa = PBXGroup;
+			children = (
+				C3DDB83F1B5906F5002131FA /* WatchKitDefines.h */,
+				C3DDB8401B5E7539002131FA /* PMWatchRequestHandler.h */,
+				C3DDB8411B5E7539002131FA /* PMWatchRequestHandler.m */,
+			);
+			name = WatchKit;
+			path = Communication/WatchKit;
+			sourceTree = "<group>";
+		};
 		C3FF0E501B5596880041B70E /* planckMailiOS WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,8 +853,8 @@
 		C3FF0E8F1B55C7960041B70E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C35652581B5811D3000ECF99 /* unread_indicator@2x.png */,
 				C3908D0A1B56C39A00939ADC /* microphone@2x.png */,
-				C3FF0E901B55C7A10041B70E /* unread_indicator@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1000,10 +1019,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3FF0E911B55C7A10041B70E /* unread_indicator@2x.png in Resources */,
 				C3FF0E671B5596880041B70E /* Interface.storyboard in Resources */,
 				C3908D0B1B56C39A00939ADC /* microphone@2x.png in Resources */,
 				C3FF0E691B5596880041B70E /* Images.xcassets in Resources */,
+				C35652591B5811D3000ECF99 /* unread_indicator@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,6 +1066,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */,
 				84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */,
 				84ECA4341B13550D00770F88 /* OPDataLoader.m in Sources */,
 				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
@@ -1080,6 +1100,7 @@
 				842E2FEA1AFEB13400B0C8DB /* main.m in Sources */,
 				84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */,
 				84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */,
+				C35BC1DF1B5EF9D100CCDC4D /* PMTypeContainer.m in Sources */,
 				84ECA4301B13500000770F88 /* DBNamespace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1099,6 +1120,8 @@
 				C3908D161B57A2EE00939ADC /* WKSelectedAnswerController.m in Sources */,
 				C3FF0E8D1B55BFAB0041B70E /* WKEmailListController.m in Sources */,
 				C3FF0E7E1B55A39B0041B70E /* WKEmailRow.m in Sources */,
+				C35BC1E11B5FDE5800CCDC4D /* DBManager.m in Sources */,
+				C35BC1E01B5FCEB500CCDC4D /* PMInboxMailModel.m in Sources */,
 				C3FF0E8A1B55BC8A0041B70E /* PMEmailContainer.m in Sources */,
 				C3FF0E811B55A3AE0041B70E /* WKPlainRow.m in Sources */,
 				C3908D071B55D36800939ADC /* WKEmailController.m in Sources */,

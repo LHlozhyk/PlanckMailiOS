@@ -11,11 +11,15 @@
 #import "PMTypeContainer.h"
 #import "PMEmailContainer.h"
 #import "WKEmailListController.h"
-
+#import "WatchKitDefines.h"
 
 @interface InterfaceController() {
-  NSArray *dataSource;
+  NSMutableArray *dataSource;
+  NSMutableArray *accountsArray;
 }
+
+@property (weak, nonatomic) IBOutlet WKInterfaceTable *tableView;
+@property (weak, nonatomic) IBOutlet WKInterfaceButton *addAccountButton;
 
 @end
 
@@ -26,64 +30,71 @@
   [super awakeWithContext:context];
   
   [self setTitle:@"PlanckLabs"];
+}
 
-  dataSource = @[[PMTypeContainer initWithTitle:@"All Unread" count:12],
-                          [PMTypeContainer initWithTitle:@"Gmail" count:5],
-                          [PMTypeContainer initWithTitle:@"Microsoft" count:7],
-                          [PMTypeContainer initWithTitle:@"Calendar" count:-1],
-                          [PMTypeContainer initWithTitle:@"Contact" count:-1]];
+- (void)updateUserAccounts {
+  BOOL isOk = [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestAccounts)} reply:^(NSDictionary *replyInfo, NSError *error) {
+    
+    //get requested accounts
+    NSArray *accounts = replyInfo[WK_REQUEST_RESPONSE];
+    if([accounts count] > 0) {
+      NSMutableArray *tempAccounts = [NSMutableArray new];
+      for(NSData *arcObj in accounts) {
+        PMTypeContainer *myObject = [NSKeyedUnarchiver unarchiveObjectWithData:arcObj];
+        [tempAccounts addObject:myObject];
+      }
+      
+      BOOL reloadTable = !accountsArray || ![accountsArray isEqualToArray:tempAccounts];
+      accountsArray = [NSMutableArray arrayWithArray:tempAccounts];
+      
+      dataSource = [NSMutableArray arrayWithArray:@[[PMTypeContainer initWithTitle:@"All Unread" count:-1],
+                                                    [PMTypeContainer initWithTitle:@"Calendar" count:-1],
+                                                    [PMTypeContainer initWithTitle:@"Contact" count:-1]]];
+      [dataSource insertObjects:accountsArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [accountsArray count])]];
+//      if(reloadTable) {
+        [self reloadTable];
+//      } else {
+//        [self updateRows];
+//      }
+    }
+    [_tableView setHidden:[accounts count] == 0];
+    [_addAccountButton setHidden:[accounts count] != 0];
+  }];
   
+  if(!isOk) {
+    
+  }
+}
+
+- (void)reloadTable {
   [self.tableView setNumberOfRows:[dataSource count] withRowType:PLAIN_ROW_IDENTIFIER];
+  [self updateRows];
+}
+
+- (void)updateRows {
   NSInteger i = 0;
   for(PMTypeContainer *type in dataSource) {
     WKPlainRow *row = [self.tableView rowControllerAtIndex:i++];
     [row setTypeContainer:type];
   }
-
-  // Configure interface objects here.
 }
 
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex {
-  if(rowIndex > 2) return;
+  PMTypeContainer *selectedType = dataSource[rowIndex];
   
-  NSDate *date = [NSDate date];
-  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-  [formatter setDateFormat:@"MMM dd, yyy"];
-  date = [formatter dateFromString:@"Apr 7, 2011"];
-  NSLog(@"%@", [formatter stringFromDate:date]);
-  
-  PMTypeContainer *container = dataSource[rowIndex];
-  NSMutableDictionary *context = [NSMutableDictionary new];
-  [context setObject:container.title forKeyedSubscript:TITLE];
-  
-  NSArray *emails = @[[PMEmailContainer initWithTitle:@"Apple"
-                                              subject:@"ololo"
-                                                 text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between (french) like deSaussure did."
-                                                 date:[formatter dateFromString:@"Jul 16, 2015"]
-                                             isUnread:NO],
-                      [PMEmailContainer initWithTitle:@"Dima"
-                                              subject:@"sd vsd v"
-                                                 text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between a system as the ability of the speakers to communicate using verbal and gestural signstext being understood as the product of this ability is more fitting for the language-definition as separated into  like deSaussure did."
-                                                 date:[formatter dateFromString:@"Apr 7, 2015"]
-                                             isUnread:YES],
-                      [PMEmailContainer initWithTitle:@"Lybomyr"
-                                              subject:@"s dv dfv "
-                                                 text:@"e. Your differenciation between a system as the ability of the speakers to communicate using verbal and gestural signs and text being understood as the product of this ability is more fitting f"
-                                                 date:[formatter dateFromString:@"Apr 7, 2014"]
-                                             isUnread:NO],
-                      [PMEmailContainer initWithTitle:@"Raj"
-                                              subject:@"sdfvsdf sdf vsd"
-                                                 text:@"Whoever gave the linguistic definition of text, is wrong, he has mistaken text for language. Your differenciation between a system as the ability of the speakers to communicate using verbal and gestural signs and text being understood as the product of this ability is more fitting for the language-definition as separated into langue and parole (french) like deSaussure did."
-                                                 date:[formatter dateFromString:@"Apr 7, 2011"]
-                                             isUnread:YES]];
-  [context setObject:emails forKey:CONTENT];
-  
-  [self pushControllerWithName:LIST_CONTROLLER_IDENTIFIER context:context];
+  if(selectedType.isNameSpace) {
+    [self pushControllerWithName:LIST_CONTROLLER_IDENTIFIER context:@{TITLE: selectedType.email_address, CONTENT: selectedType}];
+  }
+}
+
+- (IBAction)addAccountPressed {
+  [self updateUserActivity:@"com.planckMailiOS.addAccount" userInfo:@{@"info": @"its ok"} webpageURL:nil];
 }
 
 - (void)willActivate {
-  // This method is called when watch view controller is about to be visible to user
   [super willActivate];
+  
+  [self updateUserAccounts];
 }
 
 - (void)didDeactivate {

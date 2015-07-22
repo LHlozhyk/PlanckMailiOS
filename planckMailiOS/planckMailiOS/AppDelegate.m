@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "DBManager.h"
+#import "PMWatchRequestHandler.h"
 
 @interface AppDelegate ()
 @end
@@ -20,7 +21,6 @@
     [self setUpCustomDesign];
     
     NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
-
     if (lNamespacesArray.count > 0) {
         UITabBarController *lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
         [(UINavigationController *)self.window.rootViewController setNavigationBarHidden:YES];
@@ -49,10 +49,33 @@
 
 }
 
+- (BOOL)application:(UIApplication *)application willContinueUserActivityWithType:(NSString *)userActivityType {
+  return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler {
+  return YES;
+}
+
 #pragma mark - Private methods
 
 - (void)setUpCustomDesign {
    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+}
+
+#pragma mark - WatchKit Extention
+
+- (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void (^)(NSDictionary *))reply {
+
+  __block UIBackgroundTaskIdentifier watchKitHandler;
+  watchKitHandler = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"backgroundTask"
+                                                                 expirationHandler:^{
+                                                                   NSLog(@"Background handler called. Background tasks expirationHandler called.");
+                                                                   [[UIApplication sharedApplication] endBackgroundTask:watchKitHandler];
+                                                                   watchKitHandler = UIBackgroundTaskInvalid;
+                                                                 }];
+  
+  [[PMWatchRequestHandler sharedHandler] handleWatchKitExtensionRequest:userInfo reply:reply];
 }
 
 @end

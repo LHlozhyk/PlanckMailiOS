@@ -24,6 +24,9 @@
 
 - (IBAction)sendDidPressed {
   
+  [WKInterfaceController openParentApplication:nil reply:^(NSDictionary *replyInfo, NSError *error) {
+    
+  }];
 }
 
 - (IBAction)retakeDidPressed {

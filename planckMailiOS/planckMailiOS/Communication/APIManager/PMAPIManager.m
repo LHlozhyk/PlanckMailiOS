@@ -86,7 +86,10 @@
             lNewItem.namespaceId = item[@"namespace_id"];
             lNewItem.messageId = item[@"id"];
             lNewItem.isUnread = NO;
-            
+          
+            NSTimeInterval firstTimeStamp = [item[@"first_message_timestamp"] doubleValue];
+            lNewItem.firstMessageDate = [NSDate dateWithTimeIntervalSince1970:firstTimeStamp];
+          
             NSArray *lTagsArray =  item[@"tags"];
             
             for (NSDictionary *itemTag in lTagsArray) {
@@ -124,7 +127,6 @@
 }
 
 - (void)searchMailWithKeyword:(NSString *)keyword namespacesId:(NSString *)namespacesId completion:(ExtendedBlockHandler)handler {
-
     OPDataLoader *lDataLoader = [OPDataLoader new];
     [lDataLoader loadUrlWithGETMethod:[PMRequest searchMailWithKeyword:keyword namespacesId:namespacesId]  handler:^(NSData *loadData, NSError *error, BOOL success) {
         NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];

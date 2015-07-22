@@ -8,12 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PMTypeContainer : NSObject
+@class DBNamespace;
+@interface PMTypeContainer : NSObject <NSSecureCoding>
 
-@property (nonatomic, copy) NSString *title;
 @property (nonatomic, assign) NSInteger unreadCount;
-@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, assign) BOOL isNameSpace;
+@property (nonatomic, copy) NSString * id;
+@property (nonatomic, copy) NSString * object;
+@property (nonatomic, copy) NSString * namespace_id;
+@property (nonatomic, copy) NSString * account_id;
+@property (nonatomic, copy) NSString * email_address;
+@property (nonatomic, copy) NSString * name;
+@property (nonatomic, copy) NSString * provider;
+@property (nonatomic, copy) NSString * token;
 
 + (instancetype)initWithTitle:(NSString *)title count:(NSInteger)count;
++ (instancetype)initWithNameSpase:(DBNamespace *)nameSpace;
 
 @end
