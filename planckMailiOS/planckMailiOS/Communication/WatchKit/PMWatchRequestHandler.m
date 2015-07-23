@@ -66,7 +66,9 @@
     case PMWatchRequestReply: {
       NSMutableDictionary *replyDict = [NSMutableDictionary dictionaryWithDictionary:userInfo[WK_REQUEST_INFO]];
       [[PMAPIManager shared] replyMessage:replyDict completion:^(id data, id error, BOOL success) {
-        
+        if(reply) {
+          reply(@{WK_REQUEST_RESPONSE: [NSNumber numberWithBool:success]});
+        }
       }];
     }
       
@@ -80,6 +82,7 @@
           if([data isKindOfClass:[NSArray class]]) {
             result = [data firstObject];
           }
+          
           reply(result);
         }
       }];

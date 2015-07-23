@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 
 #define REPLY_TEXT @"reply_text"
-#define REPLY_MESSAGE_ID @"reply_message_id"
+#define REPLY_MESSAGE_INFO @"reply_message_info"
 
 #define SELECTED_ANSWER_IDENTIFIER @"selectedAnswer"
 #define SELECTED_ANSWER_RETAKE @"selectedAnswerRetake"

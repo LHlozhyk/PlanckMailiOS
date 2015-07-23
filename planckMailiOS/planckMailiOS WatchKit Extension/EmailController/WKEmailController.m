@@ -17,6 +17,7 @@
 @interface WKEmailController () {
   PMInboxMailModel *emailContainer;
   BOOL retakePressed;
+  NSDictionary *emailInfo;
 }
 
 
@@ -34,7 +35,6 @@
   
   if(context) {
     emailContainer = (PMInboxMailModel *)context;
-    
     [self.titleLabel setText:emailContainer.ownerName];
     [self.subjectLabel setText:emailContainer.subject];
     
@@ -43,6 +43,8 @@
                                            reply:^(NSDictionary *replyInfo, NSError *error) {
       //remove htmp tags
      @autoreleasepool {
+       emailContainer.isUnread = NO;
+       emailInfo = [replyInfo copy];
        NSString *htmlBody = replyInfo[@"body"];
        NSAttributedString *textBody = [[NSAttributedString alloc] initWithData:[htmlBody dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
        [self.textLabel setText:textBody.string];
@@ -70,7 +72,7 @@
     if([results count]) {
       
       [self pushControllerWithName:SELECTED_ANSWER_IDENTIFIER
-                           context:@{REPLY_TEXT: [results firstObject], REPLY_MESSAGE_ID: emailContainer.messageId}];
+                           context:@{REPLY_TEXT: [results firstObject], REPLY_MESSAGE_INFO: emailInfo}];
       
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retakePressedNotification:) name:SELECTED_ANSWER_RETAKE object:nil];
     }

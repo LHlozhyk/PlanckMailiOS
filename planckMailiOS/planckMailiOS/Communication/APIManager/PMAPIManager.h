@@ -50,5 +50,6 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 - (void)setActiveNamespace:(DBNamespace *)item;
 
 @property (nonatomic, readonly) NSString *namespaceId;
+@property (nonatomic, readonly) NSString *emailAddress;
 
 @end

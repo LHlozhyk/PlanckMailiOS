@@ -56,6 +56,10 @@
 - (void)reloadTableView {
   [self.tableView setNumberOfRows:[dataSource count] withRowType:EMAIL_ROW_IDENTIFIER];
   
+  [self updateRows];
+}
+
+- (void)updateRows {
   NSInteger i = 0;
   for(PMInboxMailModel *container in dataSource) {
     WKEmailRow *row = [self.tableView rowControllerAtIndex:i++];
@@ -65,8 +69,9 @@
 }
 
 - (void)willActivate {
-  // This method is called when watch view controller is about to be visible to user
   [super willActivate];
+  
+  [self updateRows];
 }
 
 - (void)didDeactivate {

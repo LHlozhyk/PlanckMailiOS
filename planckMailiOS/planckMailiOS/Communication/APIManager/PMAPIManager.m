@@ -80,12 +80,20 @@
         for (NSDictionary *item in lResponse) {
             
             PMInboxMailModel *lNewItem = [PMInboxMailModel new];
-            lNewItem.ownerName = [item[@"participants"] firstObject][@"name"];
             lNewItem.snippet = item[@"snippet"];
             lNewItem.subject = item[@"subject"];
             lNewItem.namespaceId = item[@"namespace_id"];
             lNewItem.messageId = item[@"id"];
             lNewItem.isUnread = NO;
+          
+            NSArray *participants = item[@"participants"];
+          
+            for (NSDictionary *user in participants) {
+              if (![user[@"email"] isEqualToString:_emailAddress]) {
+                lNewItem.ownerName = user[@"name"];
+                break;
+              }
+            }
           
             NSTimeInterval firstTimeStamp = [item[@"first_message_timestamp"] doubleValue];
             lNewItem.firstMessageDate = [NSDate dateWithTimeIntervalSince1970:firstTimeStamp];
@@ -187,13 +195,16 @@
 - (void)replyMessage:(NSDictionary *)message completion:(ExtendedBlockHandler)handler {
     OPDataLoader *lDataLoader = [OPDataLoader new];
     [lDataLoader loadUrlWithPOSTMethod:[PMRequest replyMessageWithNamespacesId:self.namespaceId] JSONParameters:message handler:^(NSData *loadData, NSError *error, BOOL success) {
-        
+      if(handler) {
+        handler(nil, error, success);
+      }
     }];
 }
 
 - (void)setActiveNamespace:(DBNamespace *)item {
     SAVE_VALUE(item.token, TOKEN);
     _namespaceId = item.namespace_id;
+    _emailAddress = [item.email_address copy];
 }
 
 #pragma mark - Private methods

@@ -29,8 +29,10 @@
 
 - (IBAction)sendDidPressed {
   if(replyDict[REPLY_TEXT]) {
-    NSDictionary *reply = @{@"reply_to_message_id": replyDict[REPLY_MESSAGE_ID],
-                            @"body" : replyDict[REPLY_TEXT]};
+    NSDictionary *messageInfo = replyDict[REPLY_MESSAGE_INFO];
+    NSDictionary *reply = @{@"reply_to_message_id": messageInfo[@"id"],
+                            @"body" : replyDict[REPLY_TEXT],
+                            @"to": messageInfo[@"from"]};
     
 //    @{
 //      @"reply_to_message_id": _messageId,
@@ -46,7 +48,10 @@
     
     [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestReply), WK_REQUEST_INFO: reply}
                                            reply:^(NSDictionary *replyInfo, NSError *error) {
-      
+       if([reply[WK_REQUEST_RESPONSE] boolValue]) {
+         
+       }
+       [self dismissController];
     }];
   }
 }
