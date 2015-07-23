@@ -61,8 +61,6 @@
       
       break;
       
-      
-      
     case PMWatchRequestReply: {
       NSMutableDictionary *replyDict = [NSMutableDictionary dictionaryWithDictionary:userInfo[WK_REQUEST_INFO]];
       [[PMAPIManager shared] replyMessage:replyDict completion:^(id data, id error, BOOL success) {
@@ -79,9 +77,9 @@
       [[PMAPIManager shared] getDetailWithMessageId:mailModel.messageId namespacesId:mailModel.namespaceId unread:mailModel.isUnread completion:^(id data, id error, BOOL success) {
         if(reply) {
           id result = data;
-          if([data isKindOfClass:[NSArray class]]) {
-            result = [data firstObject];
-          }
+//          if([data isKindOfClass:[NSArray class]]) {
+//            result = [data firstObject];
+//          }
           
           reply(result);
         }

@@ -84,6 +84,7 @@
             lNewItem.subject = item[@"subject"];
             lNewItem.namespaceId = item[@"namespace_id"];
             lNewItem.messageId = item[@"id"];
+            lNewItem.version = [item[@"version"] unsignedIntegerValue];
             lNewItem.isUnread = NO;
           
             NSArray *participants = item[@"participants"];
@@ -95,8 +96,8 @@
               }
             }
           
-            NSTimeInterval firstTimeStamp = [item[@"first_message_timestamp"] doubleValue];
-            lNewItem.firstMessageDate = [NSDate dateWithTimeIntervalSince1970:firstTimeStamp];
+            NSTimeInterval lastTimeStamp = [item[@"last_message_timestamp"] doubleValue];
+            lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
           
             NSArray *lTagsArray =  item[@"tags"];
             

@@ -34,27 +34,44 @@
   [super awakeWithContext:context];
   
   if(context) {
-    emailContainer = (PMInboxMailModel *)context;
+    emailContainer = (PMInboxMailModel *)context[CONTENT];
+    emailInfo = context[ADDITIONAL_INFO];
     [self.titleLabel setText:emailContainer.ownerName];
     [self.subjectLabel setText:emailContainer.subject];
     
-    NSData *emailData = [NSKeyedArchiver archivedDataWithRootObject:emailContainer];
-    [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestGetEmailDetails), WK_REQUEST_INFO: emailData}
-                                           reply:^(NSDictionary *replyInfo, NSError *error) {
-      //remove htmp tags
-     @autoreleasepool {
-       emailContainer.isUnread = NO;
-       emailInfo = [replyInfo copy];
-       NSString *htmlBody = replyInfo[@"body"];
-       NSAttributedString *textBody = [[NSAttributedString alloc] initWithData:[htmlBody dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
-       [self.textLabel setText:textBody.string];
-     }
-     
-     NSTimeInterval date = [replyInfo[@"date"] doubleValue];
-     NSDate *dateStamp = [NSDate dateWithTimeIntervalSince1970:date];
-     [self.dateLabel setText:[dateStamp convertedStringValue]];
-   }];
+    if(emailInfo) {
+      [self updateBodyAndDate];
+    } else {
+      NSData *emailData = [NSKeyedArchiver archivedDataWithRootObject:emailContainer];
+      [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestGetEmailDetails), WK_REQUEST_INFO: emailData}
+                                             reply:^(id replyInfo, NSError *error) {
+        //remove htmp tags
+       @autoreleasepool {
+         emailContainer.isUnread = NO;
+         if([replyInfo isKindOfClass:[NSArray class]]) {
+           emailInfo = [[replyInfo firstObject] copy];
+         } else {
+           emailInfo = [replyInfo copy];
+         }
+         
+         [self updateBodyAndDate];
+       }
+     }];
+    }
   }
+}
+
+- (void) updateBodyAndDate {
+  NSString *htmlBody = emailInfo[@"body"];
+  NSAttributedString *textBody = [[NSAttributedString alloc] initWithData:[htmlBody dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+  [self.textLabel setText:textBody.string];
+  
+  NSTimeInterval date = [emailInfo[@"date"] doubleValue];
+  NSDate *online = [NSDate dateWithTimeIntervalSince1970:date];
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"MMM dd, YYYY 'at' hh:mm aaa"];
+  
+  [self.dateLabel setText:[dateFormatter stringFromDate:online]];
 }
 
 - (id)contextForSegueWithIdentifier:(NSString *)segueIdentifier {

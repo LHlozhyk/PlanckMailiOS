@@ -44,7 +44,6 @@
         [tempAccounts addObject:myObject];
       }
       
-      BOOL reloadTable = !accountsArray || ![accountsArray isEqualToArray:tempAccounts];
       accountsArray = [NSMutableArray arrayWithArray:tempAccounts];
       
       dataSource = [NSMutableArray arrayWithArray:@[[PMTypeContainer initWithTitle:@"All Unread" count:-1],
@@ -60,10 +59,6 @@
     [_tableView setHidden:[accounts count] == 0];
     [_addAccountButton setHidden:[accounts count] != 0];
   }];
-  
-  if(!isOk) {
-    
-  }
 }
 
 - (void)reloadTable {
