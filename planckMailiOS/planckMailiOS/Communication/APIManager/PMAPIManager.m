@@ -201,6 +201,15 @@
     }];
 }
 
+- (void)createDrafts:(NSDictionary *)draftParams completion:(ExtendedBlockHandler)handler {
+    OPDataLoader *lDataLoader = [OPDataLoader new];
+    [lDataLoader loadUrlWithPOSTMethod:[PMRequest draftMessageWithNamespacesId:self.namespaceId] JSONParameters:draftParams handler:^(NSData *loadData, NSError *error, BOOL success) {
+        if(handler) {
+            handler(nil, error, success);
+        }
+    }];
+}
+
 - (void)setActiveNamespace:(DBNamespace *)item {
     SAVE_VALUE(item.token, TOKEN);
     _namespaceId = item.namespace_id;

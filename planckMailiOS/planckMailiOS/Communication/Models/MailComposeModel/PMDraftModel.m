@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 LHlozhyk. All rights reserved.
 //
 
-#import "PMMailComposeModel.h"
+#import "PMDraftModel.h"
 
-@implementation PMMailComposeModel
+@implementation PMDraftModel
 
 - (instancetype)init {
     self = [super init];

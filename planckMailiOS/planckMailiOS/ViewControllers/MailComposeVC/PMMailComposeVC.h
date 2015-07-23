@@ -10,6 +10,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 
 #import "UIViewController+PMStoryboard.h"
+#import "PMDraftModel.h"
 
 typedef enum {
     PMMailComposeResultCancelled,
@@ -26,5 +27,6 @@ typedef enum {
 @interface PMMailComposeVC : UIViewController
 @property(nonatomic, copy) NSString *messageId;
 @property(nonatomic, copy) NSString *emails;
+@property(nonatomic, retain) PMDraftModel *draft;
 @property(nonatomic, weak) id<PMMailComposeVCDelegate> mailComposeDelegate;
 @end

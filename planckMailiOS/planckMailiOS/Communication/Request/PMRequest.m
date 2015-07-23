@@ -42,4 +42,8 @@
     return [NSString stringWithFormat:@"%@/n/%@/send", APP_SERVER_LINK, namespacesId];
 }
 
++ (NSString *)draftMessageWithNamespacesId:(NSString *)namespacesId {
+    return [NSString stringWithFormat:@"%@/n/%@/drafts", APP_SERVER_LINK, namespacesId];
+}
+
 @end

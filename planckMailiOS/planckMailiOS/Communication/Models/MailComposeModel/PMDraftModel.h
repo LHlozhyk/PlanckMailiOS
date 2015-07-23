@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PMMailComposeModel : NSObject
+@interface PMDraftModel : NSObject
 @property(nonatomic, copy) NSString *subject;
 @property(nonatomic, copy) NSArray *to;
 @property(nonatomic, copy) NSArray *from;

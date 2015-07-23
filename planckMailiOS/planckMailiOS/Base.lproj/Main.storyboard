@@ -243,7 +243,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YUA-Tr-5zB" id="7XA-Vb-94l">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Cc/Bcc:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QgZ-OT-2H9">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Cc:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QgZ-OT-2H9">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -266,6 +266,37 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="_textField" destination="Rnv-85-fc8" id="AEe-og-k84"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BccCell" textLabel="JAP-yV-q2M" style="IBUITableViewCellStyleDefault" id="Vy3-Od-Kf9" customClass="PMMailComposeTVCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vy3-Od-Kf9" id="NvF-rw-cLG">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bcc:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JAP-yV-q2M">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="09E-rd-Cwj">
+                                                    <rect key="frame" x="78" y="7" width="234" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Vy3-Od-Kf9" id="EcA-2P-67i"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="09E-rd-Cwj" firstAttribute="top" secondItem="NvF-rw-cLG" secondAttribute="topMargin" constant="-1" id="1OB-xo-XfN"/>
+                                                <constraint firstItem="09E-rd-Cwj" firstAttribute="leading" secondItem="NvF-rw-cLG" secondAttribute="leadingMargin" constant="70" id="KNT-rc-cpN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="09E-rd-Cwj" secondAttribute="trailing" id="UE0-ya-SBe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="_textField" destination="09E-rd-Cwj" id="q9W-Kj-PKe"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubjectCell" textLabel="cn1-5k-QFf" style="IBUITableViewCellStyleDefault" id="D8V-aI-HOc" customClass="PMMailComposeTVCell">
@@ -299,7 +330,7 @@
                                             <outlet property="_textField" destination="ESl-NY-ucw" id="kj8-jg-7ks"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextViewCell" rowHeight="194" id="dm8-mL-KRR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextViewCell" rowHeight="194" id="dm8-mL-KRR" customClass="PMMailComposeBodyTVCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dm8-mL-KRR" id="cmZ-X2-r0z">
@@ -308,9 +339,6 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bu1-BQ-DDd">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="193"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="193" id="Jpt-ln-NFd"/>
-                                                    </constraints>
                                                     <string key="text">
 
 
@@ -320,15 +348,21 @@
 Sent from PlanckMailiOS</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="dm8-mL-KRR" id="Z5E-NB-e85"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="bu1-BQ-DDd" secondAttribute="trailing" constant="-8" id="YUP-8O-Raw"/>
-                                                <constraint firstItem="bu1-BQ-DDd" firstAttribute="leading" secondItem="cmZ-X2-r0z" secondAttribute="leadingMargin" constant="-8" id="Z0b-ai-h7s"/>
-                                                <constraint firstItem="bu1-BQ-DDd" firstAttribute="top" secondItem="cmZ-X2-r0z" secondAttribute="topMargin" constant="-8" id="gey-MZ-ebH"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="bu1-BQ-DDd" secondAttribute="bottom" constant="-8" id="pkz-5c-HFp"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bu1-BQ-DDd" secondAttribute="bottom" constant="-8" id="3JZ-Fh-r56"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bu1-BQ-DDd" secondAttribute="trailing" constant="-8" id="8b0-W0-lT9"/>
+                                                <constraint firstItem="bu1-BQ-DDd" firstAttribute="leading" secondItem="cmZ-X2-r0z" secondAttribute="leadingMargin" constant="-8" id="FPM-PX-U0Z"/>
+                                                <constraint firstItem="bu1-BQ-DDd" firstAttribute="top" secondItem="cmZ-X2-r0z" secondAttribute="topMargin" constant="-8" id="WGX-bp-626"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="_textView" destination="bu1-BQ-DDd" id="Ewb-CH-jI3"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1180,7 +1214,7 @@ Sent from PlanckMailiOS</string>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="replyBtnPressed:" destination="ccR-rO-z97" eventType="touchUpInside" id="sd3-Ol-B2g"/>
+                                                <action selector="forwardBtnPressed:" destination="ccR-rO-z97" eventType="touchUpInside" id="oWS-bQ-FPK"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNz-N0-UWr">
@@ -1189,7 +1223,7 @@ Sent from PlanckMailiOS</string>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="replyBtnPressed:" destination="ccR-rO-z97" eventType="touchUpInside" id="ce7-q4-h0n"/>
+                                                <action selector="replyAllBtnPressed:" destination="ccR-rO-z97" eventType="touchUpInside" id="id4-J3-r0g"/>
                                             </connections>
                                         </button>
                                     </subviews>

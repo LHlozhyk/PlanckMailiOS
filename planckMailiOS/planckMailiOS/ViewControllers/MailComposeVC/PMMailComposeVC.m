@@ -10,9 +10,11 @@
 
 #import "PMSelectionEmailView.h"
 #import "PMMailComposeTVCell.h"
+#import "PMMailComposeBodyTVCell.h"
 #import "PMAPIManager.h"
+#import "MBProgressHUD.h"
 
-@interface PMMailComposeVC () <PMSelectionEmailViewDelegate, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, PMMailComposeTVCellDelegate> {
+@interface PMMailComposeVC () <PMSelectionEmailViewDelegate, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, PMMailComposeTVCellDelegate, PMMailComposeBodyTVCellDelegate> {
     __weak IBOutlet UIBarButtonItem *_sentBarBtn;
     __weak IBOutlet UIButton *_emailBtn;
     __weak IBOutlet UITableView *_tableView;
@@ -82,36 +84,127 @@
     [lNewActionSheet showInView:self.view];
 }
 
+- (NSString *)getToString {
+    NSMutableString *lToStr = [NSMutableString string];
+    for (NSDictionary *item in _draft.to) {
+        [lToStr appendString:[NSString stringWithFormat:@" %@", item[@"email"]]];
+    }
+    return lToStr;
+}
+
+- (NSString *)getCcString {
+    NSMutableString *lCcStr = [NSMutableString string];
+    for (NSDictionary *item in _draft.cc) {
+        [lCcStr appendString:[NSString stringWithFormat:@" %@", item[@"email"]]];
+    }
+    return lCcStr;
+}
+
+- (NSString *)getBccString {
+    NSMutableString *lBccStr = [NSMutableString string];
+    for (NSDictionary *item in _draft.to) {
+        [lBccStr appendString:[NSString stringWithFormat:@" %@", item[@"email"]]];
+    }
+    return lBccStr;
+}
+
+- (NSDictionary *)getSendMessageParams {
+    NSString *lEmailsTo = _dataInfo[@"toCell"] ? : [self getToString];
+    NSArray *emailToArray = [self validateEmailWithString:lEmailsTo];
+    
+    NSString *lEmailsCc = _dataInfo[@"CcCell"] ? : [self getCcString];
+    NSArray *emailCcArray = [self validateEmailWithString:lEmailsCc];
+    
+    NSString *lEmailsBcc = _dataInfo[@"bccCell"] ? : [self getBccString];
+    NSArray *emailBccArray = [self validateEmailWithString:lEmailsBcc];
+    NSDictionary *lRequsetParmeters = nil;
+    
+    if ([emailToArray count] > 0) {
+        
+        NSMutableArray *lTo = [NSMutableArray array];
+        
+        for (NSString *item in emailToArray) {
+            if (![item isEqualToString:@""]) {
+                [lTo addObject:@{
+                                 @"name": @"",
+                                 @"email": item
+                                 }];
+            }
+        }
+        NSMutableArray *lCc = [NSMutableArray array];
+        for (NSString *item in emailCcArray) {
+            if (![item isEqualToString:@""]) {
+                [lCc addObject:@{
+                                 @"name": @"",
+                                 @"email": item
+                                 }];
+            }
+        }
+        NSMutableArray *lBcc = [NSMutableArray array];
+        for (NSString *item in emailBccArray) {
+            if (![item isEqualToString:@""]) {
+                [lBcc addObject:@{
+                                  @"name": @"",
+                                  @"email": item
+                                  }];
+            }
+        }
+        
+        NSString *lSubject = _dataInfo[@"SubjectCell"] ? : _draft.subject;
+        
+        NSString *lBody = _dataInfo[@"TextViewCell"] ? : @"Sent from PlanckMailiOS";
+        
+        lRequsetParmeters = @{
+                                            @"reply_to_message_id": _messageId,
+                                            @"body" : lBody,
+                                            @"subject" : lSubject,
+                                            @"to" : lTo,
+                                            @"bcc" : lBcc,
+                                            @"cc" : lCc,
+                                            @"from":@[
+                                                    @{
+                                                        @"name": @"",
+                                                        @"email": _emails
+                                                        }
+                                                    ],
+                                            @"version" : [NSNumber numberWithInt:1]
+                                            };
+        
+        if ([_messageId isEqualToString:@""]) {
+            
+            lRequsetParmeters = @{
+                                  @"body" : lBody,
+                                  @"subject" : lSubject,
+                                  @"to" : lTo,
+                                  @"bcc" : lBcc,
+                                  @"cc" : lCc,
+                                  @"from":@[
+                                          @{
+                                              @"name": @"",
+                                              @"email": _emails
+                                              }
+                                          ],
+                                  @"version" : [NSNumber numberWithInt:1]
+                                  };
+        }
+    }
+    return lRequsetParmeters;
+}
+
 - (void)sentBtnPressed:(id)sender {
     
-    NSString *lEmailsTo = _dataInfo[@"toCell"];
-    BOOL lIsValidEmailTo = [self validateEmailWithString:lEmailsTo];
-
-    NSString *lEmailsCc = _dataInfo[@"CcCell"];
-    BOOL lIsValidEmailCc = [self validateEmailWithString:lEmailsCc];
-    
-    if (lIsValidEmailTo && lIsValidEmailCc) {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSDictionary * lSendParams = [self getSendMessageParams];
+    if (lSendParams != nil) {
         
-        NSString *lSubject = _dataInfo[@"SubjectCell"];
-        
-       NSDictionary *lRequsetParmeters = @{
-            @"reply_to_message_id": _messageId,
-            @"body" : @"Sounds great! See you then.",
-            
-            @"to": @[
-                   @{
-                       @"name": @"",
-                       @"email": lEmailsTo
-                   }
-                   ]
-            };
-        [[PMAPIManager shared] replyMessage:lRequsetParmeters completion:^(id data, id error, BOOL success) {
-            
+        [[PMAPIManager shared] replyMessage:lSendParams completion:^(id data, id error, BOOL success) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }];
     } else {
-       NSLog(@"error");
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [[[UIAlertView alloc] initWithTitle:@"Invalid Recipients" message:@"One or more of the recipients you provided doesn't have a valid email address. If you continue, your message will not be sent to these recipients." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles: nil] show];
     }
-    
 }
 
 - (void)selectMailBtnPressed:(id)sender {
@@ -139,29 +232,58 @@
 #pragma mark - UITableView data source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PMMailComposeTVCell *lCell;
+    UITableViewCell *lCell;
     if (indexPath.row == 0) {
         lCell = [tableView dequeueReusableCellWithIdentifier:@"toCell"];
-        [lCell setDelegate:self];
+        [(PMMailComposeTVCell*)lCell setDelegate:self];
+        
+        if ([_dataInfo count] == 0) {
+            NSMutableString *lToStr = [NSMutableString string];
+            for (NSDictionary *item in _draft.to) {
+                [lToStr appendString:[NSString stringWithFormat:@" %@", item[@"email"]]];
+            }
+            [(PMMailComposeTVCell*)lCell setContentText:lToStr];
+        }
     } else if (indexPath.row == 1) {
         lCell = [tableView dequeueReusableCellWithIdentifier:@"CcCell"];
-        [lCell setDelegate:self];
+        if ([_dataInfo count] == 0) {
+            [(PMMailComposeTVCell*)lCell setDelegate:self];
+            NSMutableString *lToStr = [NSMutableString string];
+            for (NSDictionary *item in _draft.cc) {
+                [lToStr appendString:[NSString stringWithFormat:@" %@", item[@"email"]]];
+            }
+            [(PMMailComposeTVCell*)lCell setContentText:lToStr];
+        }
     } else if (indexPath.row == 2) {
-        lCell = [tableView dequeueReusableCellWithIdentifier:@"SubjectCell"];
-        [lCell setDelegate:self];
+        lCell = [tableView dequeueReusableCellWithIdentifier:@"BccCell"];
+        [(PMMailComposeTVCell*)lCell setDelegate:self];
+        if ([_dataInfo count] == 0) {
+            NSMutableString *lToStr = [NSMutableString string];
+            for (NSDictionary *item in _draft.bcc) {
+                [lToStr appendString:[NSString stringWithFormat:@" %@", item[@"email"]]];
+            }
+            [(PMMailComposeTVCell*)lCell setContentText:lToStr];
+        }
     } else if (indexPath.row == 3) {
+        lCell = [tableView dequeueReusableCellWithIdentifier:@"SubjectCell"];
+        [(PMMailComposeTVCell*)lCell setDelegate:self];
+        if ([_dataInfo count] == 0) {
+            [(PMMailComposeTVCell*)lCell setContentText:_draft.subject];
+        }
+    } else if (indexPath.row == 4) {
         lCell = [tableView dequeueReusableCellWithIdentifier:@"TextViewCell"];
+        [(PMMailComposeBodyTVCell*)lCell setDelegate:self];
     }
 
     return lCell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 3) {
+    if (indexPath.row == 4) {
         return 1000;
     } else return 44;
 }
@@ -182,6 +304,20 @@
         }
         case 1: {
             DLog(@"save draft");
+            
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            NSDictionary * lSendParams = [self getSendMessageParams];
+            if (lSendParams != nil) {
+                
+                [[PMAPIManager shared] createDrafts:lSendParams completion:^(id data, id error, BOOL success) {
+                    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+            } else {
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                [[[UIAlertView alloc] initWithTitle:@"Invalid Recipients" message:@"One or more of the recipients you provided doesn't have a valid email address. If you continue, your message will not be sent to these recipients." delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles: nil] show];
+            }
+            
             break;
         }
         default:
@@ -200,6 +336,18 @@
         
     } else if ([cell.reuseIdentifier isEqualToString:@"SubjectCell"]) {
         [_dataInfo setObject:contentText forKey:@"SubjectCell"];
+        
+    } else if ([cell.reuseIdentifier isEqualToString:@"BccCell"]) {
+        [_dataInfo setObject:contentText forKey:@"BccCell"];
+    }
+}
+
+#pragma mark - PMMailComposeBodyTVCell delegates
+
+- (void)PMMailComposeBodyTVCellDelegate:(PMMailComposeBodyTVCell *)cell contentTextDidChange:(NSString *)contentText {
+    if ([cell.reuseIdentifier isEqualToString:@"TextViewCell"]) {
+        [_dataInfo setObject:contentText forKey:@"TextViewCell"];
+        
     }
 }
 

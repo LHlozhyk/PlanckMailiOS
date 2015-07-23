@@ -30,4 +30,6 @@
 
 + (NSString *)replyMessageWithNamespacesId:(NSString *)namespacesId;
 
++ (NSString *)draftMessageWithNamespacesId:(NSString *)namespacesId;
+
 @end

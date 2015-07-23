@@ -25,6 +25,8 @@
 - (IBAction)deleteMailBtnPressed:(id)sender;
 - (IBAction)archiveMailBtnPressed:(id)sender;
 - (IBAction)replyBtnPressed:(id)sender;
+- (IBAction)replyAllBtnPressed:(id)sender;
+- (IBAction)forwardBtnPressed:(id)sender;
 - (IBAction)backBtnPressed:(id)sender;
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
@@ -74,6 +76,58 @@
     
     NSDictionary *lItem = [_messages lastObject];
     lNewMailComposeVC.messageId = lItem[@"id"];
+    
+    PMDraftModel *lDraft = [PMDraftModel new];
+    lDraft.to = [_messages lastObject][@"from"];
+    
+    if ([_inboxMailModel.subject hasPrefix:@"Re:"]) {
+        lDraft.subject = _inboxMailModel.subject;
+    } else {
+        lDraft.subject = [NSString stringWithFormat:@"Re: %@", _inboxMailModel.subject];
+    }
+    lNewMailComposeVC.draft = lDraft;
+    
+    [self.tabBarController.navigationController presentViewController:lNewMailComposeVC animated:YES completion:nil];
+}
+
+- (void)replyAllBtnPressed:(id)sender {
+    PMMailComposeVC *lNewMailComposeVC = [[PMMailComposeVC alloc] initWithStoryboard];
+    
+    NSDictionary *lItem = [_messages lastObject];
+    lNewMailComposeVC.messageId = lItem[@"id"];
+    
+    PMDraftModel *lDraft = [PMDraftModel new];
+    
+    NSMutableArray *lEmailsArray = [NSMutableArray arrayWithArray:[_messages lastObject][@"from"]];
+    [lEmailsArray addObjectsFromArray:[_messages lastObject][@"to"]];
+    lDraft.to = lEmailsArray;
+    lDraft.cc = [_messages lastObject][@"cc"];
+    lDraft.bcc = [_messages lastObject][@"bcc"];
+    
+    if ([_inboxMailModel.subject hasPrefix:@"Re:"]) {
+        lDraft.subject = _inboxMailModel.subject;
+    } else {
+        lDraft.subject = [NSString stringWithFormat:@"Re: %@", _inboxMailModel.subject];
+    }
+    lNewMailComposeVC.draft = lDraft;
+    
+    [self.tabBarController.navigationController presentViewController:lNewMailComposeVC animated:YES completion:nil];
+}
+
+- (void)forwardBtnPressed:(id)sender {
+    PMMailComposeVC *lNewMailComposeVC = [[PMMailComposeVC alloc] initWithStoryboard];
+    
+    NSDictionary *lItem = [_messages lastObject];
+    lNewMailComposeVC.messageId = @"";
+    
+    PMDraftModel *lDraft = [PMDraftModel new];
+    
+    if ([_inboxMailModel.subject hasPrefix:@"Fwd:"]) {
+        lDraft.subject = _inboxMailModel.subject;
+    } else {
+        lDraft.subject = [NSString stringWithFormat:@"Fwd: %@", _inboxMailModel.subject];
+    }
+    lNewMailComposeVC.draft = lDraft;
     
     [self.tabBarController.navigationController presentViewController:lNewMailComposeVC animated:YES completion:nil];
 }

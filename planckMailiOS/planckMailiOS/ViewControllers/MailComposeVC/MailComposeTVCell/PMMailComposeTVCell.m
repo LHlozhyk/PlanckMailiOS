@@ -38,8 +38,11 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
+    
+    NSMutableString *lTextString = [[NSMutableString alloc] initWithString:textField.text];
+    [lTextString appendString:string];
     if (_delegate && [_delegate respondsToSelector:@selector(PMMailComposeTVCellDelegate:contentTextDidChange:)]) {
-        [_delegate PMMailComposeTVCellDelegate:self contentTextDidChange:textField.text];
+        [_delegate PMMailComposeTVCellDelegate:self contentTextDidChange:lTextString];
     }
     
     return YES;

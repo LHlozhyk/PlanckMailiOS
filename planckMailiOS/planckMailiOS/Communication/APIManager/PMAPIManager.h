@@ -47,6 +47,9 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 - (void)replyMessage:(NSDictionary *)message
           completion:(ExtendedBlockHandler)handler;
 
+- (void)createDrafts:(NSDictionary *)draftParams
+          completion:(ExtendedBlockHandler)handler;
+
 - (void)setActiveNamespace:(DBNamespace *)item;
 
 @property (nonatomic, readonly) NSString *namespaceId;
