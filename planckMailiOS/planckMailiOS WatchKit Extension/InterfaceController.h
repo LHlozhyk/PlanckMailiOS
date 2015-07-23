@@ -11,6 +11,4 @@
 
 @interface InterfaceController : WKInterfaceController
 
-@property (weak, nonatomic) IBOutlet WKInterfaceTable *tableView;
-
 @end

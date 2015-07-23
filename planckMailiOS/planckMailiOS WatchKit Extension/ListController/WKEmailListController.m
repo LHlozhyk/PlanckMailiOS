@@ -8,14 +8,17 @@
 
 #import "WKEmailListController.h"
 #import "WKEmailRow.h"
-#import "PMEmailContainer.h"
+#import "PMInboxMailModel.h"
 #import "WKEmailController.h"
+#import "PMTypeContainer.h"
+#import "WatchKitDefines.h"
 
 @interface WKEmailListController () {
-  NSArray *dataSource;
+  NSMutableArray *dataSource;
 }
 
 @property (weak, nonatomic) IBOutlet WKInterfaceTable *tableView;
+@property (nonatomic, strong) PMTypeContainer *selectedAccount;
 
 @end
 
@@ -28,13 +31,22 @@
     [self setTitle:context[TITLE]];
   }
   
-  dataSource = nil;
   if(context[CONTENT]) {
-    dataSource = context[CONTENT];
+    _selectedAccount = context[CONTENT];
     
-    [self reloadTableView];
+    NSData *account = [NSKeyedArchiver archivedDataWithRootObject:_selectedAccount];
+    [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestGetEmails), WK_REQUEST_INFO: account}
+                                           reply:^(NSDictionary *replyInfo, NSError *error) {
+     if(replyInfo[WK_REQUEST_RESPONSE]) {
+       dataSource = [NSMutableArray new];
+       NSArray *archivedMessages = replyInfo[WK_REQUEST_RESPONSE];
+       for(NSData *message in archivedMessages) {
+         [dataSource addObject:[NSKeyedUnarchiver unarchiveObjectWithData:message]];
+       }
+       [self reloadTableView];
+     }
+    }];
   }
-  // Configure interface objects here.
 }
 
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex {
@@ -45,7 +57,7 @@
   [self.tableView setNumberOfRows:[dataSource count] withRowType:EMAIL_ROW_IDENTIFIER];
   
   NSInteger i = 0;
-  for(PMEmailContainer *container in dataSource) {
+  for(PMInboxMailModel *container in dataSource) {
     WKEmailRow *row = [self.tableView rowControllerAtIndex:i++];
     
     [row setEmailContainer:container];

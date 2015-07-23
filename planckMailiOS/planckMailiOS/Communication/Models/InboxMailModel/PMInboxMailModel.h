@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PMInboxMailModel : NSObject
+@interface PMInboxMailModel : NSObject <NSSecureCoding>
 @property(nonatomic, copy)NSString *ownerName;
 @property(nonatomic, copy)NSString *snippet;
 @property(nonatomic, copy)NSString *subject;
 @property(nonatomic, copy)NSString *messageId;
 @property(nonatomic, copy)NSString *namespaceId;
 @property(nonatomic, copy)NSString *lastMessageTimestamp;
+@property(nonatomic, copy)NSDate *firstMessageDate;
 @property(nonatomic) BOOL isUnread;
 @end
