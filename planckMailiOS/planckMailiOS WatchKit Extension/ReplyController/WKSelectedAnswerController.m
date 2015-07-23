@@ -34,25 +34,9 @@
                             @"body" : replyDict[REPLY_TEXT],
                             @"to": messageInfo[@"from"]};
     
-//    @{
-//      @"reply_to_message_id": _messageId,
-//      @"body" : @"Sounds great! See you then.",
-//      
-//      @"to": @[
-//          @{
-//            @"name": @"",
-//            @"email": lEmailsTo
-//            }
-//          ]
-//      };
-    
     [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestReply), WK_REQUEST_INFO: reply}
-                                           reply:^(NSDictionary *replyInfo, NSError *error) {
-       if([reply[WK_REQUEST_RESPONSE] boolValue]) {
-         
-       }
-       [self dismissController];
-    }];
+                                           reply:nil];
+    [self popController];
   }
 }
 
@@ -76,6 +60,3 @@
 }
 
 @end
-
-
-

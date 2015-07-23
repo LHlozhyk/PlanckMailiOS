@@ -84,6 +84,7 @@
             lNewItem.subject = item[@"subject"];
             lNewItem.namespaceId = item[@"namespace_id"];
             lNewItem.messageId = item[@"id"];
+            lNewItem.version = [item[@"version"] unsignedIntegerValue];
             lNewItem.isUnread = NO;
           
             NSArray *participants = item[@"participants"];

@@ -9,10 +9,6 @@
 #import <WatchKit/WatchKit.h>
 #import <Foundation/Foundation.h>
 
-#define LIST_CONTROLLER_IDENTIFIER @"emailListController"
-#define TITLE @"title"
-#define CONTENT @"content"
-
 @interface WKEmailListController : WKInterfaceController
 
 @end

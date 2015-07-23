@@ -35,6 +35,7 @@
   [aCoder encodeObject:_namespaceId forKey:@"namespaceId"];
   [aCoder encodeBool:_isUnread forKey:@"isUnread"];
   [aCoder encodeObject:_firstMessageDate forKey:@"firstMessageDate"];
+  [aCoder encodeObject:[NSNumber numberWithUnsignedInteger:_version] forKey:@"version"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -47,6 +48,7 @@
   newMail.namespaceId = [aDecoder decodeObjectForKey:@"namespaceId"];
   newMail.isUnread = [aDecoder decodeBoolForKey:@"isUnread"];
   newMail.firstMessageDate = [aDecoder decodeObjectForKey:@"firstMessageDate"];
+  newMail.version = [[aDecoder decodeObjectForKey:@"version"] unsignedIntegerValue];
   
   return newMail;
 }
