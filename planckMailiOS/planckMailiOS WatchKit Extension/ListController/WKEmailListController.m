@@ -54,8 +54,8 @@
              lNewItem.version = 1;
              lNewItem.ownerName = [item[@"from"] firstObject][@"name"];
              lNewItem.isUnread = NO;
-             NSTimeInterval firstTimeStamp = [item[@"date"] doubleValue];
-             lNewItem.firstMessageDate = [NSDate dateWithTimeIntervalSince1970:firstTimeStamp];
+             NSTimeInterval lastTimeStamp = [item[@"date"] doubleValue];
+             lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
              
              [dataSource addObject:lNewItem];
              [emailsDictionaries addObject:item];

@@ -24,7 +24,7 @@
 - (void)setEmailContainer:(PMInboxMailModel *)emailContainer {
   [self.titleLabel setText:emailContainer.ownerName];
   [self.subjectLabel setText:emailContainer.subject];
-  [self.dateLabel setText:[emailContainer.firstMessageDate convertedStringValue]];
+  [self.dateLabel setText:[emailContainer.lastMessageDate convertedStringValue]];
   
   [self.unreadIndicator setHidden:!emailContainer.isUnread];
 }

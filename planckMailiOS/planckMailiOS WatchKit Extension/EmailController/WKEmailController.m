@@ -65,9 +65,13 @@
   NSString *htmlBody = emailInfo[@"body"];
   NSAttributedString *textBody = [[NSAttributedString alloc] initWithData:[htmlBody dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
   [self.textLabel setText:textBody.string];
+  
   NSTimeInterval date = [emailInfo[@"date"] doubleValue];
-  NSDate *dateStamp = [NSDate dateWithTimeIntervalSince1970:date];
-  [self.dateLabel setText:[dateStamp convertedStringValue]];
+  NSDate *online = [NSDate dateWithTimeIntervalSince1970:date];
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"MMM dd, YYYY 'at' hh:mm aaa"];
+  
+  [self.dateLabel setText:[dateFormatter stringFromDate:online]];
 }
 
 - (id)contextForSegueWithIdentifier:(NSString *)segueIdentifier {

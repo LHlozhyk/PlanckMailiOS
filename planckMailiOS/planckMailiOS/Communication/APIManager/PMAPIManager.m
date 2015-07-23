@@ -96,8 +96,8 @@
               }
             }
           
-            NSTimeInterval firstTimeStamp = [item[@"first_message_timestamp"] doubleValue];
-            lNewItem.firstMessageDate = [NSDate dateWithTimeIntervalSince1970:firstTimeStamp];
+            NSTimeInterval lastTimeStamp = [item[@"last_message_timestamp"] doubleValue];
+            lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
           
             NSArray *lTagsArray =  item[@"tags"];
             

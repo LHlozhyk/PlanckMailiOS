@@ -15,7 +15,7 @@
 @property(nonatomic, copy) NSString *messageId;
 @property(nonatomic, copy) NSString *namespaceId;
 @property(nonatomic, copy) NSString *lastMessageTimestamp;
-@property(nonatomic, copy) NSDate *firstMessageDate;
+@property(nonatomic, copy) NSDate *lastMessageDate;
 @property(nonatomic, assign) NSUInteger version;
 @property(nonatomic) BOOL isUnread;
 @end
