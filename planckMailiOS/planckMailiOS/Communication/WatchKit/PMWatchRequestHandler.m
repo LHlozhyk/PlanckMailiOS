@@ -28,8 +28,6 @@
 - (void)handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void (^)(NSDictionary *))reply {
   NSInteger requestType = [userInfo[WK_REQUEST_TYPE] integerValue];
   
-  NSLog(@"userInfo: %@", userInfo);
-  
   switch (requestType) {
     case PMWatchRequestAccounts: {
       NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
@@ -49,7 +47,7 @@
     case PMWatchRequestGetEmails: {
       if(userInfo[WK_REQUEST_INFO]) {
         PMTypeContainer *account = [NSKeyedUnarchiver unarchiveObjectWithData:userInfo[WK_REQUEST_INFO]];
-        [[PMAPIManager shared] getInboxMailWithNamespaceId:account.namespace_id limit:30 offset:30 completion:^(NSArray *data, id error, BOOL success) {
+        [[PMAPIManager shared] getInboxMailWithNamespaceId:account.namespace_id limit:30 offset:0 completion:^(NSArray *data, id error, BOOL success) {
           if(reply) {
             NSMutableArray *archivedEmails = [NSMutableArray new];
             for(PMInboxMailModel *email in data) {
@@ -63,11 +61,29 @@
       
       break;
       
-    case PMWatchRequestReply:
+      
+      
+    case PMWatchRequestReply: {
+      NSMutableDictionary *replyDict = [NSMutableDictionary dictionaryWithDictionary:userInfo[WK_REQUEST_INFO]];
+      [[PMAPIManager shared] replyMessage:replyDict completion:^(id data, id error, BOOL success) {
+        
+      }];
+    }
       
       break;
       
-    case PMWatchRequestSetReadEmail:
+    case PMWatchRequestGetEmailDetails: {
+      PMInboxMailModel *mailModel = [NSKeyedUnarchiver unarchiveObjectWithData:userInfo[WK_REQUEST_INFO]];
+      [[PMAPIManager shared] getDetailWithMessageId:mailModel.messageId namespacesId:mailModel.namespaceId unread:mailModel.isUnread completion:^(id data, id error, BOOL success) {
+        if(reply) {
+          id result = data;
+          if([data isKindOfClass:[NSArray class]]) {
+            result = [data firstObject];
+          }
+          reply(result);
+        }
+      }];
+    }
       
       break;
       

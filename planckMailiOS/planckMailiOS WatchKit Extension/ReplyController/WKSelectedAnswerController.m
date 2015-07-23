@@ -7,8 +7,11 @@
 //
 
 #import "WKSelectedAnswerController.h"
+#import "WatchKitDefines.h"
 
-@interface WKSelectedAnswerController ()
+@interface WKSelectedAnswerController () {
+  NSDictionary *replyDict;
+}
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *answerLabel;
 
 @end
@@ -18,15 +21,34 @@
 - (void)awakeWithContext:(id)context {
   [super awakeWithContext:context];
 
-  [_answerLabel setText:(NSString *)context];
-  // Configure interface objects here.
+  if(context) {
+    replyDict = context;
+    [_answerLabel setText:replyDict[REPLY_TEXT]];
+  }
 }
 
 - (IBAction)sendDidPressed {
-  
-  [WKInterfaceController openParentApplication:nil reply:^(NSDictionary *replyInfo, NSError *error) {
+  if(replyDict[REPLY_TEXT]) {
+    NSDictionary *reply = @{@"reply_to_message_id": replyDict[REPLY_MESSAGE_ID],
+                            @"body" : replyDict[REPLY_TEXT]};
     
-  }];
+//    @{
+//      @"reply_to_message_id": _messageId,
+//      @"body" : @"Sounds great! See you then.",
+//      
+//      @"to": @[
+//          @{
+//            @"name": @"",
+//            @"email": lEmailsTo
+//            }
+//          ]
+//      };
+    
+    [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestReply), WK_REQUEST_INFO: reply}
+                                           reply:^(NSDictionary *replyInfo, NSError *error) {
+      
+    }];
+  }
 }
 
 - (IBAction)retakeDidPressed {

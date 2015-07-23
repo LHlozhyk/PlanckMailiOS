@@ -9,6 +9,9 @@
 #import <WatchKit/WatchKit.h>
 #import <Foundation/Foundation.h>
 
+#define REPLY_TEXT @"reply_text"
+#define REPLY_MESSAGE_ID @"reply_message_id"
+
 #define SELECTED_ANSWER_IDENTIFIER @"selectedAnswer"
 #define SELECTED_ANSWER_RETAKE @"selectedAnswerRetake"
 

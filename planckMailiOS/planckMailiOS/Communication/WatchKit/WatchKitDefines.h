@@ -18,7 +18,7 @@
 typedef NS_ENUM(NSInteger, PMWatchRequestType) {
   PMWatchRequestAccounts,
   PMWatchRequestGetEmails,
-  PMWatchRequestSetReadEmail,
+  PMWatchRequestGetEmailDetails,
   PMWatchRequestReply
 };
 

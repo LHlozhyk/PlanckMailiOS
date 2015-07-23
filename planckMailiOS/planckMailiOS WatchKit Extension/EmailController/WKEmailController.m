@@ -10,6 +10,7 @@
 #import "PMInboxMailModel.h"
 #import "WKSelectedAnswerController.h"
 #import "NSDate+DateConverter.h"
+#import "WatchKitDefines.h"
 
 #define SEGUE_GO_TO_REPLAY @"goToReplyIdentifier"
 
@@ -36,8 +37,21 @@
     
     [self.titleLabel setText:emailContainer.ownerName];
     [self.subjectLabel setText:emailContainer.subject];
-    [self.dateLabel setText:[[NSDate date] convertedStringValue]];
-    [self.textLabel setText:emailContainer.snippet];
+    
+    NSData *emailData = [NSKeyedArchiver archivedDataWithRootObject:emailContainer];
+    [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestGetEmailDetails), WK_REQUEST_INFO: emailData}
+                                           reply:^(NSDictionary *replyInfo, NSError *error) {
+      //remove htmp tags
+     @autoreleasepool {
+       NSString *htmlBody = replyInfo[@"body"];
+       NSAttributedString *textBody = [[NSAttributedString alloc] initWithData:[htmlBody dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+       [self.textLabel setText:textBody.string];
+     }
+     
+     NSTimeInterval date = [replyInfo[@"date"] doubleValue];
+     NSDate *dateStamp = [NSDate dateWithTimeIntervalSince1970:date];
+     [self.dateLabel setText:[dateStamp convertedStringValue]];
+   }];
   }
 }
 
@@ -54,7 +68,9 @@
                                  allowedInputMode:WKTextInputModeAllowEmoji
                                        completion:^(NSArray *results) {
     if([results count]) {
-      [self pushControllerWithName:SELECTED_ANSWER_IDENTIFIER context:[results firstObject]];
+      
+      [self pushControllerWithName:SELECTED_ANSWER_IDENTIFIER
+                           context:@{REPLY_TEXT: [results firstObject], REPLY_MESSAGE_ID: emailContainer.messageId}];
       
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retakePressedNotification:) name:SELECTED_ANSWER_RETAKE object:nil];
     }
