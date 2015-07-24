@@ -13,7 +13,7 @@
 
 + (instancetype)initWithTitle:(NSString *)title count:(NSInteger)count {
   PMTypeContainer *newType = [[PMTypeContainer alloc] init];
-  newType.email_address = title;
+  newType.provider = title;
   newType.unreadCount = count;
   return newType;
 }

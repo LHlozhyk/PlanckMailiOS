@@ -47,7 +47,10 @@
     case PMWatchRequestGetEmails: {
       if(userInfo[WK_REQUEST_INFO]) {
         PMTypeContainer *account = [NSKeyedUnarchiver unarchiveObjectWithData:userInfo[WK_REQUEST_INFO]];
-        [[PMAPIManager shared] getInboxMailWithNamespaceId:account.namespace_id limit:30 offset:0 completion:^(NSArray *data, id error, BOOL success) {
+        [[PMAPIManager shared] getInboxMailWithNamespaceId:account.namespace_id
+                                                     limit:LIMIT_COUNT
+                                                    offset:[userInfo[WK_REQUEST_EMAILS_LIMIT] unsignedIntegerValue]
+                                                completion:^(NSArray *data, id error, BOOL success) {
           if(reply) {
             NSMutableArray *archivedEmails = [NSMutableArray new];
             for(PMInboxMailModel *email in data) {

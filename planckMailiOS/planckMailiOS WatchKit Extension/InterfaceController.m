@@ -33,7 +33,7 @@
 }
 
 - (void)updateUserAccounts {
-  BOOL isOk = [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestAccounts)} reply:^(NSDictionary *replyInfo, NSError *error) {
+   [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestAccounts)} reply:^(NSDictionary *replyInfo, NSError *error) {
     
     //get requested accounts
     NSArray *accounts = replyInfo[WK_REQUEST_RESPONSE];

@@ -18,7 +18,7 @@
                         <table alignment="left" id="PeK-x3-ILJ">
                             <items>
                                 <tableRow identifier="plainType" id="wlC-sT-qZJ" customClass="WKPlainRow">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" id="BUY-9B-9bx">
+                                    <group key="rootItem" width="1" alignment="left" id="BUY-9B-9bx">
                                         <items>
                                             <label alignment="right" verticalAlignment="center" text="10" textAlignment="right" id="A0N-uH-59Y"/>
                                             <label width="101" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="0" id="AFw-p6-IHq"/>
@@ -47,10 +47,11 @@
             <objects>
                 <controller identifier="emailListController" id="2LA-rQ-Xva" customClass="WKEmailListController">
                     <items>
+                        <imageView width="30" height="30" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="0z2-Iw-5pO"/>
                         <table alignment="left" id="REJ-3i-4sm">
                             <items>
                                 <tableRow identifier="emailType" id="7iv-ML-Eap" customClass="WKEmailRow">
-                                    <group key="rootItem" width="1" height="76.5" alignment="left" layout="vertical" id="G2r-zn-11b">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="G2r-zn-11b">
                                         <items>
                                             <group width="1" height="21.5" alignment="left" id="O5s-Ry-Sfd">
                                                 <items>
@@ -84,6 +85,7 @@
                         </table>
                     </items>
                     <connections>
+                        <outlet property="activityView" destination="0z2-Iw-5pO" id="fOd-cM-jf7"/>
                         <outlet property="tableView" destination="REJ-3i-4sm" id="tUP-TD-CNc"/>
                     </connections>
                 </controller>
@@ -95,6 +97,7 @@
             <objects>
                 <controller identifier="emailController" title="Message" id="2ko-XT-grL" customClass="WKEmailController">
                     <items>
+                        <imageView width="30" height="30" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="ghP-To-m6q"/>
                         <label width="1" alignment="left" text="Label" id="L5k-cy-9Uu">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
@@ -115,6 +118,7 @@
                         </button>
                     </items>
                     <connections>
+                        <outlet property="activityView" destination="ghP-To-m6q" id="bvR-Cj-mq5"/>
                         <outlet property="dateLabel" destination="10M-le-pej" id="Zaf-CY-hBq"/>
                         <outlet property="subjectLabel" destination="lsJ-qw-zSx" id="QlO-n4-P8i"/>
                         <outlet property="textLabel" destination="7Q9-UZ-Zat" id="UMe-D0-dRh"/>

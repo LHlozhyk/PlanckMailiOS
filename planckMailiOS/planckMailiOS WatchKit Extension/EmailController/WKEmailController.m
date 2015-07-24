@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *subjectLabel;
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *dateLabel;
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *textLabel;
+@property (weak, nonatomic) IBOutlet WKInterfaceImage *activityView;
 
 @end
 
@@ -42,6 +43,7 @@
     if(emailInfo) {
       [self updateBodyAndDate];
     } else {
+      [self showActivityIndicator:YES];
       NSData *emailData = [NSKeyedArchiver archivedDataWithRootObject:emailContainer];
       [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestGetEmailDetails), WK_REQUEST_INFO: emailData}
                                              reply:^(id replyInfo, NSError *error) {
@@ -55,6 +57,7 @@
          }
          
          [self updateBodyAndDate];
+         [self showActivityIndicator:NO];
        }
      }];
     }
@@ -108,6 +111,22 @@
     [self replyDidPressed];
   }
   retakePressed = NO;
+}
+
+-(void)showActivityIndicator:(BOOL)yesOrNo {
+  if (yesOrNo) {
+    //unhide
+    [self.activityView setHidden:NO];
+    
+    // Uses images in WatchKit app bundle.
+    [self.activityView setImageNamed:@"frame-"];
+    [self.activityView startAnimating];
+  } else {
+    [self.activityView stopAnimating];
+    
+    //hide
+    [self.activityView setHidden:YES];
+  }
 }
 
 - (void)didDeactivate {
