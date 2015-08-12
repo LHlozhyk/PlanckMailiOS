@@ -129,6 +129,7 @@
 		842E2FFD1AFEB13400B0C8DB /* planckMailiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = planckMailiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		842E30021AFEB13400B0C8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842E30031AFEB13400B0C8DB /* planckMailiOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = planckMailiOSTests.m; sourceTree = "<group>"; };
+		844AD1341B7BCE2600799DD4 /* PMAccountProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMAccountProtocol.h; path = Communication/PMAccountProtocol.h; sourceTree = "<group>"; };
 		844F3BF41B12A882009634D2 /* PMPeopleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPeopleVC.h; path = ViewControllers/PeopleVC/PMPeopleVC.h; sourceTree = "<group>"; };
 		844F3BF51B12A882009634D2 /* PMPeopleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPeopleVC.m; path = ViewControllers/PeopleVC/PMPeopleVC.m; sourceTree = "<group>"; };
 		846096141B13061400924B61 /* CLContactLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLContactLibrary.h; path = Communication/ContactsManager/CLContactLibrary.h; sourceTree = "<group>"; };
@@ -611,6 +612,7 @@
 		84B751CD1AFF6FB700331CC0 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
+				844AD1341B7BCE2600799DD4 /* PMAccountProtocol.h */,
 				84776F031B14283B0020AB6E /* Models */,
 				84ECA4311B13550D00770F88 /* DataLoader */,
 				846096131B13058E00924B61 /* ContactsManager */,
@@ -1302,7 +1304,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "72741838-5cbc-4a7a-9f30-3d9fdd554432";
+				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 			};
 			name = Debug;
 		};
@@ -1320,7 +1322,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "72741838-5cbc-4a7a-9f30-3d9fdd554432";
+				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 			};
 			name = Release;
 		};
@@ -1371,7 +1373,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "72741838-5cbc-4a7a-9f30-3d9fdd554432";
+				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1385,7 +1387,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "72741838-5cbc-4a7a-9f30-3d9fdd554432";
+				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1404,7 +1406,7 @@
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "72741838-5cbc-4a7a-9f30-3d9fdd554432";
+				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1421,7 +1423,7 @@
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "72741838-5cbc-4a7a-9f30-3d9fdd554432";
+				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";

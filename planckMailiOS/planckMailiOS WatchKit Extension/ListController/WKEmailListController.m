@@ -13,13 +13,17 @@
 #import "PMTypeContainer.h"
 #import "WatchKitDefines.h"
 
+#define LOAD_MORE_ROW_TYPE @"loadMoreType"
+
 @interface WKEmailListController () {
   NSMutableArray *dataSource;
   NSMutableArray *emailsDictionaries;
+  NSInteger emailsOffset;
 }
 
 @property (weak, nonatomic) IBOutlet WKInterfaceTable *tableView;
 @property (nonatomic, strong) PMTypeContainer *selectedAccount;
+@property (weak, nonatomic) IBOutlet WKInterfaceImage *activityView;
 
 @end
 
@@ -33,6 +37,8 @@
   }
   
   if(context[CONTENT]) {
+    [self showActivityIndicator:YES];
+    
     if([context[CONTENT] isKindOfClass:[PMInboxMailModel class]]) {
       PMInboxMailModel *inboxModel = (PMInboxMailModel *)context[CONTENT];
       NSData *emailData = [NSKeyedArchiver archivedDataWithRootObject:inboxModel];
@@ -61,40 +67,39 @@
              [emailsDictionaries addObject:item];
              
              [self reloadTableView];
+             [self showActivityIndicator:NO];
            }
          }
        }
       }];
     } else {
       _selectedAccount = context[CONTENT];
-      NSData *account = [NSKeyedArchiver archivedDataWithRootObject:_selectedAccount];
-      [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestGetEmails), WK_REQUEST_INFO: account}
-                                             reply:^(NSDictionary *replyInfo, NSError *error) {
-       if(replyInfo[WK_REQUEST_RESPONSE]) {
-         dataSource = [NSMutableArray new];
-         NSArray *archivedMessages = replyInfo[WK_REQUEST_RESPONSE];
-         for(NSData *message in archivedMessages) {
-           [dataSource addObject:[NSKeyedUnarchiver unarchiveObjectWithData:message]];
-         }
-         [self reloadTableView];
-       }
-      }];
+      dataSource = [NSMutableArray new];
+      [self loadEmails];
     }
   }
 }
 
+#pragma mark - Table view methods
+
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex {
   PMInboxMailModel *email = dataSource[rowIndex];
-  if(email.version > 1) {
-    [self pushControllerWithName:LIST_CONTROLLER_IDENTIFIER context:@{TITLE: email.subject, CONTENT: email}];
+  if(email.isLoadMore) {
+    emailsOffset += 10;
+    
+    [self loadEmails];
   } else {
-    NSDictionary *context = nil;
-    if([emailsDictionaries count] > rowIndex) {
-      context = @{CONTENT: email, ADDITIONAL_INFO: emailsDictionaries[rowIndex]};
+    if(email.version > 1) {
+      [self pushControllerWithName:LIST_CONTROLLER_IDENTIFIER context:@{TITLE: email.subject, CONTENT: email}];
     } else {
-      context = @{CONTENT: email};
+      NSDictionary *context = nil;
+      if([emailsDictionaries count] > rowIndex) {
+        context = @{CONTENT: email, ADDITIONAL_INFO: emailsDictionaries[rowIndex]};
+      } else {
+        context = @{CONTENT: email};
+      }
+      [self pushControllerWithName:EMAIL_CONTROLLER_IDENTIFIER context:context];
     }
-    [self pushControllerWithName:EMAIL_CONTROLLER_IDENTIFIER context:context];
   }
 }
 
@@ -108,8 +113,55 @@
   NSInteger i = 0;
   for(PMInboxMailModel *container in dataSource) {
     WKEmailRow *row = [self.tableView rowControllerAtIndex:i++];
-    
     [row setEmailContainer:container];
+  }
+}
+
+#pragma mark - Load emails
+
+- (void)loadEmails {
+  NSData *account = [NSKeyedArchiver archivedDataWithRootObject:_selectedAccount];
+  [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestGetEmails), WK_REQUEST_INFO: account, WK_REQUEST_EMAILS_LIMIT: @(emailsOffset)}
+                                         reply:^(NSDictionary *replyInfo, NSError *error) {
+     if(replyInfo[WK_REQUEST_RESPONSE]) {
+       NSArray *archivedMessages = replyInfo[WK_REQUEST_RESPONSE];
+       
+       PMInboxMailModel *loadMoreModel = [dataSource lastObject];
+       if(loadMoreModel.isLoadMore) {
+         [dataSource removeLastObject];
+       }
+       for(NSData *message in archivedMessages) {
+         [dataSource addObject:[NSKeyedUnarchiver unarchiveObjectWithData:message]];
+       }
+       if([archivedMessages count] == LIMIT_COUNT) {
+         if(!loadMoreModel) {
+           loadMoreModel = [PMInboxMailModel new];
+           loadMoreModel.ownerName = @"Load More";
+           loadMoreModel.isLoadMore = YES;
+         }
+         [dataSource addObject:loadMoreModel];
+       }
+       
+       [self reloadTableView];
+       
+       [self showActivityIndicator:NO];
+     }
+   }];
+}
+
+-(void)showActivityIndicator:(BOOL)yesOrNo {
+  if (yesOrNo) {
+    //unhide
+    [self.activityView setHidden:NO];
+    
+    // Uses images in WatchKit app bundle.
+    [self.activityView setImageNamed:@"frame-"];
+    [self.activityView startAnimating];
+  } else {
+    [self.activityView stopAnimating];
+    
+    //hide
+    [self.activityView setHidden:YES];
   }
 }
 

@@ -18,4 +18,5 @@
 @property(nonatomic, copy) NSDate *lastMessageDate;
 @property(nonatomic, assign) NSUInteger version;
 @property(nonatomic) BOOL isUnread;
+@property(nonatomic) BOOL isLoadMore;
 @end

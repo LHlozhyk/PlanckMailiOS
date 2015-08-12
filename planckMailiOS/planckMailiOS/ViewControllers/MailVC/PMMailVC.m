@@ -109,7 +109,7 @@ IB_DESIGNABLE
 }
 
 - (void)updateMails {
-    [[PMAPIManager shared] getInboxMailWithNamespaceId:_currentNamespaeId limit:30 offset:_offesetMails completion:^(id data, id error, BOOL success) {
+    [[PMAPIManager shared] getInboxMailWithAccount:[PMAPIManager shared].namespaceId limit:30 offset:_offesetMails completion:^(id data, id error, BOOL success) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [_itemMailArray addObjectsFromArray:data];
         [_tableView reloadData];
@@ -255,7 +255,7 @@ IB_DESIGNABLE
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
-        [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId namespacesId:lSelectedModel.namespaceId unread:lSelectedModel.isUnread completion:^(id data, id error, BOOL success) {
+        [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId account:[PMAPIManager shared].namespaceId unread:lSelectedModel.isUnread completion:^(id data, id error, BOOL success) {
             
             if (success) {
                 lSelectedModel.isUnread = NO;

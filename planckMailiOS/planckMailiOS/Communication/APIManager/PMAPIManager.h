@@ -9,38 +9,40 @@
 #import <Foundation/Foundation.h>
 #import "PMRequest.h"
 #import "DBManager.h"
+#import "PMAccountProtocol.h"
 
 typedef void (^BasicBlockHandler)(id error, BOOL success);
 typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 
 @interface PMAPIManager : NSObject
+
 + (PMAPIManager *)shared;
 
 - (void)saveNamespaceIdFromToken:(NSString *)token completion:(BasicBlockHandler)handler;
 
-- (void)getInboxMailWithNamespaceId:(NSString*)namespaceId
+- (void)getInboxMailWithAccount:(id<PMAccountProtocol>)account
                               limit:(NSUInteger)limit
                              offset:(NSUInteger)offset
                          completion:(ExtendedBlockHandler)handler;
 
 - (void)getDetailWithMessageId:(NSString *)messageId
-                  namespacesId:(NSString *)namespacesId
+                  account:(id<PMAccountProtocol>)account
                     completion:(ExtendedBlockHandler)handle;
 
 - (void)searchMailWithKeyword:(NSString *)keyword
-                 namespacesId:(NSString *)namespacesId
+                      account:(id<PMAccountProtocol>)account
                    completion:(ExtendedBlockHandler)handler;
 
 - (void)deleteMailWithThreadId:(NSString *)threadId
-                  namespacesId:(NSString *)namespacesId
+                       account:(id<PMAccountProtocol>)account
                     completion:(ExtendedBlockHandler)handler;
 
 - (void)archiveMailWithThreadId:(NSString *)threadId
-                   namespacesId:(NSString *)namespacesId
+                        account:(id<PMAccountProtocol>)account
                      completion:(ExtendedBlockHandler)handler;
 
 - (void)getDetailWithMessageId:(NSString *)messageId
-                  namespacesId:(NSString *)namespacesId
+                       account:(id<PMAccountProtocol>)account
                         unread:(BOOL)unread
                     completion:(ExtendedBlockHandler)handler;
 
@@ -52,7 +54,7 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 
 - (void)setActiveNamespace:(DBNamespace *)item;
 
-@property (nonatomic, readonly) NSString *namespaceId;
+@property (nonatomic, readonly) DBNamespace *namespaceId;
 @property (nonatomic, readonly) NSString *emailAddress;
 
 @end

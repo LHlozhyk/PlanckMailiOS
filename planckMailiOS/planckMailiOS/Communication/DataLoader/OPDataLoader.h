@@ -17,6 +17,7 @@ typedef void (^GetDataLoaderHandler)(NSData *loadData, NSError *error, BOOL succ
 @interface OPDataLoader : NSObject <NSURLConnectionDataDelegate> {
     NSMutableData *mLoadingData; /*!< finished loading data */
 }
+@property (nonatomic, copy) NSString *token;
 
 - (void)restartConection;
 

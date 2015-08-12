@@ -18,5 +18,6 @@
 @dynamic email_address;
 @dynamic name;
 @dynamic provider;
+@dynamic token;
 
 @end

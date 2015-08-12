@@ -219,7 +219,7 @@
         
         switch (alertView.tag) {
             case 0: {
-                [[PMAPIManager shared] deleteMailWithThreadId:_inboxMailModel.messageId namespacesId:_inboxMailModel.namespaceId completion:^(id data, id error, BOOL success) {
+                [[PMAPIManager shared] deleteMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
                     
                     NSLog(@"deleteMailWithThreadId - %@", data);
                     if (_delegate && [_delegate respondsToSelector:@selector(PMPreviewMailVCDelegateAction:mail:)]) {
@@ -230,7 +230,7 @@
                 break;
             }
             case 1: {
-                [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel.messageId namespacesId:_inboxMailModel.namespaceId completion:^(id data, id error, BOOL success) {
+                [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
                     
                     NSLog(@"archiveMailWithThreadId - %@", data);
                     if (_delegate && [_delegate respondsToSelector:@selector(PMPreviewMailVCDelegateAction:mail:)]) {

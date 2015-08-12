@@ -87,7 +87,7 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[PMAPIManager shared] searchMailWithKeyword:email namespacesId:[[PMAPIManager shared] namespaceId] completion:^(id data, id error, BOOL success) {
+    [[PMAPIManager shared] searchMailWithKeyword:email account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         _itemsArray = data;
         [_tableView reloadData];
@@ -141,7 +141,7 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId namespacesId:lSelectedModel.namespaceId unread:lSelectedModel.isUnread completion:^(id data, id error, BOOL success) {
+    [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId account:[PMAPIManager shared].namespaceId unread:lSelectedModel.isUnread completion:^(id data, id error, BOOL success) {
         
         if (success) {
             lSelectedModel.isUnread = NO;
