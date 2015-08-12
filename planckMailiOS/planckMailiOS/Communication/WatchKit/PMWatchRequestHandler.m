@@ -76,18 +76,20 @@
             break;
             
         case PMWatchRequestGetEmailDetails: {
-#warning change params
-            //      PMInboxMailModel *mailModel = [NSKeyedUnarchiver unarchiveObjectWithData:userInfo[WK_REQUEST_INFO]];
-            //      [[PMAPIManager shared] getDetailWithMessageId:mailModel.messageId namespacesId:mailModel.namespaceId unread:mailModel.isUnread completion:^(id data, id error, BOOL success) {
-            //        if(reply) {
-            //          id result = data;
-            ////          if([data isKindOfClass:[NSArray class]]) {
-            ////            result = [data firstObject];
-            ////          }
-            //          
-            //          reply(result);
-            //        }
-            //      }];
+            PMInboxMailModel *mailModel = [NSKeyedUnarchiver unarchiveObjectWithData:userInfo[WK_REQUEST_INFO]];
+          [[PMAPIManager shared] getDetailWithMessageId:mailModel.messageId
+                                                account:mailModel
+                                                 unread:mailModel.isUnread
+                                             completion:^(id data, id error, BOOL success) {
+              if(reply) {
+                id result = data;
+      //          if([data isKindOfClass:[NSArray class]]) {
+      //            result = [data firstObject];
+      //          }
+                
+                reply(result);
+              }
+            }];
         }
             
             break;

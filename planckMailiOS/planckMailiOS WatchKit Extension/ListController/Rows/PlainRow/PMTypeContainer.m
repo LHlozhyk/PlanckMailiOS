@@ -11,9 +11,15 @@
 
 @implementation PMTypeContainer
 
+@synthesize id;
+@synthesize account_id;
+@synthesize namespace_id;
+@synthesize token;
+
 + (instancetype)initWithTitle:(NSString *)title count:(NSInteger)count {
   PMTypeContainer *newType = [[PMTypeContainer alloc] init];
   newType.provider = title;
+  newType.email_address = title;
   newType.unreadCount = count;
   return newType;
 }
@@ -74,5 +80,9 @@
   PMTypeContainer *typeObject = (PMTypeContainer *)object;
   return [typeObject.id isEqualToString:self.id] && [typeObject.namespace_id isEqualToString:self.namespace_id] && [typeObject.account_id isEqualToString:self.account_id];
 }
+
+#pragma mark - PMAccountProtocol
+
+
 
 @end
