@@ -31,7 +31,7 @@
 }
 
 + (NSString *)searchMailWithKeyword:(NSString *)keyword namespacesId:(NSString *)namespacesId {
-    return [NSString stringWithFormat:@"%@/n/%@/threads?any_email=%@", APP_SERVER_LINK, namespacesId, keyword];
+    return [NSString stringWithFormat:@"%@/n/%@/threads/search?q=%@", APP_SERVER_LINK, namespacesId, keyword];
 }
 
 + (NSString *)deleteMailWithThreadId:(NSString *)threadId namespacesId:(NSString *)namespacesId {
