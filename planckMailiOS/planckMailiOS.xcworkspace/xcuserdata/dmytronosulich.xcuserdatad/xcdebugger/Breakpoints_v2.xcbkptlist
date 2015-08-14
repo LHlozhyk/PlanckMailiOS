@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "planckMailiOS/Categories/NSDate+DateConverter/NSDate+DateConverter.m"
-            timestampString = "459268470.940156"
+            filePath = "planckMailiOS/Communication/DataLoader/OPDataLoader.m"
+            timestampString = "461103766.361761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "-convertedStringValue"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "planckMailiOS/Communication/APIManager/PMAPIManager.m"
-            timestampString = "459379102.756472"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "-searchMailWithKeyword:namespacesId:completion:"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-loadUrlWithPUTMethod:JSONParameters:handler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

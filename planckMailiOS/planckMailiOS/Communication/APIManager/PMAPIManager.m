@@ -88,7 +88,8 @@
             lNewItem.messageId = item[@"id"];
             lNewItem.version = [item[@"version"] unsignedIntegerValue];
             lNewItem.isUnread = NO;
-            
+            lNewItem.token = lDataLoader.token;
+          
             NSArray *participants = item[@"participants"];
             
             for (NSDictionary *user in participants) {

@@ -48,9 +48,9 @@
 
 - (NSDate *)dateWithoutTimeComponents {
   NSCalendar *calendar = [NSCalendar currentCalendar];
-  NSDateComponents *components = [calendar components:NSYearCalendarUnit  |
-                                  NSMonthCalendarUnit |
-                                  NSDayCalendarUnit
+  NSDateComponents *components = [calendar components:NSCalendarUnitYear  |
+                                  NSCalendarUnitMonth |
+                                  NSCalendarUnitDay
                                              fromDate:self];
   return [calendar dateFromComponents:components];
 }

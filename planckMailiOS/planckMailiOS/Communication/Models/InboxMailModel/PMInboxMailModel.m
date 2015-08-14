@@ -10,6 +10,11 @@
 
 @implementation PMInboxMailModel
 
+@synthesize token;
+@synthesize namespace_id;
+@synthesize id;
+@synthesize account_id;
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -33,6 +38,7 @@
   [aCoder encodeObject:_subject forKey:@"subject"];
   [aCoder encodeObject:_messageId forKey:@"messageId"];
   [aCoder encodeObject:_namespaceId forKey:@"namespaceId"];
+  [aCoder encodeObject:token forKey:@"token"];
   [aCoder encodeBool:_isUnread forKey:@"isUnread"];
   [aCoder encodeObject:_lastMessageDate forKey:@"lastMessageDate"];
   [aCoder encodeObject:[NSNumber numberWithUnsignedInteger:_version] forKey:@"version"];
@@ -46,11 +52,20 @@
   newMail.subject = [aDecoder decodeObjectForKey:@"subject"];
   newMail.messageId = [aDecoder decodeObjectForKey:@"messageId"];
   newMail.namespaceId = [aDecoder decodeObjectForKey:@"namespaceId"];
+  newMail.token = [aDecoder decodeObjectForKey:@"token"];
   newMail.isUnread = [aDecoder decodeBoolForKey:@"isUnread"];
   newMail.lastMessageDate = [aDecoder decodeObjectForKey:@"lastMessageDate"];
   newMail.version = [[aDecoder decodeObjectForKey:@"version"] unsignedIntegerValue];
   
   return newMail;
+}
+
+- (NSString *)namespace_id {
+  return _namespaceId;
+}
+
+- (NSString *)token {
+  return token;
 }
 
 @end

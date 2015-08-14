@@ -25,9 +25,9 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                              offset:(NSUInteger)offset
                          completion:(ExtendedBlockHandler)handler;
 
-- (void)getDetailWithMessageId:(NSString *)messageId
-                  account:(id<PMAccountProtocol>)account
-                    completion:(ExtendedBlockHandler)handle;
+//- (void)getDetailWithMessageId:(NSString *)messageId
+//                  account:(id<PMAccountProtocol>)account
+//                    completion:(ExtendedBlockHandler)handle;
 
 - (void)searchMailWithKeyword:(NSString *)keyword
                       account:(id<PMAccountProtocol>)account

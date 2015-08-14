@@ -24,14 +24,19 @@
 - (void)setTypeContainer:(PMTypeContainer *)typeContainer {
   _typeContainer = typeContainer;
   
-  if([typeContainer.provider length] > 0) {
-    NSString *newTitle = [typeContainer.provider substringToIndex:1];
-    newTitle = [typeContainer.provider stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[newTitle uppercaseString]];
-    [self.titleLable setText:newTitle];
+  if([typeContainer.email_address length] > 0 && typeContainer.isNameSpace) {
+    NSArray *arr = [typeContainer.email_address componentsSeparatedByString:@"@"];
+    if([arr count] == 2) {
+      NSString *newTitle = [[arr[1] componentsSeparatedByString:@"."] firstObject];
+      newTitle = [newTitle stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[[newTitle substringToIndex:1] uppercaseString]];
+      [self.titleLable setText:newTitle];
+    }
+  } else if (!typeContainer.isNameSpace) {
+    [self.titleLable setText:typeContainer.provider];
   }
   [self.unreadLable setHidden:typeContainer.unreadCount < 0];
   if(typeContainer.unreadCount >= 0) {
-    [self.unreadLable setText:[NSString stringWithFormat:@"%li", typeContainer.unreadCount]];
+    [self.unreadLable setText:[NSString stringWithFormat:@"%i", (int)typeContainer.unreadCount]];
   }
 }
 
