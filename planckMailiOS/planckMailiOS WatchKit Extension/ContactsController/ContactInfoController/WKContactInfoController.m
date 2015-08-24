@@ -51,13 +51,21 @@
 #pragma mark - User actions
 
 - (IBAction)callDidPressed:(id)sender {
+  NSArray *numbers = person.phoneNumbers;
+  if(!numbers) {
+    numbers = @[];
+  }
   [self presentControllerWithName:CONTACTS_PHONE_IDENT
-                          context:@{CONTENT: person.phoneNumbers, ADDITIONAL_INFO: @(PMRequestCall)}];
+                          context:@{CONTENT: numbers, ADDITIONAL_INFO: @(PMRequestCall)}];
 }
 
 - (IBAction)messageDidPressed:(id)sender {
+  NSArray *numbers = person.phoneNumbers;
+  if(!numbers) {
+    numbers = @[];
+  }
   [self presentControllerWithName:CONTACTS_PHONE_IDENT
-                          context:@{CONTENT: person.phoneNumbers, ADDITIONAL_INFO: @(PMRequestMessage)}];
+                          context:@{CONTENT: numbers, ADDITIONAL_INFO: @(PMRequestMessage)}];
 }
 
 @end

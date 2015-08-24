@@ -143,13 +143,13 @@
                         </label>
                         <group width="1" alignment="left" id="fyc-1M-m5q">
                             <items>
-                                <button width="50" height="50" alignment="center" title="CALL" id="rNz-v3-7nu">
+                                <button width="50" height="50" alignment="center" backgroundImage="phone" id="rNz-v3-7nu">
                                     <connections>
                                         <action selector="callDidPressed:" destination="Vzh-rp-xnF" id="fXM-DS-qFY"/>
                                     </connections>
                                 </button>
                                 <label width="20" height="47.5" alignment="center" id="u9s-bM-zmM"/>
-                                <button width="50" height="50" alignment="center" title="Message" id="o1n-96-Q3e">
+                                <button width="50" height="50" alignment="center" backgroundImage="bubble" id="o1n-96-Q3e">
                                     <fontDescription key="font" type="system" pointSize="15"/>
                                     <connections>
                                         <action selector="messageDidPressed:" destination="Vzh-rp-xnF" id="ZPk-Q6-g9i"/>

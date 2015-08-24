@@ -57,6 +57,7 @@
 		C30E9D551B8B21BE006BDD98 /* WKContactRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D541B8B21BE006BDD98 /* WKContactRow.m */; };
 		C30E9D591B8B2D0F006BDD98 /* CLPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460961B1B13063300924B61 /* CLPerson.m */; };
 		C30E9D5D1B8B4AFD006BDD98 /* WKContactPhoneRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D5C1B8B4AFD006BDD98 /* WKContactPhoneRow.m */; };
+		C30E9D5F1B8B7A49006BDD98 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C30E9D5E1B8B7A49006BDD98 /* MessageUI.framework */; };
 		C35652521B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */; };
 		C35652531B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */; };
 		C35652591B5811D3000ECF99 /* unread_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C35652581B5811D3000ECF99 /* unread_indicator@2x.png */; };
@@ -222,6 +223,7 @@
 		C30E9D541B8B21BE006BDD98 /* WKContactRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKContactRow.m; sourceTree = "<group>"; };
 		C30E9D5B1B8B4AFD006BDD98 /* WKContactPhoneRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactPhoneRow.h; sourceTree = "<group>"; };
 		C30E9D5C1B8B4AFD006BDD98 /* WKContactPhoneRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKContactPhoneRow.m; sourceTree = "<group>"; };
+		C30E9D5E1B8B7A49006BDD98 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C35652501B57F9FF000ECF99 /* NSDate+DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateConverter.h"; sourceTree = "<group>"; };
 		C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateConverter.m"; sourceTree = "<group>"; };
 		C35652581B5811D3000ECF99 /* unread_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unread_indicator@2x.png"; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30E9D5F1B8B7A49006BDD98 /* MessageUI.framework in Frameworks */,
 				F264A5F132A3A914AC722FF2 /* libPods-planckMailiOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +300,7 @@
 		26F3D1D23964D69F4B927C4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C30E9D5E1B8B7A49006BDD98 /* MessageUI.framework */,
 				CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */,
 			);
 			name = Frameworks;

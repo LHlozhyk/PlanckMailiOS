@@ -56,18 +56,38 @@
 }
 
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex {
-  NSString *phone = phonesNumbers[rowIndex][PHONE_NUMBER];
+  NSString *phone = phonesNumbers[rowIndex][PHONE_NUMBER]?phonesNumbers[rowIndex][PHONE_NUMBER]:@"";
   if(requestType == PMRequestMessage) {
     NSArray *preDeterminedMessages = @[@"What's Up?", @"On my way", @"OK", @"Sorry, I can't talk right now"];
     [self presentTextInputControllerWithSuggestions:preDeterminedMessages
                                    allowedInputMode:WKTextInputModeAllowEmoji
                                          completion:^(NSArray *results) {
        if([results count]) {
-         
+         [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE:@(PMWatchRequestSendSMS), WK_REQUEST_INFO: @{WK_REQUEST_PHONE: phone, WK_REQUEST_MESSAGE: results[0]}}
+                                                reply:^(id replyInfo, NSError *error) {
+              {
+                
+              }
+          }];
        }
      }];
   } else if (requestType == PMRequestCall) {
-    
+    [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE:@(PMWatchRequestCall), WK_REQUEST_INFO: @{WK_REQUEST_PHONE:phone}}
+                                           reply:^(id replyInfo, NSError *error) {
+//                                             {
+//       NSArray *responceObj = replyInfo[WK_REQUEST_RESPONSE];
+//       if([responceObj isKindOfClass:[NSArray class]]) {
+//         for(NSData *person in responceObj) {
+//           [__self.dataSource addObject:[NSKeyedUnarchiver unarchiveObjectWithData:person]];
+//         }
+//       }
+//       
+//       __self.isLoadingContacts = NO;
+//       [__self showActivityIndicator:NO];
+//       
+//       [__self updateTableView];
+//     }
+   }];
   }
 }
 
