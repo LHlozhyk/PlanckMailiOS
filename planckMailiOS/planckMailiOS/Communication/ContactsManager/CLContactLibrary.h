@@ -23,6 +23,7 @@
 
 @property(nonatomic,weak)id <APContactLibraryDelegate> delegate;
 
+- (void)getContactArrayForDelegate:(id<APContactLibraryDelegate>)aDelegate;
 - (void)getContactArray;
 
 + (CLContactLibrary *)sharedInstance;

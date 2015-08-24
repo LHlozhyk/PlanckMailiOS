@@ -21,7 +21,10 @@ static CLContactLibrary  *object;
     }
     return  object;
 }
--(void)getContactArray{
+
+-(void)getContactArrayForDelegate:(id<APContactLibraryDelegate>)aDelegate {
+  self.delegate = aDelegate;
+  
     contactDataArray = [[NSMutableArray alloc]init];
     
     [self fetchContacts:^(NSArray *contacts) {
@@ -42,10 +45,29 @@ static CLContactLibrary  *object;
             
             ABMultiValueRef phoneNumbers = ABRecordCopyValue(person,
                                                              kABPersonPhoneProperty);
-            
-            if (ABMultiValueGetCount(phoneNumbers) > 0) {
-                people.phoneNumber = (__bridge_transfer NSString*)
-                ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
+          
+            NSInteger phonesCount = ABMultiValueGetCount(phoneNumbers);
+            if (phonesCount > 0) {
+                people.phoneNumber = (__bridge_transfer NSString*)ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
+              
+              //get array of phone numbers
+              NSMutableArray *personsPhonnes = [NSMutableArray new];
+              for(int i = 0; i < phonesCount; i++) {
+                NSMutableDictionary *personsPhonne = [NSMutableDictionary new];
+                
+                NSString *usersPhoneNumber = (__bridge_transfer NSString*)ABMultiValueCopyValueAtIndex(phoneNumbers, i);
+                if(usersPhoneNumber) {
+                  [personsPhonne setObject:usersPhoneNumber forKey:PHONE_NUMBER];
+                }
+                
+                CFStringRef userPhoneLabel = ABMultiValueCopyLabelAtIndex(phoneNumbers, i);
+                if(userPhoneLabel) {
+                  NSString *phoneLabelLocalized = (__bridge_transfer NSString*)ABAddressBookCopyLocalizedLabel(userPhoneLabel);
+                  [personsPhonne setObject:phoneLabelLocalized forKey:PHONE_TITLE];
+                }
+                [personsPhonnes addObject:personsPhonne];
+              }
+              people.phoneNumbers = personsPhonnes;
             } else {
                 people.phoneNumber = @"None";
             }
@@ -60,6 +82,10 @@ static CLContactLibrary  *object;
         [delegate apGetContactArray:[contactDataArray copy]];
     } failure:^(NSError *error) {
     }];
+}
+
+- (void)getContactArray {
+  [self getContactArrayForDelegate:self.delegate];
 }
 
 #pragma mark - AddressBook Delegate Method

@@ -12,6 +12,7 @@
 #import "PMEmailContainer.h"
 #import "WKEmailListController.h"
 #import "WatchKitDefines.h"
+#import "WKContactsController.h"
 
 @interface InterfaceController() {
   NSMutableArray *dataSource;
@@ -79,6 +80,8 @@
   
   if(selectedType.isNameSpace) {
     [self pushControllerWithName:LIST_CONTROLLER_IDENTIFIER context:@{TITLE: selectedType.email_address, CONTENT: selectedType}];
+  } else if (rowIndex == [dataSource count] - 1) {
+    [self pushControllerWithName:CONTACTS_LIST_IDENT context:nil];
   }
 }
 

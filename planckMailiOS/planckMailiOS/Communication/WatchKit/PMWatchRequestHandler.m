@@ -12,6 +12,13 @@
 #import "PMTypeContainer.h"
 #import "PMAPIManager.h"
 #import "PMInboxMailModel.h"
+#import "CLContactLibrary.h"
+
+@interface PMWatchRequestHandler () <APContactLibraryDelegate>
+
+@property (nonatomic, copy) void (^replyBlock)(NSDictionary *);
+
+@end
 
 @implementation PMWatchRequestHandler
 
@@ -83,20 +90,35 @@
                                              completion:^(id data, id error, BOOL success) {
               if(reply) {
                 id result = data;
-      //          if([data isKindOfClass:[NSArray class]]) {
-      //            result = [data firstObject];
-      //          }
-                
                 reply(result);
               }
             }];
         }
             
             break;
-            
+        
+        case PMWatchRequestGetContacts: {
+          self.replyBlock = reply;
+          
+          [[CLContactLibrary sharedInstance] getContactArrayForDelegate:self];
+        }
+          
+          break;
+        
         default:
             break;
     }
+}
+
+#pragma mark - APContactLibraryDelegate
+
+- (void)apGetContactArray:(NSArray *)contactArray {
+  NSMutableArray *personsArray = [NSMutableArray new];
+  for(CLPerson *person in contactArray) {
+    [personsArray addObject:[NSKeyedArchiver archivedDataWithRootObject:person]];
+  }
+  
+  _replyBlock(@{WK_REQUEST_RESPONSE: personsArray});
 }
 
 @end

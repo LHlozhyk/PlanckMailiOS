@@ -51,6 +51,12 @@
 		84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F9A9891B11F78E0067C3D0 /* PMMailMenuView.xib */; };
 		84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */; };
 		84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */; };
+		C30E9D4B1B8B1F99006BDD98 /* WKContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D4A1B8B1F99006BDD98 /* WKContactsController.m */; };
+		C30E9D4E1B8B1FBE006BDD98 /* WKContactInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D4D1B8B1FBE006BDD98 /* WKContactInfoController.m */; };
+		C30E9D511B8B1FD3006BDD98 /* WKContactPhonesController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D501B8B1FD3006BDD98 /* WKContactPhonesController.m */; };
+		C30E9D551B8B21BE006BDD98 /* WKContactRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D541B8B21BE006BDD98 /* WKContactRow.m */; };
+		C30E9D591B8B2D0F006BDD98 /* CLPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460961B1B13063300924B61 /* CLPerson.m */; };
+		C30E9D5D1B8B4AFD006BDD98 /* WKContactPhoneRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D5C1B8B4AFD006BDD98 /* WKContactPhoneRow.m */; };
 		C35652521B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */; };
 		C35652531B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */; };
 		C35652591B5811D3000ECF99 /* unread_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C35652581B5811D3000ECF99 /* unread_indicator@2x.png */; };
@@ -61,6 +67,7 @@
 		C3908D0B1B56C39A00939ADC /* microphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3908D0A1B56C39A00939ADC /* microphone@2x.png */; };
 		C3908D161B57A2EE00939ADC /* WKSelectedAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D151B57A2EE00939ADC /* WKSelectedAnswerController.m */; };
 		C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DDB8411B5E7539002131FA /* PMWatchRequestHandler.m */; };
+		C3E1FC6A1B7F629C008F815C /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
 		C3FF0E561B5596880041B70E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E551B5596880041B70E /* InterfaceController.m */; };
 		C3FF0E591B5596880041B70E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E581B5596880041B70E /* NotificationController.m */; };
 		C3FF0E5B1B5596880041B70E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5A1B5596880041B70E /* Images.xcassets */; };
@@ -83,6 +90,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 842E2FE31AFEB13400B0C8DB;
 			remoteInfo = planckMailiOS;
+		};
+		C3E1FC6B1B7F629C008F815C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 842E2FDC1AFEB13300B0C8DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3FF0E5D1B5596880041B70E;
+			remoteInfo = "planckMailiOS WatchKit App";
 		};
 		C3FF0E601B5596880041B70E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -198,6 +212,16 @@
 		84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+PMViewCreator.m"; path = "Categories/UIView+PMViewCreator/UIView+PMViewCreator.m"; sourceTree = "<group>"; };
 		84F9A9911B1215FC0067C3D0 /* UIViewController+PMStoryboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+PMStoryboard.h"; path = "Categories/UIViewController+PMStoryboard/UIViewController+PMStoryboard.h"; sourceTree = "<group>"; };
 		84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+PMStoryboard.m"; path = "Categories/UIViewController+PMStoryboard/UIViewController+PMStoryboard.m"; sourceTree = "<group>"; };
+		C30E9D491B8B1F99006BDD98 /* WKContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactsController.h; sourceTree = "<group>"; };
+		C30E9D4A1B8B1F99006BDD98 /* WKContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKContactsController.m; sourceTree = "<group>"; };
+		C30E9D4C1B8B1FBE006BDD98 /* WKContactInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactInfoController.h; sourceTree = "<group>"; };
+		C30E9D4D1B8B1FBE006BDD98 /* WKContactInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKContactInfoController.m; sourceTree = "<group>"; };
+		C30E9D4F1B8B1FD3006BDD98 /* WKContactPhonesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactPhonesController.h; sourceTree = "<group>"; };
+		C30E9D501B8B1FD3006BDD98 /* WKContactPhonesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKContactPhonesController.m; sourceTree = "<group>"; };
+		C30E9D531B8B21BE006BDD98 /* WKContactRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactRow.h; sourceTree = "<group>"; };
+		C30E9D541B8B21BE006BDD98 /* WKContactRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKContactRow.m; sourceTree = "<group>"; };
+		C30E9D5B1B8B4AFD006BDD98 /* WKContactPhoneRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactPhoneRow.h; sourceTree = "<group>"; };
+		C30E9D5C1B8B4AFD006BDD98 /* WKContactPhoneRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKContactPhoneRow.m; sourceTree = "<group>"; };
 		C35652501B57F9FF000ECF99 /* NSDate+DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateConverter.h"; sourceTree = "<group>"; };
 		C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateConverter.m"; sourceTree = "<group>"; };
 		C35652581B5811D3000ECF99 /* unread_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unread_indicator@2x.png"; sourceTree = "<group>"; };
@@ -738,6 +762,55 @@
 			name = "UIViewController+PMStoryboard";
 			sourceTree = "<group>";
 		};
+		C30E9D461B8B1F5D006BDD98 /* ContactsController */ = {
+			isa = PBXGroup;
+			children = (
+				C30E9D521B8B215C006BDD98 /* WKContactRow */,
+				C30E9D491B8B1F99006BDD98 /* WKContactsController.h */,
+				C30E9D4A1B8B1F99006BDD98 /* WKContactsController.m */,
+				C30E9D471B8B1F5D006BDD98 /* ContactInfoController */,
+			);
+			path = ContactsController;
+			sourceTree = "<group>";
+		};
+		C30E9D471B8B1F5D006BDD98 /* ContactInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				C30E9D4C1B8B1FBE006BDD98 /* WKContactInfoController.h */,
+				C30E9D4D1B8B1FBE006BDD98 /* WKContactInfoController.m */,
+				C30E9D481B8B1F5D006BDD98 /* ContactPhonesController */,
+			);
+			path = ContactInfoController;
+			sourceTree = "<group>";
+		};
+		C30E9D481B8B1F5D006BDD98 /* ContactPhonesController */ = {
+			isa = PBXGroup;
+			children = (
+				C30E9D5A1B8B4AE9006BDD98 /* ContactPhoneRow */,
+				C30E9D4F1B8B1FD3006BDD98 /* WKContactPhonesController.h */,
+				C30E9D501B8B1FD3006BDD98 /* WKContactPhonesController.m */,
+			);
+			path = ContactPhonesController;
+			sourceTree = "<group>";
+		};
+		C30E9D521B8B215C006BDD98 /* WKContactRow */ = {
+			isa = PBXGroup;
+			children = (
+				C30E9D531B8B21BE006BDD98 /* WKContactRow.h */,
+				C30E9D541B8B21BE006BDD98 /* WKContactRow.m */,
+			);
+			path = WKContactRow;
+			sourceTree = "<group>";
+		};
+		C30E9D5A1B8B4AE9006BDD98 /* ContactPhoneRow */ = {
+			isa = PBXGroup;
+			children = (
+				C30E9D5B1B8B4AFD006BDD98 /* WKContactPhoneRow.h */,
+				C30E9D5C1B8B4AFD006BDD98 /* WKContactPhoneRow.m */,
+			);
+			path = ContactPhoneRow;
+			sourceTree = "<group>";
+		};
 		C35652491B57F3B3000ECF99 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,6 +831,7 @@
 		C3908D041B55D34500939ADC /* EmailController */ = {
 			isa = PBXGroup;
 			children = (
+				C3FF0E7A1B55A24B0041B70E /* EmailRow */,
 				C3908D051B55D36800939ADC /* WKEmailController.h */,
 				C3908D061B55D36800939ADC /* WKEmailController.m */,
 			);
@@ -791,6 +865,7 @@
 				C3FF0E781B55A2170041B70E /* ListController */,
 				C3908D041B55D34500939ADC /* EmailController */,
 				C3908D0C1B56C50900939ADC /* ReplyController */,
+				C30E9D461B8B1F5D006BDD98 /* ContactsController */,
 				C3FF0E541B5596880041B70E /* InterfaceController.h */,
 				C3FF0E551B5596880041B70E /* InterfaceController.m */,
 				C3FF0E571B5596880041B70E /* NotificationController.h */,
@@ -832,20 +907,11 @@
 		C3FF0E781B55A2170041B70E /* ListController */ = {
 			isa = PBXGroup;
 			children = (
-				C3FF0E791B55A2170041B70E /* Rows */,
+				C3FF0E7B1B55A24B0041B70E /* PlainRow */,
 				C3FF0E8B1B55BFAB0041B70E /* WKEmailListController.h */,
 				C3FF0E8C1B55BFAB0041B70E /* WKEmailListController.m */,
 			);
 			path = ListController;
-			sourceTree = "<group>";
-		};
-		C3FF0E791B55A2170041B70E /* Rows */ = {
-			isa = PBXGroup;
-			children = (
-				C3FF0E7A1B55A24B0041B70E /* EmailRow */,
-				C3FF0E7B1B55A24B0041B70E /* PlainRow */,
-			);
-			path = Rows;
 			sourceTree = "<group>";
 		};
 		C3FF0E7A1B55A24B0041B70E /* EmailRow */ = {
@@ -856,7 +922,8 @@
 				C3FF0E881B55BC8A0041B70E /* PMEmailContainer.h */,
 				C3FF0E891B55BC8A0041B70E /* PMEmailContainer.m */,
 			);
-			path = EmailRow;
+			name = EmailRow;
+			path = ../ListController/Rows/EmailRow;
 			sourceTree = "<group>";
 		};
 		C3FF0E7B1B55A24B0041B70E /* PlainRow */ = {
@@ -867,7 +934,8 @@
 				C3FF0E851B55B6340041B70E /* PMTypeContainer.h */,
 				C3FF0E861B55B6340041B70E /* PMTypeContainer.m */,
 			);
-			path = PlainRow;
+			name = PlainRow;
+			path = Rows/PlainRow;
 			sourceTree = "<group>";
 		};
 		C3FF0E8E1B55C7960041B70E /* Resources */ = {
@@ -905,6 +973,7 @@
 			);
 			dependencies = (
 				C3FF0E6B1B5596880041B70E /* PBXTargetDependency */,
+				C3E1FC6C1B7F629C008F815C /* PBXTargetDependency */,
 			);
 			name = planckMailiOS;
 			productName = planckMailiOS;
@@ -1018,6 +1087,7 @@
 			files = (
 				842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */,
 				84A9E3721B5F02DD009DD409 /* PMSelectionEmailView.xib in Resources */,
+				C3E1FC6A1B7F629C008F815C /* planckMailiOS WatchKit App.app in Resources */,
 				842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */,
 				842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */,
 				84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */,
@@ -1148,17 +1218,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3908D161B57A2EE00939ADC /* WKSelectedAnswerController.m in Sources */,
+				C30E9D591B8B2D0F006BDD98 /* CLPerson.m in Sources */,
 				C3FF0E8D1B55BFAB0041B70E /* WKEmailListController.m in Sources */,
 				C3FF0E7E1B55A39B0041B70E /* WKEmailRow.m in Sources */,
+				C30E9D4B1B8B1F99006BDD98 /* WKContactsController.m in Sources */,
+				C30E9D4E1B8B1FBE006BDD98 /* WKContactInfoController.m in Sources */,
+				C30E9D5D1B8B4AFD006BDD98 /* WKContactPhoneRow.m in Sources */,
 				C35BC1E11B5FDE5800CCDC4D /* DBManager.m in Sources */,
 				C35BC1E01B5FCEB500CCDC4D /* PMInboxMailModel.m in Sources */,
 				C3FF0E8A1B55BC8A0041B70E /* PMEmailContainer.m in Sources */,
 				C3FF0E811B55A3AE0041B70E /* WKPlainRow.m in Sources */,
 				C3908D071B55D36800939ADC /* WKEmailController.m in Sources */,
 				C3FF0E591B5596880041B70E /* NotificationController.m in Sources */,
+				C30E9D511B8B1FD3006BDD98 /* WKContactPhonesController.m in Sources */,
 				C3FF0E871B55B6340041B70E /* PMTypeContainer.m in Sources */,
 				C3FF0E561B5596880041B70E /* InterfaceController.m in Sources */,
 				C35652531B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */,
+				C30E9D551B8B21BE006BDD98 /* WKContactRow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1169,6 +1245,11 @@
 			isa = PBXTargetDependency;
 			target = 842E2FE31AFEB13400B0C8DB /* planckMailiOS */;
 			targetProxy = 842E2FFE1AFEB13400B0C8DB /* PBXContainerItemProxy */;
+		};
+		C3E1FC6C1B7F629C008F815C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3FF0E5D1B5596880041B70E /* planckMailiOS WatchKit App */;
+			targetProxy = C3E1FC6B1B7F629C008F815C /* PBXContainerItemProxy */;
 		};
 		C3FF0E611B5596880041B70E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
