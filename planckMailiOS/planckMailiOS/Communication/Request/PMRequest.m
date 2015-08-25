@@ -46,4 +46,12 @@
     return [NSString stringWithFormat:@"%@/n/%@/drafts", APP_SERVER_LINK, namespacesId];
 }
 
++ (NSString *)unreadMessages {
+  return [NSString stringWithFormat:@"%@/messages?unread=true", APP_SERVER_LINK];
+}
+
++ (NSString *)unreadMessagesCount {
+  return [NSString stringWithFormat:@"%@/messages?unread=true&view=count", APP_SERVER_LINK];
+}
+
 @end

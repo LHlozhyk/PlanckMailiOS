@@ -36,6 +36,7 @@
   newType.provider = nameSpace.provider;
   newType.token = nameSpace.token;
   newType.isNameSpace = YES;
+  newType.unreadCount = [nameSpace.unreadCount integerValue];
   
   return newType;
 }
@@ -56,6 +57,7 @@
   [aCoder encodeObject:self.provider forKey:@"provider"];
   [aCoder encodeObject:self.token forKey:@"token"];
   [aCoder encodeBool:self.isNameSpace forKey:@"isNameSpace"];
+  [aCoder encodeObject:[NSNumber numberWithInteger:_unreadCount] forKey:@"unreadCount"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -70,6 +72,7 @@
   newType.provider = [aDecoder decodeObjectForKey:@"provider"];
   newType.token = [aDecoder decodeObjectForKey:@"token"];
   newType.isNameSpace = [aDecoder decodeBoolForKey:@"isNameSpace"];
+  newType.unreadCount = [[aDecoder decodeObjectForKey:@"unreadCount"] integerValue];
   
   return newType;
 }

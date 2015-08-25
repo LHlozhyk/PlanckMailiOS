@@ -19,5 +19,6 @@
 @dynamic name;
 @dynamic provider;
 @dynamic token;
+@dynamic unreadCount;
 
 @end

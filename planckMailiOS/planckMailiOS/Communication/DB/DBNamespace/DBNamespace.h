@@ -15,4 +15,5 @@
 @property (nonatomic, retain) NSString * email_address;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * provider;
+@property (nonatomic, retain) NSNumber * unreadCount;
 @end

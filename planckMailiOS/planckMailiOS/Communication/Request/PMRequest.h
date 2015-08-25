@@ -32,4 +32,7 @@
 
 + (NSString *)draftMessageWithNamespacesId:(NSString *)namespacesId;
 
++ (NSString *)unreadMessages;
++ (NSString *)unreadMessagesCount;
+
 @end
