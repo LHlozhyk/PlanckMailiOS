@@ -113,9 +113,9 @@
           return;
         }
         
-        NSString *lPhoneString = [NSMutableString stringWithFormat:@"%@%@", @"telprompt://", userInfo[WK_REQUEST_INFO][WK_REQUEST_PHONE]];
-        lPhoneString = [lPhoneString stringByReplacingOccurrencesOfString:@" " withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [lPhoneString length])];
-        NSURL *lUrl = [[NSURL alloc] initWithString:lPhoneString];
+        NSString *lPhoneString = [NSString stringWithFormat:@"%@%@", @"tel://", userInfo[WK_REQUEST_INFO][WK_REQUEST_PHONE]];
+        NSString *urlString = [lPhoneString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *lUrl = [[NSURL alloc] initWithString:urlString];
         [[UIApplication sharedApplication] openURL:lUrl];
       }
         
