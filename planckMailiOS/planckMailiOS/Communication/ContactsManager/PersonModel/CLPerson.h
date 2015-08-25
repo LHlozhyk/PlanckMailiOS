@@ -9,14 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface CLPerson : NSObject
+#define PHONE_NUMBER @"phone_number"
+#define PHONE_TITLE @"phone_title"
 
-@property(nonatomic,strong)NSString *firstName;
-@property(nonatomic,strong)NSString *lastName;
-@property(nonatomic,strong)NSString *email;
-@property(nonatomic,strong)NSString *phoneNumber;
-@property(nonatomic,strong)UIImage  *personImage;
-@property(nonatomic,copy)NSString *fullName;
+@interface CLPerson : NSObject <NSSecureCoding>
+
+@property (nonatomic,strong) NSString *firstName;
+@property (nonatomic,strong) NSString *lastName;
+@property (nonatomic,strong) NSString *email;
+@property (nonatomic,strong) NSString *phoneNumber;
+@property (nonatomic,strong) NSArray *phoneNumbers;
+@property (nonatomic,strong) UIImage  *personImage;
+@property (nonatomic,copy) NSString   *fullName;
 
 //@property(nonatomic,strong)NSString  *personID;
 

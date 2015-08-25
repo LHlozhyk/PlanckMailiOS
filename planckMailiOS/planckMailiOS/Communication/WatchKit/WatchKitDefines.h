@@ -15,6 +15,8 @@
 #define WK_REQUEST_INFO @"wk_request_info"
 #define WK_REQUEST_EMAILS_LIMIT @"wk_request_emails_limit"
 #define WK_REQUEST_RESPONSE @"wk_request_response"
+#define WK_REQUEST_PHONE @"wk_request_phone"
+#define WK_REQUEST_MESSAGE @"wk_request_message"
 
 #define LIST_CONTROLLER_IDENTIFIER @"emailListController"
 #define TITLE @"title"
@@ -27,7 +29,10 @@ typedef NS_ENUM(NSInteger, PMWatchRequestType) {
   PMWatchRequestAccounts,
   PMWatchRequestGetEmails,
   PMWatchRequestGetEmailDetails,
-  PMWatchRequestReply
+  PMWatchRequestReply,
+  PMWatchRequestGetContacts,
+  PMWatchRequestCall,
+  PMWatchRequestSendSMS
 };
 
 #endif

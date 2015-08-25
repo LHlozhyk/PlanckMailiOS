@@ -37,7 +37,7 @@
     _itemsArrayFiltered = [NSArray new];
     
     [[CLContactLibrary sharedInstance] setDelegate:self];
-    [[CLContactLibrary sharedInstance] getContactArray];
+    [[CLContactLibrary sharedInstance] getContactArrayForDelegate:self];
     
     //delete empty separate lines for tableView
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];

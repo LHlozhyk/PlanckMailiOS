@@ -7,11 +7,20 @@
 //
 
 #import "PMWatchRequestHandler.h"
+#import "AppDelegate.h"
 #import "WatchKitDefines.h"
 #import "DBManager.h"
 #import "PMTypeContainer.h"
 #import "PMAPIManager.h"
 #import "PMInboxMailModel.h"
+#import "CLContactLibrary.h"
+#import <MessageUI/MessageUI.h>
+
+@interface PMWatchRequestHandler () <APContactLibraryDelegate, MFMessageComposeViewControllerDelegate, UINavigationControllerDelegate>
+
+@property (nonatomic, copy) void (^replyBlock)(NSDictionary *);
+
+@end
 
 @implementation PMWatchRequestHandler
 
@@ -83,20 +92,81 @@
                                              completion:^(id data, id error, BOOL success) {
               if(reply) {
                 id result = data;
-      //          if([data isKindOfClass:[NSArray class]]) {
-      //            result = [data firstObject];
-      //          }
-                
                 reply(result);
               }
             }];
         }
             
             break;
+        
+        case PMWatchRequestGetContacts: {
+          self.replyBlock = reply;
+          
+          [[CLContactLibrary sharedInstance] getContactArrayForDelegate:self];
+        }
+          
+          break;
+        
+      case PMWatchRequestCall: {
+        if([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
+          reply(nil);
+          return;
+        }
+        
+        NSString *lPhoneString = [NSMutableString stringWithFormat:@"%@%@", @"telprompt://", userInfo[WK_REQUEST_INFO][WK_REQUEST_PHONE]];
+        lPhoneString = [lPhoneString stringByReplacingOccurrencesOfString:@" " withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [lPhoneString length])];
+        NSURL *lUrl = [[NSURL alloc] initWithString:lPhoneString];
+        [[UIApplication sharedApplication] openURL:lUrl];
+      }
+        
+        break;
+        
+      case PMWatchRequestSendSMS: {
+        if([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
+          reply(nil);
+          return;
+        }
+        
+        self.replyBlock = reply;
+        NSDictionary *info = userInfo[WK_REQUEST_INFO];
+        
+        MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+        if([MFMessageComposeViewController canSendText])
+        {
+          controller.body = info[WK_REQUEST_MESSAGE];
+          controller.recipients = [NSArray arrayWithObjects:info[WK_REQUEST_PHONE], nil];
+          controller.messageComposeDelegate = self;
+          [((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController presentViewController:controller animated:YES completion:^{
             
+          }];
+        }
+      }
+        
+        break;
+        
         default:
             break;
     }
+}
+
+#pragma mark - APContactLibraryDelegate
+
+- (void)apGetContactArray:(NSArray *)contactArray {
+  NSMutableArray *personsArray = [NSMutableArray new];
+  for(CLPerson *person in contactArray) {
+    [personsArray addObject:[NSKeyedArchiver archivedDataWithRootObject:person]];
+  }
+  
+  _replyBlock(@{WK_REQUEST_RESPONSE: personsArray});
+}
+
+#pragma mark - MFMessageComposeViewControllerDelegate
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+  [controller dismissViewControllerAnimated:YES completion:nil];
+  
+  BOOL status = (result == MessageComposeResultSent);
+  _replyBlock(@{WK_REQUEST_RESPONSE: [NSNumber numberWithBool:status]});
 }
 
 @end

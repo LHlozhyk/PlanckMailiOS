@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
@@ -92,30 +92,139 @@
             </objects>
             <point key="canvasLocation" x="449" y="345"/>
         </scene>
+        <!--Contacts-->
+        <scene sceneID="eUo-jA-Oat">
+            <objects>
+                <controller identifier="contactsListController" title="Contacts" id="lmW-mS-yRm" customClass="WKContactsController">
+                    <items>
+                        <imageView width="30" height="30" alignment="center" animationDuration="0.80000000000000004" id="4g6-Ek-PRU"/>
+                        <table alignment="left" id="DHw-UE-or0">
+                            <items>
+                                <tableRow identifier="contactRow" id="PDS-xv-c1p" customClass="WKContactRow">
+                                    <group key="rootItem" width="1" alignment="left" id="n6f-dC-xOz">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" verticalAlignment="center" text="Label" numberOfLines="0" id="sM7-ma-KYJ">
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="titleLabel" destination="sM7-ma-KYJ" id="cx7-NQ-xXz"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="activityView" destination="4g6-Ek-PRU" id="bWf-yz-e6P"/>
+                        <outlet property="tableView" destination="DHw-UE-or0" id="LJW-1p-Yzv"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="449" y="584"/>
+        </scene>
+        <!--Info-->
+        <scene sceneID="r7R-Nx-vhp">
+            <objects>
+                <controller identifier="contactInfoController" title="Info" id="Vzh-rp-xnF" customClass="WKContactInfoController">
+                    <items>
+                        <group width="1" alignment="left" id="drY-ss-MGi">
+                            <items>
+                                <label width="1" widthAdjustment="-40" alignment="left" text="Label" numberOfLines="0" id="7QK-lG-H4G"/>
+                                <imageView width="40" height="40" alignment="right" image="user_default_image" contentMode="scaleAspectFit" id="5BW-Vf-G3L"/>
+                            </items>
+                        </group>
+                        <separator width="1" widthAdjustment="-3" alignment="right" id="LPp-yS-ao5">
+                            <color key="color" red="0.79215686269999996" green="0.78823529410000004" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                        </separator>
+                        <label alignment="left" text="CONTACT" id="5kw-YL-TJW">
+                            <color key="textColor" red="0.79215686269999996" green="0.78823529410000004" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <group width="1" alignment="left" id="fyc-1M-m5q">
+                            <items>
+                                <button width="50" height="50" alignment="center" backgroundImage="phone" id="rNz-v3-7nu">
+                                    <connections>
+                                        <action selector="callDidPressed:" destination="Vzh-rp-xnF" id="fXM-DS-qFY"/>
+                                    </connections>
+                                </button>
+                                <label width="20" height="47.5" alignment="center" id="u9s-bM-zmM"/>
+                                <button width="50" height="50" alignment="center" backgroundImage="bubble" id="o1n-96-Q3e">
+                                    <fontDescription key="font" type="system" pointSize="15"/>
+                                    <connections>
+                                        <action selector="messageDidPressed:" destination="Vzh-rp-xnF" id="ZPk-Q6-g9i"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="personImage" destination="5BW-Vf-G3L" id="mzx-bE-PxA"/>
+                        <outlet property="personName" destination="7QK-lG-H4G" id="A5i-Mh-LHL"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="644" y="584"/>
+        </scene>
+        <!--contactPhoneController-->
+        <scene sceneID="0am-VR-DWi">
+            <objects>
+                <controller identifier="contactPhoneController" id="Y8q-AN-M0Q" customClass="WKContactPhonesController">
+                    <items>
+                        <table alignment="left" id="Ila-sV-h0j">
+                            <items>
+                                <tableRow identifier="contactPhoneRow" id="BxT-Ts-VuU" customClass="WKContactPhoneRow">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="pvn-fx-fBl">
+                                        <items>
+                                            <label width="1" height="20" alignment="left" text="Label" id="hhk-ZY-Eel">
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                                            </label>
+                                            <label width="1" height="20" alignment="left" text="Label" id="zO6-7v-Idq"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="label" destination="hhk-ZY-Eel" id="e2V-xY-aka"/>
+                                        <outlet property="phone" destination="zO6-7v-Idq" id="c8s-D7-ci2"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableView" destination="Ila-sV-h0j" id="9KE-2n-aQw"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="843" y="584"/>
+        </scene>
         <!--Message-->
         <scene sceneID="9AO-tj-UcN">
             <objects>
                 <controller identifier="emailController" title="Message" id="2ko-XT-grL" customClass="WKEmailController">
                     <items>
                         <imageView width="30" height="30" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="ghP-To-m6q"/>
-                        <label width="1" alignment="left" text="Label" id="L5k-cy-9Uu">
-                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                        </label>
-                        <label width="1" alignment="left" text="Label" id="lsJ-qw-zSx">
-                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
-                        </label>
-                        <label width="1" alignment="left" text=" " textAlignment="right" id="10M-le-pej">
-                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
-                        </label>
-                        <separator width="1" alignment="left" id="xLh-v0-mIN">
-                            <color key="color" red="0.24705882352941178" green="0.4392156862745098" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
-                        </separator>
-                        <label width="1" alignment="left" text=" " numberOfLines="0" minimumScaleFactor="0.70000000000000007" id="7Q9-UZ-Zat"/>
-                        <button width="1" alignment="left" title="Reply" id="dEY-H0-96j">
-                            <connections>
-                                <action selector="replyDidPressed" destination="2ko-XT-grL" id="zdP-BB-ncz"/>
-                            </connections>
-                        </button>
+                        <group width="1" height="147" alignment="left" layout="vertical" id="LTC-rr-dgL">
+                            <items>
+                                <label width="1" alignment="left" text="Label" id="L5k-cy-9Uu">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                                <label width="1" alignment="left" text="Label" id="lsJ-qw-zSx">
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <label width="1" alignment="left" text=" " textAlignment="right" id="10M-le-pej">
+                                    <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                </label>
+                                <separator width="1" alignment="left" id="xLh-v0-mIN">
+                                    <color key="color" red="0.24705882352941178" green="0.4392156862745098" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                </separator>
+                                <label width="1" alignment="left" text=" " numberOfLines="0" minimumScaleFactor="0.70000000000000007" id="7Q9-UZ-Zat"/>
+                                <button width="1" alignment="left" title="Reply" id="dEY-H0-96j">
+                                    <connections>
+                                        <action selector="replyDidPressed" destination="2ko-XT-grL" id="zdP-BB-ncz"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                     </items>
                     <connections>
                         <outlet property="activityView" destination="ghP-To-m6q" id="bvR-Cj-mq5"/>
@@ -126,7 +235,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="637" y="345"/>
+            <point key="canvasLocation" x="644" y="345"/>
         </scene>
         <!--selectedAnswer-->
         <scene sceneID="mBl-x9-0fQ">
@@ -135,19 +244,19 @@
                     <items>
                         <label width="1" alignment="left" text="Label" numberOfLines="0" id="Ypg-hU-a94"/>
                         <button width="1" alignment="left" title="Send" id="UCB-Lr-sRh">
-                            <color key="backgroundColor" red="0.0021879591595272804" green="0.75384150552486184" blue="0.026471992537268191" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.0021879591595272804" green="0.75384150552486184" blue="0.026471992537268191" alpha="0.5" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="sendDidPressed" destination="TFf-pD-6Tr" id="97t-cq-CtJ"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="Retake" id="rAS-b9-on2">
-                            <color key="backgroundColor" red="0.75384150552486184" green="0.11888485365098944" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.75384150552486184" green="0.11888485365098944" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="retakeDidPressed" destination="TFf-pD-6Tr" id="UzQ-Qo-DTO"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="Cancel" id="kW2-JT-TNG">
-                            <color key="backgroundColor" red="0.051328261120144221" green="0.32225955822664848" blue="0.75384150552486184" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.051328261120144221" green="0.32225955822664848" blue="0.75384150552486184" alpha="0.5" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelDidPressed" destination="TFf-pD-6Tr" id="DZN-m1-Hbg"/>
                             </connections>
@@ -174,14 +283,14 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="220" y="846"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
                 <controller id="4sK-HA-Art" customClass="NotificationController"/>
             </objects>
-            <point key="canvasLocation" x="449" y="643"/>
+            <point key="canvasLocation" x="449" y="846"/>
         </scene>
     </scenes>
 </document>
