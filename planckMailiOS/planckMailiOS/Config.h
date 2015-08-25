@@ -10,7 +10,7 @@
 #define planckMailiOS_Config_h
 
 #define APP_SERVER_LINK @"https://api.nylas.com"
-#define APP_ID @"8lh2dc493h6aq0trdu973kkow"
+#define APP_ID @"5girg6tjmjuenujbsg0lnatlq"
 
 #define NAVIGATION_BAR_TIN_COLOR [UIColor colorWithRed:90.0f/255.0f green:196.0f/255.0f blue:180.0f/255.0f alpha:1.0f]
 

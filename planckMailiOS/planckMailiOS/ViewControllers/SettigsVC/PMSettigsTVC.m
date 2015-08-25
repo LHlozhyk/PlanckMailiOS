@@ -16,6 +16,7 @@
 
 @interface PMSettigsTVC () <UIActionSheetDelegate> {
     NSArray *_itemsArray;
+    NSArray *_defaultItemsArray;
     NSIndexPath *_selectedIndex;
 }
 - (IBAction)addAccountBtnPressed:(id)sender;
@@ -25,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _defaultItemsArray = @[@"Mail", @"Calendar", @"Signature", @"Swipe Options", @"Broswer", @"Week Start", @"Foused inbox"];
     // Do any additional setup after loading the view.
 }
 
@@ -65,25 +66,32 @@
 #pragma mark - Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_itemsArray count] + 1;
+    return (section == 0) ? [_itemsArray count] + 1 : [_defaultItemsArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *lTableViewCell;
     
-    
-    if ([tableView numberOfRowsInSection:indexPath.section]  - 1 == indexPath.row) {
-        
-        lTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"AddAccount"];
-//        lTableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AddAccount"];
-    } else {
-        
+    if (indexPath.section == 0) {
+        if ([tableView numberOfRowsInSection:indexPath.section]  - 1 == indexPath.row) {
+            lTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"AddAccount"];
+        } else {
+            
+            lTableViewCell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+            if (lTableViewCell == nil) {
+                lTableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
+            }
+            DBNamespace *lItemModel = [_itemsArray objectAtIndex:indexPath.row];
+            lTableViewCell.textLabel.text = lItemModel.email_address;
+            lTableViewCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+    } else if (indexPath.section == 1) {
         lTableViewCell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
         if (lTableViewCell == nil) {
             lTableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
         }
-        DBNamespace *lItemModel = [_itemsArray objectAtIndex:indexPath.row];
-        lTableViewCell.textLabel.text = lItemModel.email_address;
+        lTableViewCell.textLabel.text = _defaultItemsArray[indexPath.row];
+        lTableViewCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     return lTableViewCell;
@@ -95,17 +103,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    _selectedIndex = indexPath;
-    UIActionSheet *lNewActionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete Account " delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
-    [lNewActionSheet showInView:self.view];
+    
+    if (indexPath.section == 0) {
+        _selectedIndex = indexPath;
+        UIActionSheet *lNewActionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete Account " delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
+        [lNewActionSheet showInView:self.view];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"ACCOUNT SETTINGS";
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UILabel * sectionHeader = [[UILabel alloc] initWithFrame:CGRectZero];
+    sectionHeader.backgroundColor = [UIColor clearColor];
+    sectionHeader.textAlignment = NSTextAlignmentCenter;
+    sectionHeader.font = [UIFont systemFontOfSize:15];
+    sectionHeader.textColor = [UIColor darkGrayColor];
+    
+    switch(section) {
+        case 0:sectionHeader.text = @"ACCOUNT SETTIGS"; break;
+        case 1:sectionHeader.text = @"DEFAULTS SETTINGS"; break;
+        default:sectionHeader.text = @"TITLE OTHER"; break;
+    }
+    return sectionHeader;
 }
 
 #pragma mark - UIActionSheet delegates

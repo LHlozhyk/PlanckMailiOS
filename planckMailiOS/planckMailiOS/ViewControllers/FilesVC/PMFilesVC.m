@@ -51,6 +51,7 @@
     
     lCell.imageView.image = [UIImage imageNamed:lData[@"icon"]];
     lCell.textLabel.text = lData[@"title"];
+    [lCell.textLabel setMinimumScaleFactor:0.2f];
     
     return lCell;
 }

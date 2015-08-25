@@ -27,12 +27,12 @@
 			<string>inboxapp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>in-6xda9nyqs9mll7mx2ecojy112</string>
+				<string>in-5girg6tjmjuenujbsg0lnatlq</string>
 			</array>
 			<key>INAPIPath</key>
 			<string>http://localhost:5555/</string>
 			<key>INAppID</key>
-			<string>6xda9nyqs9mll7mx2ecojy112</string>
+			<string>5girg6tjmjuenujbsg0lnatlq</string>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
@@ -40,7 +40,7 @@
 	<key>INAPIPath</key>
 	<string>https://api.inboxapp.com/</string>
 	<key>INAppID</key>
-	<string>6xda9nyqs9mll7mx2ecojy112</string>
+	<string>5girg6tjmjuenujbsg0lnatlq</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSUserActivityTypes</key>
