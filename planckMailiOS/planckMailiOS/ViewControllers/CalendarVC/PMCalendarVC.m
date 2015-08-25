@@ -25,8 +25,11 @@
     vc.showDateInDayColumnHeader = NO;
     vc.allowTimeSelection = NO;
     [vc setVisibleCalendarsFromUserDefaults];
-    [vc.navigationItem setHidesBackButton:YES];
-    [self.navigationController pushViewController:vc animated:NO];
+    
+    [self addChildViewController:vc];
+    vc.view.frame = self.view.frame;
+    [self.view addSubview:vc.view];
+    [vc didMoveToParentViewController:self];
 }
 
 @end

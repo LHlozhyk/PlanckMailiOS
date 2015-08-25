@@ -64,7 +64,7 @@
     NSLog(@"shouldStartLoadWithRequest - %@", request.URL.absoluteString);
     NSString *lUrlString = request.URL.absoluteString;
     
-    if ([lUrlString hasPrefix:@"in-8lh2dc493h6aq0trdu973kkow://app/auth-response?"]) {
+    if ([lUrlString hasPrefix:@"in-5girg6tjmjuenujbsg0lnatlq://app/auth-response?"]) {
         NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"=&"];
         NSArray *lItems = [lUrlString componentsSeparatedByCharactersInSet:set];
         [[PMAPIManager shared] saveNamespaceIdFromToken:lItems[1] completion:^(id error, BOOL success) {

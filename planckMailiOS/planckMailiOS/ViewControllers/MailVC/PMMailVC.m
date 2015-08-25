@@ -123,7 +123,7 @@ IB_DESIGNABLE
 }
 
 - (void)menuBtnPressed:(id)sender {
-    //[self.mailMenu showInView:self.view];
+    [self.mailMenu showInView:self.view];
 }
 
 - (void)createMailBtnPressed:(id)sender {
