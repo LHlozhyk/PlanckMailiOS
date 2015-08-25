@@ -34,8 +34,8 @@
   } else if (!typeContainer.isNameSpace) {
     [self.titleLable setText:typeContainer.provider];
   }
-  [self.unreadLable setHidden:typeContainer.unreadCount < 0];
-  if(typeContainer.unreadCount >= 0) {
+  [self.unreadLable setHidden:typeContainer.unreadCount <= 0];
+  if(typeContainer.unreadCount > 0) {
     [self.unreadLable setText:[NSString stringWithFormat:@"%i", (int)typeContainer.unreadCount]];
   }
 }

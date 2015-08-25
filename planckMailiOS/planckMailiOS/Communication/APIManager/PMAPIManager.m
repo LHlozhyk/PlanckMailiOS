@@ -59,6 +59,11 @@
             lNewNamespace.provider = lFirstItem[@"provider"];
             lNewNamespace.token = token;
             [[DBManager instance] save];
+          
+            [lDataLoader loadUrlWithGETMethod:[PMRequest unreadMessagesCount] handler:^(NSData *loadData, NSError *error, BOOL success) {
+              NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:loadData options:0 error:nil];
+              lNewNamespace.unreadCount = lResponse[@"count"];
+            }];
             
             handler(nil, YES);
         } else {
@@ -224,6 +229,10 @@
     SAVE_VALUE(item.token, TOKEN);
     _namespaceId = item;
     _emailAddress = [item.email_address copy];
+}
+
+- (void)getUnreadCountForNamespaseToken:(NSString *)token completion:(BasicBlockHandler)handler {
+  
 }
 
 #pragma mark - Private methods
