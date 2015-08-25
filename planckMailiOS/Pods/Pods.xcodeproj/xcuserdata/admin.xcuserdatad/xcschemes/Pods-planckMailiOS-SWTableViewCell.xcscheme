@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3DBF0CE119EB72F9C54DD744"
+               BlueprintIdentifier = "41FFD7D7D8FEF689CEB9F109"
                BuildableName = "libPods-planckMailiOS-SWTableViewCell.a"
                BlueprintName = "Pods-planckMailiOS-SWTableViewCell"
                ReferencedContainer = "container:Pods.xcodeproj">

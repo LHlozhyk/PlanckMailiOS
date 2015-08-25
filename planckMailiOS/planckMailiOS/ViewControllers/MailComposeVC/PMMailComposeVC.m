@@ -154,25 +154,25 @@
         
         NSString *lBody = _dataInfo[@"TextViewCell"] ? : @"Sent from PlanckMailiOS";
         
-        lRequsetParmeters = @{
-                                            @"reply_to_message_id": _messageId,
-                                            @"body" : lBody,
-                                            @"subject" : lSubject,
-                                            @"to" : lTo,
-                                            @"bcc" : lBcc,
-                                            @"cc" : lCc,
-                                            @"from":@[
-                                                    @{
-                                                        @"name": @"",
-                                                        @"email": _emails
-                                                        }
-                                                    ],
-                                            @"version" : [NSNumber numberWithInt:1]
-                                            };
-        
-        if ([_messageId isEqualToString:@""]) {
+        if ([_messageId isEqualToString:@""] || _messageId == nil) {
             
             lRequsetParmeters = @{
+                                  @"body" : lBody,
+                                  @"subject" : lSubject,
+                                  @"to" : lTo,
+                                  @"bcc" : lBcc,
+                                  @"cc" : lCc,
+                                  @"from":@[
+                                          @{
+                                              @"name": @"",
+                                              @"email": _emails
+                                              }
+                                          ],
+                                  @"version" : [NSNumber numberWithInt:1]
+                                  };
+        } else {
+            lRequsetParmeters = @{
+                                  @"reply_to_message_id": _messageId,
                                   @"body" : lBody,
                                   @"subject" : lSubject,
                                   @"to" : lTo,

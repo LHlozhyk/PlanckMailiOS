@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6B7D8364AE6EE251B35F527D"
+               BlueprintIdentifier = "ED71F8F4A5C6F9C8A1DC1BC2"
                BuildableName = "libPods-planckMailiOS-JTCalendar.a"
                BlueprintName = "Pods-planckMailiOS-JTCalendar"
                ReferencedContainer = "container:Pods.xcodeproj">

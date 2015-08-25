@@ -10,6 +10,7 @@
 
 #import "DBManager.h"
 #import "PMWatchRequestHandler.h"
+#import "Config.h"
 
 @interface AppDelegate ()
 @end
@@ -60,7 +61,13 @@
 #pragma mark - Private methods
 
 - (void)setUpCustomDesign {
-   [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+                                                           NSForegroundColorAttributeName:[UIColor whiteColor]
+                                                           }];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:NAVIGATION_BAR_TIN_COLOR];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UITabBar appearance] setSelectedImageTintColor:NAVIGATION_BAR_TIN_COLOR];
 }
 
 #pragma mark - WatchKit Extention

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2E802821E98919C1011962DD"
+               BlueprintIdentifier = "8CE49FAF6AE0DC8EF5467ED2"
                BuildableName = "libPods-planckMailiOS-UIActionSheet+Blocks.a"
                BlueprintName = "Pods-planckMailiOS-UIActionSheet+Blocks"
                ReferencedContainer = "container:Pods.xcodeproj">

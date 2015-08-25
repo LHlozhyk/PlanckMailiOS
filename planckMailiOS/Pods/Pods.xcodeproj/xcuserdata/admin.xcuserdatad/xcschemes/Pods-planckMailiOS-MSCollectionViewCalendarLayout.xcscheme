@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2DE0A25CBF7077D11A0EC2DB"
+               BlueprintIdentifier = "322A41108429B81A3C9166B1"
                BuildableName = "libPods-planckMailiOS-MSCollectionViewCalendarLayout.a"
                BlueprintName = "Pods-planckMailiOS-MSCollectionViewCalendarLayout"
                ReferencedContainer = "container:Pods.xcodeproj">

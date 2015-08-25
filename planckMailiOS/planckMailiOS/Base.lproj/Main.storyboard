@@ -124,7 +124,11 @@
         <scene sceneID="LXR-NU-aBy">
             <objects>
                 <navigationController id="JJz-MQ-e4y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calendar" image="calendarIcon" id="yfD-vV-zO0"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendarIcon" selectedImage="calendarIcon_selected" id="yfD-vV-zO0">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="calendarIcon_selected"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c58-em-BvU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -185,7 +189,7 @@
                                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PdH-jW-OoE">
                                             <rect key="frame" x="54" y="27" width="212" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="lyubomyr.hlozhyk@gmail.com">
+                                            <state key="normal">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -383,6 +387,7 @@ Sent from PlanckMailiOS</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="_emailBtn" destination="PdH-jW-OoE" id="wot-fE-xxy"/>
                         <outlet property="_sentBarBtn" destination="QWm-c7-zP3" id="bJj-9A-Xyk"/>
                         <outlet property="_tableView" destination="htx-nW-Kyq" id="wPL-ec-rq2"/>
                     </connections>
@@ -395,7 +400,11 @@ Sent from PlanckMailiOS</string>
         <scene sceneID="e6V-M6-QxY">
             <objects>
                 <navigationController id="jFY-4E-k1m" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Files" image="filesIcon" id="KJ0-T3-IN6"/>
+                    <tabBarItem key="tabBarItem" title="Files" image="filesIcon" id="KJ0-T3-IN6">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="filesIcon_seleced"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rBe-cZ-nb0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -411,7 +420,7 @@ Sent from PlanckMailiOS</string>
         <!--Files-->
         <scene sceneID="6DQ-o1-OHf">
             <objects>
-                <viewController id="wVD-zo-myU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PMFilesVC" id="wVD-zo-myU" customClass="PMFilesVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9JX-EO-oTP"/>
                         <viewControllerLayoutGuide type="bottom" id="TpQ-Qj-XCO"/>
@@ -419,9 +428,28 @@ Sent from PlanckMailiOS</string>
                     <view key="view" contentMode="scaleToFill" id="q6l-dE-AhS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pnc-jl-o8x">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="wVD-zo-myU" id="z8K-XW-L40"/>
+                                    <outlet property="delegate" destination="wVD-zo-myU" id="HM8-gi-Tdb"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pnc-jl-o8x" firstAttribute="top" secondItem="9JX-EO-oTP" secondAttribute="bottom" constant="-64" id="Kso-4M-jlP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pnc-jl-o8x" secondAttribute="trailing" constant="-16" id="WYA-ex-hja"/>
+                            <constraint firstItem="TpQ-Qj-XCO" firstAttribute="top" secondItem="Pnc-jl-o8x" secondAttribute="bottom" constant="-49" id="jIn-hW-Jbx"/>
+                            <constraint firstItem="Pnc-jl-o8x" firstAttribute="leading" secondItem="q6l-dE-AhS" secondAttribute="leadingMargin" constant="-16" id="qsi-3A-40U"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Files" id="OhK-WB-U0F"/>
+                    <connections>
+                        <outlet property="_tableView" destination="Pnc-jl-o8x" id="Edh-ty-97r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SX5-EU-X3V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -431,7 +459,11 @@ Sent from PlanckMailiOS</string>
         <scene sceneID="3ai-lz-ghM">
             <objects>
                 <navigationController id="7Bb-Ji-RYh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon" id="HHd-0r-YXo"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settingsIcon" id="HHd-0r-YXo">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="settingsIcon_selected"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FoI-nB-PNO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -664,7 +696,11 @@ Sent from PlanckMailiOS</string>
         <scene sceneID="AvJ-eD-Opr">
             <objects>
                 <navigationController id="dEN-dY-Gf6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="People" image="peopleIcon" id="Z21-Y8-7ig"/>
+                    <tabBarItem key="tabBarItem" title="People" image="peopleIcon" selectedImage="peopleIcon_selected" id="Z21-Y8-7ig">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="peopleIcon_selected"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pV8-XU-l9V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -681,7 +717,11 @@ Sent from PlanckMailiOS</string>
         <scene sceneID="MyE-eC-pnJ">
             <objects>
                 <navigationController id="QEp-bR-bRT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mail" image="mailIcon" id="73p-9m-xn3"/>
+                    <tabBarItem key="tabBarItem" title="Mail" image="mailIcon" selectedImage="mailIcon_selected" id="73p-9m-xn3">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="mailIcon_selected"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2w9-rX-dxc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -996,13 +1036,6 @@ Sent from PlanckMailiOS</string>
                                 <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-vs-YDp">
-                                        <rect key="frame" x="41" y="3" width="30" height="30"/>
-                                        <state key="normal" image="searchIcon"/>
-                                        <connections>
-                                            <action selector="searchBtnPressed:" destination="jvz-4f-ywC" eventType="touchUpInside" id="HOA-TC-vAz"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vb8-dn-z4E">
                                         <rect key="frame" x="0.0" y="3" width="30" height="30"/>
                                         <state key="normal" image="menuIcon">
@@ -1016,45 +1049,20 @@ Sent from PlanckMailiOS</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </barButtonItem>
-                        <view key="titleView" contentMode="scaleToFill" id="axE-sd-ZNV" customClass="PMMailTitleView">
-                            <rect key="frame" x="93" y="4" width="134" height="36"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Fjt-PY-ybi">
-                                    <rect key="frame" x="0.0" y="18" width="134" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="INBOX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56B-LF-Chh">
-                                    <rect key="frame" x="0.0" y="0.0" width="134" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="Fjt-PY-ybi" secondAttribute="trailing" id="786-Bc-m0K"/>
-                                <constraint firstAttribute="bottom" secondItem="Fjt-PY-ybi" secondAttribute="bottom" id="DUq-sF-FmQ"/>
-                                <constraint firstItem="Fjt-PY-ybi" firstAttribute="leading" secondItem="axE-sd-ZNV" secondAttribute="leading" id="FtQ-7q-CQT"/>
-                                <constraint firstItem="56B-LF-Chh" firstAttribute="leading" secondItem="axE-sd-ZNV" secondAttribute="leading" id="IoL-6D-Z0l"/>
-                                <constraint firstAttribute="trailing" secondItem="56B-LF-Chh" secondAttribute="trailing" id="UJl-fj-DrE"/>
-                                <constraint firstItem="Fjt-PY-ybi" firstAttribute="top" secondItem="56B-LF-Chh" secondAttribute="bottom" id="soV-Mp-E6p"/>
-                                <constraint firstItem="56B-LF-Chh" firstAttribute="top" secondItem="axE-sd-ZNV" secondAttribute="top" id="uHc-ql-40Z"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="_subTitleLable" destination="Fjt-PY-ybi" id="abA-BT-L7t"/>
-                                <outlet property="_titleLable" destination="56B-LF-Chh" id="g2s-KS-J5P"/>
-                            </connections>
-                        </view>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="nNY-pZ-OPf">
                             <view key="customView" contentMode="scaleToFill" id="Of9-Um-rpy">
-                                <rect key="frame" x="0.0" y="0.0" width="71" height="33"/>
+                                <rect key="frame" x="224" y="5" width="72" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-vs-YDp">
+                                        <rect key="frame" x="0.0" y="2" width="30" height="30"/>
+                                        <state key="normal" image="searchIcon"/>
+                                        <connections>
+                                            <action selector="searchBtnPressed:" destination="jvz-4f-ywC" eventType="touchUpInside" id="HOA-TC-vAz"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2M-Yu-2KG">
-                                        <rect key="frame" x="41" y="2" width="30" height="30"/>
+                                        <rect key="frame" x="42" y="2" width="30" height="30"/>
                                         <state key="normal" image="createMailIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1069,7 +1077,6 @@ Sent from PlanckMailiOS</string>
                     </navigationItem>
                     <connections>
                         <outlet property="_tableView" destination="ohL-qI-9n2" id="NMG-O5-TrS"/>
-                        <outlet property="_titleView" destination="axE-sd-ZNV" id="XzS-ds-A4u"/>
                         <outlet property="view" destination="9lc-oA-Amo" id="mBo-wm-miL"/>
                     </connections>
                 </viewController>
@@ -1393,22 +1400,27 @@ Sent from PlanckMailiOS</string>
         <image name="archive" width="21" height="21"/>
         <image name="attachedIcon" width="40" height="40"/>
         <image name="backArrow" width="21" height="21"/>
-        <image name="calendarIcon" width="21" height="21"/>
+        <image name="calendarIcon" width="20" height="20"/>
+        <image name="calendarIcon_selected" width="20" height="20"/>
         <image name="closeIcon" width="21" height="21"/>
-        <image name="createMailIcon" width="42" height="42"/>
+        <image name="createMailIcon" width="21" height="21"/>
         <image name="dots" width="21" height="21"/>
         <image name="doubleArrowIcon" width="21" height="21"/>
-        <image name="filesIcon" width="21" height="21"/>
+        <image name="filesIcon" width="20" height="20"/>
+        <image name="filesIcon_seleced" width="20" height="20"/>
         <image name="flagIconNormal" width="21" height="21"/>
         <image name="leftArrowIcon" width="21" height="21"/>
-        <image name="mailIcon" width="21" height="21"/>
+        <image name="mailIcon" width="20" height="20"/>
+        <image name="mailIcon_selected" width="20" height="20"/>
         <image name="menuIcon" width="21" height="21"/>
         <image name="messageIcon" width="170" height="170"/>
-        <image name="peopleIcon" width="21" height="21"/>
+        <image name="peopleIcon" width="20" height="20"/>
+        <image name="peopleIcon_selected" width="20" height="20"/>
         <image name="rightArrowIcon" width="21" height="21"/>
         <image name="searchIcon" width="21" height="21"/>
         <image name="sentIcon" width="21" height="21"/>
-        <image name="settingsIcon" width="21" height="21"/>
+        <image name="settingsIcon" width="20" height="20"/>
+        <image name="settingsIcon_selected" width="20" height="20"/>
         <image name="trashIcon" width="21" height="21"/>
         <image name="unreadIcon" width="21" height="21"/>
     </resources>

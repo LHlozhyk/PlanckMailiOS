@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-planckMailiOS-CupertinoYankee.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-planckMailiOS-DateTools.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,87 +87,82 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>005867D2A84B80B8A29B5DF5</key>
+		<key>03CC39C071C02A252F7F7B6F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>074B2BE216CA900961490400</key>
+		<key>0AE2F47EACD22BB8821A38E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1656CACE30E25805F3EB24DD</key>
+		<key>23639B416F58D5D2034CAA0B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2DE0A25CBF7077D11A0EC2DB</key>
+		<key>322A41108429B81A3C9166B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E802821E98919C1011962DD</key>
+		<key>41FFD7D7D8FEF689CEB9F109</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>343312EB6FD0802C27D954AB</key>
+		<key>4E11CA1B39F5F9B77572B49E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3DBF0CE119EB72F9C54DD744</key>
+		<key>5A42C98D9050FC28E5FC03D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3F57C5149E8E55B4E7BAB4A7</key>
+		<key>8AFA71C48A438C1FA30E48CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>458786043798DBA4EB268D5C</key>
+		<key>8CE49FAF6AE0DC8EF5467ED2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B7D8364AE6EE251B35F527D</key>
+		<key>9A81A278058C467BF7539B74</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8CF2B41DEAA2F8EEF3B4BD8F</key>
+		<key>9C7CCBBDA870994AF82C7F2D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>939733108E71A351D8AF18C5</key>
+		<key>A63349F543F86BD8FC545CF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C24B905E942CF6C47ED1F425</key>
+		<key>C0E229D21FB0197A7A2A466D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4B039D685CA53CB22BFE9FC</key>
+		<key>CE44B6DCA6C63F1FFA016F1D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E012DD0130E7052706678D58</key>
+		<key>EC9C4C11FE50C3E636D765BB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E9DE34C93D94BCF4B1206B02</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EED86E320B935AC67447CDCA</key>
+		<key>ED71F8F4A5C6F9C8A1DC1BC2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -20,6 +20,8 @@
 		844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 844F3BF51B12A882009634D2 /* PMPeopleVC.m */; };
 		846096171B13061400924B61 /* CLContactLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 846096151B13061400924B61 /* CLContactLibrary.m */; };
 		8460961C1B13063300924B61 /* CLPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460961B1B13063300924B61 /* CLPerson.m */; };
+		8467F01C1B8785FC00FA7827 /* NSDate+CupertinoYankee.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F01B1B8785FC00FA7827 /* NSDate+CupertinoYankee.m */; };
+		846E2FD21B8C20F800A019AC /* PMFilesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E2FD11B8C20F800A019AC /* PMFilesVC.m */; };
 		84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F061B1428A00020AB6E /* PMInboxMailModel.m */; };
 		84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F0A1B1447610020AB6E /* PMLoadMoreTVCell.m */; };
 		8478A0571B36A1C4003C09AF /* PMPreviewMailTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478A0561B36A1C4003C09AF /* PMPreviewMailTVCell.m */; };
@@ -73,7 +75,7 @@
 		C3FF0E871B55B6340041B70E /* PMTypeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E861B55B6340041B70E /* PMTypeContainer.m */; };
 		C3FF0E8A1B55BC8A0041B70E /* PMEmailContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E891B55BC8A0041B70E /* PMEmailContainer.m */; };
 		C3FF0E8D1B55BFAB0041B70E /* WKEmailListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E8C1B55BFAB0041B70E /* WKEmailListController.m */; };
-		F264A5F132A3A914AC722FF2 /* libPods-planckMailiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */; };
+		F264A5F132A3A914AC722FF2 /* libPods-planckMailiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +138,10 @@
 		846096151B13061400924B61 /* CLContactLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLContactLibrary.m; path = Communication/ContactsManager/CLContactLibrary.m; sourceTree = "<group>"; };
 		8460961A1B13063300924B61 /* CLPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPerson.h; sourceTree = "<group>"; };
 		8460961B1B13063300924B61 /* CLPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPerson.m; sourceTree = "<group>"; };
+		8467F01A1B8785FC00FA7827 /* NSDate+CupertinoYankee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CupertinoYankee.h"; sourceTree = "<group>"; };
+		8467F01B1B8785FC00FA7827 /* NSDate+CupertinoYankee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CupertinoYankee.m"; sourceTree = "<group>"; };
+		846E2FD01B8C20F800A019AC /* PMFilesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMFilesVC.h; path = ViewControllers/FilesVC/PMFilesVC.h; sourceTree = "<group>"; };
+		846E2FD11B8C20F800A019AC /* PMFilesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMFilesVC.m; path = ViewControllers/FilesVC/PMFilesVC.m; sourceTree = "<group>"; };
 		84776F051B1428A00020AB6E /* PMInboxMailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMInboxMailModel.h; path = Communication/Models/InboxMailModel/PMInboxMailModel.h; sourceTree = "<group>"; };
 		84776F061B1428A00020AB6E /* PMInboxMailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMInboxMailModel.m; path = Communication/Models/InboxMailModel/PMInboxMailModel.m; sourceTree = "<group>"; };
 		84776F091B1447610020AB6E /* PMLoadMoreTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLoadMoreTVCell.h; path = ViewControllers/MailVC/LoadMoreTVCell/PMLoadMoreTVCell.h; sourceTree = "<group>"; };
@@ -316,6 +322,7 @@
 		842E2FE61AFEB13400B0C8DB /* planckMailiOS */ = {
 			isa = PBXGroup;
 			children = (
+				8467F0191B8785FC00FA7827 /* CupertinoYankee */,
 				84B751D31AFF72A400331CC0 /* Global.h */,
 				84F9A9811B11E0DA0067C3D0 /* Config.h */,
 				842E2FEB1AFEB13400B0C8DB /* AppDelegate.h */,
@@ -375,6 +382,15 @@
 			);
 			name = PersonModel;
 			path = Communication/ContactsManager/PersonModel;
+			sourceTree = "<group>";
+		};
+		8467F0191B8785FC00FA7827 /* CupertinoYankee */ = {
+			isa = PBXGroup;
+			children = (
+				8467F01A1B8785FC00FA7827 /* NSDate+CupertinoYankee.h */,
+				8467F01B1B8785FC00FA7827 /* NSDate+CupertinoYankee.m */,
+			);
+			path = CupertinoYankee;
 			sourceTree = "<group>";
 		};
 		84776F031B14283B0020AB6E /* Models */ = {
@@ -458,6 +474,8 @@
 		8479B7191B11B958006E4235 /* FilesVC */ = {
 			isa = PBXGroup;
 			children = (
+				846E2FD01B8C20F800A019AC /* PMFilesVC.h */,
+				846E2FD11B8C20F800A019AC /* PMFilesVC.m */,
 			);
 			name = FilesVC;
 			sourceTree = "<group>";
@@ -1101,6 +1119,7 @@
 				840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */,
 				8478A0571B36A1C4003C09AF /* PMPreviewMailTVCell.m in Sources */,
 				84C79A151B60D34300F2C855 /* PMDraftModel.m in Sources */,
+				846E2FD21B8C20F800A019AC /* PMFilesVC.m in Sources */,
 				844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */,
 				84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */,
 				848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */,
@@ -1116,6 +1135,7 @@
 				84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */,
 				848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */,
 				84F9A9841B11F6D10067C3D0 /* PMMailVC.m in Sources */,
+				8467F01C1B8785FC00FA7827 /* NSDate+CupertinoYankee.m in Sources */,
 				C35652521B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */,
 				842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */,
 				84F9A9881B11F7270067C3D0 /* PMMailMenuView.m in Sources */,
@@ -1304,7 +1324,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "ecfe2bbc-45e4-42cb-b290-fbe4cd04ffab";
 			};
 			name = Debug;
 		};
@@ -1322,7 +1342,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "ecfe2bbc-45e4-42cb-b290-fbe4cd04ffab";
 			};
 			name = Release;
 		};
@@ -1363,8 +1383,8 @@
 		C3FF0E6D1B5596880041B70E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1373,7 +1393,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "ecfe2bbc-45e4-42cb-b290-fbe4cd04ffab";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1381,13 +1401,13 @@
 		C3FF0E6E1B5596880041B70E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				INFOPLIST_FILE = "planckMailiOS WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "ecfe2bbc-45e4-42cb-b290-fbe4cd04ffab";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1406,7 +1426,7 @@
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "ecfe2bbc-45e4-42cb-b290-fbe4cd04ffab";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1423,7 +1443,7 @@
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "ecfe2bbc-45e4-42cb-b290-fbe4cd04ffab";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";

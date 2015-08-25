@@ -1,5 +1,4 @@
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 static NSString *const kLIYCalendarCellIdentifier = @"calendarCell";
 

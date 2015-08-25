@@ -19,7 +19,6 @@
 
 #import "PMMailComposeVC.h"
 #import "PMSearchMailVC.h"
-#import "PMMailTitleView.h"
 
 #define CELL_IDENTIFIER @"mailCell"
 
@@ -28,8 +27,6 @@ IB_DESIGNABLE
     CGFloat _centerX;
     
     __weak IBOutlet UITableView *_tableView;
-    __weak IBOutlet PMMailTitleView *_titleView;
-    
     NSString *_currentNamespaeId;
     
     NSUInteger _offesetMails;
@@ -52,7 +49,7 @@ IB_DESIGNABLE
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _titleView.title = @"INBOX";
+    self.title = @"INBOX";
     
     //[self addGesture];
     _itemMailArray = [NSMutableArray new];
@@ -85,7 +82,6 @@ IB_DESIGNABLE
     
     NSArray *lItemsArray = [[DBManager instance] getNamespaces];
     
-    _titleView.subTitle = ((DBNamespace*)[lItemsArray firstObject]).email_address;
     BOOL lResult = NO;
     for (DBNamespace *item in lItemsArray) {
         if ([_currentNamespaeId isEqualToString:item.namespace_id]) {
@@ -127,11 +123,13 @@ IB_DESIGNABLE
 }
 
 - (void)menuBtnPressed:(id)sender {
-    [self.mailMenu showInView:self.view];
+    //[self.mailMenu showInView:self.view];
 }
 
 - (void)createMailBtnPressed:(id)sender {
     PMMailComposeVC *lNewMailComposeVC = [[PMMailComposeVC alloc] initWithStoryboard];
+    PMDraftModel *lDraft = [PMDraftModel new];
+    lNewMailComposeVC.draft = lDraft;
     [self.tabBarController.navigationController presentViewController:lNewMailComposeVC animated:YES completion:nil];
 }
 
@@ -299,7 +297,6 @@ IB_DESIGNABLE
     if (![item.namespace_id isEqualToString:_currentNamespaeId]) {
         _offesetMails = 0;
         _currentNamespaeId = item.namespace_id;
-        _titleView.subTitle = item.email_address;
         [[PMAPIManager shared] setActiveNamespace:item];
         [_itemMailArray removeAllObjects];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];

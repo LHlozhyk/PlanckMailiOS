@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "343312EB6FD0802C27D954AB"
+               BlueprintIdentifier = "8AFA71C48A438C1FA30E48CD"
                BuildableName = "libPods-planckMailiOS-UIColor-HexString.a"
                BlueprintName = "Pods-planckMailiOS-UIColor-HexString"
                ReferencedContainer = "container:Pods.xcodeproj">

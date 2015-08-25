@@ -10,6 +10,8 @@
 #import "OPDataLoader.h"
 #import "PMRequest.h"
 #import "PMInboxMailModel.h"
+#import <AFNetworking/AFHTTPRequestOperation.h>
+
 
 #define TOKEN @"namespaces"
 
@@ -31,7 +33,6 @@
 
 - (void)saveNamespaceIdFromToken:(NSString *)token completion:(BasicBlockHandler)handler {
     SAVE_VALUE(token, TOKEN);
-    
     OPDataLoader *lDataLoader = [OPDataLoader new];
     lDataLoader.token = token;
     [lDataLoader loadUrlWithGETMethod:[PMRequest namespaces] handler:^(NSData *loadData, NSError *error, BOOL success) {
@@ -89,7 +90,7 @@
             lNewItem.version = [item[@"version"] unsignedIntegerValue];
             lNewItem.isUnread = NO;
             lNewItem.token = lDataLoader.token;
-          
+            
             NSArray *participants = item[@"participants"];
             
             for (NSDictionary *user in participants) {
@@ -130,7 +131,7 @@
         
         if (success && unread) {
             OPDataLoader *lLoadUnred = [OPDataLoader new];
-            lDataLoader.token = account.token;
+            lLoadUnred.token = account.token;
             [lLoadUnred loadUrlWithPUTMethod:[PMRequest deleteMailWithThreadId:messageId namespacesId:account.namespace_id] JSONParameters:@{@"remove_tags":@[@"unread"]} handler:^(NSData *loadData, NSError *error, BOOL success) {
                 handler(lResponse, error, success);
             }];

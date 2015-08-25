@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C4B039D685CA53CB22BFE9FC"
+               BlueprintIdentifier = "C0E229D21FB0197A7A2A466D"
                BuildableName = "libPods-planckMailiOS-UIAlertView+Blocks.a"
                BlueprintName = "Pods-planckMailiOS-UIAlertView+Blocks"
                ReferencedContainer = "container:Pods.xcodeproj">

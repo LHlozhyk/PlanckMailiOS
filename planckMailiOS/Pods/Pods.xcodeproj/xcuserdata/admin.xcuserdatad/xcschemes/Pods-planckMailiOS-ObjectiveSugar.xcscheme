@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E012DD0130E7052706678D58"
+               BlueprintIdentifier = "9A81A278058C467BF7539B74"
                BuildableName = "libPods-planckMailiOS-ObjectiveSugar.a"
                BlueprintName = "Pods-planckMailiOS-ObjectiveSugar"
                ReferencedContainer = "container:Pods.xcodeproj">

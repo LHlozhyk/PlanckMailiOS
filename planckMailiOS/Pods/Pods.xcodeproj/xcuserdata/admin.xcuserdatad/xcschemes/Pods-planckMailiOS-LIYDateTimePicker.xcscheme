@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3F57C5149E8E55B4E7BAB4A7"
+               BlueprintIdentifier = "23639B416F58D5D2034CAA0B"
                BuildableName = "libPods-planckMailiOS-LIYDateTimePicker.a"
                BlueprintName = "Pods-planckMailiOS-LIYDateTimePicker"
                ReferencedContainer = "container:Pods.xcodeproj">

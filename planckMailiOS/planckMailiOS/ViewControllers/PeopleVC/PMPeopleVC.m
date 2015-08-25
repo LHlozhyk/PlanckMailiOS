@@ -45,9 +45,23 @@
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     [_searchBar setDelegate:self];
     [_searchBar setPlaceholder:@"Search"];
-    [_searchBar setTintColor:[UIColor blackColor]];
+    [_searchBar setTintColor:[UIColor whiteColor]];
+    [_searchBar setBarTintColor:[UIColor whiteColor]];
+    
+    [_searchBar setImage:[UIImage imageNamed:@"searchIcon"]
+                forSearchBarIcon:UISearchBarIconSearch
+                           state:UIControlStateNormal];
+    
+    UITextField *searchTextField = [_searchBar valueForKey:@"_searchField"];
+    searchTextField.textColor = [UIColor whiteColor];
+    if ([searchTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        UIColor *color = [UIColor whiteColor];
+        [searchTextField setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:@"Search" attributes:@{NSForegroundColorAttributeName: color}]];
+    }
     
     self.navigationItem.titleView = _searchBar;
+    
+    [_searchBar setSearchFieldBackgroundImage:[[UIImage imageNamed:@"searhBarBg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 10, 0, 10)] forState:UIControlStateNormal];
 }
 
 - (void)apGetContactArray:(NSArray *)contactArray {
