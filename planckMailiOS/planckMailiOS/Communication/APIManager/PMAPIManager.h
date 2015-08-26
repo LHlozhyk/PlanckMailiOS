@@ -14,7 +14,7 @@
 typedef void (^BasicBlockHandler)(id error, BOOL success);
 typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 
-@interface PMAPIManager : NSObject
+@interface PMAPIManager : NSObject 
 
 + (PMAPIManager *)shared;
 

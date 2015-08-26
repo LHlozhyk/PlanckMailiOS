@@ -3,37 +3,37 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "Planck Logo Green copy.png",
+      "filename" : "icon_29@2x-1.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "Planck Logo Green@3x.png",
+      "filename" : "icon_29@3x-1.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Planck Logo Green-40@2x.png",
+      "filename" : "icon_40@2x-1.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Planck Logo Green40@3x.png",
+      "filename" : "icon_40@3x.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Planck Logo Green40@3x-1.png",
+      "filename" : "icon_60@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Planck Logo Green copy-1.png",
+      "filename" : "icon_60@3x.png",
       "scale" : "3x"
     },
     {
@@ -94,7 +94,7 @@
       "size" : "98x98",
       "idiom" : "watch",
       "scale" : "2x",
-      "filename" : "icon_96@2x.png",
+      "filename" : "icon_98@2x.png",
       "role" : "quickLook",
       "subtype" : "42mm"
     }

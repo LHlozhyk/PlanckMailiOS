@@ -304,5 +304,4 @@ IB_DESIGNABLE
     }
 }
 
-
 @end

@@ -10,7 +10,7 @@
 #import "OPDataLoader.h"
 #import "PMRequest.h"
 #import "PMInboxMailModel.h"
-#import <AFNetworking/AFHTTPRequestOperation.h>
+#import "PMNetworkManager.h"
 
 
 #define TOKEN @"namespaces"
@@ -74,17 +74,12 @@
 
 - (void)getInboxMailWithAccount:(id<PMAccountProtocol>)account limit:(NSUInteger)limit offset:(NSUInteger)offset completion:(ExtendedBlockHandler)handler {
     
-    OPDataLoader *lDataLoader = [OPDataLoader new];
-    lDataLoader.token = account.token;
-    [lDataLoader loadUrlWithGETMethod:[PMRequest inboxMailWithNamespaceId:account.namespace_id limit:limit offset:offset] handler:^(NSData *loadData, NSError *error, BOOL success) {
-        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
-        NSLog(@"User ID is   %@ in - %s", response, __PRETTY_FUNCTION__);
-        
-        NSError *errorJson = nil;
-        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
-        NSArray *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
+    PMNetworkManager *lManager = [PMNetworkManager new];
+    lManager.token = account.token;
+    [lManager GET:[PMRequest inboxMailWithNamespaceId:account.namespace_id limit:limit offset:offset] success:^(AFHTTPRequestOperation *operation, id responseData) {
         
         NSMutableArray *lResultItems = [NSMutableArray new];
+        NSArray *lResponse = responseData;
         for (NSDictionary *item in lResponse) {
             
             PMInboxMailModel *lNewItem = [PMInboxMailModel new];
@@ -94,7 +89,7 @@
             lNewItem.messageId = item[@"id"];
             lNewItem.version = [item[@"version"] unsignedIntegerValue];
             lNewItem.isUnread = NO;
-            lNewItem.token = lDataLoader.token;
+            lNewItem.token = lManager.token;
             
             NSArray *participants = item[@"participants"];
             
@@ -120,78 +115,79 @@
             
         }
         handler(lResultItems, nil, YES);
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error -- %@",error);
     }];
 }
 
 - (void)getDetailWithMessageId:(NSString *)messageId account:(id<PMAccountProtocol>)account unread:(BOOL)unread completion:(ExtendedBlockHandler)handler {
-    
-    OPDataLoader *lDataLoader = [OPDataLoader new];
-    lDataLoader.token = account.token;
-    [lDataLoader loadUrlWithGETMethod:[PMRequest messageId:messageId namespacesId:account.namespace_id]  handler:^(NSData *loadData, NSError *error, BOOL success) {
+    PMNetworkManager *lManager = [PMNetworkManager new];
+    lManager.token = account.token;
+    [lManager GET:[PMRequest messageId:messageId namespacesId:account.namespace_id] success:^(AFHTTPRequestOperation *operation, id responseData) {
+        NSArray *lResponse = responseData;
         
-        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
-        NSError *errorJson = nil;
-        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
-        NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
-        
-        if (success && unread) {
-            OPDataLoader *lLoadUnred = [OPDataLoader new];
+        if (unread) {
+            PMNetworkManager *lLoadUnred = [PMNetworkManager new];
             lLoadUnred.token = account.token;
-            [lLoadUnred loadUrlWithPUTMethod:[PMRequest deleteMailWithThreadId:messageId namespacesId:account.namespace_id] JSONParameters:@{@"remove_tags":@[@"unread"]} handler:^(NSData *loadData, NSError *error, BOOL success) {
-                handler(lResponse, error, success);
+            [lLoadUnred PUT:[PMRequest deleteMailWithThreadId:messageId namespacesId:account.namespace_id] JSONParameters:@{@"remove_tags":@[@"unread"]} success:^(AFHTTPRequestOperation *operation, id responseData) {
+                
+                handler(lResponse,nil,YES);
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                
             }];
         } else {
-            handler(lResponse, error, success);
+            handler(lResponse,nil,YES);
         }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
     }];
 }
 
 - (void)searchMailWithKeyword:(NSString *)keyword account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
-    OPDataLoader *lDataLoader = [OPDataLoader new];
-    lDataLoader.token = account.token;
-    [lDataLoader loadUrlWithGETMethod:[PMRequest searchMailWithKeyword:keyword namespacesId:account.namespace_id]  handler:^(NSData *loadData, NSError *error, BOOL success) {
-        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
-        NSLog(@"User ID is   %@ in - %s", response, __PRETTY_FUNCTION__);
-        
-        NSError *errorJson = nil;
-        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
-        NSArray *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
-        
+    
+    PMNetworkManager *lManager = [PMNetworkManager new];
+    lManager.token = account.token;
+    [lManager GET:[PMRequest searchMailWithKeyword:keyword namespacesId:account.namespace_id] success:^(AFHTTPRequestOperation *operation, id responseData) {
+        NSArray *lResponse = responseData;
         NSMutableArray *lResultItems = [NSMutableArray new];
-        for (NSDictionary *item in lResponse) {
-            
-            PMInboxMailModel *lNewItem = [PMInboxMailModel new];
-            lNewItem.ownerName = [item[@"participants"] firstObject][@"name"];
-            lNewItem.snippet = item[@"snippet"];
-            lNewItem.subject = item[@"subject"];
-            lNewItem.namespaceId = item[@"namespace_id"];
-            lNewItem.messageId = item[@"id"];
-            lNewItem.isUnread = NO;
-            
-            NSArray *lTagsArray =  item[@"tags"];
-            
-            for (NSDictionary *itemTag in lTagsArray) {
-                if ([itemTag[@"id"] isEqualToString:@"unread"]) {
-                    lNewItem.isUnread = YES;
+                for (NSDictionary *item in lResponse) {
+        
+                    PMInboxMailModel *lNewItem = [PMInboxMailModel new];
+                    lNewItem.ownerName = [item[@"participants"] firstObject][@"name"];
+                    lNewItem.snippet = item[@"snippet"];
+                    lNewItem.subject = item[@"subject"];
+                    lNewItem.namespaceId = item[@"namespace_id"];
+                    lNewItem.messageId = item[@"id"];
+                    lNewItem.isUnread = NO;
+        
+                    NSArray *lTagsArray =  item[@"tags"];
+        
+                    for (NSDictionary *itemTag in lTagsArray) {
+                        if ([itemTag[@"id"] isEqualToString:@"unread"]) {
+                            lNewItem.isUnread = YES;
+                        }
+                    }
+                    
+                    [lResultItems addObject:lNewItem];
+                    
                 }
-            }
-            
-            [lResultItems addObject:lNewItem];
-            
-        }
-        handler(lResultItems, nil, YES);
+                handler(lResultItems, nil, YES);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
     }];
-}
+ }
 
 - (void)deleteMailWithThreadId:(NSString *)threadId account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
-    OPDataLoader *lDataLoader = [OPDataLoader new];
-    lDataLoader.token = account.token;
-    [lDataLoader loadUrlWithPUTMethod:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id] JSONParameters:@{@"add_tags":@[@"trash"]} handler:^(NSData *loadData, NSError *error, BOOL success) {
-        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
-        NSError *errorJson = nil;
-        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
-        NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
-        handler(lResponse, error, success);
+    
+    PMNetworkManager *lManager = [PMNetworkManager new];
+    lManager.token = account.token;
+    [lManager PUT:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id] JSONParameters:@{@"add_tags":@[@"trash"]} success:^(AFHTTPRequestOperation *operation, id responseData) {
+        handler(responseData,nil,YES);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        handler(nil,error,NO);
     }];
 }
 
