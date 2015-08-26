@@ -42,6 +42,7 @@
 		84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D11AFF718300331CC0 /* PMMainVC.m */; };
 		84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B751D71AFF74C000331CC0 /* PMAPIManager.m */; };
 		84C79A151B60D34300F2C855 /* PMDraftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C79A141B60D34300F2C855 /* PMDraftModel.m */; };
+		84D8C2E11B8E3B4400D82BB4 /* PMNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D8C2E01B8E3B4400D82BB4 /* PMNetworkManager.m */; };
 		84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA4261B134C1800770F88 /* planckMailiOS.xcdatamodeld */; };
 		84ECA42C1B134E5400770F88 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA42B1B134E5400770F88 /* DBManager.m */; };
 		84ECA4301B13500000770F88 /* DBNamespace.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA42F1B13500000770F88 /* DBNamespace.m */; };
@@ -198,6 +199,8 @@
 		84B751D71AFF74C000331CC0 /* PMAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMAPIManager.m; path = Communication/APIManager/PMAPIManager.m; sourceTree = "<group>"; };
 		84C79A131B60D34300F2C855 /* PMDraftModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMDraftModel.h; path = Communication/Models/MailComposeModel/PMDraftModel.h; sourceTree = "<group>"; };
 		84C79A141B60D34300F2C855 /* PMDraftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMDraftModel.m; path = Communication/Models/MailComposeModel/PMDraftModel.m; sourceTree = "<group>"; };
+		84D8C2DF1B8E3B4400D82BB4 /* PMNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMNetworkManager.h; sourceTree = "<group>"; };
+		84D8C2E01B8E3B4400D82BB4 /* PMNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMNetworkManager.m; sourceTree = "<group>"; };
 		84ECA4271B134C1800770F88 /* planckMailiOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = planckMailiOS.xcdatamodel; sourceTree = "<group>"; };
 		84ECA42A1B134E5400770F88 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		84ECA42B1B134E5400770F88 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
@@ -658,6 +661,7 @@
 		84B751CD1AFF6FB700331CC0 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
+				84D8C2DE1B8E3B4400D82BB4 /* NetworkManager */,
 				844AD1341B7BCE2600799DD4 /* PMAccountProtocol.h */,
 				84776F031B14283B0020AB6E /* Models */,
 				84ECA4311B13550D00770F88 /* DataLoader */,
@@ -696,6 +700,16 @@
 				84C79A141B60D34300F2C855 /* PMDraftModel.m */,
 			);
 			name = MailComposeModel;
+			sourceTree = "<group>";
+		};
+		84D8C2DE1B8E3B4400D82BB4 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				84D8C2DF1B8E3B4400D82BB4 /* PMNetworkManager.h */,
+				84D8C2E01B8E3B4400D82BB4 /* PMNetworkManager.m */,
+			);
+			name = NetworkManager;
+			path = Communication/NetworkManager;
 			sourceTree = "<group>";
 		};
 		84ECA4291B134E5400770F88 /* DBManager */ = {
@@ -1219,6 +1233,7 @@
 				84A9E3711B5F02DD009DD409 /* PMSelectionEmailView.m in Sources */,
 				84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */,
 				8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */,
+				84D8C2E11B8E3B4400D82BB4 /* PMNetworkManager.m in Sources */,
 				84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */,
 				84F4286C1B1256820006B530 /* PMSettigsTVC.m in Sources */,
 				842E2FEA1AFEB13400B0C8DB /* main.m in Sources */,
