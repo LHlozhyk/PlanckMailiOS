@@ -20,8 +20,8 @@
                                 <tableRow identifier="plainType" id="wlC-sT-qZJ" customClass="WKPlainRow">
                                     <group key="rootItem" width="1" alignment="left" id="BUY-9B-9bx">
                                         <items>
-                                            <label alignment="right" verticalAlignment="center" text="10" textAlignment="right" id="A0N-uH-59Y"/>
-                                            <label width="101" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="0" id="AFw-p6-IHq"/>
+                                            <label alignment="right" verticalAlignment="center" text="10" textAlignment="right" minimumScaleFactor="0.50000000000000011" id="A0N-uH-59Y"/>
+                                            <label alignment="center" verticalAlignment="center" text="Label" textAlignment="center" numberOfLines="0" id="AFw-p6-IHq"/>
                                         </items>
                                         <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                     </group>
@@ -202,8 +202,8 @@
             <objects>
                 <controller identifier="emailController" title="Message" id="2ko-XT-grL" customClass="WKEmailController">
                     <items>
-                        <imageView width="30" height="30" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="ghP-To-m6q"/>
-                        <group width="1" height="147" alignment="left" layout="vertical" id="LTC-rr-dgL">
+                        <imageView width="30" height="30" alignment="center" animationDuration="0.80000000000000004" id="ghP-To-m6q"/>
+                        <group width="1" height="1" alignment="left" hidden="YES" layout="vertical" id="LTC-rr-dgL">
                             <items>
                                 <label width="1" alignment="left" text="Label" id="L5k-cy-9Uu">
                                     <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
@@ -228,6 +228,7 @@
                     </items>
                     <connections>
                         <outlet property="activityView" destination="ghP-To-m6q" id="bvR-Cj-mq5"/>
+                        <outlet property="contentGroup" destination="LTC-rr-dgL" id="Dfa-7S-qmi"/>
                         <outlet property="dateLabel" destination="10M-le-pej" id="Zaf-CY-hBq"/>
                         <outlet property="subjectLabel" destination="lsJ-qw-zSx" id="QlO-n4-P8i"/>
                         <outlet property="textLabel" destination="7Q9-UZ-Zat" id="UMe-D0-dRh"/>

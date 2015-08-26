@@ -14,13 +14,14 @@
 #import "WatchKitDefines.h"
 #import "WKContactsController.h"
 
-@interface InterfaceController() {
-  NSMutableArray *dataSource;
-  NSMutableArray *accountsArray;
-}
+@interface InterfaceController()
 
 @property (weak, nonatomic) IBOutlet WKInterfaceTable *tableView;
 @property (weak, nonatomic) IBOutlet WKInterfaceButton *addAccountButton;
+
+@property (strong, nonatomic) NSMutableArray *dataSource;
+@property (strong, nonatomic) NSMutableArray *accountsArray;
+@property (assign, nonatomic) NSInteger allUnreadCount;
 
 @end
 
@@ -45,42 +46,40 @@
         [tempAccounts addObject:myObject];
       }
       
-      accountsArray = [NSMutableArray arrayWithArray:tempAccounts];
+      self.accountsArray = [NSMutableArray arrayWithArray:tempAccounts];
       
-      dataSource = [NSMutableArray arrayWithArray:@[[PMTypeContainer initWithTitle:@"All Unread" count:-1],
+      self.dataSource = [NSMutableArray arrayWithArray:@[[PMTypeContainer initWithTitle:@"All Unread" count:-1],
                                                     [PMTypeContainer initWithTitle:@"Calendar" count:-1],
                                                     [PMTypeContainer initWithTitle:@"Contact" count:-1]]];
-      [dataSource insertObjects:accountsArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [accountsArray count])]];
-//      if(reloadTable) {
-        [self reloadTable];
-//      } else {
-//        [self updateRows];
-//      }
+      [self.dataSource insertObjects:self.accountsArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [self.accountsArray count])]];
+      [self reloadTable];
+      
+      [self updateAccountsUnreadCount];
     }
-    [_tableView setHidden:[accounts count] == 0];
-    [_addAccountButton setHidden:[accounts count] != 0];
+    [self.tableView setHidden:[accounts count] == 0];
+    [self.addAccountButton setHidden:[accounts count] != 0];
   }];
 }
 
 - (void)reloadTable {
-  [self.tableView setNumberOfRows:[dataSource count] withRowType:PLAIN_ROW_IDENTIFIER];
+  [self.tableView setNumberOfRows:[_dataSource count] withRowType:PLAIN_ROW_IDENTIFIER];
   [self updateRows];
 }
 
 - (void)updateRows {
   NSInteger i = 0;
-  for(PMTypeContainer *type in dataSource) {
+  for(PMTypeContainer *type in _dataSource) {
     WKPlainRow *row = [self.tableView rowControllerAtIndex:i++];
     [row setTypeContainer:type];
   }
 }
 
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex {
-  PMTypeContainer *selectedType = dataSource[rowIndex];
+  PMTypeContainer *selectedType = _dataSource[rowIndex];
   
   if(selectedType.isNameSpace) {
     [self pushControllerWithName:LIST_CONTROLLER_IDENTIFIER context:@{TITLE: selectedType.email_address, CONTENT: selectedType}];
-  } else if (rowIndex == [dataSource count] - 1) {
+  } else if (rowIndex == [_dataSource count] - 1) {
     [self pushControllerWithName:CONTACTS_LIST_IDENT context:nil];
   }
 }
@@ -93,6 +92,43 @@
   [super willActivate];
   
   [self updateUserAccounts];
+}
+
+- (void)updateAccountsUnreadCount {
+  if([_accountsArray count] > 0 && _dataSource) {
+    _allUnreadCount = 0;
+    
+    NSMutableArray *copyAccounts = [_accountsArray mutableCopy];
+    [self updateUnreadCountForAccounts:copyAccounts];
+  }
+}
+
+- (void)updateUnreadCountForAccounts:(NSMutableArray *)accounts {
+  if([accounts count] > 0)  {
+    __block PMTypeContainer *account = [accounts firstObject];
+    NSString *token = account.token;
+    
+    __weak InterfaceController *__self = self;
+    if(token)
+      [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestGetUnreadEmailsCount), WK_REQUEST_INFO: token} reply:^(NSDictionary *replyInfo, NSError *error) {
+        if(!error) {
+          NSInteger count = [replyInfo[WK_REQUEST_RESPONSE] integerValue];
+          account.unreadCount = count;
+          __self.allUnreadCount += count;
+          
+          [accounts removeObjectAtIndex:0];
+          if([accounts count] > 0) {
+            [__self updateUnreadCountForAccounts:accounts];
+          } else {
+            //update All unread number
+            __block PMTypeContainer *allUnreadAccount = [__self.dataSource firstObject];
+            allUnreadAccount.unreadCount = __self.allUnreadCount;
+          }
+          
+          [__self updateRows];
+        }
+    }];
+  }
 }
 
 - (void)didDeactivate {

@@ -231,8 +231,32 @@
     _emailAddress = [item.email_address copy];
 }
 
-- (void)getUnreadCountForNamespaseToken:(NSString *)token completion:(BasicBlockHandler)handler {
+- (void)getUnreadCountForNamespaseToken:(NSString *)token completion:(ExtendedBlockHandler)handler {
+  OPDataLoader *lDataLoader = [OPDataLoader new];
+  lDataLoader.token = token;
+  [lDataLoader loadUrlWithGETMethod:[PMRequest unreadMessagesCount] handler:^(NSData *loadData, NSError *error, BOOL success) {
+    NSNumber *result = nil;
+    if(loadData) {
+      NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:loadData options:0 error:nil];
+      result = [NSNumber numberWithInteger:[lResponse[@"count"] integerValue]];
+    }
+    if(handler) {
+      handler(result, error, success);
+    }
+  }];
+}
+
+- (void)getUnreadMessagesForNamespaseToken:(NSString *)token completion:(ExtendedBlockHandler)handler {
+  OPDataLoader *lDataLoader = [OPDataLoader new];
+  lDataLoader.token = token;
   
+  [lDataLoader loadUrlWithGETMethod:[PMRequest unreadMessagesCount] handler:^(NSData *loadData, NSError *error, BOOL success) {
+    NSNumber *result = nil;
+    if(loadData) {
+      NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:loadData options:0 error:nil];
+    }
+    handler(result, error, success);
+  }];
 }
 
 #pragma mark - Private methods
