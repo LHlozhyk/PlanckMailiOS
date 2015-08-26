@@ -202,33 +202,28 @@
             <objects>
                 <controller identifier="emailController" title="Message" id="2ko-XT-grL" customClass="WKEmailController">
                     <items>
-                        <imageView width="30" height="30" alignment="center" animationDuration="0.80000000000000004" id="ghP-To-m6q"/>
-                        <group width="1" height="1" alignment="left" hidden="YES" layout="vertical" id="LTC-rr-dgL">
-                            <items>
-                                <label width="1" alignment="left" text="Label" id="L5k-cy-9Uu">
-                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                </label>
-                                <label width="1" alignment="left" text="Label" id="lsJ-qw-zSx">
-                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
-                                </label>
-                                <label width="1" alignment="left" text=" " textAlignment="right" id="10M-le-pej">
-                                    <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
-                                </label>
-                                <separator width="1" alignment="left" id="xLh-v0-mIN">
-                                    <color key="color" red="0.24705882352941178" green="0.4392156862745098" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
-                                </separator>
-                                <label width="1" alignment="left" text=" " numberOfLines="0" minimumScaleFactor="0.70000000000000007" id="7Q9-UZ-Zat"/>
-                                <button width="1" alignment="left" title="Reply" id="dEY-H0-96j">
-                                    <connections>
-                                        <action selector="replyDidPressed" destination="2ko-XT-grL" id="zdP-BB-ncz"/>
-                                    </connections>
-                                </button>
-                            </items>
-                        </group>
+                        <imageView width="30" height="30" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="ghP-To-m6q"/>
+                        <label width="1" alignment="left" text="Label" id="L5k-cy-9Uu">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <label width="1" alignment="left" text="Label" id="lsJ-qw-zSx">
+                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                        </label>
+                        <label width="1" alignment="left" text=" " textAlignment="right" id="10M-le-pej">
+                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                        </label>
+                        <separator width="1" alignment="left" id="xLh-v0-mIN">
+                            <color key="color" red="0.24705882352941178" green="0.4392156862745098" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                        </separator>
+                        <label width="1" alignment="left" text=" " numberOfLines="0" minimumScaleFactor="0.70000000000000007" id="7Q9-UZ-Zat"/>
+                        <button width="1" alignment="left" title="Reply" id="dEY-H0-96j">
+                            <connections>
+                                <action selector="replyDidPressed" destination="2ko-XT-grL" id="zdP-BB-ncz"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
                         <outlet property="activityView" destination="ghP-To-m6q" id="bvR-Cj-mq5"/>
-                        <outlet property="contentGroup" destination="LTC-rr-dgL" id="Dfa-7S-qmi"/>
                         <outlet property="dateLabel" destination="10M-le-pej" id="Zaf-CY-hBq"/>
                         <outlet property="subjectLabel" destination="lsJ-qw-zSx" id="QlO-n4-P8i"/>
                         <outlet property="textLabel" destination="7Q9-UZ-Zat" id="UMe-D0-dRh"/>

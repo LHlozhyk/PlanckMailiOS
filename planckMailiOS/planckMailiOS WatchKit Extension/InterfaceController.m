@@ -116,13 +116,13 @@
           account.unreadCount = count;
           __self.allUnreadCount += count;
           
+          //update All unread number
+          __block PMTypeContainer *allUnreadAccount = [__self.dataSource firstObject];
+          allUnreadAccount.unreadCount = __self.allUnreadCount;
+          
           [accounts removeObjectAtIndex:0];
           if([accounts count] > 0) {
             [__self updateUnreadCountForAccounts:accounts];
-          } else {
-            //update All unread number
-            __block PMTypeContainer *allUnreadAccount = [__self.dataSource firstObject];
-            allUnreadAccount.unreadCount = __self.allUnreadCount;
           }
           
           [__self updateRows];

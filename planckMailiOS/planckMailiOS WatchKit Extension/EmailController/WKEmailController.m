@@ -27,8 +27,6 @@
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *textLabel;
 @property (weak, nonatomic) IBOutlet WKInterfaceImage *activityView;
 
-@property (weak, nonatomic) IBOutlet WKInterfaceGroup *contentGroup;
-
 @end
 
 @implementation WKEmailController
@@ -120,7 +118,6 @@
   if (yesOrNo) {
     //unhide
     [self.activityView setHidden:NO];
-    [self.contentGroup setHidden:YES];
     
     // Uses images in WatchKit app bundle.
     [self.activityView setImageNamed:@"frame-"];
@@ -130,7 +127,6 @@
     
     //hide
     [self.activityView setHidden:YES];
-    [self.contentGroup setHidden:NO];
   }
 }
 
