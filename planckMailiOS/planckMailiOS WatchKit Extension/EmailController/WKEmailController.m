@@ -41,6 +41,7 @@
     [self.subjectLabel setText:emailContainer.subject];
     
     if(emailInfo) {
+      [self showActivityIndicator:NO];
       [self updateBodyAndDate];
     } else {
       [self showActivityIndicator:YES];

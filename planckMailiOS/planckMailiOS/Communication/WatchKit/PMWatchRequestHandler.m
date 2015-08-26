@@ -142,6 +142,27 @@
         }
       }
         
+      case PMWatchRequestGetUnreadEmailsCount: {
+        NSString *token = userInfo[WK_REQUEST_INFO];
+        if(token) {
+          [[PMAPIManager shared] getUnreadCountForNamespaseToken:token completion:^(id data, id error, BOOL success) {
+            NSDictionary *result = nil;
+            if(!error && data) {
+              result = @{WK_REQUEST_RESPONSE: data};
+            }
+            if(reply) {
+              reply(result);
+            }
+          }];
+        }
+      }
+        break;
+        
+      case PMWatchRequestGetUnreadEmails: {
+        
+      }
+        break;
+        
         break;
         
         default:

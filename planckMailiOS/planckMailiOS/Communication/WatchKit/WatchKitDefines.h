@@ -32,7 +32,9 @@ typedef NS_ENUM(NSInteger, PMWatchRequestType) {
   PMWatchRequestReply,
   PMWatchRequestGetContacts,
   PMWatchRequestCall,
-  PMWatchRequestSendSMS
+  PMWatchRequestSendSMS,
+  PMWatchRequestGetUnreadEmailsCount,
+  PMWatchRequestGetUnreadEmails
 };
 
 #endif

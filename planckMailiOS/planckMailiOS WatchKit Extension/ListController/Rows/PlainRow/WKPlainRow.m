@@ -24,6 +24,11 @@
 - (void)setTypeContainer:(PMTypeContainer *)typeContainer {
   _typeContainer = typeContainer;
   
+  [self.unreadLable setHidden:typeContainer.unreadCount <= 0];
+  if(typeContainer.unreadCount > 0) {
+    [self.unreadLable setText:[NSString stringWithFormat:@"%i", (int)typeContainer.unreadCount]];
+  }
+  
   if([typeContainer.email_address length] > 0 && typeContainer.isNameSpace) {
     NSArray *arr = [typeContainer.email_address componentsSeparatedByString:@"@"];
     if([arr count] == 2) {
@@ -33,10 +38,6 @@
     }
   } else if (!typeContainer.isNameSpace) {
     [self.titleLable setText:typeContainer.provider];
-  }
-  [self.unreadLable setHidden:typeContainer.unreadCount <= 0];
-  if(typeContainer.unreadCount > 0) {
-    [self.unreadLable setText:[NSString stringWithFormat:@"%i", (int)typeContainer.unreadCount]];
   }
 }
 

@@ -54,7 +54,8 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 
 - (void)setActiveNamespace:(DBNamespace *)item;
 
-- (void)getUnreadCountForNamespaseToken:(NSString *)token completion:(BasicBlockHandler)handler;
+- (void)getUnreadCountForNamespaseToken:(NSString *)token completion:(ExtendedBlockHandler)handler;
+- (void)getUnreadMessagesForNamespaseToken:(NSString *)token completion:(ExtendedBlockHandler)handler;
 
 @property (nonatomic, readonly) DBNamespace *namespaceId;
 @property (nonatomic, readonly) NSString *emailAddress;
