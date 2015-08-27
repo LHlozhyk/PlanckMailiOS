@@ -63,7 +63,9 @@ static CLContactLibrary  *object;
                 CFStringRef userPhoneLabel = ABMultiValueCopyLabelAtIndex(phoneNumbers, i);
                 if(userPhoneLabel) {
                   NSString *phoneLabelLocalized = (__bridge_transfer NSString*)ABAddressBookCopyLocalizedLabel(userPhoneLabel);
-                  [personsPhonne setObject:phoneLabelLocalized forKey:PHONE_TITLE];
+                  if(phoneLabelLocalized) {
+                    [personsPhonne setObject:phoneLabelLocalized forKey:PHONE_TITLE];
+                  }
                 }
                 [personsPhonnes addObject:personsPhonne];
               }
@@ -81,6 +83,7 @@ static CLContactLibrary  *object;
         }];
         [delegate apGetContactArray:[contactDataArray copy]];
     } failure:^(NSError *error) {
+      [delegate apGetContactArray:nil];
     }];
 }
 

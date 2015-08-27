@@ -173,12 +173,18 @@
 #pragma mark - APContactLibraryDelegate
 
 - (void)apGetContactArray:(NSArray *)contactArray {
-  NSMutableArray *personsArray = [NSMutableArray new];
-  for(CLPerson *person in contactArray) {
-    [personsArray addObject:[NSKeyedArchiver archivedDataWithRootObject:person]];
+  NSMutableArray *personsArray = nil;
+  NSDictionary *response = nil;
+  if(contactArray) {
+    personsArray = [NSMutableArray new];
+    for(CLPerson *person in contactArray) {
+      [personsArray addObject:[NSKeyedArchiver archivedDataWithRootObject:person]];
+    }
+    
+    response = @{WK_REQUEST_RESPONSE: personsArray};
   }
   
-  _replyBlock(@{WK_REQUEST_RESPONSE: personsArray});
+  _replyBlock(response);
 }
 
 #pragma mark - MFMessageComposeViewControllerDelegate
