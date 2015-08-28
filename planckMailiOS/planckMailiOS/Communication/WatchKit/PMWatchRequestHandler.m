@@ -173,18 +173,23 @@
 #pragma mark - APContactLibraryDelegate
 
 - (void)apGetContactArray:(NSArray *)contactArray {
-  NSMutableArray *personsArray = nil;
-  NSDictionary *response = nil;
-  if(contactArray) {
-    personsArray = [NSMutableArray new];
-    for(CLPerson *person in contactArray) {
-      [personsArray addObject:[NSKeyedArchiver archivedDataWithRootObject:person]];
+    NSMutableArray *personsArray = nil;
+    NSDictionary *response = nil;
+    
+    if(contactArray) {
+        personsArray = [NSMutableArray new];
+        for(CLPerson *person in contactArray) {
+            [personsArray addObject:[NSKeyedArchiver archivedDataWithRootObject:person]];
+        }
+        
+        response = @{WK_REQUEST_RESPONSE: personsArray};
     }
     
-    response = @{WK_REQUEST_RESPONSE: personsArray};
-  }
-  
-  _replyBlock(response);
+    _replyBlock(response);
+}
+
+- (BOOL)shouldScaleImage {
+    return YES;
 }
 
 #pragma mark - MFMessageComposeViewControllerDelegate
