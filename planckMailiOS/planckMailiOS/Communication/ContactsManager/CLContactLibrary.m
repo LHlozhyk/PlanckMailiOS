@@ -85,6 +85,9 @@ static CLContactLibrary  *object;
             if(useLittleImage) {
                 personImage = [personImage getScaledImage];
                 personImage = [personImage roundCornersOfImage:personImage];
+                if(idx == 49) {
+                    *stop = YES;
+                }
             }
             people.personImage = personImage;
             people.fullName = [NSString stringWithFormat:@"%@ %@", people.firstName, people.lastName];

@@ -39,25 +39,26 @@
   [self showActivityIndicator:YES];
   [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE:@(PMWatchRequestGetContacts)}
                                          reply:^(id replyInfo, NSError *error) {
-                        
-       if(replyInfo) {
-         NSArray *responceObj = replyInfo[WK_REQUEST_RESPONSE];
-         if([responceObj isKindOfClass:[NSArray class]] && [responceObj count] > 0) {
-           for(NSData *person in responceObj) {
-             [__self.dataSource addObject:[NSKeyedUnarchiver unarchiveObjectWithData:person]];
-           }
-           [__self showNoContacts:NO withInfo:nil];
+        @autoreleasepool {
+         if(replyInfo) {
+             NSArray *responceObj = replyInfo[WK_REQUEST_RESPONSE];
+             if([responceObj isKindOfClass:[NSArray class]] && [responceObj count] > 0) {
+                 for(NSData *person in responceObj) {
+                     [__self.dataSource addObject:[NSKeyedUnarchiver unarchiveObjectWithData:person]];
+                 }
+                 [__self showNoContacts:NO withInfo:nil];
+             } else {
+                 [__self showNoContacts:YES withInfo:@"You haven't any contact"];
+             }
          } else {
-           [__self showNoContacts:YES withInfo:@"You haven't any contact"];
+             [__self showNoContacts:YES withInfo:@"Can't get contacts"];
          }
-       } else {
-         [__self showNoContacts:YES withInfo:@"Can't get contacts"];
-       }
-       
-       __self.isLoadingContacts = NO;
-       [__self showActivityIndicator:NO];
-       
-       [__self updateTableView];
+         
+         __self.isLoadingContacts = NO;
+         [__self showActivityIndicator:NO];
+         
+         [__self updateTableView];
+        }
    }];
 }
 
