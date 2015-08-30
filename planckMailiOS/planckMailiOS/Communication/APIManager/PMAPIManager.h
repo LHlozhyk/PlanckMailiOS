@@ -25,6 +25,7 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                              offset:(NSUInteger)offset
                          completion:(ExtendedBlockHandler)handler;
 
+
 //- (void)getDetailWithMessageId:(NSString *)messageId
 //                  account:(id<PMAccountProtocol>)account
 //                    completion:(ExtendedBlockHandler)handle;
@@ -56,6 +57,20 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 
 - (void)getUnreadCountForNamespaseToken:(NSString *)token completion:(ExtendedBlockHandler)handler;
 - (void)getUnreadMessagesForNamespaseToken:(NSString *)token completion:(ExtendedBlockHandler)handler;
+
+- (void)getFoldersWithAccount:(id<PMAccountProtocol>)account
+                   comlpetion:(ExtendedBlockHandler)handler;
+
+- (void)createFolderWithName:(NSString *)folderName
+                     account:(id<PMAccountProtocol>)account
+                  comlpetion:(ExtendedBlockHandler)handler;
+
+- (void)renameFolderWithName:(NSString *)newFolderName
+                     account:(id<PMAccountProtocol>)account
+                    folderId:(NSString *)folderId
+                  comlpetion:(ExtendedBlockHandler)handler;
+
+
 
 @property (nonatomic, readonly) DBNamespace *namespaceId;
 @property (nonatomic, readonly) NSString *emailAddress;

@@ -32,6 +32,9 @@
 
 + (NSString *)draftMessageWithNamespacesId:(NSString *)namespacesId;
 
++ (NSString *)foldersWithNamespaceId:(NSString *)namespaceId
+                            folderId:(NSString *)folderId;
+
 + (NSString *)unreadMessages;
 + (NSString *)unreadMessagesCount;
 

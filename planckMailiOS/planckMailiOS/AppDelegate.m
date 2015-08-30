@@ -11,6 +11,7 @@
 #import "DBManager.h"
 #import "PMWatchRequestHandler.h"
 #import "Config.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @interface AppDelegate ()
 @end
@@ -20,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [self setUpCustomDesign];
+    
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
     if (lNamespacesArray.count > 0) {

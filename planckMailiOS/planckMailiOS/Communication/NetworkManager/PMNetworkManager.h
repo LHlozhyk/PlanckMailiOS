@@ -6,23 +6,13 @@
 //  Copyright (c) 2015 LHlozhyk. All rights reserved.
 //
 
-#import "AFHTTPRequestOperation.h"
+#import "AFNetworking.h"
 
-typedef void (^SuccessHandler)(AFHTTPRequestOperation *operation, id responseData);
-typedef void (^FailureHandler)(AFHTTPRequestOperation *operation, NSError *error);
+@interface PMNetworkManager : AFHTTPSessionManager
 
-@interface PMNetworkManager : NSObject
++ (PMNetworkManager *)sharedPMNetworkManager;
+- (instancetype)initWithBaseURL:(NSURL *)url;
 
-@property (nonatomic,copy)NSString *token;
-
-- (void)GET:(NSString *)urlString success:(SuccessHandler)success failure:(FailureHandler)failure;
-- (void)PUT:(NSString *)urlString JSONParameters:(NSDictionary *)jsonDictionary success:(SuccessHandler)success failure:(FailureHandler)failure;
-
-- (NSMutableURLRequest *)requestWithURL:(NSURL *)url
-                             HTTPMethod:(NSString *)httpMethod
-                             HTTPHeader:(NSDictionary *)header
-                               HTTPBody:(NSData *)body;
-- (void)startLoadWithRequest:(NSURLRequest *)request success:(SuccessHandler)success failure:(FailureHandler)failure;
-
+@property(nonatomic, copy) NSString *currentToken;
 
 @end

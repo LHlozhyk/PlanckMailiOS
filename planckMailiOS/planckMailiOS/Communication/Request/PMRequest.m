@@ -53,5 +53,14 @@
 + (NSString *)unreadMessagesCount {
   return [NSString stringWithFormat:@"%@/messages?unread=true&view=count", APP_SERVER_LINK];
 }
++ (NSString *)foldersWithNamespaceId:(NSString *)namespaceId
+                            folderId:(NSString *)folderId{
+    if (folderId){
+    return [NSString stringWithFormat:@"%@/n/%@/folders/id=%@",APP_SERVER_LINK,namespaceId,folderId];
+    }
+    else {
+    return [NSString stringWithFormat:@"%@/n/%@/folders",APP_SERVER_LINK,namespaceId];
+    }
+}
 
 @end

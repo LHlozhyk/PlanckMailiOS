@@ -661,8 +661,8 @@
 		84B751CD1AFF6FB700331CC0 /* Communication */ = {
 			isa = PBXGroup;
 			children = (
-				84D8C2DE1B8E3B4400D82BB4 /* NetworkManager */,
 				844AD1341B7BCE2600799DD4 /* PMAccountProtocol.h */,
+				84D8C2DE1B8E3B4400D82BB4 /* NetworkManager */,
 				84776F031B14283B0020AB6E /* Models */,
 				84ECA4311B13550D00770F88 /* DataLoader */,
 				846096131B13058E00924B61 /* ContactsManager */,

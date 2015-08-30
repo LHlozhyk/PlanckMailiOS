@@ -8,95 +8,33 @@
 
 #import "PMNetworkManager.h"
 
-#define TIME_OUT 15.0f
+#define BASE_SERVER_LINK @"https://api.nylas.com"
 
 @implementation PMNetworkManager
 
-- (void)GET:(NSString *)urlString success:(SuccessHandler)success failure:(FailureHandler)failure{
++ (PMNetworkManager *)sharedPMNetworkManager {
+    static PMNetworkManager *sSharedPMNetworkManager = nil;
     
-    NSURLRequest *lRequest = [self requestWithURL:[NSURL URLWithString:urlString]
-                                       HTTPMethod:@"GET"
-                                       HTTPHeader:nil
-                                         HTTPBody:nil];
-    [self startLoadWithRequest:lRequest success:^(AFHTTPRequestOperation *operation, id responseData) {
-        success(operation,responseData);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        failure(operation,error);
-    }];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sSharedPMNetworkManager = [[self alloc] initWithBaseURL:[NSURL URLWithString:BASE_SERVER_LINK]];
+    });
+    
+    return sSharedPMNetworkManager;
 }
 
-- (void)PUT:(NSString *)urlString JSONParameters:(NSDictionary *)jsonDictionary success:(SuccessHandler)success failure:(FailureHandler)failure{
-
-    NSError *error;
-    NSData *lPostData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
-                                                        options:NSJSONWritingPrettyPrinted
-                                                          error:&error];
-    
-    NSString *lRequestData = [[NSString alloc] initWithData:lPostData encoding:NSUTF8StringEncoding];
-    NSString *lPostLength = [NSString stringWithFormat:@"%lu",(unsigned long)[lRequestData length]];
-    
-    NSURLRequest *lRequest = [self requestWithURL:[NSURL URLWithString:urlString]
-                                       HTTPMethod:@"PUT"
-                                       HTTPHeader:@{@"Content-Type":@"application/json",
-                                                    @"Content-Length":lPostLength}
-                                         HTTPBody:[lRequestData dataUsingEncoding:NSUTF8StringEncoding]];
-    [self startLoadWithRequest:lRequest success:^(AFHTTPRequestOperation *operation, id responseData) {
-        success(operation,responseData);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        failure(operation,error);
-    }];
-}
-
-
-#pragma mark - Private methods
-
-- (NSMutableURLRequest *)requestWithURL:(NSURL *)url
-                             HTTPMethod:(NSString *)httpMethod
-                             HTTPHeader:(NSDictionary *)header
-                               HTTPBody:(NSData *)body {
-    NSMutableURLRequest *lNewRequest = [[NSMutableURLRequest alloc]
-                                        initWithURL:url
-                                        cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-                                        timeoutInterval:TIME_OUT];
-    [lNewRequest setHTTPMethod:httpMethod];
-    
-    if (header) {
-        for (NSString *key in header) {
-            id value = [header objectForKey:key];
-            [lNewRequest setValue:value forHTTPHeaderField:key];
-        }
+- (instancetype)initWithBaseURL:(NSURL *)url {
+    self = [super initWithBaseURL:url];
+    if (self) {
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.requestSerializer = [AFJSONRequestSerializer serializer];
     }
-    
-    if (body) {
-        [lNewRequest setHTTPBody:body];
-    }
-    
-    return lNewRequest;
+    return self;
 }
 
-- (void)startLoadWithRequest:(NSURLRequest *)request success:(SuccessHandler)success failure:(FailureHandler)failure{
-
-    AFHTTPRequestOperation *lOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    lOperation.responseSerializer = [AFJSONResponseSerializer serializer];
-    [lOperation setWillSendRequestForAuthenticationChallengeBlock:^(NSURLConnection * connection, NSURLAuthenticationChallenge * challenge) {
-        
-        if ([challenge previousFailureCount] == 0) {
-            NSURLCredential *lCredential = [NSURLCredential credentialWithUser:_token ? : @""
-                                                                      password:@""
-                                                                   persistence:NSURLCredentialPersistenceNone];
-            [[challenge sender] useCredential:lCredential forAuthenticationChallenge:challenge];
-        }
-    }];
-    
-    [lOperation setCompletionBlockWithSuccess:^ (AFHTTPRequestOperation *operation, id response) {
-        success(operation,response);
-    } failure:^ (AFHTTPRequestOperation * operation, NSError * error) {
-        failure(operation,error);
-    }];
-    [lOperation start];
-
+- (void)setCurrentToken:(NSString *)currentToken {
+    _currentToken = currentToken;
+    [self.requestSerializer setAuthorizationHeaderFieldWithUsername:_currentToken ? : @"" password:@""];
 }
-
-
 
 @end

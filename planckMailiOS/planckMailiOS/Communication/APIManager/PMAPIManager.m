@@ -15,6 +15,10 @@
 
 #define TOKEN @"namespaces"
 
+@interface PMAPIManager ()
+@property(nonatomic, strong) PMNetworkManager *networkManager;
+@end
+
 @implementation PMAPIManager
 
 #pragma mark - static methods
@@ -29,19 +33,24 @@
     return sharedManager;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _networkManager = [PMNetworkManager sharedPMNetworkManager];
+    }
+    return self;
+}
+
 #pragma mark - pablic methods
 
 - (void)saveNamespaceIdFromToken:(NSString *)token completion:(BasicBlockHandler)handler {
     SAVE_VALUE(token, TOKEN);
-    OPDataLoader *lDataLoader = [OPDataLoader new];
-    lDataLoader.token = token;
-    [lDataLoader loadUrlWithGETMethod:[PMRequest namespaces] handler:^(NSData *loadData, NSError *error, BOOL success) {
-        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
-        NSLog(@"User ID is   %@ in - %s", response, __PRETTY_FUNCTION__);
+    
+    [_networkManager setCurrentToken:token];
+    [_networkManager GET:@"/n" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"saveNamespaceIdFromToken-  stask - %@  / response - %@", task, responseObject);
         
-        NSError *errorJson = nil;
-        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
-        NSArray *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
+        NSArray *lResponse = responseObject;
         
         if (lResponse.count > 0) {
             NSDictionary *lFirstItem = [lResponse objectAtIndex:0];
@@ -59,27 +68,35 @@
             lNewNamespace.provider = lFirstItem[@"provider"];
             lNewNamespace.token = token;
             [[DBManager instance] save];
-          
-            [lDataLoader loadUrlWithGETMethod:[PMRequest unreadMessagesCount] handler:^(NSData *loadData, NSError *error, BOOL success) {
-              NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:loadData options:0 error:nil];
-              lNewNamespace.unreadCount = lResponse[@"count"];
+            
+            [_networkManager GET:@"/messages" parameters:@{@"unread":@"true", @"view":@"count"} success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSLog(@"unread count-  stask - %@  / response - %@", task, responseObject);
+                lNewNamespace.unreadCount = responseObject[@"count"];
+                handler(nil, YES);
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                NSLog(@"unread count - ftask - %@  / error - %@", task, error);
             }];
             
-            handler(nil, YES);
         } else {
             handler(nil, NO);
         }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"saveNamespaceIdFromToken - ftask - %@  / error - %@", task, error);
     }];
 }
 
 - (void)getInboxMailWithAccount:(id<PMAccountProtocol>)account limit:(NSUInteger)limit offset:(NSUInteger)offset completion:(ExtendedBlockHandler)handler {
+    NSDictionary *lParameters = @{@"tag" : @"inbox",
+                                  @"limit" : @(limit),
+                                  @"offset" : @(offset)
+                                  };
     
-    PMNetworkManager *lManager = [PMNetworkManager new];
-    lManager.token = account.token;
-    [lManager GET:[PMRequest inboxMailWithNamespaceId:account.namespace_id limit:limit offset:offset] success:^(AFHTTPRequestOperation *operation, id responseData) {
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager GET:[NSString stringWithFormat:@"/n/%@/threads", account.namespace_id] parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
         
         NSMutableArray *lResultItems = [NSMutableArray new];
-        NSArray *lResponse = responseData;
+        NSArray *lResponse = responseObject;
         for (NSDictionary *item in lResponse) {
             
             PMInboxMailModel *lNewItem = [PMInboxMailModel new];
@@ -89,7 +106,7 @@
             lNewItem.messageId = item[@"id"];
             lNewItem.version = [item[@"version"] unsignedIntegerValue];
             lNewItem.isUnread = NO;
-            lNewItem.token = lManager.token;
+            lNewItem.token = account.token;
             
             NSArray *participants = item[@"participants"];
             
@@ -115,108 +132,118 @@
             
         }
         handler(lResultItems, nil, YES);
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error -- %@",error);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
     }];
 }
 
 - (void)getDetailWithMessageId:(NSString *)messageId account:(id<PMAccountProtocol>)account unread:(BOOL)unread completion:(ExtendedBlockHandler)handler {
-    PMNetworkManager *lManager = [PMNetworkManager new];
-    lManager.token = account.token;
-    [lManager GET:[PMRequest messageId:messageId namespacesId:account.namespace_id] success:^(AFHTTPRequestOperation *operation, id responseData) {
-        NSArray *lResponse = responseData;
+    
+    NSDictionary *lParameters = @{@"thread_id" : messageId};
+    
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager GET:[NSString stringWithFormat:@"/n/%@/messages", account.namespace_id] parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"getDetailWithMessageId-  stask - %@  / response - %@", task, responseObject);
+        
+        NSArray *lResponse = responseObject;
         
         if (unread) {
-            PMNetworkManager *lLoadUnred = [PMNetworkManager new];
-            lLoadUnred.token = account.token;
-            [lLoadUnred PUT:[PMRequest deleteMailWithThreadId:messageId namespacesId:account.namespace_id] JSONParameters:@{@"remove_tags":@[@"unread"]} success:^(AFHTTPRequestOperation *operation, id responseData) {
-                
+            [_networkManager PUT:[PMRequest deleteMailWithThreadId:messageId namespacesId:account.namespace_id] parameters:@{@"remove_tags":@[@"unread"]} success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSLog(@"deleteMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
                 handler(lResponse,nil,YES);
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                NSLog(@"deleteMailWithThreadId - ftask - %@  / error - %@", task, error);
             }];
         } else {
             handler(lResponse,nil,YES);
         }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getDetailWithMessageId - ftask - %@  / error - %@", task, error);
     }];
 }
 
 - (void)searchMailWithKeyword:(NSString *)keyword account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
     
-    PMNetworkManager *lManager = [PMNetworkManager new];
-    lManager.token = account.token;
-    [lManager GET:[PMRequest searchMailWithKeyword:keyword namespacesId:account.namespace_id] success:^(AFHTTPRequestOperation *operation, id responseData) {
-        NSArray *lResponse = responseData;
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager GET:[NSString stringWithFormat:@"/n/%@/threads/search", account.namespace_id] parameters:@{@"q" : keyword} success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"getDetailWithMessageId-  stask - %@  / response - %@", task, responseObject);
+        
+        NSArray *lResponse = responseObject;
+        
         NSMutableArray *lResultItems = [NSMutableArray new];
-                for (NSDictionary *item in lResponse) {
-        
-                    PMInboxMailModel *lNewItem = [PMInboxMailModel new];
-                    lNewItem.ownerName = [item[@"participants"] firstObject][@"name"];
-                    lNewItem.snippet = item[@"snippet"];
-                    lNewItem.subject = item[@"subject"];
-                    lNewItem.namespaceId = item[@"namespace_id"];
-                    lNewItem.messageId = item[@"id"];
-                    lNewItem.isUnread = NO;
-        
-                    NSArray *lTagsArray =  item[@"tags"];
-        
-                    for (NSDictionary *itemTag in lTagsArray) {
-                        if ([itemTag[@"id"] isEqualToString:@"unread"]) {
-                            lNewItem.isUnread = YES;
-                        }
-                    }
-                    
-                    [lResultItems addObject:lNewItem];
-                    
+        for (NSDictionary *item in lResponse) {
+            
+            PMInboxMailModel *lNewItem = [PMInboxMailModel new];
+            lNewItem.ownerName = [item[@"participants"] firstObject][@"name"];
+            lNewItem.snippet = item[@"snippet"];
+            lNewItem.subject = item[@"subject"];
+            lNewItem.namespaceId = item[@"namespace_id"];
+            lNewItem.messageId = item[@"id"];
+            lNewItem.isUnread = NO;
+            
+            NSArray *lTagsArray =  item[@"tags"];
+            
+            for (NSDictionary *itemTag in lTagsArray) {
+                if ([itemTag[@"id"] isEqualToString:@"unread"]) {
+                    lNewItem.isUnread = YES;
                 }
-                handler(lResultItems, nil, YES);
+            }
+            [lResultItems addObject:lNewItem];
+        }
+        handler(lResultItems, nil, YES);
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getDetailWithMessageId - ftask - %@  / error - %@", task, error);
     }];
- }
+}
 
 - (void)deleteMailWithThreadId:(NSString *)threadId account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
-    
-    PMNetworkManager *lManager = [PMNetworkManager new];
-    lManager.token = account.token;
-    [lManager PUT:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id] JSONParameters:@{@"add_tags":@[@"trash"]} success:^(AFHTTPRequestOperation *operation, id responseData) {
-        handler(responseData,nil,YES);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        handler(nil,error,NO);
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager PUT:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id] parameters:@{@"add_tags":@[@"trash"]} success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"deleteMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
+        handler(responseObject, nil, YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getDetailWithMessageId - ftask - %@  / error - %@", task, error);
+        handler(nil, error, NO);
     }];
 }
 
 - (void)archiveMailWithThreadId:(NSString *)threadId account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler{
-    OPDataLoader *lDataLoader = [OPDataLoader new];
-    lDataLoader.token = account.token;
-    [lDataLoader loadUrlWithPUTMethod:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id] JSONParameters:@{@"add_tags":@[@"archive"]} handler:^(NSData *loadData, NSError *error, BOOL success) {
-        NSString *response = [[NSString alloc] initWithData:loadData encoding:NSUTF8StringEncoding];
-        NSError *errorJson = nil;
-        NSData *objectData = [response dataUsingEncoding:NSASCIIStringEncoding];
-        NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:objectData options:0 error:&errorJson];
-        handler(lResponse, error, success);
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager PUT:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id] parameters:@{@"add_tags":@[@"archive"]} success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"archiveMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
+        handler(responseObject, nil, YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"archiveMailWithThreadId - ftask - %@  / error - %@", task, error);
+        handler(nil, error, NO);
     }];
 }
 
 - (void)replyMessage:(NSDictionary *)message completion:(ExtendedBlockHandler)handler {
-    OPDataLoader *lDataLoader = [OPDataLoader new];
-    [lDataLoader loadUrlWithPOSTMethod:[PMRequest replyMessageWithNamespacesId:self.namespaceId.namespace_id] JSONParameters:message handler:^(NSData *loadData, NSError *error, BOOL success) {
+    [_networkManager POST:[PMRequest replyMessageWithNamespacesId:self.namespaceId.namespace_id] parameters:message success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"replyMessage-  stask - %@  / response - %@", task, responseObject);
         if(handler) {
-            handler(nil, error, success);
+            handler(responseObject, nil, YES);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"replyMessage - ftask - %@  / error - %@", task, error);
+        if(handler) {
+            handler(nil, error, NO);
         }
     }];
 }
 
 - (void)createDrafts:(NSDictionary *)draftParams completion:(ExtendedBlockHandler)handler {
-    OPDataLoader *lDataLoader = [OPDataLoader new];
-    [lDataLoader loadUrlWithPOSTMethod:[PMRequest draftMessageWithNamespacesId:self.namespaceId.namespace_id] JSONParameters:draftParams handler:^(NSData *loadData, NSError *error, BOOL success) {
+    [_networkManager POST:[PMRequest draftMessageWithNamespacesId:self.namespaceId.namespace_id] parameters:draftParams success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"createDrafts-  stask - %@  / response - %@", task, responseObject);
         if(handler) {
-            handler(nil, error, success);
+            handler(responseObject, nil, YES);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"createDrafts - ftask - %@  / error - %@", task, error);
+        if(handler) {
+            handler(nil, error, NO);
         }
     }];
 }
@@ -228,33 +255,140 @@
 }
 
 - (void)getUnreadCountForNamespaseToken:(NSString *)token completion:(ExtendedBlockHandler)handler {
-  OPDataLoader *lDataLoader = [OPDataLoader new];
-  lDataLoader.token = token;
-  [lDataLoader loadUrlWithGETMethod:[PMRequest unreadMessagesCount] handler:^(NSData *loadData, NSError *error, BOOL success) {
-    NSNumber *result = nil;
-    if(loadData) {
-      NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:loadData options:0 error:nil];
-      result = [NSNumber numberWithInteger:[lResponse[@"count"] integerValue]];
-    }
-    if(handler) {
-      handler(result, error, success);
-    }
-  }];
+    
+    [_networkManager setCurrentToken:token];
+    [_networkManager GET:[PMRequest unreadMessagesCount] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"getUnreadCountForNamespaseToken -  stask - %@  / response - %@", task, responseObject);
+        
+        NSNumber *result = nil;
+        if(responseObject) {
+            result = [NSNumber numberWithInteger:[responseObject[@"count"] integerValue]];
+        }
+        if(handler) {
+            handler(result, nil, YES);
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if(handler) {
+            handler(nil, error, NO);
+        }
+        NSLog(@"getUnreadCountForNamespaseToken - ftask - %@  / error - %@", task, error);
+    }];
 }
 
-- (void)getUnreadMessagesForNamespaseToken:(NSString *)token completion:(ExtendedBlockHandler)handler {
-  OPDataLoader *lDataLoader = [OPDataLoader new];
-  lDataLoader.token = token;
-  
-  [lDataLoader loadUrlWithGETMethod:[PMRequest unreadMessagesCount] handler:^(NSData *loadData, NSError *error, BOOL success) {
-    NSNumber *result = nil;
-    if(loadData) {
-      NSDictionary *lResponse = [NSJSONSerialization JSONObjectWithData:loadData options:0 error:nil];
-    }
-    handler(result, error, success);
-  }];
+- (void)getFoldersWithAccount:(id<PMAccountProtocol>)account comlpetion:(ExtendedBlockHandler)handler {
+    
+//    PMNetworkManager *lManager = [PMNetworkManager new];
+//    lManager.token = account.token;
+//    [lManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil]success:^(AFHTTPRequestOperation *operation, id responseData) {
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//    }];
+}
+
+- (void)createFolderWithName:(NSString *)folderName
+                     account:(id<PMAccountProtocol>)account
+                  comlpetion:(ExtendedBlockHandler)handler{
+    
+    NSDictionary *lParams = @{@"display_name":folderName};
+    
+    OPDataLoader *lDataLoader = [OPDataLoader new];
+    [lDataLoader loadUrlWithPOSTMethod:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil]
+                        JSONParameters:lParams
+                               handler:^(NSData *loadData, NSError *error, BOOL success) {
+                                   if(handler) {
+                                       handler(nil, error, success);
+                                   }
+                               }];
+}
+
+- (void)renameFolderWithName:(NSString *)newFolderName
+                     account:(id<PMAccountProtocol>)account
+                    folderId:(NSString *)folderId
+                  comlpetion:(ExtendedBlockHandler)handler{
+    
+    NSDictionary *lParams = @{@"display_name":newFolderName};
+    
+//    PMNetworkManager *lManager = [PMNetworkManager new];
+//    lManager.token = account.token;
+//    [lManager PUT:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] JSONParameters:lParams success:^(AFHTTPRequestOperation *operation, id responseData) {
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//    }];
 }
 
 #pragma mark - Private methods
+
+// Sourav API
+
+- (void)saveToken:(NSString *)token andEmail:(NSString*)email completion:(BasicBlockHandler)handler {
+    AFHTTPSessionManager *lNewSessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://token-store-dev.elasticbeanstalk.com/server/"]];
+    lNewSessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    lNewSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+
+    NSDictionary *lParams = @{@"email_id" : email,
+                              @"token" : token,
+                              @"access_token" : @"planck_test"
+                              };
+    
+    [lNewSessionManager POST:@"save_token" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"saveToken -  stask - %@  / response - %@", task, responseObject);
+        if(handler) {
+            handler(nil, YES);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if(handler) {
+            handler(nil, NO);
+        }
+        NSLog(@"saveToken - ftask - %@  / error - %@", task, error);
+    }];
+}
+
+- (void)getTokenWithEmail:(NSString *)email completion:(BasicBlockHandler)handler {
+    AFHTTPSessionManager *lNewSessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://token-store-dev.elasticbeanstalk.com/server/"]];
+    lNewSessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    lNewSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *lParams = @{@"email_id" : email,
+                              @"access_token" : @"planck_test"
+                              };
+    
+    [lNewSessionManager POST:@"get_token" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"saveToken -  stask - %@  / response - %@", task, responseObject);
+        if(handler) {
+            handler(nil, YES);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if(handler) {
+            handler(nil, NO);
+        }
+        NSLog(@"saveToken - ftask - %@  / error - %@", task, error);
+    }];
+}
+
+- (void)deleteTokenWithEmail:(NSString *)email completion:(BasicBlockHandler)handler {
+    AFHTTPSessionManager *lNewSessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://token-store-dev.elasticbeanstalk.com/server/"]];
+    lNewSessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    lNewSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *lParams = @{@"email_id" : email,
+                              @"access_token" : @"planck_test"
+                              };
+    
+    [lNewSessionManager POST:@"delete_token" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"saveToken -  stask - %@  / response - %@", task, responseObject);
+        if(handler) {
+            handler(nil, YES);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if(handler) {
+            handler(nil, NO);
+        }
+        NSLog(@"saveToken - ftask - %@  / error - %@", task, error);
+    }];
+}
+
 
 @end
