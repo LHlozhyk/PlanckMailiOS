@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet WKInterfaceTable *tableView;
 @property (weak, nonatomic) IBOutlet WKInterfaceImage *activityView;
+@property (weak, nonatomic) IBOutlet WKInterfaceLabel *noContactsLabel;
 
 @property (nonatomic, assign) BOOL isLoadingContacts;
 
@@ -38,20 +39,35 @@
   [self showActivityIndicator:YES];
   [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE:@(PMWatchRequestGetContacts)}
                                          reply:^(id replyInfo, NSError *error) {
-     {
-       NSArray *responceObj = replyInfo[WK_REQUEST_RESPONSE];
-       if([responceObj isKindOfClass:[NSArray class]]) {
-         for(NSData *person in responceObj) {
-           [__self.dataSource addObject:[NSKeyedUnarchiver unarchiveObjectWithData:person]];
+        @autoreleasepool {
+         if(replyInfo) {
+             NSArray *responceObj = replyInfo[WK_REQUEST_RESPONSE];
+             if([responceObj isKindOfClass:[NSArray class]] && [responceObj count] > 0) {
+                 for(NSData *person in responceObj) {
+                     [__self.dataSource addObject:[NSKeyedUnarchiver unarchiveObjectWithData:person]];
+                 }
+                 [__self showNoContacts:NO withInfo:nil];
+             } else {
+                 [__self showNoContacts:YES withInfo:@"You haven't any contact"];
+             }
+         } else {
+             [__self showNoContacts:YES withInfo:@"Can't get contacts"];
          }
-       }
-       
-       __self.isLoadingContacts = NO;
-       [__self showActivityIndicator:NO];
-       
-       [__self updateTableView];
-     }
+         
+         __self.isLoadingContacts = NO;
+         [__self showActivityIndicator:NO];
+         
+         [__self updateTableView];
+        }
    }];
+}
+
+- (void)showNoContacts:(BOOL)noContacts withInfo:(NSString *)info {
+  [self.tableView setHidden:noContacts];
+  [self.noContactsLabel setHidden:!noContacts];
+  if(info) {
+    [self.noContactsLabel setText:info];
+  }
 }
 
 - (void)willActivate {
@@ -61,7 +77,6 @@
 }
 
 - (void)didDeactivate {
-    // This method is called when watch view controller is no longer visible
     [super didDeactivate];
 }
 

@@ -47,11 +47,11 @@
 }
 
 + (NSString *)unreadMessages {
-  return [NSString stringWithFormat:@"%@/messages?unread=true", APP_SERVER_LINK];
+  return [NSString stringWithFormat:@"%@/messages?tag=inbox&unread=true", APP_SERVER_LINK];
 }
 
 + (NSString *)unreadMessagesCount {
-  return [NSString stringWithFormat:@"%@/messages?unread=true&view=count", APP_SERVER_LINK];
+  return [NSString stringWithFormat:@"%@/messages?tag=inbox&unread=true&view=count", APP_SERVER_LINK];
 }
 + (NSString *)foldersWithNamespaceId:(NSString *)namespaceId
                             folderId:(NSString *)folderId{

@@ -7,6 +7,7 @@
 //
 
 #import "CLContactLibrary.h"
+#import "UIImage+ImageSize.h"
 
 @implementation CLContactLibrary{
     NSMutableArray *contactDataArray;
@@ -28,6 +29,11 @@ static CLContactLibrary  *object;
     contactDataArray = [[NSMutableArray alloc]init];
     
     [self fetchContacts:^(NSArray *contacts) {
+        
+        BOOL useLittleImage = NO;
+        if([aDelegate respondsToSelector:@selector(shouldScaleImage)]) {
+            useLittleImage = [aDelegate shouldScaleImage];
+        }
         [contacts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             ABRecordRef person = (__bridge ABRecordRef)obj;
             ABMultiValueRef emails  = ABRecordCopyValue(person, kABPersonEmailProperty);
@@ -63,7 +69,9 @@ static CLContactLibrary  *object;
                 CFStringRef userPhoneLabel = ABMultiValueCopyLabelAtIndex(phoneNumbers, i);
                 if(userPhoneLabel) {
                   NSString *phoneLabelLocalized = (__bridge_transfer NSString*)ABAddressBookCopyLocalizedLabel(userPhoneLabel);
-                  [personsPhonne setObject:phoneLabelLocalized forKey:PHONE_TITLE];
+                  if(phoneLabelLocalized) {
+                    [personsPhonne setObject:phoneLabelLocalized forKey:PHONE_TITLE];
+                  }
                 }
                 [personsPhonnes addObject:personsPhonne];
               }
@@ -73,14 +81,24 @@ static CLContactLibrary  *object;
             }
             
             people.email = (__bridge_transfer NSString *)ABMultiValueCopyValueAtIndex(emails, 0);
-            people.personImage = [UIImage imageWithData:(__bridge NSData *)ABPersonCopyImageData(person)];
+            UIImage *personImage = [UIImage imageWithData:(__bridge NSData *)ABPersonCopyImageData(person)];
+            if(useLittleImage) {
+                personImage = [personImage getScaledImage];
+                personImage = [personImage roundCornersOfImage:personImage];
+                if(idx == 49) {
+                    *stop = YES;
+                }
+            }
+            people.personImage = personImage;
             people.fullName = [NSString stringWithFormat:@"%@ %@", people.firstName, people.lastName];
             [contactDataArray addObject:people];
             people = nil;
             
         }];
+        
         [delegate apGetContactArray:[contactDataArray copy]];
     } failure:^(NSError *error) {
+      [delegate apGetContactArray:nil];
     }];
 }
 

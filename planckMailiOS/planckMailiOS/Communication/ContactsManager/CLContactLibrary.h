@@ -16,6 +16,9 @@
 
 @protocol APContactLibraryDelegate <NSObject>
 - (void)apGetContactArray:(NSArray *)contactArray;
+@optional
+- (BOOL)shouldScaleImage;
+
 @end
 
 @interface CLContactLibrary : NSObject

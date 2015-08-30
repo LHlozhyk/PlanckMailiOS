@@ -98,6 +98,7 @@
                 <controller identifier="contactsListController" title="Contacts" id="lmW-mS-yRm" customClass="WKContactsController">
                     <items>
                         <imageView width="30" height="30" alignment="center" animationDuration="0.80000000000000004" id="4g6-Ek-PRU"/>
+                        <label width="1" alignment="center" verticalAlignment="center" hidden="YES" text="Label" textAlignment="center" id="MHV-cQ-mbu"/>
                         <table alignment="left" id="DHw-UE-or0">
                             <items>
                                 <tableRow identifier="contactRow" id="PDS-xv-c1p" customClass="WKContactRow">
@@ -118,6 +119,7 @@
                     </items>
                     <connections>
                         <outlet property="activityView" destination="4g6-Ek-PRU" id="bWf-yz-e6P"/>
+                        <outlet property="noContactsLabel" destination="MHV-cQ-mbu" id="No1-i7-dah"/>
                         <outlet property="tableView" destination="DHw-UE-or0" id="LJW-1p-Yzv"/>
                     </connections>
                 </controller>

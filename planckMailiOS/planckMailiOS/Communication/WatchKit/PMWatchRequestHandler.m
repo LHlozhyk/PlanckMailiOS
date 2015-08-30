@@ -14,9 +14,8 @@
 #import "PMAPIManager.h"
 #import "PMInboxMailModel.h"
 #import "CLContactLibrary.h"
-#import <MessageUI/MessageUI.h>
 
-@interface PMWatchRequestHandler () <APContactLibraryDelegate, MFMessageComposeViewControllerDelegate, UINavigationControllerDelegate>
+@interface PMWatchRequestHandler () <APContactLibraryDelegate>
 
 @property (nonatomic, copy) void (^replyBlock)(NSDictionary *);
 
@@ -108,11 +107,6 @@
           break;
         
       case PMWatchRequestCall: {
-        if([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
-          reply(nil);
-          return;
-        }
-        
         NSString *lPhoneString = [NSString stringWithFormat:@"%@%@", @"tel://", userInfo[WK_REQUEST_INFO][WK_REQUEST_PHONE]];
         NSString *urlString = [lPhoneString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL *lUrl = [[NSURL alloc] initWithString:urlString];
@@ -122,24 +116,10 @@
         break;
         
       case PMWatchRequestSendSMS: {
-        if([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
-          reply(nil);
-          return;
-        }
+            NSDictionary *info = userInfo[WK_REQUEST_INFO];
         
-        self.replyBlock = reply;
-        NSDictionary *info = userInfo[WK_REQUEST_INFO];
-        
-        MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
-        if([MFMessageComposeViewController canSendText])
-        {
-          controller.body = info[WK_REQUEST_MESSAGE];
-          controller.recipients = [NSArray arrayWithObjects:info[WK_REQUEST_PHONE], nil];
-          controller.messageComposeDelegate = self;
-          [((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController presentViewController:controller animated:YES completion:^{
-            
-          }];
-        }
+            NSURL *lUrl = [[NSURL alloc] initWithString:info[WK_REQUEST_PHONE]];
+            [[UIApplication sharedApplication] openURL:lUrl];
       }
         
       case PMWatchRequestGetUnreadEmailsCount: {
@@ -173,21 +153,23 @@
 #pragma mark - APContactLibraryDelegate
 
 - (void)apGetContactArray:(NSArray *)contactArray {
-  NSMutableArray *personsArray = [NSMutableArray new];
-  for(CLPerson *person in contactArray) {
-    [personsArray addObject:[NSKeyedArchiver archivedDataWithRootObject:person]];
-  }
-  
-  _replyBlock(@{WK_REQUEST_RESPONSE: personsArray});
+    NSMutableArray *personsArray = nil;
+    NSDictionary *response = nil;
+    
+    if(contactArray) {
+        personsArray = [NSMutableArray new];
+        for(CLPerson *person in contactArray) {
+            [personsArray addObject:[NSKeyedArchiver archivedDataWithRootObject:person]];
+        }
+        
+        response = @{WK_REQUEST_RESPONSE: personsArray};
+    }
+    
+    _replyBlock(response);
 }
 
-#pragma mark - MFMessageComposeViewControllerDelegate
-
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
-  [controller dismissViewControllerAnimated:YES completion:nil];
-  
-  BOOL status = (result == MessageComposeResultSent);
-  _replyBlock(@{WK_REQUEST_RESPONSE: [NSNumber numberWithBool:status]});
+- (BOOL)shouldScaleImage {
+    return YES;
 }
 
 @end
