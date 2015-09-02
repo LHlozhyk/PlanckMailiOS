@@ -19,6 +19,7 @@
 }
 
 @property (nonatomic, weak) IBOutlet WKInterfaceTable *tableView;
+@property (nonatomic, weak) IBOutlet WKInterfaceLabel *haventPhonesLabel;
 
 @end
 
@@ -26,15 +27,19 @@
 
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
-  
-  requestType = [context[ADDITIONAL_INFO] integerValue];
-  phonesNumbers = context[CONTENT];
-  
-  if([phonesNumbers count] == 1) {
-    [self doActionForPhoneIndex:0];
-  }
-  
-  [self updateTableView];
+    
+    requestType = [context[ADDITIONAL_INFO] integerValue];
+    phonesNumbers = context[CONTENT];
+    
+    if([phonesNumbers count] == 1) {
+        [self doActionForPhoneIndex:0];
+    }
+    if([phonesNumbers count] == 0) {
+        [_haventPhonesLabel setHidden:NO];
+        [_tableView setHidden:YES];
+    }
+    
+    [self updateTableView];
 }
 
 - (void)willActivate {

@@ -71,8 +71,9 @@
 		C30E9D551B8B21BE006BDD98 /* WKContactRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D541B8B21BE006BDD98 /* WKContactRow.m */; };
 		C30E9D591B8B2D0F006BDD98 /* CLPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460961B1B13063300924B61 /* CLPerson.m */; };
 		C30E9D5D1B8B4AFD006BDD98 /* WKContactPhoneRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D5C1B8B4AFD006BDD98 /* WKContactPhoneRow.m */; };
-		C30E9D5F1B8B7A49006BDD98 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C30E9D5E1B8B7A49006BDD98 /* MessageUI.framework */; };
 		C31ED35A1B90AE5B006E1764 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = C31ED3591B90AE5B006E1764 /* UIImage+ImageSize.m */; };
+		C31ED38F1B949594006E1764 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31ED38E1B949594006E1764 /* MessageUI.framework */; };
+		C31ED3941B94A152006E1764 /* WKSectionRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C31ED3931B94A152006E1764 /* WKSectionRow.m */; };
 		C35652521B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */; };
 		C35652531B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */; };
 		C35652591B5811D3000ECF99 /* unread_indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C35652581B5811D3000ECF99 /* unread_indicator@2x.png */; };
@@ -82,6 +83,7 @@
 		C3908D071B55D36800939ADC /* WKEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D061B55D36800939ADC /* WKEmailController.m */; };
 		C3908D0B1B56C39A00939ADC /* microphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3908D0A1B56C39A00939ADC /* microphone@2x.png */; };
 		C3908D161B57A2EE00939ADC /* WKSelectedAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D151B57A2EE00939ADC /* WKSelectedAnswerController.m */; };
+		C3A8E3251B96DE63004AC4BF /* WKBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A8E3241B96DE63004AC4BF /* WKBaseController.m */; };
 		C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DDB8411B5E7539002131FA /* PMWatchRequestHandler.m */; };
 		C3E1FC6A1B7F629C008F815C /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
 		C3FF0E561B5596880041B70E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E551B5596880041B70E /* InterfaceController.m */; };
@@ -262,9 +264,11 @@
 		C30E9D541B8B21BE006BDD98 /* WKContactRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKContactRow.m; sourceTree = "<group>"; };
 		C30E9D5B1B8B4AFD006BDD98 /* WKContactPhoneRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactPhoneRow.h; sourceTree = "<group>"; };
 		C30E9D5C1B8B4AFD006BDD98 /* WKContactPhoneRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKContactPhoneRow.m; sourceTree = "<group>"; };
-		C30E9D5E1B8B7A49006BDD98 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C31ED3581B90AE5B006E1764 /* UIImage+ImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageSize.h"; sourceTree = "<group>"; };
 		C31ED3591B90AE5B006E1764 /* UIImage+ImageSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageSize.m"; sourceTree = "<group>"; };
+		C31ED38E1B949594006E1764 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C31ED3921B94A152006E1764 /* WKSectionRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKSectionRow.h; sourceTree = "<group>"; };
+		C31ED3931B94A152006E1764 /* WKSectionRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKSectionRow.m; sourceTree = "<group>"; };
 		C35652501B57F9FF000ECF99 /* NSDate+DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateConverter.h"; sourceTree = "<group>"; };
 		C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateConverter.m"; sourceTree = "<group>"; };
 		C35652581B5811D3000ECF99 /* unread_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unread_indicator@2x.png"; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 		C3908D0A1B56C39A00939ADC /* microphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone@2x.png"; sourceTree = "<group>"; };
 		C3908D141B57A2EE00939ADC /* WKSelectedAnswerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WKSelectedAnswerController.h; path = "planckMailiOS WatchKit Extension/ReplyController/WKSelectedAnswerController.h"; sourceTree = SOURCE_ROOT; };
 		C3908D151B57A2EE00939ADC /* WKSelectedAnswerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WKSelectedAnswerController.m; path = "planckMailiOS WatchKit Extension/ReplyController/WKSelectedAnswerController.m"; sourceTree = SOURCE_ROOT; };
+		C3A8E3231B96DE63004AC4BF /* WKBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKBaseController.h; sourceTree = "<group>"; };
+		C3A8E3241B96DE63004AC4BF /* WKBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKBaseController.m; sourceTree = "<group>"; };
 		C3DDB83F1B5906F5002131FA /* WatchKitDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchKitDefines.h; sourceTree = "<group>"; };
 		C3DDB8401B5E7539002131FA /* PMWatchRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMWatchRequestHandler.h; sourceTree = "<group>"; };
 		C3DDB8411B5E7539002131FA /* PMWatchRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMWatchRequestHandler.m; sourceTree = "<group>"; };
@@ -307,7 +313,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C30E9D5F1B8B7A49006BDD98 /* MessageUI.framework in Frameworks */,
+				C31ED38F1B949594006E1764 /* MessageUI.framework in Frameworks */,
 				F264A5F132A3A914AC722FF2 /* libPods-planckMailiOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,7 +347,7 @@
 		26F3D1D23964D69F4B927C4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C30E9D5E1B8B7A49006BDD98 /* MessageUI.framework */,
+				C31ED38E1B949594006E1764 /* MessageUI.framework */,
 				CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */,
 			);
 			name = Frameworks;
@@ -956,9 +962,19 @@
 			path = "Categories/UIImage+ImageSize";
 			sourceTree = "<group>";
 		};
+		C31ED3911B94A12C006E1764 /* SectionRow */ = {
+			isa = PBXGroup;
+			children = (
+				C31ED3921B94A152006E1764 /* WKSectionRow.h */,
+				C31ED3931B94A152006E1764 /* WKSectionRow.m */,
+			);
+			path = SectionRow;
+			sourceTree = "<group>";
+		};
 		C35652491B57F3B3000ECF99 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C31ED3911B94A12C006E1764 /* SectionRow */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -992,6 +1008,15 @@
 			path = ReplyController;
 			sourceTree = "<group>";
 		};
+		C3A8E3221B96DE4F004AC4BF /* BaseController */ = {
+			isa = PBXGroup;
+			children = (
+				C3A8E3231B96DE63004AC4BF /* WKBaseController.h */,
+				C3A8E3241B96DE63004AC4BF /* WKBaseController.m */,
+			);
+			path = BaseController;
+			sourceTree = "<group>";
+		};
 		C3DDB83E1B5906D6002131FA /* WatchKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1007,6 +1032,7 @@
 			isa = PBXGroup;
 			children = (
 				C35652491B57F3B3000ECF99 /* Helpers */,
+				C3A8E3221B96DE4F004AC4BF /* BaseController */,
 				C3FF0E781B55A2170041B70E /* ListController */,
 				C3908D041B55D34500939ADC /* EmailController */,
 				C3908D0C1B56C50900939ADC /* ReplyController */,
@@ -1383,6 +1409,7 @@
 				C3FF0E7E1B55A39B0041B70E /* WKEmailRow.m in Sources */,
 				C30E9D4B1B8B1F99006BDD98 /* WKContactsController.m in Sources */,
 				C30E9D4E1B8B1FBE006BDD98 /* WKContactInfoController.m in Sources */,
+				C3A8E3251B96DE63004AC4BF /* WKBaseController.m in Sources */,
 				C30E9D5D1B8B4AFD006BDD98 /* WKContactPhoneRow.m in Sources */,
 				C35BC1E11B5FDE5800CCDC4D /* DBManager.m in Sources */,
 				C35BC1E01B5FCEB500CCDC4D /* PMInboxMailModel.m in Sources */,
@@ -1392,6 +1419,7 @@
 				C3FF0E591B5596880041B70E /* NotificationController.m in Sources */,
 				C30E9D511B8B1FD3006BDD98 /* WKContactPhonesController.m in Sources */,
 				C3FF0E871B55B6340041B70E /* PMTypeContainer.m in Sources */,
+				C31ED3941B94A152006E1764 /* WKSectionRow.m in Sources */,
 				C3FF0E561B5596880041B70E /* InterfaceController.m in Sources */,
 				C35652531B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */,
 				C30E9D551B8B21BE006BDD98 /* WKContactRow.m in Sources */,
@@ -1468,8 +1496,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1491,7 +1519,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1567,7 +1595,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
+				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 			};
 			name = Release;
 		};
@@ -1632,7 +1660,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
+				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1668,7 +1696,7 @@
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
+				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";

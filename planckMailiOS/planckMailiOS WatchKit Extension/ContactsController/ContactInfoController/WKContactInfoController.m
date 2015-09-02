@@ -18,16 +18,24 @@
 @property (nonatomic, weak) IBOutlet WKInterfaceLabel *personName;
 @property (nonatomic, weak) IBOutlet WKInterfaceImage *personImage;
 
+@property (nonatomic, weak) IBOutlet WKInterfaceButton *callButton;
+@property (nonatomic, weak) IBOutlet WKInterfaceButton *messageButton;
+
 @end
 
 @implementation WKContactInfoController
 
 - (void)awakeWithContext:(id)context {
-  [super awakeWithContext:context];
-  
-  person = context[CONTENT];
-  
-  [self updateUserInfo];
+    [super awakeWithContext:context];
+    
+    person = context[CONTENT];
+    
+    if([person.phoneNumbers count] == 0) {
+        [_callButton setEnabled:NO];
+        [_messageButton setEnabled:NO];
+    }
+    
+    [self updateUserInfo];
 }
 
 - (void)willActivate {
