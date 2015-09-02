@@ -66,6 +66,8 @@
             }
             
             [__self updateAccountsUnreadCount];
+        } else {
+            [__self showActivityIndicator:NO];
         }
         [__self.tableView setHidden:[accounts count] == 0];
         [__self.addAccountButton setHidden:[accounts count] != 0];

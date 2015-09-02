@@ -63,7 +63,7 @@
                                                     <label width="1" widthAdjustment="-21" height="19.5" alignment="left" verticalAlignment="center" text="Label" id="dAu-8u-fvp">
                                                         <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                                     </label>
-                                                    <imageView width="20" height="20" alignment="right" verticalAlignment="bottom" animationDuration="0.80000000000000004" id="Hn3-xn-FJP">
+                                                    <imageView width="20" height="20" alignment="right" verticalAlignment="bottom" hidden="YES" animationDuration="0.80000000000000004" id="Hn3-xn-FJP">
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </imageView>
                                                 </items>
@@ -170,6 +170,8 @@
                         </group>
                     </items>
                     <connections>
+                        <outlet property="callButton" destination="rNz-v3-7nu" id="t2b-Vf-COS"/>
+                        <outlet property="messageButton" destination="o1n-96-Q3e" id="P3X-du-48g"/>
                         <outlet property="personImage" destination="5BW-Vf-G3L" id="mzx-bE-PxA"/>
                         <outlet property="personName" destination="7QK-lG-H4G" id="A5i-Mh-LHL"/>
                     </connections>
@@ -182,6 +184,7 @@
             <objects>
                 <controller identifier="contactPhoneController" id="Y8q-AN-M0Q" customClass="WKContactPhonesController">
                     <items>
+                        <label alignment="center" verticalAlignment="center" hidden="YES" text="This contact hasn't any phone numbers" textAlignment="center" numberOfLines="0" id="iRP-kD-tq2"/>
                         <table alignment="left" id="Ila-sV-h0j">
                             <items>
                                 <tableRow identifier="contactPhoneRow" id="BxT-Ts-VuU" customClass="WKContactPhoneRow">
@@ -202,6 +205,7 @@
                         </table>
                     </items>
                     <connections>
+                        <outlet property="haventPhonesLabel" destination="iRP-kD-tq2" id="Enq-lU-Z9t"/>
                         <outlet property="tableView" destination="Ila-sV-h0j" id="9KE-2n-aQw"/>
                     </connections>
                 </controller>
