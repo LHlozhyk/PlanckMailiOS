@@ -26,9 +26,9 @@
     
     NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
     if (lNamespacesArray.count > 0) {
-        UITabBarController *lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
-        [(UINavigationController *)self.window.rootViewController setNavigationBarHidden:YES];
-        [(UINavigationController *)self.window.rootViewController pushViewController:lMainTabBar animated:NO];
+//        UITabBarController *lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
+//        [(UINavigationController *)self.window.rootViewController setNavigationBarHidden:YES];
+//        [(UINavigationController *)self.window.rootViewController pushViewController:lMainTabBar animated:NO];
     }
     return YES;
 }

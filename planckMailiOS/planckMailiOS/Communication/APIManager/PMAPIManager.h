@@ -24,6 +24,10 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                               limit:(NSUInteger)limit
                              offset:(NSUInteger)offset
                          completion:(ExtendedBlockHandler)handler;
+- (void)getReadLaterMailWithAccount:(id<PMAccountProtocol>)account
+                          limit:(NSUInteger)limit
+                         offset:(NSUInteger)offset
+                     completion:(ExtendedBlockHandler)handler;
 
 
 //- (void)getDetailWithMessageId:(NSString *)messageId

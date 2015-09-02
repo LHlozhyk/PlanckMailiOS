@@ -22,15 +22,26 @@
 		8460961C1B13063300924B61 /* CLPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8460961B1B13063300924B61 /* CLPerson.m */; };
 		8467F01C1B8785FC00FA7827 /* NSDate+CupertinoYankee.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467F01B1B8785FC00FA7827 /* NSDate+CupertinoYankee.m */; };
 		846E2FD21B8C20F800A019AC /* PMFilesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E2FD11B8C20F800A019AC /* PMFilesVC.m */; };
+		8475C1621B963DD40091F955 /* PMLoadMoreTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8475C1611B963DD40091F955 /* PMLoadMoreTVCell.xib */; };
+		8475C1641B963DF90091F955 /* PMMailTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8475C1631B963DF90091F955 /* PMMailTVCell.xib */; };
 		84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F061B1428A00020AB6E /* PMInboxMailModel.m */; };
 		84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F0A1B1447610020AB6E /* PMLoadMoreTVCell.m */; };
+		8478855F1B95DB5400681EBA /* PMTableViewTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478855D1B95DB5400681EBA /* PMTableViewTabBar.m */; };
+		847885641B96074200681EBA /* PMMessagesTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847885631B96074200681EBA /* PMMessagesTableView.m */; };
+		847885661B96078000681EBA /* PMMessagesTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847885651B96078000681EBA /* PMMessagesTableView.xib */; };
 		8478A0571B36A1C4003C09AF /* PMPreviewMailTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8478A0561B36A1C4003C09AF /* PMPreviewMailTVCell.m */; };
 		8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8479B7131B11B852006E4235 /* PMLoginVC.m */; };
 		847B60FA1B617A7B0025DF58 /* PMMailComposeBodyTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847B60F91B617A7B0025DF58 /* PMMailComposeBodyTVCell.m */; };
 		847D68271B43A87B005FE7EF /* PMSearchMailTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D68261B43A87B005FE7EF /* PMSearchMailTVCell.m */; };
 		847D87D11B4334EE0044A676 /* PMSearchMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D87D01B4334EE0044A676 /* PMSearchMailVC.m */; };
+		8483D5BB1B94F671008E8B6A /* PMMenuHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8483D5BA1B94F671008E8B6A /* PMMenuHeaderView.m */; };
+		8483D5BD1B94F6A0008E8B6A /* PMMenuHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8483D5BC1B94F6A0008E8B6A /* PMMenuHeaderView.xib */; };
 		848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 848C11061B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m */; };
 		848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848C50FD1B13DBF200515E47 /* PMMailTVCell.m */; };
+		848E6F8C1B94839900EA935D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E6F8B1B94839900EA935D /* MainViewController.m */; };
+		848E6F901B94846000EA935D /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E6F8F1B94846000EA935D /* LGSideMenuController.m */; };
+		848E6F961B9484F000EA935D /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E6F931B9484F000EA935D /* LeftViewCell.m */; };
+		848E6F971B9484F000EA935D /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E6F951B9484F000EA935D /* LeftViewController.m */; };
 		8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */; };
 		84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A037C31B49F2850076491A /* PMMailTitleView.m */; };
 		84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3BCB81B5ACBF1005A244F /* PMCalendarVC.m */; };
@@ -159,10 +170,17 @@
 		8467F01B1B8785FC00FA7827 /* NSDate+CupertinoYankee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CupertinoYankee.m"; sourceTree = "<group>"; };
 		846E2FD01B8C20F800A019AC /* PMFilesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMFilesVC.h; path = ViewControllers/FilesVC/PMFilesVC.h; sourceTree = "<group>"; };
 		846E2FD11B8C20F800A019AC /* PMFilesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMFilesVC.m; path = ViewControllers/FilesVC/PMFilesVC.m; sourceTree = "<group>"; };
+		8475C1611B963DD40091F955 /* PMLoadMoreTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMLoadMoreTVCell.xib; path = ViewControllers/MailVC/LoadMoreTVCell/PMLoadMoreTVCell.xib; sourceTree = "<group>"; };
+		8475C1631B963DF90091F955 /* PMMailTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMMailTVCell.xib; path = ViewControllers/MailVC/MailTVCell/PMMailTVCell.xib; sourceTree = "<group>"; };
 		84776F051B1428A00020AB6E /* PMInboxMailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMInboxMailModel.h; path = Communication/Models/InboxMailModel/PMInboxMailModel.h; sourceTree = "<group>"; };
 		84776F061B1428A00020AB6E /* PMInboxMailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMInboxMailModel.m; path = Communication/Models/InboxMailModel/PMInboxMailModel.m; sourceTree = "<group>"; };
 		84776F091B1447610020AB6E /* PMLoadMoreTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLoadMoreTVCell.h; path = ViewControllers/MailVC/LoadMoreTVCell/PMLoadMoreTVCell.h; sourceTree = "<group>"; };
 		84776F0A1B1447610020AB6E /* PMLoadMoreTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMLoadMoreTVCell.m; path = ViewControllers/MailVC/LoadMoreTVCell/PMLoadMoreTVCell.m; sourceTree = "<group>"; };
+		8478855C1B95DB5400681EBA /* PMTableViewTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTableViewTabBar.h; path = ViewControllers/TableViewTabBar/PMTableViewTabBar.h; sourceTree = "<group>"; };
+		8478855D1B95DB5400681EBA /* PMTableViewTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTableViewTabBar.m; path = ViewControllers/TableViewTabBar/PMTableViewTabBar.m; sourceTree = "<group>"; };
+		847885621B96074200681EBA /* PMMessagesTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMessagesTableView.h; path = ViewControllers/MessagesTableView/PMMessagesTableView.h; sourceTree = "<group>"; };
+		847885631B96074200681EBA /* PMMessagesTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMessagesTableView.m; path = ViewControllers/MessagesTableView/PMMessagesTableView.m; sourceTree = "<group>"; };
+		847885651B96078000681EBA /* PMMessagesTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMMessagesTableView.xib; path = ViewControllers/MessagesTableView/PMMessagesTableView.xib; sourceTree = "<group>"; };
 		8478A0551B36A1C4003C09AF /* PMPreviewMailTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPreviewMailTVCell.h; path = ViewControllers/PreviewMailVC/PreviewMailTVCell/PMPreviewMailTVCell.h; sourceTree = "<group>"; };
 		8478A0561B36A1C4003C09AF /* PMPreviewMailTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewMailTVCell.m; path = ViewControllers/PreviewMailVC/PreviewMailTVCell/PMPreviewMailTVCell.m; sourceTree = "<group>"; };
 		8479B7121B11B852006E4235 /* PMLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLoginVC.h; path = ViewControllers/LoginVC/PMLoginVC.h; sourceTree = "<group>"; };
@@ -173,10 +191,21 @@
 		847D68261B43A87B005FE7EF /* PMSearchMailTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMSearchMailTVCell.m; path = ViewControllers/SearchMailVC/SearchMailTVCell/PMSearchMailTVCell.m; sourceTree = "<group>"; };
 		847D87CF1B4334EE0044A676 /* PMSearchMailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMSearchMailVC.h; path = ViewControllers/SearchMailVC/PMSearchMailVC.h; sourceTree = "<group>"; };
 		847D87D01B4334EE0044A676 /* PMSearchMailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMSearchMailVC.m; path = ViewControllers/SearchMailVC/PMSearchMailVC.m; sourceTree = "<group>"; };
+		8483D5B91B94F671008E8B6A /* PMMenuHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMenuHeaderView.h; path = MainViewController/PMMenuHeaderView/PMMenuHeaderView.h; sourceTree = "<group>"; };
+		8483D5BA1B94F671008E8B6A /* PMMenuHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMenuHeaderView.m; path = MainViewController/PMMenuHeaderView/PMMenuHeaderView.m; sourceTree = "<group>"; };
+		8483D5BC1B94F6A0008E8B6A /* PMMenuHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMMenuHeaderView.xib; path = MainViewController/PMMenuHeaderView/PMMenuHeaderView.xib; sourceTree = "<group>"; };
 		848C11051B2F6CF7000D3CA2 /* PMPreviewPeopleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPreviewPeopleVC.h; path = ViewControllers/PeopleVC/PreviewPeopleVC/PMPreviewPeopleVC.h; sourceTree = "<group>"; };
 		848C11061B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewPeopleVC.m; path = ViewControllers/PeopleVC/PreviewPeopleVC/PMPreviewPeopleVC.m; sourceTree = "<group>"; };
 		848C50FC1B13DBF200515E47 /* PMMailTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailTVCell.h; path = ViewControllers/MailVC/MailTVCell/PMMailTVCell.h; sourceTree = "<group>"; };
 		848C50FD1B13DBF200515E47 /* PMMailTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMailTVCell.m; path = ViewControllers/MailVC/MailTVCell/PMMailTVCell.m; sourceTree = "<group>"; };
+		848E6F8A1B94839900EA935D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		848E6F8B1B94839900EA935D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		848E6F8E1B94846000EA935D /* LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuController.h; sourceTree = "<group>"; };
+		848E6F8F1B94846000EA935D /* LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuController.m; sourceTree = "<group>"; };
+		848E6F921B9484F000EA935D /* LeftViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewCell.h; sourceTree = "<group>"; };
+		848E6F931B9484F000EA935D /* LeftViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCell.m; sourceTree = "<group>"; };
+		848E6F941B9484F000EA935D /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		848E6F951B9484F000EA935D /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		8497B1191B370CD5009CEC5E /* PMPreviewContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPreviewContentView.h; path = ViewControllers/PreviewMailVC/PreviewContentView/PMPreviewContentView.h; sourceTree = "<group>"; };
 		8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewContentView.m; path = ViewControllers/PreviewMailVC/PreviewContentView/PMPreviewContentView.m; sourceTree = "<group>"; };
 		84A037C21B49F2850076491A /* PMMailTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailTitleView.h; path = ViewControllers/MailVC/MailTitleView/PMMailTitleView.h; sourceTree = "<group>"; };
@@ -451,8 +480,28 @@
 			children = (
 				84776F091B1447610020AB6E /* PMLoadMoreTVCell.h */,
 				84776F0A1B1447610020AB6E /* PMLoadMoreTVCell.m */,
+				8475C1611B963DD40091F955 /* PMLoadMoreTVCell.xib */,
 			);
 			name = LoadMoreTVCell;
+			sourceTree = "<group>";
+		};
+		8478855B1B95DB1400681EBA /* TableViewTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				8478855C1B95DB5400681EBA /* PMTableViewTabBar.h */,
+				8478855D1B95DB5400681EBA /* PMTableViewTabBar.m */,
+			);
+			name = TableViewTabBar;
+			sourceTree = "<group>";
+		};
+		847885611B9606C200681EBA /* MessagesTableView */ = {
+			isa = PBXGroup;
+			children = (
+				847885621B96074200681EBA /* PMMessagesTableView.h */,
+				847885631B96074200681EBA /* PMMessagesTableView.m */,
+				847885651B96078000681EBA /* PMMessagesTableView.xib */,
+			);
+			name = MessagesTableView;
 			sourceTree = "<group>";
 		};
 		8478A0541B369F3E003C09AF /* PreviewMailTVCell */ = {
@@ -562,6 +611,16 @@
 			name = MailViewControllers;
 			sourceTree = "<group>";
 		};
+		8483D5B81B94F61C008E8B6A /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				8483D5B91B94F671008E8B6A /* PMMenuHeaderView.h */,
+				8483D5BA1B94F671008E8B6A /* PMMenuHeaderView.m */,
+				8483D5BC1B94F6A0008E8B6A /* PMMenuHeaderView.xib */,
+			);
+			name = HeaderView;
+			sourceTree = "<group>";
+		};
 		848C11041B2F6CB6000D3CA2 /* PreviewPeopleVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,8 +635,38 @@
 			children = (
 				848C50FC1B13DBF200515E47 /* PMMailTVCell.h */,
 				848C50FD1B13DBF200515E47 /* PMMailTVCell.m */,
+				8475C1631B963DF90091F955 /* PMMailTVCell.xib */,
 			);
 			name = MailTVCell;
+			sourceTree = "<group>";
+		};
+		848E6F891B94839900EA935D /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				848E6F8A1B94839900EA935D /* MainViewController.h */,
+				848E6F8B1B94839900EA935D /* MainViewController.m */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		848E6F8D1B94846000EA935D /* LGSideMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				848E6F8E1B94846000EA935D /* LGSideMenuController.h */,
+				848E6F8F1B94846000EA935D /* LGSideMenuController.m */,
+			);
+			path = LGSideMenuController;
+			sourceTree = "<group>";
+		};
+		848E6F911B9484F000EA935D /* LeftMenu */ = {
+			isa = PBXGroup;
+			children = (
+				848E6F921B9484F000EA935D /* LeftViewCell.h */,
+				848E6F931B9484F000EA935D /* LeftViewCell.m */,
+				848E6F941B9484F000EA935D /* LeftViewController.h */,
+				848E6F951B9484F000EA935D /* LeftViewController.m */,
+			);
+			path = LeftMenu;
 			sourceTree = "<group>";
 		};
 		8497B1181B370C7E009CEC5E /* PreviewContentView */ = {
@@ -649,6 +738,12 @@
 		84B751CC1AFF6FAA00331CC0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				847885611B9606C200681EBA /* MessagesTableView */,
+				8478855B1B95DB1400681EBA /* TableViewTabBar */,
+				8483D5B81B94F61C008E8B6A /* HeaderView */,
+				848E6F911B9484F000EA935D /* LeftMenu */,
+				848E6F8D1B94846000EA935D /* LGSideMenuController */,
+				848E6F891B94839900EA935D /* MainViewController */,
 				847D87CE1B4333080044A676 /* MailViewControllers */,
 				84B751CF1AFF701F00331CC0 /* MainVC */,
 				8479B7111B11B74F006E4235 /* LoginVC */,
@@ -1135,8 +1230,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8483D5BD1B94F6A0008E8B6A /* PMMenuHeaderView.xib in Resources */,
+				847885661B96078000681EBA /* PMMessagesTableView.xib in Resources */,
+				8475C1621B963DD40091F955 /* PMLoadMoreTVCell.xib in Resources */,
 				842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */,
 				84A9E3721B5F02DD009DD409 /* PMSelectionEmailView.xib in Resources */,
+				8475C1641B963DF90091F955 /* PMMailTVCell.xib in Resources */,
 				C3E1FC6A1B7F629C008F815C /* planckMailiOS WatchKit App.app in Resources */,
 				842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */,
 				842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */,
@@ -1216,6 +1315,7 @@
 			files = (
 				C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */,
 				84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */,
+				848E6F901B94846000EA935D /* LGSideMenuController.m in Sources */,
 				84ECA4341B13550D00770F88 /* OPDataLoader.m in Sources */,
 				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
 				840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */,
@@ -1224,22 +1324,27 @@
 				846E2FD21B8C20F800A019AC /* PMFilesVC.m in Sources */,
 				844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */,
 				84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */,
+				848E6F971B9484F000EA935D /* LeftViewController.m in Sources */,
 				848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */,
 				84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */,
 				846096171B13061400924B61 /* CLContactLibrary.m in Sources */,
 				847D87D11B4334EE0044A676 /* PMSearchMailVC.m in Sources */,
 				8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */,
 				847B60FA1B617A7B0025DF58 /* PMMailComposeBodyTVCell.m in Sources */,
+				847885641B96074200681EBA /* PMMessagesTableView.m in Sources */,
 				84A9E3771B5F031A009DD409 /* PMMailComposeTVCell.m in Sources */,
 				84A9A0E01B52C6A80005F5AF /* PMMessageModel.m in Sources */,
 				84A9E3731B5F02DD009DD409 /* PMMailComposeVC.m in Sources */,
 				847D68271B43A87B005FE7EF /* PMSearchMailTVCell.m in Sources */,
 				84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */,
 				848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */,
+				8483D5BB1B94F671008E8B6A /* PMMenuHeaderView.m in Sources */,
 				84F9A9841B11F6D10067C3D0 /* PMMailVC.m in Sources */,
 				8467F01C1B8785FC00FA7827 /* NSDate+CupertinoYankee.m in Sources */,
+				848E6F8C1B94839900EA935D /* MainViewController.m in Sources */,
 				C31ED35A1B90AE5B006E1764 /* UIImage+ImageSize.m in Sources */,
 				C35652521B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */,
+				848E6F961B9484F000EA935D /* LeftViewCell.m in Sources */,
 				842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */,
 				84F9A9881B11F7270067C3D0 /* PMMailMenuView.m in Sources */,
 				84ECA42C1B134E5400770F88 /* DBManager.m in Sources */,
@@ -1251,6 +1356,7 @@
 				84D8C2E11B8E3B4400D82BB4 /* PMNetworkManager.m in Sources */,
 				84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */,
 				84F4286C1B1256820006B530 /* PMSettigsTVC.m in Sources */,
+				8478855F1B95DB5400681EBA /* PMTableViewTabBar.m in Sources */,
 				842E2FEA1AFEB13400B0C8DB /* main.m in Sources */,
 				84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */,
 				84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */,

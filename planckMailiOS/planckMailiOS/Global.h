@@ -44,3 +44,4 @@
 #define WSELF   __weak typeof(self) wself = self
 
 #endif
+//---

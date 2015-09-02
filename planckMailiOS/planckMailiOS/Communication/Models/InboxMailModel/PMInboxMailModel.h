@@ -17,9 +17,12 @@
 @property(nonatomic, copy) NSString *namespaceId;
 @property(nonatomic, copy) NSString *lastMessageTimestamp;
 @property(nonatomic, copy) NSString *token;
+@property(nonatomic, copy) NSArray *labels;
 @property(nonatomic, copy) NSDate *lastMessageDate;
 @property(nonatomic, assign) NSUInteger version;
 @property(nonatomic) BOOL isUnread;
 @property(nonatomic) BOOL isLoadMore;
+
+- (BOOL)isReadLater;
 
 @end

@@ -16,22 +16,37 @@
 #import "PMInboxMailModel.h"
 #import "PMLoadMoreTVCell.h"
 #import "PMPreviewMailVC.h"
+#import "AppDelegate.h"
+#import "MainViewController.h"
 
 #import "PMMailComposeVC.h"
 #import "PMSearchMailVC.h"
+#import "PMTableViewTabBar.h"
+#import "UIView+PMViewCreator.h"
+#import "PMMessagesTableView.h"
 
 #define CELL_IDENTIFIER @"mailCell"
 
 IB_DESIGNABLE
-@interface PMMailVC () <UIGestureRecognizerDelegate, SWTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, PMMailMenuViewDelegate, PMPreviewMailVCDelegate> {
+@interface PMMailVC () <PMMailMenuViewDelegate, PMPreviewMailVCDelegate, PMTableViewTabBarDelegate, PMMessagesTableViewDelegate> {
     CGFloat _centerX;
-    
-    __weak IBOutlet UITableView *_tableView;
+    __weak IBOutlet PMTableViewTabBar *_tableViewTabBar;
     NSString *_currentNamespaeId;
     
     NSUInteger _offesetMails;
+    NSUInteger _offsetReadLater;
     NSMutableArray *_itemMailArray;
+    NSMutableArray *_itemReadLaterArray;
     NSIndexPath *_selectedIndex;
+    
+    PMMessagesTableView *_view1;
+    PMMessagesTableView *_view2;
+    CGRect readLaterRect;
+    CGRect readLaterHiddenRect;
+    CGRect importantRect;
+    CGRect importantHiddenRect;
+    
+    selectedMessages _selectedTableType;
 }
 
 - (IBAction)searchBtnPressed:(id)sender;
@@ -51,19 +66,69 @@ IB_DESIGNABLE
     [super viewDidLoad];
     self.title = @"INBOX";
     
-    //[self addGesture];
-    _itemMailArray = [NSMutableArray new];
+    _selectedTableType = ImportantMessagesSelected;
+
+    _itemMailArray = [NSMutableArray array];
+    _itemReadLaterArray = [NSMutableArray array];
+    
     NSArray *lItemsArray = [[DBManager instance] getNamespaces];
     _currentNamespaeId = ((DBNamespace*)[lItemsArray firstObject]).namespace_id;
+    
     [[PMAPIManager shared] setActiveNamespace:(DBNamespace*)[lItemsArray firstObject]];
     
+    CGFloat x = 0;
+    CGFloat y = 64 + _tableViewTabBar.frame.size.height;
+    CGFloat height = self.view.frame.size.height - _tableViewTabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - 64;
+    CGFloat width = self.view.frame.size.width;
+    readLaterRect = CGRectMake(x, y, width, height);
+    readLaterHiddenRect = CGRectMake(width, y, width, height);
+    importantRect = CGRectMake(x, y, width, height);
+    importantHiddenRect = CGRectMake(-width, y, width, height);
+    
+    _view1 = [PMMessagesTableView createView];
+    _view1.frame = importantRect;
+    _view1.backgroundColor = [UIColor redColor];
+    _view1.delegate = self;
+    [self.view addSubview:_view1];
+    _view2 = [PMMessagesTableView createView];
+    _view2.delegate = self;
+    _view2.backgroundColor = [UIColor blueColor];
+    _view2.frame = readLaterHiddenRect;
+    [self.view addSubview:_view2];
+    
+    [_tableViewTabBar selectMessages:_selectedTableType];
+    
+    
     if (![_currentNamespaeId isEqualToString:@""]) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
         _offesetMails = 0;
+        _offsetReadLater = 0;
+        [self updateImportant];
+        [self updateReadLater];
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didGetMyNotification:)
+                                                 name:@"MenuNotification"
+                                               object:nil];
+    _tableViewTabBar.delegate = self;
+
+}
+
+- (void)didGetMyNotification:(NSNotification*)notification {
+
+    DBNamespace *lItem = [notification object];
+    if (![lItem.namespace_id isEqualToString:_currentNamespaeId]) {
+        _offesetMails = 0;
+        _offsetReadLater = 0;
+        
+        _currentNamespaeId = lItem.namespace_id;
+        [[PMAPIManager shared] setActiveNamespace:lItem];
+        [_itemMailArray removeAllObjects];
+        [_itemReadLaterArray removeAllObjects];
+        
+        [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
         [self updateMails];
     }
-    //delete empty separate lines for tableView
-    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
 - (void)setColor:(UIColor *)color {
@@ -91,24 +156,45 @@ IB_DESIGNABLE
     
     if (!lResult) {
         [_itemMailArray removeAllObjects];
-        [_tableView reloadData];
+        [[self currentTableView] reloadMessagesTableView];
         _currentNamespaeId = ((DBNamespace*)[lItemsArray firstObject]).namespace_id;
         [[PMAPIManager shared] setActiveNamespace:(DBNamespace*)[lItemsArray firstObject]];
         
         if (![_currentNamespaeId isEqualToString:@""]) {
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
             _offesetMails = 0;
             [self updateMails];
         }
     }
-    [_tableView reloadData];
+    [[self currentTableView] reloadMessagesTableView];
 }
 
 - (void)updateMails {
+    if (_selectedTableType == ImportantMessagesSelected) {
+        [self updateImportant];
+    } else {
+        [self updateReadLater];
+    }
+}
+
+- (void)updateImportant{
     [[PMAPIManager shared] getInboxMailWithAccount:[PMAPIManager shared].namespaceId limit:30 offset:_offesetMails completion:^(id data, id error, BOOL success) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [_itemMailArray addObjectsFromArray:data];
-        [_tableView reloadData];
+        
+        [MBProgressHUD hideHUDForView:[self currentTableView] animated:YES];
+        [_itemMailArray addObjectsFromArray:[self deleteReadLaterMessagesFromArray:data]];
+        [[self currentTableView] reloadMessagesTableView];
+        _offesetMails += 30;
+    }];
+
+}
+
+- (void)updateReadLater{
+    [[PMAPIManager shared] getReadLaterMailWithAccount:[PMAPIManager shared].namespaceId limit:30 offset:_offsetReadLater completion:^(id data, id error, BOOL success) {
+        
+        [MBProgressHUD hideAllHUDsForView:[self currentTableView] animated:YES];
+        [_itemReadLaterArray addObjectsFromArray:data];
+        [[self currentTableView] reloadMessagesTableView];
+        _offsetReadLater += 30;
     }];
 }
 
@@ -123,7 +209,7 @@ IB_DESIGNABLE
 }
 
 - (void)menuBtnPressed:(id)sender {
-    [self.mailMenu showInView:self.view];
+    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 
 - (void)createMailBtnPressed:(id)sender {
@@ -132,38 +218,18 @@ IB_DESIGNABLE
     lNewMailComposeVC.draft = lDraft;
     [self.tabBarController.navigationController presentViewController:lNewMailComposeVC animated:YES completion:nil];
 }
-
 #pragma mark - Additional methods
 
-- (void)addGesture {
-    UIScreenEdgePanGestureRecognizer *leftEdgeGesture = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftEdgeGesture:)];
-    leftEdgeGesture.edges = UIRectEdgeLeft;
-    leftEdgeGesture.delegate = self;
-    [self.view addGestureRecognizer:leftEdgeGesture];
+- (PMMessagesTableView *)currentTableView {
     
-    // Store the center, so we can animate back to it after a slide
-    _centerX = self.view.bounds.size.width / 2;
-}
-
-- (void)handleLeftEdgeGesture:(UIScreenEdgePanGestureRecognizer *)gesture {
-    // Get the current view we are touching
-    UIView *view = [self.view hitTest:[gesture locationInView:gesture.view] withEvent:nil];
-    
-    NSLog(@"Ceeee");
-    if(UIGestureRecognizerStateBegan == gesture.state ||
-       UIGestureRecognizerStateChanged == gesture.state) {
-        CGPoint translation = [gesture translationInView:gesture.view];
-        // Move the view's center using the gesture
-        view.center = CGPointMake(_centerX + translation.x, view.center.y);
-    } else {// cancel, fail, or ended
-        // Animate back to center x
-        [UIView animateWithDuration:.3 animations:^{
-            view.center = CGPointMake(_centerX, view.center.y);
-        }];
+    id lTableView;
+    if (_selectedTableType == ImportantMessagesSelected) {
+        lTableView = _view1;
+    } else if (_selectedTableType == ReadLaterMessagesSelected) {
+        lTableView = _view2;
     }
+    return lTableView;
 }
-
-#pragma mark - Additional methods
 
 - (PMMailMenuView *)mailMenu {
     if (_mailMenu == nil) {
@@ -173,122 +239,40 @@ IB_DESIGNABLE
     return _mailMenu;
 }
 
-#pragma mark - UIGestureRecognizerDelegate
+#pragma mark - PMMessageTableView delegate 
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
+- (void)PMMessagesTableViewDelegateupdateData:(PMMessagesTableView *)messagesTableVie {
+    [self updateMails];
 }
 
-- (void)configureCell:(UITableViewCell *)cell {
-    // Remove seperator inset
-//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [cell setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    // Prevent the cell from inheriting the Table View's margin settings
-//    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
-//        [cell setPreservesSuperviewLayoutMargins:NO];
-//    }
-//    // Explictly set your cell's layout margins
-//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [cell setLayoutMargins:UIEdgeInsetsZero];
-//    }
-}
-
-#pragma mark - UITableViewDelegate
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)PMMessagesTableViewDelegate:(PMMessagesTableView *)messagesTableView selectedMessage:(PMInboxMailModel *)messageModel {
     
-    UITableViewCell *cell ;
+    PMPreviewMailVC *lNewMailPreviewVC = [[PMPreviewMailVC alloc] initWithStoryboard];
+    lNewMailPreviewVC.delegate = self;
+    lNewMailPreviewVC.inboxMailModel = messageModel;
     
-     if ([tableView numberOfRowsInSection:indexPath.section]  - 1 == indexPath.row) {
-         
-         cell = (PMLoadMoreTVCell *)[tableView dequeueReusableCellWithIdentifier:@"loadMoreCell"];
-         [(PMLoadMoreTVCell*)cell show];
-     } else {
-         cell = (PMMailTVCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
-         
-         if (cell == nil) {
-             cell = [[PMMailTVCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_IDENTIFIER];
-             //        cell.leftUtilityButtons = [self leftButtons];
-             //        cell.rightUtilityButtons = [self rightButtons];
-             //        cell.delegate = self;
-         }
-         PMInboxMailModel *lItem = [_itemMailArray objectAtIndex:indexPath.row];
-         [(PMMailTVCell *)cell updateWithModel:lItem];
-     }
-   
-    return cell;
+    [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
+    
+    [[PMAPIManager shared] getDetailWithMessageId:messageModel.messageId account:[PMAPIManager shared].namespaceId unread:messageModel.isUnread completion:^(id data, id error, BOOL success) {
+        if (success) {
+            messageModel.isUnread = NO;
+        }
+        [MBProgressHUD hideAllHUDsForView:[self currentTableView] animated:YES];
+        NSLog(@"data - %@", data);
+        lNewMailPreviewVC.messages = data;
+        [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
+    }];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _itemMailArray.count > 0 ? _itemMailArray.count + 1 : 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat lHeight = 90;
-    if (_itemMailArray.count == indexPath.row) {
-        lHeight = 40;
-    }
-    return  lHeight;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self configureCell:cell];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if ([tableView numberOfRowsInSection:indexPath.section]  - 1 == indexPath.row) {
-        PMMailTVCell *cell = (PMMailTVCell *)[tableView cellForRowAtIndexPath:indexPath];
-        [(PMLoadMoreTVCell*)cell hide];
-        _offesetMails = indexPath.row - 1;
-        [self updateMails];
-    } else {
-        _selectedIndex = indexPath;
-        
-        PMPreviewMailVC *lNewMailPreviewVC = [[PMPreviewMailVC alloc] initWithStoryboard];
-        lNewMailPreviewVC.delegate = self;
-        PMInboxMailModel *lSelectedModel = _itemMailArray[_selectedIndex.row];
-        lNewMailPreviewVC.inboxMailModel = lSelectedModel;
-        
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
-        [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId account:[PMAPIManager shared].namespaceId unread:lSelectedModel.isUnread completion:^(id data, id error, BOOL success) {
-            
-            if (success) {
-                lSelectedModel.isUnread = NO;
-            }
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-            NSLog(@"data - %@", data);
-            lNewMailPreviewVC.messages = data;
-            [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
-        }];
-    }
+- (NSArray *)PMMessagesTableViewDelegateGetData:(PMMessagesTableView *)messagesTableView {
+    return (_selectedTableType == ImportantMessagesSelected) ? _itemMailArray : _itemReadLaterArray;
 }
 
 #pragma mark - PMPreviewMailVC delegate
 
 - (void)PMPreviewMailVCDelegateAction:(PMPreviewMailVCTypeAction)typeAction mail:(PMInboxMailModel *)model {
     [_itemMailArray removeObject:model];
-    [_tableView reloadData];
-}
-
-#pragma mark - SWTableView delegates
-
-- (NSArray *)rightButtons {
-    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor]
-                                                title:@"Archive"];
-    return rightUtilityButtons;
-}
-
-- (NSArray *)leftButtons {
-    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
-    
-    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor orangeColor]
-                                                title:@"Schedule"];
-    
-    return leftUtilityButtons;
+    [[self currentTableView] reloadMessagesTableView];
 }
 
 #pragma mark - PMMailMenuView delegates
@@ -299,9 +283,54 @@ IB_DESIGNABLE
         _currentNamespaeId = item.namespace_id;
         [[PMAPIManager shared] setActiveNamespace:item];
         [_itemMailArray removeAllObjects];
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
         [self updateMails];
     }
+}
+
+- (void)messagesDidSelect:(selectedMessages)messages {
+    
+    _selectedTableType = messages;
+    
+    switch (messages) {
+        case ReadLaterMessagesSelected:
+        {
+            [UIView animateWithDuration:0.3 animations:^{
+                _view1.frame = importantHiddenRect;
+                _view2.frame = readLaterRect;
+            } completion:^(BOOL finished) {
+                
+                [[self currentTableView] reloadMessagesTableView];
+            }];
+        }
+            break;
+            
+        case ImportantMessagesSelected:
+        {
+            [UIView animateWithDuration:0.3 animations:^{
+                _view2.frame = readLaterHiddenRect;
+                _view1.frame = importantRect;
+            } completion:^(BOOL finished) {
+                
+                [[self currentTableView] reloadMessagesTableView];
+            }];
+        }
+            break;
+    }
+}
+
+#pragma mark - Private methods
+
+- (NSMutableArray *)deleteReadLaterMessagesFromArray:(NSMutableArray *)array {
+    NSMutableArray *lNewArray = [NSMutableArray array];
+   
+    for (int i = 0; i < array.count; i++){
+        if (![[array objectAtIndex:i] isReadLater]) {
+             [lNewArray addObject:[array objectAtIndex:i]];
+        }
+    }
+    
+    return lNewArray;
 }
 
 @end

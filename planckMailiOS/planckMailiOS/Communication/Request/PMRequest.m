@@ -23,7 +23,7 @@
 }
 
 + (NSString *)inboxMailWithNamespaceId:(NSString*)namespaceId limit:(NSUInteger)limit offset:(NSUInteger)offset {
-    return [NSString stringWithFormat:@"%@/n/%@/threads?tag=inbox&limit=%lu&offset=%lu", APP_SERVER_LINK, namespaceId, (unsigned long)limit, (unsigned long)offset];
+    return [NSString stringWithFormat:@"%@/n/%@/threads?limit=%lu&offset=%lu", APP_SERVER_LINK, namespaceId, (unsigned long)limit, (unsigned long)offset];
 }
 
 + (NSString *)messageId:(NSString *)messageId namespacesId:(NSString *)namespacesId {
@@ -56,7 +56,7 @@
 + (NSString *)foldersWithNamespaceId:(NSString *)namespaceId
                             folderId:(NSString *)folderId{
     if (folderId){
-    return [NSString stringWithFormat:@"%@/n/%@/folders/id=%@",APP_SERVER_LINK,namespaceId,folderId];
+    return [NSString stringWithFormat:@"%@/n/%@/folders/%@",APP_SERVER_LINK,namespaceId,folderId];
     }
     else {
     return [NSString stringWithFormat:@"%@/n/%@/folders",APP_SERVER_LINK,namespaceId];
