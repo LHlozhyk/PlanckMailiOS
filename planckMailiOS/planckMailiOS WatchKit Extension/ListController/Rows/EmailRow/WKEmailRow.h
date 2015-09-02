@@ -16,4 +16,6 @@
 
 - (void)setEmailContainer:(PMInboxMailModel *)emailContainer;
 
+- (void)showActivityIndicator:(BOOL)yesOrNo;
+
 @end

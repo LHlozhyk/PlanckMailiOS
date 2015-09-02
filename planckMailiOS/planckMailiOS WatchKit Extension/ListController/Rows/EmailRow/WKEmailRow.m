@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *subjectLabel;
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *dateLabel;
 
+@property (weak, nonatomic) IBOutlet WKInterfaceImage *activityView;
+
 @end
 
 @implementation WKEmailRow
@@ -27,6 +29,22 @@
   [self.dateLabel setText:[emailContainer.lastMessageDate convertedStringValue]];
   
   [self.unreadIndicator setHidden:!emailContainer.isUnread];
+}
+
+- (void)showActivityIndicator:(BOOL)yesOrNo {
+    if (yesOrNo) {
+        //unhide
+        [self.activityView setHidden:NO];
+        
+        // Uses images in WatchKit app bundle.
+        [self.activityView setImageNamed:@"frame-"];
+        [self.activityView startAnimating];
+    } else {
+        [self.activityView stopAnimating];
+        
+        //hide
+        [self.activityView setHidden:YES];
+    }
 }
 
 @end

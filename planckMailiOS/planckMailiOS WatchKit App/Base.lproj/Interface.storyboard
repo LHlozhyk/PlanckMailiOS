@@ -10,8 +10,8 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController">
                     <items>
-                        <imageView width="20" height="20" alignment="center" animationDuration="0.80000000000000004" id="wUd-CB-OTl"/>
-                        <button width="1" alignment="left" title="Add account" id="6Ik-eI-cU8">
+                        <imageView width="20" height="20" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="wUd-CB-OTl"/>
+                        <button width="1" alignment="left" hidden="YES" title="Add account" id="6Ik-eI-cU8">
                             <connections>
                                 <action selector="addAccountPressed" destination="AgC-eL-Hgc" id="Kxc-QH-311"/>
                             </connections>
@@ -34,7 +34,7 @@
                                 </tableRow>
                             </items>
                         </table>
-                        <imageView width="86" height="86" alignment="center" verticalAlignment="center" image="icon_86" contentMode="scaleAspectFit" id="Cii-YG-2AB"/>
+                        <imageView width="86" height="86" alignment="center" verticalAlignment="center" hidden="YES" image="icon_86" contentMode="scaleAspectFit" id="Cii-YG-2AB"/>
                     </items>
                     <connections>
                         <outlet property="activityView" destination="wUd-CB-OTl" id="7Jn-9o-Thi"/>
@@ -60,10 +60,14 @@
                                             <group width="1" height="21.5" alignment="left" id="O5s-Ry-Sfd">
                                                 <items>
                                                     <imageView width="10" height="10" alignment="left" verticalAlignment="center" hidden="YES" image="unread_indicator.png" id="MMw-h8-i63"/>
-                                                    <label width="1" widthAdjustment="-7" height="19.5" alignment="left" verticalAlignment="center" text="Label" id="dAu-8u-fvp">
+                                                    <label width="1" widthAdjustment="-21" height="19.5" alignment="left" verticalAlignment="center" text="Label" id="dAu-8u-fvp">
                                                         <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                                     </label>
+                                                    <imageView width="20" height="20" alignment="right" verticalAlignment="bottom" animationDuration="0.80000000000000004" id="Hn3-xn-FJP">
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </imageView>
                                                 </items>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                             </group>
                                             <group width="1" alignment="left" layout="vertical" id="G8z-Ab-PiA">
                                                 <items>
@@ -79,6 +83,7 @@
                                         <color key="backgroundColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                     </group>
                                     <connections>
+                                        <outlet property="activityView" destination="Hn3-xn-FJP" id="aPN-QN-1Ly"/>
                                         <outlet property="dateLabel" destination="oeE-1P-4zk" id="QmR-8K-LLw"/>
                                         <outlet property="subjectLabel" destination="CP6-51-tEy" id="DGv-YT-bqq"/>
                                         <outlet property="titleLabel" destination="dAu-8u-fvp" id="q30-Mt-1DW"/>
@@ -101,7 +106,7 @@
             <objects>
                 <controller identifier="contactsListController" title="Contacts" id="lmW-mS-yRm" customClass="WKContactsController">
                     <items>
-                        <imageView width="20" height="20" alignment="center" animationDuration="0.80000000000000004" id="4g6-Ek-PRU"/>
+                        <imageView width="20" height="20" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="4g6-Ek-PRU"/>
                         <label width="1" alignment="center" verticalAlignment="center" hidden="YES" text="Label" textAlignment="center" id="MHV-cQ-mbu"/>
                         <table alignment="left" id="DHw-UE-or0">
                             <items>
