@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet WKInterfaceTable *tableView;
 @property (weak, nonatomic) IBOutlet WKInterfaceButton *addAccountButton;
 
+@property (weak, nonatomic) IBOutlet WKInterfaceImage *appLogoView;
+
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) NSMutableArray *accountsArray;
 @property (assign, nonatomic) NSInteger allUnreadCount;
@@ -29,36 +31,52 @@
 @implementation InterfaceController
 
 - (void)awakeWithContext:(id)context {
-  [super awakeWithContext:context];
-  
-  [self setTitle:@"PlanckLabs"];
+    [super awakeWithContext:context];
+    
+    [self.addAccountButton setHidden:YES];
+    [self.tableView setHidden:YES];
+    
+    [self setHelpItemsHidden:NO];
+    
+    [self setTitle:@"PlanckLabs"];
 }
 
 - (void)updateUserAccounts {
-   [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestAccounts)} reply:^(NSDictionary *replyInfo, NSError *error) {
-    
-    //get requested accounts
-    NSArray *accounts = replyInfo[WK_REQUEST_RESPONSE];
-    if([accounts count] > 0) {
-      NSMutableArray *tempAccounts = [NSMutableArray new];
-      for(NSData *arcObj in accounts) {
-        PMTypeContainer *myObject = [NSKeyedUnarchiver unarchiveObjectWithData:arcObj];
-        [tempAccounts addObject:myObject];
-      }
-      
-      self.accountsArray = [NSMutableArray arrayWithArray:tempAccounts];
-      
-      self.dataSource = [NSMutableArray arrayWithArray:@[[PMTypeContainer initWithTitle:@"All Unread" count:-1],
-                                                    [PMTypeContainer initWithTitle:@"Calendar" count:-1],
-                                                    [PMTypeContainer initWithTitle:@"Contact" count:-1]]];
-      [self.dataSource insertObjects:self.accountsArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [self.accountsArray count])]];
-      [self reloadTable];
-      
-      [self updateAccountsUnreadCount];
-    }
-    [self.tableView setHidden:[accounts count] == 0];
-    [self.addAccountButton setHidden:[accounts count] != 0];
-  }];
+    [self showActivityIndicator:YES];
+    __weak typeof(self) __self = self;
+    [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE: @(PMWatchRequestAccounts)} reply:^(NSDictionary *replyInfo, NSError *error) {
+        
+        //get requested accounts
+        NSArray *accounts = replyInfo[WK_REQUEST_RESPONSE];
+        if([accounts count] > 0) {
+            NSMutableArray *tempAccounts = [NSMutableArray new];
+            for(NSData *arcObj in accounts) {
+                PMTypeContainer *myObject = [NSKeyedUnarchiver unarchiveObjectWithData:arcObj];
+                [tempAccounts addObject:myObject];
+            }
+            
+            if(![__self.accountsArray isEqualToArray:tempAccounts]) {
+                __self.accountsArray = [NSMutableArray arrayWithArray:tempAccounts];
+                
+                __self.dataSource = [NSMutableArray arrayWithArray:@[[PMTypeContainer initWithTitle:@"All Unread" count:-1],
+                                                                     [PMTypeContainer initWithTitle:@"Calendar" count:-1],
+                                                                     [PMTypeContainer initWithTitle:@"Contact" count:-1]]];
+                [__self.dataSource insertObjects:__self.accountsArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [__self.accountsArray count])]];
+                [__self reloadTable];
+            }
+            
+            [__self updateAccountsUnreadCount];
+        }
+        [__self.tableView setHidden:[accounts count] == 0];
+        [__self.addAccountButton setHidden:[accounts count] != 0];
+        
+        [__self.appLogoView setHidden:YES];
+    }];
+}
+
+- (void)setHelpItemsHidden:(BOOL)hidden {
+    [self showActivityIndicator:!hidden];
+    [self.appLogoView setHidden:hidden];
 }
 
 - (void)reloadTable {
@@ -95,12 +113,14 @@
 }
 
 - (void)updateAccountsUnreadCount {
-  if([_accountsArray count] > 0 && _dataSource) {
-    _allUnreadCount = 0;
-    
-    NSMutableArray *copyAccounts = [_accountsArray mutableCopy];
-    [self updateUnreadCountForAccounts:copyAccounts];
-  }
+    if([_accountsArray count] > 0 && _dataSource) {
+        _allUnreadCount = 0;
+        
+        [self showActivityIndicator:YES];
+        
+        NSMutableArray *copyAccounts = [_accountsArray mutableCopy];
+        [self updateUnreadCountForAccounts:copyAccounts];
+    }
 }
 
 - (void)updateUnreadCountForAccounts:(NSMutableArray *)accounts {
@@ -123,6 +143,8 @@
           [accounts removeObjectAtIndex:0];
           if([accounts count] > 0) {
             [__self updateUnreadCountForAccounts:accounts];
+          } else {
+              [__self showActivityIndicator:NO];
           }
           
           [__self updateRows];

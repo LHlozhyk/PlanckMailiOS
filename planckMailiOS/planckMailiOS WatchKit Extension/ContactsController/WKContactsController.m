@@ -19,7 +19,6 @@
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
 @property (weak, nonatomic) IBOutlet WKInterfaceTable *tableView;
-@property (weak, nonatomic) IBOutlet WKInterfaceImage *activityView;
 @property (weak, nonatomic) IBOutlet WKInterfaceLabel *noContactsLabel;
 
 @property (nonatomic, assign) BOOL isLoadingContacts;
@@ -99,23 +98,8 @@
 #pragma mark - Help methods
 
 -(void)showActivityIndicator:(BOOL)yesOrNo {
-  if (yesOrNo) {
-    [self.tableView setHidden:YES];
-    
-    //unhide
-    [self.activityView setHidden:NO];
-    
-    // Uses images in WatchKit app bundle.
-    [self.activityView setImageNamed:@"frame-"];
-    [self.activityView startAnimating];
-  } else {
-    [self.tableView setHidden:NO];
-    
-    [self.activityView stopAnimating];
-    
-    //hide
-    [self.activityView setHidden:YES];
-  }
+    [super showActivityIndicator:yesOrNo];
+    [self.tableView setHidden:yesOrNo];
 }
 
 @end

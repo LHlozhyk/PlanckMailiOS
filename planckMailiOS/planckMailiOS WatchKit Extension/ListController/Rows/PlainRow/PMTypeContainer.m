@@ -41,6 +41,16 @@
   return newType;
 }
 
+//- (BOOL)isEqual:(id)object {
+//    if(![object isKindOfClass:[PMTypeContainer class]]) {
+//        return NO;
+//    }
+//    
+//    PMTypeContainer *obj = object;
+//    
+//    return [obj.namespace_id isEqualToString:self.namespace_id] && [obj.email_address isEqualToString:self.email_address] && [obj.token isEqualToString:self.token];
+//}
+
 #pragma mark - NSSecureCoding
 
 + (BOOL)supportsSecureCoding {
@@ -77,11 +87,13 @@
   return newType;
 }
 
+#pragma mark - Overridden methods
+
 - (BOOL)isEqual:(id)object {
   if(![object isKindOfClass:[PMTypeContainer class]]) return NO;
   
   PMTypeContainer *typeObject = (PMTypeContainer *)object;
-  return [typeObject.id isEqualToString:self.id] && [typeObject.namespace_id isEqualToString:self.namespace_id] && [typeObject.account_id isEqualToString:self.account_id];
+  return [typeObject.id isEqualToString:self.id] && [typeObject.namespace_id isEqualToString:self.namespace_id] && [typeObject.account_id isEqualToString:self.account_id] && [typeObject.token isEqualToString:self.token];
 }
 
 #pragma mark - PMAccountProtocol

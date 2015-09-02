@@ -10,6 +10,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController">
                     <items>
+                        <imageView width="20" height="20" alignment="center" animationDuration="0.80000000000000004" id="wUd-CB-OTl"/>
                         <button width="1" alignment="left" title="Add account" id="6Ik-eI-cU8">
                             <connections>
                                 <action selector="addAccountPressed" destination="AgC-eL-Hgc" id="Kxc-QH-311"/>
@@ -33,9 +34,12 @@
                                 </tableRow>
                             </items>
                         </table>
+                        <imageView width="86" height="86" alignment="center" verticalAlignment="center" image="icon_86" contentMode="scaleAspectFit" id="Cii-YG-2AB"/>
                     </items>
                     <connections>
+                        <outlet property="activityView" destination="wUd-CB-OTl" id="7Jn-9o-Thi"/>
                         <outlet property="addAccountButton" destination="6Ik-eI-cU8" id="5vd-xO-UbY"/>
+                        <outlet property="appLogoView" destination="Cii-YG-2AB" id="WQs-1z-vkp"/>
                         <outlet property="tableView" destination="PeK-x3-ILJ" id="mCQ-i0-oo9"/>
                     </connections>
                 </controller>
@@ -47,7 +51,7 @@
             <objects>
                 <controller identifier="emailListController" id="2LA-rQ-Xva" customClass="WKEmailListController">
                     <items>
-                        <imageView width="30" height="30" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="0z2-Iw-5pO"/>
+                        <imageView width="20" height="20" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="0z2-Iw-5pO"/>
                         <table alignment="left" id="REJ-3i-4sm">
                             <items>
                                 <tableRow identifier="emailType" id="7iv-ML-Eap" customClass="WKEmailRow">
@@ -85,7 +89,7 @@
                         </table>
                     </items>
                     <connections>
-                        <outlet property="activityView" destination="0z2-Iw-5pO" id="fOd-cM-jf7"/>
+                        <outlet property="activityView" destination="0z2-Iw-5pO" id="vXv-Zr-9VI"/>
                         <outlet property="tableView" destination="REJ-3i-4sm" id="tUP-TD-CNc"/>
                     </connections>
                 </controller>
@@ -97,7 +101,7 @@
             <objects>
                 <controller identifier="contactsListController" title="Contacts" id="lmW-mS-yRm" customClass="WKContactsController">
                     <items>
-                        <imageView width="30" height="30" alignment="center" animationDuration="0.80000000000000004" id="4g6-Ek-PRU"/>
+                        <imageView width="20" height="20" alignment="center" animationDuration="0.80000000000000004" id="4g6-Ek-PRU"/>
                         <label width="1" alignment="center" verticalAlignment="center" hidden="YES" text="Label" textAlignment="center" id="MHV-cQ-mbu"/>
                         <table alignment="left" id="DHw-UE-or0">
                             <items>
@@ -118,7 +122,7 @@
                         </table>
                     </items>
                     <connections>
-                        <outlet property="activityView" destination="4g6-Ek-PRU" id="bWf-yz-e6P"/>
+                        <outlet property="activityView" destination="4g6-Ek-PRU" id="56I-gP-fcu"/>
                         <outlet property="noContactsLabel" destination="MHV-cQ-mbu" id="No1-i7-dah"/>
                         <outlet property="tableView" destination="DHw-UE-or0" id="LJW-1p-Yzv"/>
                     </connections>
@@ -204,7 +208,7 @@
             <objects>
                 <controller identifier="emailController" title="Message" id="2ko-XT-grL" customClass="WKEmailController">
                     <items>
-                        <imageView width="30" height="30" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="ghP-To-m6q"/>
+                        <imageView width="20" height="20" alignment="center" hidden="YES" animationDuration="0.80000000000000004" id="ghP-To-m6q"/>
                         <label width="1" alignment="left" text="Label" id="L5k-cy-9Uu">
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>

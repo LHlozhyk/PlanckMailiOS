@@ -23,7 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet WKInterfaceTable *tableView;
 @property (nonatomic, strong) PMTypeContainer *selectedAccount;
-@property (weak, nonatomic) IBOutlet WKInterfaceImage *activityView;
 
 @end
 
@@ -147,22 +146,6 @@
        [self showActivityIndicator:NO];
      }
    }];
-}
-
--(void)showActivityIndicator:(BOOL)yesOrNo {
-  if (yesOrNo) {
-    //unhide
-    [self.activityView setHidden:NO];
-    
-    // Uses images in WatchKit app bundle.
-    [self.activityView setImageNamed:@"frame-"];
-    [self.activityView startAnimating];
-  } else {
-    [self.activityView stopAnimating];
-    
-    //hide
-    [self.activityView setHidden:YES];
-  }
 }
 
 - (void)willActivate {
