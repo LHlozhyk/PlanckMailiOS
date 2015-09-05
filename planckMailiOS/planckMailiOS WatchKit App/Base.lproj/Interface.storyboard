@@ -287,9 +287,11 @@
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label height="22.5" alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                        <label alignment="center" text="Alert Label" textAlignment="center" numberOfLines="0" id="IdU-wH-bcW"/>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" identifier="invite" id="JfB-70-Muf">
+                        <color key="sashColor" red="0.51372549020000002" green="0.7725490196" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </notificationCategory>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
                         <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
@@ -301,7 +303,15 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController">
+                    <items>
+                        <label alignment="left" text="New label" id="pAq-sf-YRU"/>
+                        <label width="1" alignment="left" text="Label" textAlignment="center" numberOfLines="0" id="dWN-aB-1jb"/>
+                    </items>
+                    <connections>
+                        <outlet property="notificationLabel" destination="dWN-aB-1jb" id="6dP-UU-CCS"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="449" y="846"/>
         </scene>

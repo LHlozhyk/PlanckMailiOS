@@ -34,6 +34,30 @@
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
+//TODO: don't remove this code
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    
+//    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+//    if (localNotif == nil)
+//        return;
+//    localNotif.fireDate = [[NSDate date] dateByAddingTimeInterval:10];
+//    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+//    
+//    localNotif.alertBody = @"Just fired new local notification";
+//    localNotif.alertAction = @"New notification";
+//    localNotif.category = @"invite";
+//    
+//    localNotif.soundName = UILocalNotificationDefaultSoundName;
+//    localNotif.applicationIconBadgeNumber = 1;
+//    // NSDictionary *infoDict = [NSDictionary dictionaryWithObject:item.eventName forKey:ToDoItemKey];
+//    NSDictionary *infoDict = @{@"start time": [NSDate date], @"shifted on seconds": @"10"};
+//    localNotif.userInfo = infoDict;
+//    
+//    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+//    NSLog(@"scheduledLocalNotifications are %@", [[UIApplication sharedApplication] scheduledLocalNotifications]);
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

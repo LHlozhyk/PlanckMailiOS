@@ -160,6 +160,13 @@
   [super didDeactivate];
 }
 
+#pragma mark - Local notification handler 
+
+- (void)handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)localNotification {
+    
+}
+
+
 @end
 
 

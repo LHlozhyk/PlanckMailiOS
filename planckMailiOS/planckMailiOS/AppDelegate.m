@@ -20,6 +20,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+//TODO: don't remove this code
+//    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+//        
+//        UIMutableUserNotificationAction *acceptAction = [UIMutableUserNotificationAction new];
+//        acceptAction.title = @"Okay";
+//        acceptAction.identifier = @"accept";
+//        acceptAction.activationMode = UIUserNotificationActivationModeForeground;
+//        acceptAction.authenticationRequired = NO;
+//        
+//        UIMutableUserNotificationAction *declineAction = [UIMutableUserNotificationAction new];
+//        declineAction.title = @"No";
+//        declineAction.identifier = @"decline";
+//        declineAction.activationMode = UIUserNotificationActivationModeForeground;
+//        declineAction.authenticationRequired = NO;
+//        
+//        UIMutableUserNotificationCategory *category = [UIMutableUserNotificationCategory new];
+//        [category setActions:@[acceptAction, declineAction] forContext:UIUserNotificationActionContextDefault];
+//        category.identifier = @"invite";
+//        
+//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound
+//                                                                                 categories:[NSSet setWithObjects:acceptAction, declineAction, category, nil]];
+//        
+//        [application registerUserNotificationSettings: settings];
+//    }
+    application.applicationIconBadgeNumber = 0;
+    
     [self setUpCustomDesign];
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
@@ -59,6 +85,11 @@
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler {
   return YES;
+}
+
+- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
+    // Handle the notificaton when the app is running
+    NSLog(@"Recieved Notification %@",notif);
 }
 
 #pragma mark - Private methods
