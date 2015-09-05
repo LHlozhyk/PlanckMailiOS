@@ -60,14 +60,14 @@
                                                          limit:LIMIT_COUNT
                                                         offset:[userInfo[WK_REQUEST_EMAILS_LIMIT] unsignedIntegerValue]
                                                     completion:^(NSArray *data, id error, BOOL success) {
-                                                        if(reply) {
-                                                            NSMutableArray *archivedEmails = [NSMutableArray new];
-                                                            for(PMInboxMailModel *email in data) {
-                                                                [archivedEmails addObject:[NSKeyedArchiver archivedDataWithRootObject:email]];
-                                                            }
-                                                            reply(@{WK_REQUEST_RESPONSE: archivedEmails});
-                                                        }
-                                                    }];
+                    if(reply) {
+                        NSMutableArray *archivedEmails = [NSMutableArray new];
+                        for(PMInboxMailModel *email in data) {
+                            [archivedEmails addObject:[NSKeyedArchiver archivedDataWithRootObject:email]];
+                        }
+                        reply(@{WK_REQUEST_RESPONSE: archivedEmails});
+                    }
+                }];
             }
         }
             
@@ -85,7 +85,7 @@
             break;
             
         case PMWatchRequestGetEmailDetails: {
-            PMInboxMailModel *mailModel = [NSKeyedUnarchiver unarchiveObjectWithData:userInfo[WK_REQUEST_INFO]];
+          PMInboxMailModel *mailModel = [NSKeyedUnarchiver unarchiveObjectWithData:userInfo[WK_REQUEST_INFO]];
           [[PMAPIManager shared] getDetailWithMessageId:mailModel.messageId
                                                 account:mailModel
                                                  unread:mailModel.isUnread
@@ -102,17 +102,19 @@
         case PMWatchRequestGetContacts: {
           self.replyBlock = reply;
           
-          [[CLContactLibrary sharedInstance] getContactArrayForDelegate:self];
+          [[CLContactLibrary sharedInstance] getContactsNamesForDelegate:self];
+        }
+            break;
+            
+        case PMWatchRequestGetContactInfo: {
+            self.replyBlock = reply;
+            
+            [[CLContactLibrary sharedInstance] getPersonForContactNames:userInfo[WK_REQUEST_INFO] forDelegate:self];
         }
           
           break;
         
       case PMWatchRequestCall: {
-//          if([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
-//              reply(nil);
-//              return;
-//          }
-          
           NSString *lPhoneString = [NSString stringWithFormat:@"%@%@", @"tel://", userInfo[WK_REQUEST_INFO][WK_REQUEST_PHONE]];
           NSString *urlString = [lPhoneString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
           NSURL *lUrl = [[NSURL alloc] initWithString:urlString];
@@ -122,11 +124,6 @@
         break;
         
       case PMWatchRequestSendSMS: {
-//          if([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
-//              reply(nil);
-//              return;
-//          }
-          
           self.replyBlock = reply;
           NSDictionary *info = userInfo[WK_REQUEST_INFO];
           
@@ -140,11 +137,6 @@
                   
               }];
           }
-          
-//            NSDictionary *info = userInfo[WK_REQUEST_INFO];
-//        
-//            NSURL *lUrl = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"sms:%@", info[WK_REQUEST_PHONE]]];
-//            [[UIApplication sharedApplication] openURL:lUrl];
       }
         
       case PMWatchRequestGetUnreadEmailsCount: {
@@ -190,7 +182,35 @@
         response = @{WK_REQUEST_RESPONSE: personsArray};
     }
     
-    _replyBlock(response);
+    if(_replyBlock) {
+        _replyBlock(response);
+    }
+}
+
+- (void)getNamesOfContacts:(NSArray *)contactsNames {
+    NSMutableArray *personsArray = nil;
+    NSDictionary *response = nil;
+    
+    if(contactsNames) {
+        personsArray = [NSMutableArray new];
+        for(NSDictionary *person in contactsNames) {
+            [personsArray addObject:[NSKeyedArchiver archivedDataWithRootObject:person]];
+        }
+        
+        response = @{WK_REQUEST_RESPONSE: personsArray};
+    }
+
+    if(_replyBlock) {
+        _replyBlock(response);
+    }
+}
+
+- (void)getPersonForNames:(CLPerson *)person {
+    NSDictionary *response = @{WK_REQUEST_RESPONSE: [NSKeyedArchiver archivedDataWithRootObject:person]};
+    
+    if(_replyBlock) {
+        _replyBlock(response);
+    }
 }
 
 - (BOOL)shouldScaleImage {

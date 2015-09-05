@@ -55,10 +55,10 @@
     return roundedImage;
 }
 
-- (UIImage *)roundCornersOfImage:(UIImage *)source;
+- (UIImage *)roundCorners;
 {
-    int w = source.size.width;
-    int h = source.size.height;
+    int w = self.size.width;
+    int h = self.size.height;
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = CGBitmapContextCreate(NULL, w, h, 8, 4 * w, colorSpace, kCGImageAlphaPremultipliedFirst);
@@ -70,7 +70,7 @@
     CGContextClosePath(context);
     CGContextClip(context);
     
-    CGContextDrawImage(context, CGRectMake(0, 0, w, h), source.CGImage);
+    CGContextDrawImage(context, CGRectMake(0, 0, w, h), self.CGImage);
     
     CGImageRef imageMasked = CGBitmapContextCreateImage(context);
     CGContextRelease(context);

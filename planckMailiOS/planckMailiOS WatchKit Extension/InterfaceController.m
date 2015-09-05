@@ -58,10 +58,10 @@
             if(![__self.accountsArray isEqualToArray:tempAccounts]) {
                 __self.accountsArray = [NSMutableArray arrayWithArray:tempAccounts];
                 
-                __self.dataSource = [NSMutableArray arrayWithArray:@[[PMTypeContainer initWithTitle:@"All Unread" count:-1],
+                __self.dataSource = [NSMutableArray arrayWithArray:@[//[PMTypeContainer initWithTitle:@"All Unread" count:-1],
                                                                      [PMTypeContainer initWithTitle:@"Calendar" count:-1],
                                                                      [PMTypeContainer initWithTitle:@"Contact" count:-1]]];
-                [__self.dataSource insertObjects:__self.accountsArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [__self.accountsArray count])]];
+                [__self.dataSource insertObjects:__self.accountsArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [__self.accountsArray count])]];
                 [__self reloadTable];
             }
             
@@ -139,8 +139,8 @@
           __self.allUnreadCount += count;
           
           //update All unread number
-          __block PMTypeContainer *allUnreadAccount = [__self.dataSource firstObject];
-          allUnreadAccount.unreadCount = __self.allUnreadCount;
+//          __block PMTypeContainer *allUnreadAccount = [__self.dataSource firstObject];
+//          allUnreadAccount.unreadCount = __self.allUnreadCount;
           
           [accounts removeObjectAtIndex:0];
           if([accounts count] > 0) {

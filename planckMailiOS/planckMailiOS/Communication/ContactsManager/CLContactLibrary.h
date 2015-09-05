@@ -15,8 +15,13 @@
 @protocol APContactLibraryDelegate;
 
 @protocol APContactLibraryDelegate <NSObject>
+
 - (void)apGetContactArray:(NSArray *)contactArray;
+
 @optional
+
+- (void)getNamesOfContacts:(NSArray *)contactsNames;
+- (void)getPersonForNames:(CLPerson *)person;
 - (BOOL)shouldScaleImage;
 
 @end
@@ -26,8 +31,10 @@
 
 @property(nonatomic,weak)id <APContactLibraryDelegate> delegate;
 
-- (void)getContactArrayForDelegate:(id<APContactLibraryDelegate>)aDelegate;
 - (void)getContactArray;
+- (void)getContactArrayForDelegate:(id<APContactLibraryDelegate>)aDelegate;
+- (void)getContactsNamesForDelegate:(id<APContactLibraryDelegate>)aDelegate;
+- (void)getPersonForContactNames:(NSDictionary *)names forDelegate:(id<APContactLibraryDelegate>)aDelegate;
 
 + (CLContactLibrary *)sharedInstance;
 @end
