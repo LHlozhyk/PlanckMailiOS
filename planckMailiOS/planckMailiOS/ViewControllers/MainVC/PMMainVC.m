@@ -9,7 +9,7 @@
 #import "PMMainVC.h"
 
 
-@interface PMMainVC ()
+@interface PMMainVC () <UIGestureRecognizerDelegate>
 @end
 
 @implementation PMMainVC

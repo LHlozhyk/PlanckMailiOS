@@ -10,6 +10,8 @@
 #import "PMLoginVC.h"
 #import "DBManager.h"
 #import "UIViewController+PMStoryboard.h"
+#import "PMAPIManager.h"
+#import "MBProgressHUD.h"
 
 #define DYNAMIC_SECTION 0
 #define CELL_IDENTIFIER @"journalTVCell"
@@ -41,7 +43,7 @@
     [lNewLoginVC setAdditionalAccoutn:YES];
     UINavigationController *lNav = [[UINavigationController alloc] initWithRootViewController:lNewLoginVC];
     
-    UIBarButtonItem *customBtn=[[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:lNewLoginVC action:@selector(backBtnPressed:)];
+    UIBarButtonItem *customBtn = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:lNewLoginVC action:@selector(backBtnPressed:)];
     
     [lNewLoginVC.navigationItem setRightBarButtonItem:customBtn];
     
@@ -139,15 +141,21 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         DBNamespace *lSelectedNamespace = [_itemsArray objectAtIndex:_selectedIndex.row];
-        [DBManager deleteNamespace:lSelectedNamespace];
-        _itemsArray = [[DBManager instance] getNamespaces];
         
-        if (_itemsArray.count > 0) {
-            [self.tableView reloadData];
-        } else {
-            [self.tabBarController.navigationController popToRootViewControllerAnimated:YES];
-            [self.tabBarController.navigationController setNavigationBarHidden:NO];
-        }
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [[PMAPIManager shared] deleteTokenWithEmail:lSelectedNamespace.email_address completion:^(id error, BOOL success) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [DBManager deleteNamespace:lSelectedNamespace];
+                _itemsArray = [[DBManager instance] getNamespaces];
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                if (_itemsArray.count > 0) {
+                    [self.tableView reloadData];
+                } else {
+                    [self.tabBarController.navigationController popToRootViewControllerAnimated:YES];
+                    [self.tabBarController.navigationController setNavigationBarHidden:NO];
+                }
+            });
+        }];
     }
 }
 

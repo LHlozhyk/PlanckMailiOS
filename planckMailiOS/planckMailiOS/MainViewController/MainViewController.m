@@ -26,10 +26,11 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
-    if (lNamespacesArray.count > 0) {
-        self.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabBar"];
-    } else {
     self.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationController"];
+    if (lNamespacesArray.count > 0) {
+        UITabBarController *lTabController = [self.storyboard instantiateViewControllerWithIdentifier:@"MainTabBar"];
+        [(UINavigationController *)self.rootViewController setNavigationBarHidden:YES];
+        [(UINavigationController*)self.rootViewController pushViewController:lTabController animated:NO];
     }
     
     _leftViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LeftViewController"];

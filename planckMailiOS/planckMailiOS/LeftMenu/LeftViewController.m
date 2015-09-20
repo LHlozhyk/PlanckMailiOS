@@ -12,6 +12,7 @@
 #import "LeftViewCell.h"
 #import "UIView+PMViewCreator.h"
 #import "PMMenuHeaderView.h"
+#import "PMTableViewTabBar.h"
 #import "DBManager.h"
 
 @interface LeftViewController () <PMMenuHeaderViewDelegate> {
@@ -43,16 +44,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftControllerWilSohow) name:kLGSideMenuControllerWillShowLeftViewNotification object:nil];
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    _sectionArray = [[DBManager instance] getNamespaces];
-    [self.tableView reloadData];
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark -
+
+- (void)leftControllerWilSohow {
+    _sectionArray = [[DBManager instance] getNamespaces];
+    [self.tableView reloadData];
+}
 
 - (void)openLeftView {
     [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
@@ -95,37 +100,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    if (indexPath.row == 0)
-//    {
-//        ViewController *viewController = [kNavigationController viewControllers].firstObject;
-//        
-//        UIViewController *viewController2 = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-//        viewController2.title = @"Test";
-//        
-//        [kNavigationController setViewControllers:@[viewController, viewController2]];
-//        
-//        [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
-//    }
-//    else if (indexPath.row == 1)
-//    {
-//        if (![kMainViewController isLeftViewAlwaysVisible])
-//        {
-//            [kMainViewController hideLeftViewAnimated:YES completionHandler:^(void)
-//             {
-//                 [kMainViewController showRightViewAnimated:YES completionHandler:nil];
-//             }];
-//        }
-//        else [kMainViewController showRightViewAnimated:YES completionHandler:nil];
-//    }
-//    else
-//    {
-//        UIViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-//        viewController.title = _titlesArray[indexPath.row];
-//        [kNavigationController pushViewController:viewController animated:YES];
-//        
-//        [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
-//    }
+    [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
+    NSDictionary *lDict = @{@"type_value":[NSNumber numberWithInteger:indexPath.row]};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"setType" object:nil userInfo:lDict];
 }
 
 #pragma mark - PMMenuHeaderView delegate
@@ -135,5 +112,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"MenuNotification" object:_sectionArray[_selectedIndex]];
     [_tableView reloadData];
 }
+
+
+
 
 @end

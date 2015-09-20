@@ -24,8 +24,20 @@
 #import "PMTableViewTabBar.h"
 #import "UIView+PMViewCreator.h"
 #import "PMMessagesTableView.h"
+#import "LeftViewController.h"
 
 #define CELL_IDENTIFIER @"mailCell"
+#define COUNT_MESSAGES 50
+
+typedef NS_ENUM(NSInteger, EEMessagesType) {
+    Inbox,
+    Sent,
+    Drafts,
+    Outbox,
+    Archive,
+    Junk,
+    Deleted
+};
 
 IB_DESIGNABLE
 @interface PMMailVC () <PMMailMenuViewDelegate, PMPreviewMailVCDelegate, PMTableViewTabBarDelegate, PMMessagesTableViewDelegate> {
@@ -47,6 +59,8 @@ IB_DESIGNABLE
     CGRect importantHiddenRect;
     
     selectedMessages _selectedTableType;
+    
+    EEMessagesType _messageType;
 }
 
 - (IBAction)searchBtnPressed:(id)sender;
@@ -67,7 +81,7 @@ IB_DESIGNABLE
     self.title = @"INBOX";
     
     _selectedTableType = ImportantMessagesSelected;
-
+    
     _itemMailArray = [NSMutableArray array];
     _itemReadLaterArray = [NSMutableArray array];
     
@@ -110,12 +124,27 @@ IB_DESIGNABLE
                                              selector:@selector(didGetMyNotification:)
                                                  name:@"MenuNotification"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setType:)
+                                                 name:@"setType"
+                                               object:nil];
     _tableViewTabBar.delegate = self;
+    
+}
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MenuNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"setType" object:nil];
 }
 
 - (void)didGetMyNotification:(NSNotification*)notification {
-
+    
     DBNamespace *lItem = [notification object];
     if (![lItem.namespace_id isEqualToString:_currentNamespaeId]) {
         _offesetMails = 0;
@@ -129,6 +158,62 @@ IB_DESIGNABLE
         [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
         [self updateMails];
     }
+}
+
+- (void)setType:(NSNotification *)notification {
+    EEMessagesType lMessageTpe = [(NSNumber *)[notification.userInfo objectForKey:@"type_value"] integerValue];
+    
+    if (_messageType != lMessageTpe) {
+        
+        if (lMessageTpe == Inbox) {
+            [self showTableViewTabBar];
+        } else {
+            [self hideTableViewTabBar];
+        }
+        _offesetMails = 0;
+        [_itemMailArray removeAllObjects];
+        //[self messagesDidSelect:ImportantMessagesSelected];
+        [_tableViewTabBar selectMessages:ImportantMessagesSelected];
+        [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
+        switch (lMessageTpe) {
+            case Inbox:{
+                [self updateImportant];
+            }
+                break;
+            case Sent:{
+                [self updateMailsWithFilter:@"sent"];
+                [self setTitle:@"SENT"];
+            }
+                break;
+            case Drafts:{
+                [self updateMailsWithFilter:@"drafts"];
+                [self setTitle:@"DRAFTS"];
+            }
+                break;
+            case Outbox:{
+                [self updateMailsWithFilter:@"outbox"];
+                [self setTitle:@"OUTBOX"];
+            }
+                break;
+            case Archive:{
+                [self updateMailsWithFilter:@"archive"];
+                [self setTitle:@"ARCHIVE"];
+            }
+                break;
+            case Junk:{
+                [self updateMailsWithFilter:@"junk"];
+                [self setTitle:@"JUNK"];
+            }
+                break;
+            case Deleted:{
+                
+                [self updateMailsWithFilter:@"trash"];
+                [self setTitle:@"DELETED"];
+            }
+                break;
+        }
+    }
+    _messageType  = lMessageTpe;
 }
 
 - (void)setColor:(UIColor *)color {
@@ -171,30 +256,67 @@ IB_DESIGNABLE
 
 - (void)updateMails {
     if (_selectedTableType == ImportantMessagesSelected) {
-        [self updateImportant];
+        switch (_messageType) {
+            case Inbox:{
+                [self updateImportant];
+            }
+                break;
+            case Sent:{
+                [self updateMailsWithFilter:@"sent"];
+            }
+                break;
+            case Drafts:{
+                [self updateMailsWithFilter:@"drafts"];
+            }
+                break;
+            case Outbox:{
+                [self updateMailsWithFilter:@"outbox"];
+            }
+                break;
+            case Archive:{
+                [self updateMailsWithFilter:@"archive"];
+            }
+                break;
+            case Junk:{
+                [self updateMailsWithFilter:@"junk"];
+            }
+                break;
+            case Deleted:{
+                [self updateMailsWithFilter:@"trash"];
+            }
+                break;
+        }
     } else {
         [self updateReadLater];
     }
 }
 
-- (void)updateImportant{
-    [[PMAPIManager shared] getInboxMailWithAccount:[PMAPIManager shared].namespaceId limit:30 offset:_offesetMails completion:^(id data, id error, BOOL success) {
-        
-        [MBProgressHUD hideHUDForView:[self currentTableView] animated:YES];
+- (void)updateMailsWithFilter:(NSString*)filter {
+    [[PMAPIManager shared] getMailsWithAccount:[PMAPIManager shared].namespaceId limit:COUNT_MESSAGES offset:_offesetMails filter:filter completion:^(id data, id error, BOOL success) {
+        [MBProgressHUD hideHUDForView:_view1 animated:YES];
         [_itemMailArray addObjectsFromArray:[self deleteReadLaterMessagesFromArray:data]];
         [[self currentTableView] reloadMessagesTableView];
-        _offesetMails += 30;
+        _offesetMails += COUNT_MESSAGES;
     }];
-
 }
 
-- (void)updateReadLater{
-    [[PMAPIManager shared] getReadLaterMailWithAccount:[PMAPIManager shared].namespaceId limit:30 offset:_offsetReadLater completion:^(id data, id error, BOOL success) {
+- (void)updateImportant {
+    [[PMAPIManager shared] getInboxMailWithAccount:[PMAPIManager shared].namespaceId limit:COUNT_MESSAGES offset:_offesetMails completion:^(id data, id error, BOOL success) {
         
-        [MBProgressHUD hideAllHUDsForView:[self currentTableView] animated:YES];
+        [MBProgressHUD hideHUDForView:_view1 animated:YES];
+        [_itemMailArray addObjectsFromArray:[self deleteReadLaterMessagesFromArray:data]];
+        [[self currentTableView] reloadMessagesTableView];
+        _offesetMails += COUNT_MESSAGES;
+    }];
+}
+
+- (void)updateReadLater {
+    [[PMAPIManager shared] getReadLaterMailWithAccount:[PMAPIManager shared].namespaceId limit:COUNT_MESSAGES offset:_offsetReadLater completion:^(id data, id error, BOOL success) {
+        
+        [MBProgressHUD hideAllHUDsForView:_view2 animated:YES];
         [_itemReadLaterArray addObjectsFromArray:data];
         [[self currentTableView] reloadMessagesTableView];
-        _offsetReadLater += 30;
+        _offsetReadLater += COUNT_MESSAGES;
     }];
 }
 
@@ -239,7 +361,7 @@ IB_DESIGNABLE
     return _mailMenu;
 }
 
-#pragma mark - PMMessageTableView delegate 
+#pragma mark - PMMessageTableView delegate
 
 - (void)PMMessagesTableViewDelegateupdateData:(PMMessagesTableView *)messagesTableVie {
     [self updateMails];
@@ -321,12 +443,22 @@ IB_DESIGNABLE
 
 #pragma mark - Private methods
 
+- (void)showTableViewTabBar {
+    [_tableViewTabBar.importantMessagesBtn setHidden:NO];
+    [_tableViewTabBar.readLaterMessageBtn setHidden:NO];
+}
+
+- (void)hideTableViewTabBar{
+    [_tableViewTabBar.importantMessagesBtn setHidden:YES];
+    [_tableViewTabBar.readLaterMessageBtn setHidden:YES];
+}
+
 - (NSMutableArray *)deleteReadLaterMessagesFromArray:(NSMutableArray *)array {
     NSMutableArray *lNewArray = [NSMutableArray array];
-   
+    
     for (int i = 0; i < array.count; i++){
         if (![[array objectAtIndex:i] isReadLater]) {
-             [lNewArray addObject:[array objectAtIndex:i]];
+            [lNewArray addObject:[array objectAtIndex:i]];
         }
     }
     

@@ -91,6 +91,62 @@
     }];
 }
 
+- (void)getMailsWithAccount:(id<PMAccountProtocol>)account limit:(NSUInteger)limit offset:(NSUInteger)offset filter:(NSString*)filter completion:(ExtendedBlockHandler)handler {
+    
+    
+    NSDictionary *lParameters = @{@"in" : filter,
+                                  @"limit" : @(limit),
+                                  @"offset" : @(offset)
+                                  };
+    
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager GET:@"/threads" parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
+        
+        NSMutableArray *lResultItems = [NSMutableArray new];
+        NSArray *lResponse = responseObject;
+        for (NSDictionary *item in lResponse) {
+            
+            PMInboxMailModel *lNewItem = [PMInboxMailModel new];
+            lNewItem.snippet = item[@"snippet"];
+            lNewItem.subject = item[@"subject"];
+            lNewItem.namespaceId = item[@"namespace_id"];
+            lNewItem.messageId = item[@"id"];
+            lNewItem.version = [item[@"version"] unsignedIntegerValue];
+            lNewItem.labels = item[@"labels"];
+            lNewItem.isUnread = NO;
+            lNewItem.token = account.token;
+            
+            NSArray *participants = item[@"participants"];
+            
+            for (NSDictionary *user in participants) {
+                if (![user[@"email"] isEqualToString:_emailAddress]) {
+                    lNewItem.ownerName = user[@"name"];
+                    break;
+                }
+            }
+            
+            NSTimeInterval lastTimeStamp = [item[@"last_message_timestamp"] doubleValue];
+            lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
+            
+            NSArray *lTagsArray =  item[@"tags"];
+            
+            for (NSDictionary *itemTag in lTagsArray) {
+                if ([itemTag[@"id"] isEqualToString:@"unread"]) {
+                    lNewItem.isUnread = YES;
+                }
+            }
+            
+            [lResultItems addObject:lNewItem];
+        }
+        handler(lResultItems, nil, YES);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
+    }];
+}
+
+
 - (void)getInboxMailWithAccount:(id<PMAccountProtocol>)account limit:(NSUInteger)limit offset:(NSUInteger)offset completion:(ExtendedBlockHandler)handler {
     
     
@@ -367,13 +423,22 @@
 - (void)renameFolderWithName:(NSString *)newFolderName
                      account:(id<PMAccountProtocol>)account
                     folderId:(NSString *)folderId
-                  comlpetion:(ExtendedBlockHandler)handler{
+                  comlpetion:(ExtendedBlockHandler)handler {
     
     NSDictionary *lParams = @{@"display_name":newFolderName};
     [_networkManager setCurrentToken:account.token];
     [_networkManager PUT:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
         
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+- (void)getCalendarsWithAccount:(id<PMAccountProtocol>)account comlpetion:(ExtendedBlockHandler)handler {
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager GET:@"/calendars" parameters:nil success:^ (NSURLSessionDataTask *task, id responseObjet) {
+        NSLog(@"getCalendarsWithAccount - %@", responseObjet);
+    } failure:^ (NSURLSessionDataTask * task, NSError *error) {
         
     }];
 }
@@ -385,16 +450,15 @@
 - (void)saveToken:(NSString *)token andEmail:(NSString*)email completion:(BasicBlockHandler)handler {
     AFHTTPSessionManager *lNewSessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://token-store-dev.elasticbeanstalk.com/server/"]];
     lNewSessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    lNewSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     [lNewSessionManager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    email = [email stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     
     NSDictionary *lParams = @{@"email_id" : email,
                               @"token" : token,
                               @"access_token" : @"planck_test"
                               };
     
-    [lNewSessionManager POST:@"save_token?'" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
+    [lNewSessionManager POST:@"save_token" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"saveToken -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         if(handler) {
             handler(nil, YES);
@@ -410,17 +474,16 @@
 - (void)getTokenWithEmail:(NSString *)email completion:(BasicBlockHandler)handler {
     AFHTTPSessionManager *lNewSessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://token-store-dev.elasticbeanstalk.com/server/"]];
     lNewSessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    lNewSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     [lNewSessionManager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    email = [email stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     
     NSDictionary *lParams = @{@"email_id" : email,
                               @"access_token" : @"planck_test"
                               };
     
-    
-    
     [lNewSessionManager POST:@"get_token" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"saveToken -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        NSLog(@"getTokenWithEmail -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         if(handler) {
             handler(nil, YES);
         }
@@ -428,21 +491,21 @@
         if(handler) {
             handler(nil, NO);
         }
-        NSLog(@"saveToken - ftask - %@  / error - %@", task, error);
+        NSLog(@"getTokenWithEmail - ftask - %@  / error - %@", task, error);
     }];
 }
 
 - (void)deleteTokenWithEmail:(NSString *)email completion:(BasicBlockHandler)handler {
     AFHTTPSessionManager *lNewSessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://token-store-dev.elasticbeanstalk.com/server/"]];
     lNewSessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    lNewSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     [lNewSessionManager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    email = [email stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     NSDictionary *lParams = @{@"email_id" : email,
                               @"access_token" : @"planck_test"
                               };
     
     [lNewSessionManager POST:@"delete_token" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"saveToken -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        NSLog(@"deleteTokenWithEmail -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         if(handler) {
             handler(nil, YES);
         }
@@ -450,7 +513,7 @@
         if(handler) {
             handler(nil, NO);
         }
-        NSLog(@"saveToken - ftask - %@  / error - %@", task, error);
+        NSLog(@"deleteTokenWithEmail - ftask - %@  / error - %@", task, error);
     }];
 }
 

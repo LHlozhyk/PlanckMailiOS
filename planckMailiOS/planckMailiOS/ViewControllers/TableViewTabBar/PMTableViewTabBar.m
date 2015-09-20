@@ -41,6 +41,10 @@
     }
 }
 
+- (void)hideButtons{
+    [_importantMessagesBtn setHidden:YES];
+    [_readLaterMessageBtn setHidden:YES];
+}
 
 - (IBAction)importantBtnTaped:(id)sender {
     [self selectMessages:ImportantMessagesSelected];

@@ -74,7 +74,17 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                     folderId:(NSString *)folderId
                   comlpetion:(ExtendedBlockHandler)handler;
 
+- (void)deleteTokenWithEmail:(NSString *)email
+                  completion:(BasicBlockHandler)handler;
 
+- (void)getMailsWithAccount:(id<PMAccountProtocol>)account
+                      limit:(NSUInteger)limit
+                     offset:(NSUInteger)offset
+                     filter:(NSString*)filter
+                 completion:(ExtendedBlockHandler)handler;
+
+- (void)getCalendarsWithAccount:(id<PMAccountProtocol>)account
+                     comlpetion:(ExtendedBlockHandler)handler;
 
 @property (nonatomic, readonly) DBNamespace *namespaceId;
 @property (nonatomic, readonly) NSString *emailAddress;

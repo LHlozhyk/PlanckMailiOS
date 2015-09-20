@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, selectedMessages) {
 @property (nonatomic, weak) UIView *line;
 
 - (void)selectMessages:(selectedMessages)messages;
+- (void)hideButtons;
 
 - (IBAction)importantBtnTaped:(id)sender;
 - (IBAction)readLaterBtnTaped:(id)sender;

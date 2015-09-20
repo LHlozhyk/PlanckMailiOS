@@ -80,11 +80,12 @@
 - (void)reloadMessagesTableView {
     if (_delegate && [_delegate respondsToSelector:@selector(PMMessagesTableViewDelegateGetData:)]) {
         NSArray *lItemArray = [_delegate PMMessagesTableViewDelegateGetData:self];
-        if (lItemArray != nil && lItemArray.count > 0) {
-            
+        if (lItemArray != nil) {
             _itemMailArray = lItemArray;
-            [_tableView reloadData];
+        } else {
+            _itemMailArray = [NSArray array];
         }
+        [_tableView reloadData];
     }
 }
 
