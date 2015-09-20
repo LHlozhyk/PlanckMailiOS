@@ -13,6 +13,10 @@
     
     IBOutlet UITableView *_tableiew;
     IBOutlet NSLayoutConstraint *_tableViewTop;
+    
+    IBOutlet UISwitch *_allDaySwitch;
+    IBOutlet UITextField *_titleTF;
+    IBOutlet UITextField *_locationTF;
 }
 - (IBAction)cancelBtnPressed:(id)sender;
 - (IBAction)doneBtnPressed:(id)sender;
@@ -32,8 +36,6 @@
                    @"eventInviteesCell",
                    @"eventNotesCell"
                    ];
-    
-    
     [_tableiew setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
@@ -64,15 +66,8 @@
 #pragma mark - Private methods
 
 - (void)keyboardWillShow:(NSNotification*)notification {
-    NSLog(@"keyboardWillShow - %@", notification.userInfo);
-    
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    NSLog(@"keyboardSize - %@", NSStringFromCGSize(keyboardSize));
-    
     _tableViewTop.constant = -keyboardSize.height + 45;
-    
-    [self updateViewConstraints];
     
     [UIView animateWithDuration:0.25f animations:^{
         [self.view setNeedsLayout];
@@ -80,15 +75,7 @@
 }
 
 - (void)keyboardWillHide:(NSNotification*)notification {
-    NSLog(@"keyboardWillShow - %@", notification.userInfo);
-    
-    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    NSLog(@"keyboardSize - %@", NSStringFromCGSize(keyboardSize));
-    
     _tableViewTop.constant = 0;
-    
-    [self updateViewConstraints];
     
     [UIView animateWithDuration:0.25f animations:^{
         [self.view setNeedsLayout];
@@ -141,7 +128,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *lCellIdentifier = nil;
-    
     id lItem = _itemArray[indexPath.section];
     if ([lItem isKindOfClass:[NSArray class]]) {
         lCellIdentifier = ((NSArray*)lItem)[indexPath.row];
@@ -157,7 +143,7 @@
 #pragma mark - TableView delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

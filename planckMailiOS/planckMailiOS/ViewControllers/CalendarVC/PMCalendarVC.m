@@ -10,12 +10,15 @@
 
 #import "UIViewController+PMStoryboard.h"
 #import "PMCreateEventVC.h"
+#import "PMEventDetailsVC.h"
 
 #import "LIYDateTimePickerViewController.h"
 #import "LIYCalendarPickerViewController.h"
 #import "PMAPIManager.h"
 
-@interface PMCalendarVC ()
+@interface PMCalendarVC () <UITableViewDelegate, UITableViewDataSource> {
+    IBOutlet UITableView *_tableView;
+}
 - (IBAction)menuBtnPressed:(id)sender;
 - (IBAction)createEventBtnPressed:(id)sender;
 @end
@@ -33,6 +36,7 @@
         
     }];
     
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 //    LIYDateTimePickerViewController *vc = [LIYDateTimePickerViewController timePickerForDate:[NSDate date] delegate:nil];
 //    vc.showCalendarPickerButton = YES;
 //    vc.showEventTimes = YES;
@@ -47,6 +51,25 @@
     
 }
 
+#pragma mark - TableView data source 
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 15;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *lCell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
+    return lCell;
+}
+
+#pragma mark - TableView delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    PMEventDetailsVC *lDetailEventVC = [[PMEventDetailsVC alloc] initWithStoryboard];
+    [self.navigationController pushViewController:lDetailEventVC animated:YES];
+}
+
 #pragma mark - IBAction selectors
 
 - (IBAction)menuBtnPressed:(id)sender {
@@ -55,7 +78,10 @@
 
 - (IBAction)createEventBtnPressed:(id)sender {
     PMCreateEventVC *lNewEventVC = [[PMCreateEventVC alloc] initWithStoryboard];
-    [self.tabBarController presentViewController:lNewEventVC animated:YES completion:nil];
+    UINavigationController *lNavContoller = [[UINavigationController alloc] initWithRootViewController:lNewEventVC];
+    lNavContoller.navigationBarHidden = YES;
+    [lNewEventVC setTitle:@"New Event"];
+    [self.tabBarController presentViewController:lNavContoller animated:YES completion:nil];
 }
 
 

@@ -12,6 +12,10 @@
 		84067D531B55E04400B4DB1E /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
 		84067D541B55E13500B4DB1E /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
 		840D8C8F1BAEBDF8001C8B60 /* PMEventDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8C8E1BAEBDF8001C8B60 /* PMEventDetailsVC.m */; };
+		840D8C931BAF4E8C001C8B60 /* PMEventAlertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8C921BAF4E8C001C8B60 /* PMEventAlertVC.m */; };
+		840D8C981BAF5DDD001C8B60 /* PMTextFieldTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8C971BAF5DDD001C8B60 /* PMTextFieldTVCell.m */; };
+		840D8C9B1BAF5E3C001C8B60 /* PMSwitchTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8C9A1BAF5E3C001C8B60 /* PMSwitchTVCell.m */; };
+		840D8C9F1BAF6425001C8B60 /* PMEventCalendarListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8C9E1BAF6425001C8B60 /* PMEventCalendarListVC.m */; };
 		842E2FEA1AFEB13400B0C8DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E2FE91AFEB13400B0C8DB /* main.m */; };
 		842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E2FEC1AFEB13400B0C8DB /* AppDelegate.m */; };
 		842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842E2FF11AFEB13400B0C8DB /* Main.storyboard */; };
@@ -154,6 +158,14 @@
 		840156DB1B27A51600E92CA7 /* PMPreviewMailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewMailVC.m; path = ViewControllers/PreviewMailVC/PMPreviewMailVC.m; sourceTree = "<group>"; };
 		840D8C8D1BAEBDF8001C8B60 /* PMEventDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMEventDetailsVC.h; path = ViewControllers/EventDetailsVC/PMEventDetailsVC.h; sourceTree = "<group>"; };
 		840D8C8E1BAEBDF8001C8B60 /* PMEventDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMEventDetailsVC.m; path = ViewControllers/EventDetailsVC/PMEventDetailsVC.m; sourceTree = "<group>"; };
+		840D8C911BAF4E8C001C8B60 /* PMEventAlertVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMEventAlertVC.h; path = ViewControllers/EventAlertVC/PMEventAlertVC.h; sourceTree = "<group>"; };
+		840D8C921BAF4E8C001C8B60 /* PMEventAlertVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMEventAlertVC.m; path = ViewControllers/EventAlertVC/PMEventAlertVC.m; sourceTree = "<group>"; };
+		840D8C961BAF5DDD001C8B60 /* PMTextFieldTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTextFieldTVCell.h; path = ViewControllers/CreateEventVC/TextFieldTVCell/PMTextFieldTVCell.h; sourceTree = "<group>"; };
+		840D8C971BAF5DDD001C8B60 /* PMTextFieldTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTextFieldTVCell.m; path = ViewControllers/CreateEventVC/TextFieldTVCell/PMTextFieldTVCell.m; sourceTree = "<group>"; };
+		840D8C991BAF5E3C001C8B60 /* PMSwitchTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMSwitchTVCell.h; path = ViewControllers/CreateEventVC/SwitchTVCell/PMSwitchTVCell.h; sourceTree = "<group>"; };
+		840D8C9A1BAF5E3C001C8B60 /* PMSwitchTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMSwitchTVCell.m; path = ViewControllers/CreateEventVC/SwitchTVCell/PMSwitchTVCell.m; sourceTree = "<group>"; };
+		840D8C9D1BAF6425001C8B60 /* PMEventCalendarListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMEventCalendarListVC.h; path = ViewControllers/EventCalendarListVC/PMEventCalendarListVC.h; sourceTree = "<group>"; };
+		840D8C9E1BAF6425001C8B60 /* PMEventCalendarListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMEventCalendarListVC.m; path = ViewControllers/EventCalendarListVC/PMEventCalendarListVC.m; sourceTree = "<group>"; };
 		842E2FE41AFEB13400B0C8DB /* planckMailiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = planckMailiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842E2FE81AFEB13400B0C8DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842E2FE91AFEB13400B0C8DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -379,6 +391,42 @@
 			name = EventDetailsVC;
 			sourceTree = "<group>";
 		};
+		840D8C901BAF4E43001C8B60 /* EventAlertVC */ = {
+			isa = PBXGroup;
+			children = (
+				840D8C911BAF4E8C001C8B60 /* PMEventAlertVC.h */,
+				840D8C921BAF4E8C001C8B60 /* PMEventAlertVC.m */,
+			);
+			name = EventAlertVC;
+			sourceTree = "<group>";
+		};
+		840D8C941BAF5CDA001C8B60 /* SwitchTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				840D8C991BAF5E3C001C8B60 /* PMSwitchTVCell.h */,
+				840D8C9A1BAF5E3C001C8B60 /* PMSwitchTVCell.m */,
+			);
+			name = SwitchTVCell;
+			sourceTree = "<group>";
+		};
+		840D8C951BAF5D07001C8B60 /* TextFieldTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				840D8C961BAF5DDD001C8B60 /* PMTextFieldTVCell.h */,
+				840D8C971BAF5DDD001C8B60 /* PMTextFieldTVCell.m */,
+			);
+			name = TextFieldTVCell;
+			sourceTree = "<group>";
+		};
+		840D8C9C1BAF63A2001C8B60 /* EventCalendarListVC */ = {
+			isa = PBXGroup;
+			children = (
+				840D8C9D1BAF6425001C8B60 /* PMEventCalendarListVC.h */,
+				840D8C9E1BAF6425001C8B60 /* PMEventCalendarListVC.m */,
+			);
+			name = EventCalendarListVC;
+			sourceTree = "<group>";
+		};
 		842E2FDB1AFEB13300B0C8DB = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +499,8 @@
 		8431BB251BAE059900C8F6DC /* CalendarViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				840D8C9C1BAF63A2001C8B60 /* EventCalendarListVC */,
+				840D8C901BAF4E43001C8B60 /* EventAlertVC */,
 				840D8C8C1BAEBD8E001C8B60 /* EventDetailsVC */,
 				8431BB261BAE05B800C8F6DC /* CreateEventVC */,
 				8479B71A1B11B962006E4235 /* CalendarVC */,
@@ -461,6 +511,8 @@
 		8431BB261BAE05B800C8F6DC /* CreateEventVC */ = {
 			isa = PBXGroup;
 			children = (
+				840D8C951BAF5D07001C8B60 /* TextFieldTVCell */,
+				840D8C941BAF5CDA001C8B60 /* SwitchTVCell */,
 				8431BB271BAE062500C8F6DC /* PMCreateEventVC.h */,
 				8431BB281BAE062500C8F6DC /* PMCreateEventVC.m */,
 			);
@@ -1377,6 +1429,7 @@
 				84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */,
 				848E6F901B94846000EA935D /* LGSideMenuController.m in Sources */,
 				84ECA4341B13550D00770F88 /* OPDataLoader.m in Sources */,
+				840D8C9B1BAF5E3C001C8B60 /* PMSwitchTVCell.m in Sources */,
 				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
 				840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */,
 				8478A0571B36A1C4003C09AF /* PMPreviewMailTVCell.m in Sources */,
@@ -1388,6 +1441,7 @@
 				848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */,
 				84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */,
 				846096171B13061400924B61 /* CLContactLibrary.m in Sources */,
+				840D8C931BAF4E8C001C8B60 /* PMEventAlertVC.m in Sources */,
 				847D87D11B4334EE0044A676 /* PMSearchMailVC.m in Sources */,
 				8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */,
 				847B60FA1B617A7B0025DF58 /* PMMailComposeBodyTVCell.m in Sources */,
@@ -1396,6 +1450,7 @@
 				84A9A0E01B52C6A80005F5AF /* PMMessageModel.m in Sources */,
 				84A9E3731B5F02DD009DD409 /* PMMailComposeVC.m in Sources */,
 				847D68271B43A87B005FE7EF /* PMSearchMailTVCell.m in Sources */,
+				840D8C9F1BAF6425001C8B60 /* PMEventCalendarListVC.m in Sources */,
 				84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */,
 				848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */,
 				8483D5BB1B94F671008E8B6A /* PMMenuHeaderView.m in Sources */,
@@ -1424,6 +1479,7 @@
 				C35BC1DF1B5EF9D100CCDC4D /* PMTypeContainer.m in Sources */,
 				84ECA4301B13500000770F88 /* DBNamespace.m in Sources */,
 				8431BB291BAE062500C8F6DC /* PMCreateEventVC.m in Sources */,
+				840D8C981BAF5DDD001C8B60 /* PMTextFieldTVCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
