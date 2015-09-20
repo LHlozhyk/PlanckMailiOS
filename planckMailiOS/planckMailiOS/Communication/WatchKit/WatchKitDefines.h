@@ -26,15 +26,16 @@
 #define LIMIT_COUNT 10
 
 typedef NS_ENUM(NSInteger, PMWatchRequestType) {
-  PMWatchRequestAccounts,
-  PMWatchRequestGetEmails,
-  PMWatchRequestGetEmailDetails,
-  PMWatchRequestReply,
-  PMWatchRequestGetContacts,
-  PMWatchRequestCall,
-  PMWatchRequestSendSMS,
-  PMWatchRequestGetUnreadEmailsCount,
-  PMWatchRequestGetUnreadEmails
+    PMWatchRequestAccounts,
+    PMWatchRequestGetEmails,
+    PMWatchRequestGetEmailDetails,
+    PMWatchRequestReply,
+    PMWatchRequestGetContacts,
+    PMWatchRequestGetContactInfo,
+    PMWatchRequestCall,
+    PMWatchRequestSendSMS,
+    PMWatchRequestGetUnreadEmailsCount,
+    PMWatchRequestGetUnreadEmails
 };
 
 #endif

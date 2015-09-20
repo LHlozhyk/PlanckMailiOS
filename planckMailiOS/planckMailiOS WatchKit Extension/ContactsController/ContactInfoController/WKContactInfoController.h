@@ -8,9 +8,12 @@
 
 #import <WatchKit/WatchKit.h>
 #import <Foundation/Foundation.h>
+#import "WKBaseController.h"
 
 #define CONTACTS_INFO_IDENT @"contactInfoController"
 
-@interface WKContactInfoController : WKInterfaceController
+@interface WKContactInfoController : WKBaseController
+
+- (instancetype)initWithContactNames:(NSDictionary *)names;
 
 @end

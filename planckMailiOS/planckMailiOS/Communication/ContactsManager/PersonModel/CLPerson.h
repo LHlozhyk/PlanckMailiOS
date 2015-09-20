@@ -12,6 +12,9 @@
 #define PHONE_NUMBER @"phone_number"
 #define PHONE_TITLE @"phone_title"
 
+#define PERSON_NAME         @"person_name"
+#define PERSON_SECOND_NAME  @"person_second_name"
+
 @interface CLPerson : NSObject <NSSecureCoding>
 
 @property (nonatomic,strong) NSString *firstName;

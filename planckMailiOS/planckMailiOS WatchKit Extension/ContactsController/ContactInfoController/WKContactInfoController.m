@@ -25,21 +25,38 @@
 
 @implementation WKContactInfoController
 
+- (instancetype)initWithContactNames:(NSDictionary *)names {
+    self = [super init];
+    if(self) {
+        
+    }
+    return self;
+}
+
 - (void)awakeWithContext:(id)context {
     [super awakeWithContext:context];
     
-    person = context[CONTENT];
-    
-    if([person.phoneNumbers count] == 0) {
-        [_callButton setEnabled:NO];
-        [_messageButton setEnabled:NO];
+    [self showActivityIndicator:YES];
+    NSDictionary *contactNames = context[CONTENT];
+    if(contactNames) {
+        [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE:@(PMWatchRequestGetContactInfo),
+                                                       WK_REQUEST_INFO: contactNames}
+                                               reply:^(id replyInfo, NSError *error) {
+            NSData *responceObj = replyInfo[WK_REQUEST_RESPONSE];
+            if(responceObj) {
+                person = [NSKeyedUnarchiver unarchiveObjectWithData:responceObj];
+                [_callButton setEnabled:[person.phoneNumbers count] > 0];
+                [_messageButton setEnabled:[person.phoneNumbers count] > 0];
+                
+                [self updateUserInfo];
+           }
+                                                   
+           [self showActivityIndicator:NO];
+        }];
     }
-    
-    [self updateUserInfo];
 }
 
 - (void)willActivate {
-    // This method is called when watch view controller is about to be visible to user
     [super willActivate];
 }
 

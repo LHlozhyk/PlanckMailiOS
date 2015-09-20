@@ -46,33 +46,32 @@
       NSData *emailData = [NSKeyedArchiver archivedDataWithRootObject:inboxModel];
       [WKInterfaceController openParentApplication:@{WK_REQUEST_TYPE:@(PMWatchRequestGetEmailDetails), WK_REQUEST_INFO:emailData}
                                              reply:^(id replyInfo, NSError *error) {
-       //remove htmp tags
-       @autoreleasepool {
-         inboxModel.isUnread = NO;
-         
-         if([replyInfo isKindOfClass:[NSArray class]]) {
-           __self.dataSource = [NSMutableArray new];
-           __self.emailsDictionaries = [NSMutableArray new];
-           for(NSDictionary *item in replyInfo) {
-             PMInboxMailModel *lNewItem = [PMInboxMailModel new];
-             lNewItem.snippet = item[@"snippet"];
-             lNewItem.subject = item[@"subject"];
-             lNewItem.namespaceId = item[@"namespace_id"];
-             lNewItem.messageId = item[@"id"];
-             lNewItem.version = 1;
-             lNewItem.ownerName = [item[@"from"] firstObject][@"name"];
-             lNewItem.isUnread = NO;
-             NSTimeInterval lastTimeStamp = [item[@"date"] doubleValue];
-             lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
-             
-             [__self.dataSource addObject:lNewItem];
-             [__self.emailsDictionaries addObject:item];
-             
-             [__self reloadTableView];
-             [__self showActivityIndicator:NO];
-           }
-         }
-       }
+        @autoreleasepool {
+            inboxModel.isUnread = NO;
+            
+            if([replyInfo isKindOfClass:[NSArray class]]) {
+                __self.dataSource = [NSMutableArray new];
+                __self.emailsDictionaries = [NSMutableArray new];
+                for(NSDictionary *item in replyInfo) {
+                    PMInboxMailModel *lNewItem = [PMInboxMailModel new];
+                    lNewItem.snippet = item[@"snippet"];
+                    lNewItem.subject = item[@"subject"];
+                    lNewItem.namespaceId = item[@"namespace_id"];
+                    lNewItem.messageId = item[@"id"];
+                    lNewItem.version = 1;
+                    lNewItem.ownerName = [item[@"from"] firstObject][@"name"];
+                    lNewItem.isUnread = NO;
+                    NSTimeInterval lastTimeStamp = [item[@"date"] doubleValue];
+                    lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
+                    
+                    [__self.dataSource addObject:lNewItem];
+                    [__self.emailsDictionaries addObject:item];
+                    
+                    [__self reloadTableView];
+                    [__self showActivityIndicator:NO];
+                }
+            }
+        }
       }];
     } else {
       _selectedAccount = context[CONTENT];

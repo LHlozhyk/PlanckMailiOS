@@ -12,6 +12,6 @@
 
 - (UIImage *)getScaledImage;
 - (UIImage *)makeRoundedWithRadius: (float) radius;
-- (UIImage *)roundCornersOfImage:(UIImage *)source;
+- (UIImage *)roundCorners;
 
 @end

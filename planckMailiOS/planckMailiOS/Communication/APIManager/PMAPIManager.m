@@ -155,6 +155,7 @@
                                   @"offset" : @(offset)
                                   };
     
+    NSString *namespace_id = [account namespace_id];
     [_networkManager setCurrentToken:account.token];
     [_networkManager GET:@"/threads" parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
@@ -166,7 +167,7 @@
             PMInboxMailModel *lNewItem = [PMInboxMailModel new];
             lNewItem.snippet = item[@"snippet"];
             lNewItem.subject = item[@"subject"];
-            lNewItem.namespaceId = item[@"namespace_id"];
+            lNewItem.namespaceId = item[@"namespace_id"]?:namespace_id;
             lNewItem.messageId = item[@"id"];
             lNewItem.version = [item[@"version"] unsignedIntegerValue];
             lNewItem.labels = item[@"labels"];

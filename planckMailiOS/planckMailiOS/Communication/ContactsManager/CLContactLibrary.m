@@ -9,6 +9,8 @@
 #import "CLContactLibrary.h"
 #import "UIImage+ImageSize.h"
 
+#define kSAVED_CONTACTS_ARRAY_KEY @"contacts_array_key"
+
 @implementation CLContactLibrary{
     NSMutableArray *contactDataArray;
 }
@@ -24,16 +26,54 @@ static CLContactLibrary  *object;
 }
 
 -(void)getContactArrayForDelegate:(id<APContactLibraryDelegate>)aDelegate {
-  self.delegate = aDelegate;
+    self.delegate = aDelegate;
   
-    contactDataArray = [[NSMutableArray alloc]init];
-    
-    [self fetchContacts:^(NSArray *contacts) {
-        
-        BOOL useLittleImage = NO;
-        if([aDelegate respondsToSelector:@selector(shouldScaleImage)]) {
-            useLittleImage = [aDelegate shouldScaleImage];
+    [self fetchContactsWithCompletion:^{
+        if([delegate respondsToSelector:@selector(apGetContactArray:)]) {
+            [delegate apGetContactArray:[contactDataArray copy]];
         }
+    }];
+}
+
+- (void)getContactArray {
+  [self getContactArrayForDelegate:self.delegate];
+}
+
+- (void)getContactsNamesForDelegate:(id<APContactLibraryDelegate>)aDelegate {
+    self.delegate = aDelegate;
+    NSArray *savedContacts = [[NSUserDefaults standardUserDefaults] arrayForKey:kSAVED_CONTACTS_ARRAY_KEY];
+    if(savedContacts) {
+        [self parseContactsNames];
+    } else {
+        [self fetchContactsWithCompletion:^{
+            [self parseContactsNames];
+        }];
+    }
+}
+
+- (void)getPersonForContactNames:(NSDictionary *)names forDelegate:(id<APContactLibraryDelegate>)aDelegate {
+    self.delegate = aDelegate;
+    
+    if(names) {
+        NSArray *savedContacts = [[NSUserDefaults standardUserDefaults] arrayForKey:kSAVED_CONTACTS_ARRAY_KEY];
+        if(savedContacts) {
+            [self.delegate getPersonForNames:[self personForNames:names]];
+        } else {
+            [self fetchContactsWithCompletion:^{
+                [self.delegate getPersonForNames:[self personForNames:names]];
+            }];
+        }
+    } else {
+        [self.delegate getPersonForNames:nil];
+    }
+}
+
+#pragma mark - Private methods
+
+- (void)fetchContactsWithCompletion:(void(^)())completion {
+    contactDataArray = [[NSMutableArray alloc]init];
+    [self fetchContacts:^(NSArray *contacts) {
+        NSMutableArray *archivedPersons = [NSMutableArray new];
         [contacts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             ABRecordRef person = (__bridge ABRecordRef)obj;
             ABMultiValueRef emails  = ABRecordCopyValue(person, kABPersonEmailProperty);
@@ -51,59 +91,101 @@ static CLContactLibrary  *object;
             
             ABMultiValueRef phoneNumbers = ABRecordCopyValue(person,
                                                              kABPersonPhoneProperty);
-          
+            
             NSInteger phonesCount = ABMultiValueGetCount(phoneNumbers);
             if (phonesCount > 0) {
                 people.phoneNumber = (__bridge_transfer NSString*)ABMultiValueCopyValueAtIndex(phoneNumbers, 0);
-              
-              //get array of phone numbers
-              NSMutableArray *personsPhonnes = [NSMutableArray new];
-              for(int i = 0; i < phonesCount; i++) {
-                NSMutableDictionary *personsPhonne = [NSMutableDictionary new];
                 
-                NSString *usersPhoneNumber = (__bridge_transfer NSString*)ABMultiValueCopyValueAtIndex(phoneNumbers, i);
-                if(usersPhoneNumber) {
-                  [personsPhonne setObject:usersPhoneNumber forKey:PHONE_NUMBER];
+                //get array of phone numbers
+                NSMutableArray *personsPhonnes = [NSMutableArray new];
+                for(int i = 0; i < phonesCount; i++) {
+                    NSMutableDictionary *personsPhonne = [NSMutableDictionary new];
+                    //phone number
+                    NSString *usersPhoneNumber = (__bridge_transfer NSString*)ABMultiValueCopyValueAtIndex(phoneNumbers, i);
+                    if(usersPhoneNumber) {
+                        [personsPhonne setObject:usersPhoneNumber forKey:PHONE_NUMBER];
+                    }
+                    //phone title
+                    CFStringRef userPhoneLabel = ABMultiValueCopyLabelAtIndex(phoneNumbers, i);
+                    if(userPhoneLabel) {
+                        NSString *phoneLabelLocalized = (__bridge_transfer NSString*)ABAddressBookCopyLocalizedLabel(userPhoneLabel);
+                        if(phoneLabelLocalized) {
+                            [personsPhonne setObject:phoneLabelLocalized forKey:PHONE_TITLE];
+                        }
+                    }
+                    [personsPhonnes addObject:personsPhonne];
                 }
-                
-                CFStringRef userPhoneLabel = ABMultiValueCopyLabelAtIndex(phoneNumbers, i);
-                if(userPhoneLabel) {
-                  NSString *phoneLabelLocalized = (__bridge_transfer NSString*)ABAddressBookCopyLocalizedLabel(userPhoneLabel);
-                  if(phoneLabelLocalized) {
-                    [personsPhonne setObject:phoneLabelLocalized forKey:PHONE_TITLE];
-                  }
-                }
-                [personsPhonnes addObject:personsPhonne];
-              }
-              people.phoneNumbers = personsPhonnes;
+                people.phoneNumbers = personsPhonnes;
             } else {
                 people.phoneNumber = @"None";
             }
             
             people.email = (__bridge_transfer NSString *)ABMultiValueCopyValueAtIndex(emails, 0);
             UIImage *personImage = [UIImage imageWithData:(__bridge NSData *)ABPersonCopyImageData(person)];
-            if(useLittleImage) {
-                personImage = [personImage getScaledImage];
-                personImage = [personImage roundCornersOfImage:personImage];
-                if(idx == 49) {
-                    *stop = YES;
-                }
-            }
             people.personImage = personImage;
             people.fullName = [NSString stringWithFormat:@"%@ %@", people.firstName, people.lastName];
             [contactDataArray addObject:people];
-            people = nil;
             
+            [archivedPersons addObject:[NSKeyedArchiver archivedDataWithRootObject:people]];
         }];
         
-        [delegate apGetContactArray:[contactDataArray copy]];
+        [[NSUserDefaults standardUserDefaults] setObject:archivedPersons forKey:kSAVED_CONTACTS_ARRAY_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        if(completion) {
+            completion();
+        }
     } failure:^(NSError *error) {
-      [delegate apGetContactArray:nil];
+        if(completion) {
+            completion();
+        }
     }];
 }
 
-- (void)getContactArray {
-  [self getContactArrayForDelegate:self.delegate];
+- (void)parseContactsNames {
+    /*
+     if([self.delegate respondsToSelector:@selector(shouldScaleImage)]) {
+     useLittleImage = [self.delegate shouldScaleImage];
+     }
+     personImage = [personImage getScaledImage];
+     personImage = [personImage roundCornersOfImage:personImage];
+     */
+    
+    NSArray *savedContacts = [[NSUserDefaults standardUserDefaults] arrayForKey:kSAVED_CONTACTS_ARRAY_KEY];
+    NSMutableArray *personsArray = [NSMutableArray new];
+    
+    for(NSData *archivedItem in savedContacts) {
+        CLPerson *person = [NSKeyedUnarchiver unarchiveObjectWithData:archivedItem];
+        if(person) {
+            NSDictionary *personNames = @{PERSON_NAME: person.firstName?:@"",
+                                          PERSON_SECOND_NAME: person.lastName?:@""};
+            [personsArray addObject:personNames];
+        }
+    }
+    
+    if([self.delegate respondsToSelector:@selector(getNamesOfContacts:)]) {
+        [self.delegate getNamesOfContacts:personsArray];
+    }
+}
+
+- (CLPerson *)personForNames:(NSDictionary *)names {
+    CLPerson *person = nil;
+    
+    NSArray *savedContacts = [[NSUserDefaults standardUserDefaults] arrayForKey:kSAVED_CONTACTS_ARRAY_KEY];
+    for(NSData *savedPerson in savedContacts) {
+        person = [NSKeyedUnarchiver unarchiveObjectWithData:savedPerson];
+        
+        if([person.firstName isEqualToString:names[PERSON_NAME]] &&
+           [person.lastName isEqualToString:names[PERSON_SECOND_NAME]]) {
+            if(person.personImage) {
+                person.personImage = [[person.personImage getScaledImage] roundCorners];
+            }
+            
+            break;
+        }
+    }
+    
+    return person;
 }
 
 #pragma mark - AddressBook Delegate Method

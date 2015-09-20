@@ -85,9 +85,9 @@
   [self.tableView setNumberOfRows:[_dataSource count] withRowType:CONTACT_ROW_IDENT];
   
   NSInteger i = 0;
-  for(CLPerson *person in _dataSource) {
+  for(NSDictionary *person in _dataSource) {
     WKContactRow *row = [self.tableView rowControllerAtIndex:i++];
-    [row setContactFirstName:person.firstName lastName:person.lastName];
+    [row setContactFirstName:person[PERSON_NAME] lastName:person[PERSON_SECOND_NAME]];
   }
 }
 
