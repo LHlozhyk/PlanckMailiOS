@@ -16,7 +16,8 @@
 @implementation PMTextFieldTVCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    [super awakeFromNib];
+    [_textField setDelegate:self];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -25,5 +26,21 @@
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == _textField) {
+        [textField resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(PMTextFieldTVCellDelegate:textDidChange:)]) {
+        [_delegate PMTextFieldTVCellDelegate:self textDidChange:[NSString stringWithFormat:@"%@%@", textField.text, string]];
+    }
+    return YES;
+}
 
 @end

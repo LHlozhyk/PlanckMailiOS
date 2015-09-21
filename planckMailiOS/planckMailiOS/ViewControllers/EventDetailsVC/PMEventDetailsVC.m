@@ -8,7 +8,11 @@
 
 #import "PMEventDetailsVC.h"
 
-@interface PMEventDetailsVC ()
+@interface PMEventDetailsVC () <UITableViewDelegate, UITableViewDataSource> {
+    IBOutlet UITableView *_tableView;
+    
+    NSArray *_itemsArray;
+}
 
 @end
 
@@ -16,13 +20,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTitle:@"Event Detail"];
-    // Do any additional setup after loading the view.
+    [self setTitle:@"Event Details"];
+    
+    _itemsArray = @[@"titleInfo", @"acceptTitle", @"locationCell", @"timeCell", @"organizerCell", @"inviteesCell"];
+    [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITableView data source
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *lCell = [tableView dequeueReusableCellWithIdentifier:_itemsArray[indexPath.row]];
+    
+    return lCell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _itemsArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([_itemsArray[indexPath.row] isEqualToString:@"titleInfo"]) {
+        return 100;
+    }
+    return 44;
 }
 
 @end

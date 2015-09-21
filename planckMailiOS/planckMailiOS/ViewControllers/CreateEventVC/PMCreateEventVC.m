@@ -11,9 +11,12 @@
 #import "PMEventModel.h"
 #import "PMAPIManager.h"
 
+#import "PMTextFieldTVCell.h"
+#import "PMSwitchTVCell.h"
+
 #import "MBProgressHUD.h"
 
-@interface PMCreateEventVC () <PickerCellsDelegate, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface PMCreateEventVC () <PickerCellsDelegate, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, PMSwitchTVCellDelegate, PMTextFieldTVCellDelegate> {
     NSArray *_itemArray;
     
     IBOutlet UITableView *_tableiew;
@@ -24,6 +27,7 @@
     IBOutlet UITextField *_locationTF;
 }
 @property(nonatomic, strong) PickerCellsController *pickersController;
+@property(nonatomic, strong) PMEventModel *eventModel;
 
 - (IBAction)cancelBtnPressed:(id)sender;
 - (IBAction)doneBtnPressed:(id)sender;
@@ -33,6 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _eventModel = [PMEventModel new];
     
     _itemArray = @[
                        @"eventTitleCell",
@@ -113,6 +119,7 @@
 
 - (void)createEvent {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //NSDictionary *lEventParams = [_eventModel getEventParams];
     [[PMAPIManager shared] createCalendarEventWithAccount:[[PMAPIManager shared] namespaceId] eventParams:nil comlpetion:^(id data, id error, BOOL success) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -128,7 +135,8 @@
 }
 
 - (void)doneBtnPressed:(id)sender {
-    [self createEvent];
+   // [self createEvent];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -175,11 +183,14 @@
     id picker = [self.pickersController pickerForOwnerCellIndexPath:indexPath];
     if (picker) {
         if ([picker isKindOfClass:UIPickerView.class]) {
+            
             UIPickerView *pickerView = (UIPickerView *)picker;
             NSInteger selectedRow = [pickerView selectedRowInComponent:0];
             NSString *title = [self pickerView:pickerView titleForRow:selectedRow forComponent:0];
             lCell.detailTextLabel.text = title;
+            
         } else if ([picker isKindOfClass:UIDatePicker.class]) {
+            
             UIDatePicker *datePicker = (UIDatePicker *)picker;
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             if (datePicker.datePickerMode == UIDatePickerModeDate) {
@@ -193,6 +204,9 @@
         }
     }
     
+    if ([lCell.reuseIdentifier isEqualToString:@"eventTitleCell"] || [lCell.reuseIdentifier isEqualToString:@"eventLocationCell"]) {
+        [((PMTextFieldTVCell*)lCell) setDelegate:self];
+    }
     
     return lCell;
 }
@@ -225,7 +239,7 @@
     }
 }
 
-#pragma mark - PickerCellsDelegate
+#pragma mark - PickerCells delegate
 
 - (void)pickerCellsController:(PickerCellsController *)controller willExpandTableViewContent:(UITableView *)tableView forHeight:(CGFloat)expandHeight {
     NSLog(@"expand height = %.f", expandHeight);
@@ -244,5 +258,20 @@
     }
 }
 
+#pragma mark - PMTextFieldTVCell delegates
+
+- (void)PMTextFieldTVCellDelegate:(PMTextFieldTVCell *)textFieldTVCell textDidChange:(NSString *)text {
+    if ([textFieldTVCell.reuseIdentifier isEqualToString:@"eventTitleCell"]) {
+        _eventModel.title = text;
+    } else if ([textFieldTVCell.reuseIdentifier isEqualToString:@"eventLocationCell"]) {
+        _eventModel.location = text;
+    }
+}
+
+#pragma mark - PMSwitchTVCell delegates
+
+- (void)PMSwitchTVCell:(PMSwitchTVCell *)switchTVCell stateDidChange:(BOOL)state {
+    
+}
 
 @end
