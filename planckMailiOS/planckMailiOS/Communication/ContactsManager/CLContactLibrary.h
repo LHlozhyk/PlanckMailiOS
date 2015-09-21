@@ -33,7 +33,7 @@
 
 - (void)getContactArray;
 - (void)getContactArrayForDelegate:(id<APContactLibraryDelegate>)aDelegate;
-- (void)getContactsNamesForDelegate:(id<APContactLibraryDelegate>)aDelegate;
+- (void)getContactsNamesCount:(NSInteger)count offset:(NSInteger)offset forDelegate:(id<APContactLibraryDelegate>)aDelegate;
 - (void)getPersonForContactNames:(NSDictionary *)names forDelegate:(id<APContactLibraryDelegate>)aDelegate;
 
 + (CLContactLibrary *)sharedInstance;
