@@ -17,4 +17,6 @@
     IBOutlet UISwitch *allDaySwitch;
 }
 @property (nonatomic, weak) id<PMSwitchTVCellDelegate> delegate;
+@property (nonatomic) BOOL isSelected;
+
 @end

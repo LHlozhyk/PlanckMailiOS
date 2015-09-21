@@ -310,6 +310,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vFl-Mg-AYr">
                                                     <rect key="frame" x="263" y="4" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchStateDidChange:" destination="VuM-0x-HLL" eventType="valueChanged" id="zbk-f2-ULF"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -446,6 +449,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="uL6-da-GdO" kind="push" id="hMs-I9-QC0"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventNotesCell" rowHeight="90" id="Erx-S2-anL">
                                         <rect key="frame" x="0.0" y="239" width="320" height="90"/>
@@ -601,6 +607,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZ7-g7-YZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2830" y="-373"/>
+        </scene>
+        <!--Event InviteesVC-->
+        <scene sceneID="ePi-bV-cT7">
+            <objects>
+                <viewController storyboardIdentifier="PMEventInviteesVC" id="uL6-da-GdO" customClass="PMEventInviteesVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MyV-28-ciE"/>
+                        <viewControllerLayoutGuide type="bottom" id="GDm-c0-e5q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6ub-bi-76j">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JsC-yf-B0g"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PEm-Z8-0WH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3247" y="-1020"/>
         </scene>
         <!--Mail ComposeVC-->
         <scene sceneID="iXs-8h-dYc">

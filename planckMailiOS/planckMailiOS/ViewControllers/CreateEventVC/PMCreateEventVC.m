@@ -7,8 +7,9 @@
 //
 
 #import "PMCreateEventVC.h"
+#import "PickerCells.h"
 
-@interface PMCreateEventVC () <UITableViewDelegate, UITableViewDataSource> {
+@interface PMCreateEventVC () <PickerCellsDelegate, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource> {
     NSArray *_itemArray;
     
     IBOutlet UITableView *_tableiew;
@@ -18,6 +19,8 @@
     IBOutlet UITextField *_titleTF;
     IBOutlet UITextField *_locationTF;
 }
+@property(nonatomic, strong) PickerCellsController *pickersController;
+
 - (IBAction)cancelBtnPressed:(id)sender;
 - (IBAction)doneBtnPressed:(id)sender;
 @end
@@ -37,6 +40,24 @@
                    @"eventNotesCell"
                    ];
     [_tableiew setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    
+    self.pickersController = [PickerCellsController new];
+    [self.pickersController attachToTableView:_tableiew tableViewsPriorDelegate:self withDelegate:self];
+    
+    UIDatePicker *datePicker1 = [[UIDatePicker alloc] init];
+    datePicker1.datePickerMode = UIDatePickerModeDate;
+    datePicker1.date = [NSDate date];
+    NSIndexPath *path1 = [NSIndexPath indexPathForRow:1 inSection:1];
+    [self.pickersController addDatePicker:datePicker1 forIndexPath:path1];
+    
+    UIDatePicker *datePicker2 = [[UIDatePicker alloc] init];
+    datePicker2.datePickerMode = UIDatePickerModeDateAndTime;
+    datePicker2.date = [NSDate dateWithTimeIntervalSinceNow:5000];
+    NSIndexPath *path2 = [NSIndexPath indexPathForRow:2 inSection:1];
+    [self.pickersController addDatePicker:datePicker2 forIndexPath:path2];
+    
+    [datePicker1 addTarget:self action:@selector(dateSelected:) forControlEvents:UIControlEventValueChanged];
+    [datePicker2 addTarget:self action:@selector(dateSelected:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -137,6 +158,28 @@
     
     UITableViewCell *lCell = [tableView dequeueReusableCellWithIdentifier:lCellIdentifier];
     
+    id picker = [self.pickersController pickerForOwnerCellIndexPath:indexPath];
+    if (picker) {
+        if ([picker isKindOfClass:UIPickerView.class]) {
+            UIPickerView *pickerView = (UIPickerView *)picker;
+            NSInteger selectedRow = [pickerView selectedRowInComponent:0];
+            NSString *title = [self pickerView:pickerView titleForRow:selectedRow forComponent:0];
+            lCell.detailTextLabel.text = title;
+        } else if ([picker isKindOfClass:UIDatePicker.class]) {
+            UIDatePicker *datePicker = (UIDatePicker *)picker;
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            if (datePicker.datePickerMode == UIDatePickerModeDate) {
+                [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+            } else if (datePicker.datePickerMode == UIDatePickerModeDateAndTime) {
+                [dateFormatter setDateFormat:@"dd-MM-yyyy:HH-mm"];
+            } else {
+                [dateFormatter setDateFormat:@"HH-mm"];
+            }
+            lCell.detailTextLabel.text = [dateFormatter stringFromDate:[(UIDatePicker *)picker date]];
+        }
+    }
+    
+    
     return lCell;
 }
 
@@ -145,5 +188,47 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+#pragma mark - UIPickerView DataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return 30;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSString *text = [NSString stringWithFormat:@"Row number %li", (long)row];
+    return text;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSIndexPath *ip = [self.pickersController indexPathForPicker:pickerView];
+    if (ip) {
+        [_tableiew reloadRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+#pragma mark - PickerCellsDelegate
+
+- (void)pickerCellsController:(PickerCellsController *)controller willExpandTableViewContent:(UITableView *)tableView forHeight:(CGFloat)expandHeight {
+    NSLog(@"expand height = %.f", expandHeight);
+}
+
+- (void)pickerCellsController:(PickerCellsController *)controller willCollapseTableViewContent:(UITableView *)tableView forHeight:(CGFloat)expandHeight {
+    NSLog(@"collapse height = %.f", expandHeight);
+}
+
+#pragma mark - Actions
+
+- (void)dateSelected:(UIDatePicker *)sender {
+    NSIndexPath *ip = [self.pickersController indexPathForPicker:sender];
+    if (ip) {
+        [_tableiew reloadRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
 
 @end

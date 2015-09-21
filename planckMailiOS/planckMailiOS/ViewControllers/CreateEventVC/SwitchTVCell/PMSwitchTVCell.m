@@ -8,6 +8,10 @@
 
 #import "PMSwitchTVCell.h"
 
+@interface PMSwitchTVCell ()
+- (IBAction)switchStateDidChange:(id)sender;
+@end
+
 @implementation PMSwitchTVCell
 
 - (void)awakeFromNib {
@@ -18,6 +22,15 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+}
+
+#pragma mark - IBAction selectors
+
+- (void)switchStateDidChange:(id)sender {
+    UISwitch *lSwitch = (UISwitch*)sender;
+    if (_delegate && [_delegate respondsToSelector:@selector(PMSwitchTVCell:stateDidChange:)]) {
+        [_delegate PMSwitchTVCell:self stateDidChange:lSwitch.selected];
+    }
 }
 
 @end
