@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DBCalendar" syncable="YES">
+        <attribute name="account_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="calendarDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="calendarId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="object" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="readOnly" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
     <entity name="DBNamespace" representedClassName="DBNamespace" syncable="YES">
         <attribute name="account_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email_address" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,6 +20,7 @@
         <attribute name="unreadCount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DBNamespace" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="DBNamespace" positionX="-333" positionY="93" width="128" height="178"/>
+        <element name="DBCalendar" positionX="-63" positionY="54" width="128" height="133"/>
     </elements>
 </model>

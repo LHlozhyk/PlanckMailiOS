@@ -9,6 +9,9 @@
 #import "PMCreateEventVC.h"
 #import "PickerCells.h"
 #import "PMEventModel.h"
+#import "PMAPIManager.h"
+
+#import "MBProgressHUD.h"
 
 @interface PMCreateEventVC () <PickerCellsDelegate, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource> {
     NSArray *_itemArray;
@@ -32,13 +35,13 @@
     [super viewDidLoad];
     
     _itemArray = @[
-                   @"eventTitleCell",
-                   @[@"eventAllDayCell", @"eventStartsCell", @"eventEndsCell"],
-                   @"eventAlertCell",
-                   @"eventCalendarCell",
-                   @"eventLocationCell",
-                   @"eventInviteesCell",
-                   @"eventNotesCell"
+                       @"eventTitleCell",
+                       @[@"eventAllDayCell", @"eventStartsCell", @"eventEndsCell"],
+                       @"eventAlertCell",
+                       @"eventCalendarCell",
+                       @"eventLocationCell",
+                       @"eventInviteesCell",
+                       @"eventNotesCell"
                    ];
     [_tableiew setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
@@ -108,6 +111,16 @@
     [self.view endEditing:YES];
 }
 
+- (void)createEvent {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[PMAPIManager shared] createCalendarEventWithAccount:[[PMAPIManager shared] namespaceId] eventParams:nil comlpetion:^(id data, id error, BOOL success) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
+    }];
+}
+
 #pragma mark - IBAction selectors
 
 - (void)cancelBtnPressed:(id)sender {
@@ -115,7 +128,7 @@
 }
 
 - (void)doneBtnPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self createEvent];
 }
 
 #pragma mark - Table view data source

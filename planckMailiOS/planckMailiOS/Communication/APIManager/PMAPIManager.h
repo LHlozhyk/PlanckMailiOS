@@ -83,8 +83,22 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                      filter:(NSString*)filter
                  completion:(ExtendedBlockHandler)handler;
 
+// Calendar methods
+
 - (void)getCalendarsWithAccount:(id<PMAccountProtocol>)account
                      comlpetion:(ExtendedBlockHandler)handler;
+
+- (void)createCalendarEventWithAccount:(id<PMAccountProtocol>)account
+                           eventParams:(NSDictionary *)eventParams
+                            comlpetion:(ExtendedBlockHandler)handler;
+
+- (void)deleteCalendarEventWithAccount:(id<PMAccountProtocol>)account
+                           eventParams:(NSDictionary *)eventParams
+                            comlpetion:(ExtendedBlockHandler)handler;
+
+- (void)updateCalendarEventWithAccount:(id<PMAccountProtocol>)account
+                           eventParams:(NSDictionary *)eventParams
+                            comlpetion:(ExtendedBlockHandler)handler;
 
 @property (nonatomic, readonly) DBNamespace *namespaceId;
 @property (nonatomic, readonly) NSString *emailAddress;

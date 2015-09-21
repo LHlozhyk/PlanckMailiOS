@@ -30,7 +30,7 @@
     
     NSDateFormatter *df = [NSDateFormatter new];
     [df setDateFormat:@"MMM. yyy"];
-    [self setTitle:[df stringFromDate:[NSDate date]]];
+    [self setTitle:@"Calendar"];
     
     [[PMAPIManager shared] getCalendarsWithAccount:[[PMAPIManager shared] namespaceId] comlpetion:^(id data, id error, BOOL success) {
         
@@ -48,7 +48,6 @@
 //    vc.view.frame = self.view.frame;
 //    [self.view addSubview:vc.view];
 //    [vc didMoveToParentViewController:self];
-    
 }
 
 #pragma mark - TableView data source 

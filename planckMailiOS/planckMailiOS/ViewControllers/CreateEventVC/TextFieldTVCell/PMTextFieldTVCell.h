@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PMTextFieldTVCell : UITableViewCell
+@class PMTextFieldTVCell;
 
+@protocol PMTextFieldTVCellDelegate <NSObject>
+- (void)PMTextFieldTVCellDelegate:(PMTextFieldTVCell *)textFieldTVCell textDidChange:(NSString*)text;
+@end
+
+@interface PMTextFieldTVCell : UITableViewCell
+@property(nonatomic, weak)id<PMTextFieldTVCellDelegate> delegate;
 @end

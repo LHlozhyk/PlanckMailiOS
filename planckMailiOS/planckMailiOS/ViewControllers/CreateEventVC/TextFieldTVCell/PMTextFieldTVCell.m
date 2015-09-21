@@ -8,6 +8,11 @@
 
 #import "PMTextFieldTVCell.h"
 
+@interface PMTextFieldTVCell () <UITextFieldDelegate> {
+    IBOutlet UITextField *_textField;
+}
+@end
+
 @implementation PMTextFieldTVCell
 
 - (void)awakeFromNib {
@@ -16,8 +21,9 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
+
+#pragma mark - UITextFieldDelegate
 
 @end

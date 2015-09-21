@@ -444,6 +444,42 @@
     }];
 }
 
+- (void)createCalendarEventWithAccount:(id<PMAccountProtocol>)account
+                             eventParams:(NSDictionary *)eventParams
+                            comlpetion:(ExtendedBlockHandler)handler {
+    
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager POST:@"/events" parameters:eventParams success:^ (NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"createCalendarEventWithAccount - %@", responseObject);
+    } failure:^ (NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+- (void)updateCalendarEventWithAccount:(id<PMAccountProtocol>)account
+                           eventParams:(NSDictionary *)eventParams
+                            comlpetion:(ExtendedBlockHandler)handler {
+    
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager PUT:@"/events" parameters:eventParams success:^ (NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"createCalendarEventWithAccount - %@", responseObject);
+    } failure:^ (NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+- (void)deleteCalendarEventWithAccount:(id<PMAccountProtocol>)account
+                           eventParams:(NSDictionary *)eventParams
+                            comlpetion:(ExtendedBlockHandler)handler {
+    
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager DELETE:@"/events" parameters:eventParams success:^ (NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"createCalendarEventWithAccount - %@", responseObject);
+    } failure:^ (NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
 #pragma mark - Private methods
 
 // Sourav API
