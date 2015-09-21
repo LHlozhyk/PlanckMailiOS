@@ -23,7 +23,11 @@
 #define CONTENT @"content"
 #define ADDITIONAL_INFO @"additional_info"
 
-#define LIMIT_COUNT 10
+#define EMAILS_LIMIT_COUNT 10
+
+#define CONTACTS_LIMIT_COUNT 200
+#define CONTACTS_OFFSET @"contacts_offset"
+#define CONTACTS_LIMIT @"contacts_limit"
 
 typedef NS_ENUM(NSInteger, PMWatchRequestType) {
     PMWatchRequestAccounts,

@@ -57,7 +57,7 @@
             if(userInfo[WK_REQUEST_INFO]) {
                 PMTypeContainer *account = [NSKeyedUnarchiver unarchiveObjectWithData:userInfo[WK_REQUEST_INFO]];
                 [[PMAPIManager shared] getInboxMailWithAccount:account
-                                                         limit:LIMIT_COUNT
+                                                         limit:EMAILS_LIMIT_COUNT
                                                         offset:[userInfo[WK_REQUEST_EMAILS_LIMIT] unsignedIntegerValue]
                                                     completion:^(NSArray *data, id error, BOOL success) {
                     if(reply) {
@@ -102,7 +102,11 @@
         case PMWatchRequestGetContacts: {
           self.replyBlock = reply;
           
-          [[CLContactLibrary sharedInstance] getContactsNamesForDelegate:self];
+            NSDictionary *requestInfo = userInfo[WK_REQUEST_INFO];
+            
+          [[CLContactLibrary sharedInstance] getContactsNamesCount:[requestInfo[CONTACTS_LIMIT] integerValue]
+                                                            offset:[requestInfo[CONTACTS_OFFSET] integerValue]
+                                                       forDelegate:self];
         }
             break;
             

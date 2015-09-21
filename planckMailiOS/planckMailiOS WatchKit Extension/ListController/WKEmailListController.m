@@ -139,7 +139,7 @@
            for(NSData *message in archivedMessages) {
                [__self.dataSource addObject:[NSKeyedUnarchiver unarchiveObjectWithData:message]];
            }
-           if([archivedMessages count] == LIMIT_COUNT) {
+           if([archivedMessages count] == EMAILS_LIMIT_COUNT) {
                if(!loadMoreModel) {
                    loadMoreModel = [PMInboxMailModel new];
                    loadMoreModel.ownerName = @"Load More";

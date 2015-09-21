@@ -39,14 +39,14 @@ static CLContactLibrary  *object;
   [self getContactArrayForDelegate:self.delegate];
 }
 
-- (void)getContactsNamesForDelegate:(id<APContactLibraryDelegate>)aDelegate {
+- (void)getContactsNamesCount:(NSInteger)count offset:(NSInteger)offset forDelegate:(id<APContactLibraryDelegate>)aDelegate {
     self.delegate = aDelegate;
     NSArray *savedContacts = [[NSUserDefaults standardUserDefaults] arrayForKey:kSAVED_CONTACTS_ARRAY_KEY];
     if(savedContacts) {
-        [self parseContactsNames];
+        [self parseContactsNamesCount:count offset:offset];
     } else {
         [self fetchContactsWithCompletion:^{
-            [self parseContactsNames];
+            [self parseContactsNamesCount:count offset:offset];
         }];
     }
 }
@@ -129,6 +129,13 @@ static CLContactLibrary  *object;
             [archivedPersons addObject:[NSKeyedArchiver archivedDataWithRootObject:people]];
         }];
         
+//        NSMutableArray *newArchivedPersons = [NSMutableArray new];
+//        for(int i = 0; i <=1 ; i++) {
+//            for(NSData *person in archivedPersons) {
+//                [newArchivedPersons addObject:[person copy]];
+//            }
+//        }
+        
         [[NSUserDefaults standardUserDefaults] setObject:archivedPersons forKey:kSAVED_CONTACTS_ARRAY_KEY];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
@@ -142,19 +149,16 @@ static CLContactLibrary  *object;
     }];
 }
 
-- (void)parseContactsNames {
-    /*
-     if([self.delegate respondsToSelector:@selector(shouldScaleImage)]) {
-     useLittleImage = [self.delegate shouldScaleImage];
-     }
-     personImage = [personImage getScaledImage];
-     personImage = [personImage roundCornersOfImage:personImage];
-     */
-    
+- (void)parseContactsNamesCount:(NSInteger)count offset:(NSInteger)offset {
     NSArray *savedContacts = [[NSUserDefaults standardUserDefaults] arrayForKey:kSAVED_CONTACTS_ARRAY_KEY];
     NSMutableArray *personsArray = [NSMutableArray new];
     
-    for(NSData *archivedItem in savedContacts) {
+    for(NSInteger i = offset; i < count + offset; i++) {
+        if(i >= [savedContacts count]) {
+            break;
+        }
+        NSData *archivedItem = savedContacts[i];
+        
         CLPerson *person = [NSKeyedUnarchiver unarchiveObjectWithData:archivedItem];
         if(person) {
             NSDictionary *personNames = @{PERSON_NAME: person.firstName?:@"",
@@ -162,7 +166,7 @@ static CLContactLibrary  *object;
             [personsArray addObject:personNames];
         }
     }
-    
+    NSLog(@"names count: %li", [personsArray count]);
     if([self.delegate respondsToSelector:@selector(getNamesOfContacts:)]) {
         [self.delegate getNamesOfContacts:personsArray];
     }
