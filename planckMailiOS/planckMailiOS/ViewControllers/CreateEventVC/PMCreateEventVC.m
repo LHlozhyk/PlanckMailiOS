@@ -8,6 +8,7 @@
 
 #import "PMCreateEventVC.h"
 #import "PickerCells.h"
+#import "PMEventModel.h"
 
 @interface PMCreateEventVC () <PickerCellsDelegate, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource> {
     NSArray *_itemArray;
@@ -52,7 +53,7 @@
     
     UIDatePicker *datePicker2 = [[UIDatePicker alloc] init];
     datePicker2.datePickerMode = UIDatePickerModeDateAndTime;
-    datePicker2.date = [NSDate dateWithTimeIntervalSinceNow:5000];
+    datePicker2.date = [NSDate dateWithTimeIntervalSinceNow:1];
     NSIndexPath *path2 = [NSIndexPath indexPathForRow:2 inSection:1];
     [self.pickersController addDatePicker:datePicker2 forIndexPath:path2];
     
@@ -171,7 +172,7 @@
             if (datePicker.datePickerMode == UIDatePickerModeDate) {
                 [dateFormatter setDateFormat:@"dd-MM-yyyy"];
             } else if (datePicker.datePickerMode == UIDatePickerModeDateAndTime) {
-                [dateFormatter setDateFormat:@"dd-MM-yyyy:HH-mm"];
+                [dateFormatter setDateFormat:@"dd MMM. yyyy HH:mm"];
             } else {
                 [dateFormatter setDateFormat:@"HH-mm"];
             }

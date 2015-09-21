@@ -50,6 +50,7 @@
 		848E6F971B9484F000EA935D /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E6F951B9484F000EA935D /* LeftViewController.m */; };
 		8493D4131BB01D4B00D5D5F7 /* PickerCellsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493D4111BB01D4B00D5D5F7 /* PickerCellsController.m */; };
 		8493D4171BB0231C00D5D5F7 /* PMEventInviteesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493D4161BB0231C00D5D5F7 /* PMEventInviteesVC.m */; };
+		8493D41C1BB02C6500D5D5F7 /* PMEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493D41B1BB02C6500D5D5F7 /* PMEventModel.m */; };
 		8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */; };
 		84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A037C31B49F2850076491A /* PMMailTitleView.m */; };
 		84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3BCB81B5ACBF1005A244F /* PMCalendarVC.m */; };
@@ -234,6 +235,8 @@
 		8493D4121BB01D4B00D5D5F7 /* PickerCellsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCellsDelegate.h; sourceTree = "<group>"; };
 		8493D4151BB0231C00D5D5F7 /* PMEventInviteesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMEventInviteesVC.h; path = ViewControllers/EventInviteesVC/PMEventInviteesVC.h; sourceTree = "<group>"; };
 		8493D4161BB0231C00D5D5F7 /* PMEventInviteesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMEventInviteesVC.m; path = ViewControllers/EventInviteesVC/PMEventInviteesVC.m; sourceTree = "<group>"; };
+		8493D41A1BB02C6500D5D5F7 /* PMEventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMEventModel.h; path = Communication/Models/EventModel/PMEventModel.h; sourceTree = "<group>"; };
+		8493D41B1BB02C6500D5D5F7 /* PMEventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMEventModel.m; path = Communication/Models/EventModel/PMEventModel.m; sourceTree = "<group>"; };
 		8497B1191B370CD5009CEC5E /* PMPreviewContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMPreviewContentView.h; path = ViewControllers/PreviewMailVC/PreviewContentView/PMPreviewContentView.h; sourceTree = "<group>"; };
 		8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPreviewContentView.m; path = ViewControllers/PreviewMailVC/PreviewContentView/PMPreviewContentView.m; sourceTree = "<group>"; };
 		84A037C21B49F2850076491A /* PMMailTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailTitleView.h; path = ViewControllers/MailVC/MailTitleView/PMMailTitleView.h; sourceTree = "<group>"; };
@@ -560,6 +563,7 @@
 		84776F031B14283B0020AB6E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8493D4191BB02C3500D5D5F7 /* EventModel */,
 				84C79A121B60D31A00F2C855 /* MailComposeModel */,
 				84A9A0DD1B52C64F0005F5AF /* MessageModel */,
 				84776F041B1428460020AB6E /* InboxMailModel */,
@@ -789,6 +793,15 @@
 				8493D4161BB0231C00D5D5F7 /* PMEventInviteesVC.m */,
 			);
 			name = EventInviteesVC;
+			sourceTree = "<group>";
+		};
+		8493D4191BB02C3500D5D5F7 /* EventModel */ = {
+			isa = PBXGroup;
+			children = (
+				8493D41A1BB02C6500D5D5F7 /* PMEventModel.h */,
+				8493D41B1BB02C6500D5D5F7 /* PMEventModel.m */,
+			);
+			name = EventModel;
 			sourceTree = "<group>";
 		};
 		8497B1181B370C7E009CEC5E /* PreviewContentView */ = {
@@ -1503,6 +1516,7 @@
 				8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */,
 				84D8C2E11B8E3B4400D82BB4 /* PMNetworkManager.m in Sources */,
 				84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */,
+				8493D41C1BB02C6500D5D5F7 /* PMEventModel.m in Sources */,
 				84F4286C1B1256820006B530 /* PMSettigsTVC.m in Sources */,
 				8478855F1B95DB5400681EBA /* PMTableViewTabBar.m in Sources */,
 				842E2FEA1AFEB13400B0C8DB /* main.m in Sources */,
