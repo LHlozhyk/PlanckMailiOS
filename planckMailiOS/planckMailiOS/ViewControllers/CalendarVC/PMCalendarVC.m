@@ -11,6 +11,7 @@
 #import "UIViewController+PMStoryboard.h"
 #import "PMCreateEventVC.h"
 #import "PMEventDetailsVC.h"
+#import "PMCalendarCell.h"
 
 #import "LIYDateTimePickerViewController.h"
 #import "LIYCalendarPickerViewController.h"
@@ -19,8 +20,12 @@
 @interface PMCalendarVC () <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *_tableView;
 }
+
+@property (nonatomic, strong) NSMutableArray *eventsArray;
+
 - (IBAction)menuBtnPressed:(id)sender;
 - (IBAction)createEventBtnPressed:(id)sender;
+
 @end
 
 @implementation PMCalendarVC
@@ -32,8 +37,12 @@
     [df setDateFormat:@"MMM. yyy"];
     [self setTitle:@"Calendar"];
     
-    [[PMAPIManager shared] getCalendarsWithAccount:[[PMAPIManager shared] namespaceId] comlpetion:^(id data, id error, BOOL success) {
-        
+    _eventsArray = [NSMutableArray new];
+    
+    __weak typeof(self)__self = self;
+    [[PMAPIManager shared] getEventsWithAccount:[[PMAPIManager shared] namespaceId] eventParams:nil comlpetion:^(id data, id error, BOOL success) {
+        __self.eventsArray = data;
+        [_tableView reloadData];
     }];
     
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
@@ -53,11 +62,14 @@
 #pragma mark - TableView data source 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 15;
+    return [_eventsArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *lCell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
+    PMCalendarCell *lCell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
+    
+    [lCell setEvent:_eventsArray[indexPath.row]];
+    
     return lCell;
 }
 

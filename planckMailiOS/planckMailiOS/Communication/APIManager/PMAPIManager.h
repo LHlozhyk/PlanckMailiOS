@@ -88,6 +88,10 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 - (void)getCalendarsWithAccount:(id<PMAccountProtocol>)account
                      comlpetion:(ExtendedBlockHandler)handler;
 
+- (void)getEventsWithAccount:(id<PMAccountProtocol>)account
+                 eventParams:(NSDictionary *)eventParams
+                  comlpetion:(ExtendedBlockHandler)handler;
+
 - (void)createCalendarEventWithAccount:(id<PMAccountProtocol>)account
                            eventParams:(NSDictionary *)eventParams
                             comlpetion:(ExtendedBlockHandler)handler;

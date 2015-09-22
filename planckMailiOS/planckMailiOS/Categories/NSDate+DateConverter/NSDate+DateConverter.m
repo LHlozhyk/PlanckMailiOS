@@ -13,6 +13,8 @@
 
 @implementation NSDate (DateConverter)
 
+#pragma mark - Public methods
+
 - (NSString *)convertedStringValue {
   NSString *convertedValue = @"";
   
@@ -34,6 +36,26 @@
   return convertedValue;
 }
 
+- (NSString *)timeStringValue {
+    NSString *convertedValue = [self stringDateForDateFormat:@"hh:mm a"];
+    return convertedValue;
+}
+
+- (NSString *)dateStringValue {
+    NSString *convertedValue = [self stringDateForDateFormat:@"YYYY-MM-dd"];
+    return convertedValue;
+}
+
++ (NSDate *)eventDateFromString:(NSString *)string {
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"YYYY-MM-dd"];
+    
+    NSDate *date = [dateFormater dateFromString:string];
+    return date;
+}
+
+#pragma mark - Private methods
+
 - (NSUInteger)daysBetween:(NSDate *)date {
   NSDate *dt1 = [self dateWithoutTimeComponents];
   NSDate *dt2 = [date dateWithoutTimeComponents];
@@ -53,6 +75,16 @@
                                   NSCalendarUnitDay
                                              fromDate:self];
   return [calendar dateFromComponents:components];
+}
+
+- (NSString *)stringDateForDateFormat:(NSString *)dateFormat {
+    NSString *convertedValue = @"";
+    
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:dateFormat];
+    convertedValue = [dateFormater stringFromDate:self];
+    
+    return convertedValue;
 }
 
 @end

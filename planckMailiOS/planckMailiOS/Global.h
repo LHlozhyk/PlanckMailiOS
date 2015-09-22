@@ -33,6 +33,9 @@
 
 #define STORYBOARD [UIStoryboard storyboardWithName:@"Main" bundle:nil]
 
+//string value
+#define stringValue(str) (([str isKindOfClass:[NSNull class]]) ? @"": str)
+
 //debug log
 #ifdef DEBUG
 # define DLog(...) NSLog(__VA_ARGS__)

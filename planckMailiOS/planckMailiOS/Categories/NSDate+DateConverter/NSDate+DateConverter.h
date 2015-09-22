@@ -12,4 +12,9 @@
 
 - (NSString *)convertedStringValue;
 
+- (NSString *)timeStringValue;
+- (NSString *)dateStringValue;
+
++ (NSDate *)eventDateFromString:(NSString *)string;
+
 @end

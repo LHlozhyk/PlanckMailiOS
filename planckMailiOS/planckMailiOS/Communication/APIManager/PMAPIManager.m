@@ -11,7 +11,7 @@
 #import "PMRequest.h"
 #import "PMInboxMailModel.h"
 #import "PMNetworkManager.h"
-
+#import "PMEventModel.h"
 
 #define TOKEN @"namespaces"
 
@@ -439,8 +439,40 @@
     [_networkManager setCurrentToken:account.token];
     [_networkManager GET:@"/calendars" parameters:nil success:^ (NSURLSessionDataTask *task, id responseObjet) {
         NSLog(@"getCalendarsWithAccount - %@", responseObjet);
+        if(handler) {
+            handler(responseObjet, nil, YES);
+        }
     } failure:^ (NSURLSessionDataTask * task, NSError *error) {
+        NSLog(@"error: %@", error);
+        if(handler) {
+            handler(nil, error, YES);
+        }
+    }];
+}
+
+- (void)getEventsWithAccount:(id<PMAccountProtocol>)account
+                 eventParams:(NSDictionary *)eventParams
+                  comlpetion:(ExtendedBlockHandler)handler {
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager GET:@"/events" parameters:eventParams success:^ (NSURLSessionDataTask *task, id responseObjet) {
+        NSLog(@"getEventsWithAccount - %@", responseObjet);
         
+        NSMutableArray *events = [NSMutableArray new];
+        if([responseObjet isKindOfClass:[NSArray class]]) {
+            for(NSDictionary *eventDict in responseObjet) {
+                PMEventModel *eventModel = [[PMEventModel alloc] initWithDictionary:eventDict];
+                [events addObject:eventModel];
+            }
+        }
+        
+        if(handler) {
+            handler(events, nil, YES);
+        }
+    } failure:^ (NSURLSessionDataTask * task, NSError *error) {
+        NSLog(@"error: %@", error);
+        if(handler) {
+            handler(nil, error, NO);
+        }
     }];
 }
 
