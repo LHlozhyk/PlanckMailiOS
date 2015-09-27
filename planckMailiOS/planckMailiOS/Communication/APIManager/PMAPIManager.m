@@ -454,7 +454,7 @@
                  eventParams:(NSDictionary *)eventParams
                   comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:@"/events" parameters:eventParams success:^ (NSURLSessionDataTask *task, id responseObjet) {
+    [_networkManager GET:@"/events" parameters:eventParams success:^(NSURLSessionDataTask *task, id responseObjet) {
         NSLog(@"getEventsWithAccount - %@", responseObjet);
         
         NSMutableArray *events = [NSMutableArray new];

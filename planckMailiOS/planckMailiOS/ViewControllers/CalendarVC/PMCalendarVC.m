@@ -37,6 +37,9 @@
     [df setDateFormat:@"MMM. yyy"];
     [self setTitle:@"Calendar"];
     
+    NSString *lStartTimestamp = [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSinceNow]];
+    
+    
     _eventsArray = [NSMutableArray new];
     
     __weak typeof(self)__self = self;
