@@ -48,7 +48,6 @@
 		848E6F901B94846000EA935D /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E6F8F1B94846000EA935D /* LGSideMenuController.m */; };
 		848E6F961B9484F000EA935D /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E6F931B9484F000EA935D /* LeftViewCell.m */; };
 		848E6F971B9484F000EA935D /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E6F951B9484F000EA935D /* LeftViewController.m */; };
-		8493D4131BB01D4B00D5D5F7 /* PickerCellsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493D4111BB01D4B00D5D5F7 /* PickerCellsController.m */; };
 		8493D4171BB0231C00D5D5F7 /* PMEventInviteesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493D4161BB0231C00D5D5F7 /* PMEventInviteesVC.m */; };
 		8493D41C1BB02C6500D5D5F7 /* PMEventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493D41B1BB02C6500D5D5F7 /* PMEventModel.m */; };
 		8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8497B11A1B370CD5009CEC5E /* PMPreviewContentView.m */; };
@@ -231,10 +230,6 @@
 		848E6F931B9484F000EA935D /* LeftViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCell.m; sourceTree = "<group>"; };
 		848E6F941B9484F000EA935D /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		848E6F951B9484F000EA935D /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
-		8493D40F1BB01D4B00D5D5F7 /* PickerCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCells.h; sourceTree = "<group>"; };
-		8493D4101BB01D4B00D5D5F7 /* PickerCellsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCellsController.h; sourceTree = "<group>"; };
-		8493D4111BB01D4B00D5D5F7 /* PickerCellsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerCellsController.m; sourceTree = "<group>"; };
-		8493D4121BB01D4B00D5D5F7 /* PickerCellsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCellsDelegate.h; sourceTree = "<group>"; };
 		8493D4151BB0231C00D5D5F7 /* PMEventInviteesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMEventInviteesVC.h; path = ViewControllers/EventInviteesVC/PMEventInviteesVC.h; sourceTree = "<group>"; };
 		8493D4161BB0231C00D5D5F7 /* PMEventInviteesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMEventInviteesVC.m; path = ViewControllers/EventInviteesVC/PMEventInviteesVC.m; sourceTree = "<group>"; };
 		8493D41A1BB02C6500D5D5F7 /* PMEventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMEventModel.h; path = Communication/Models/EventModel/PMEventModel.h; sourceTree = "<group>"; };
@@ -781,18 +776,6 @@
 			path = LeftMenu;
 			sourceTree = "<group>";
 		};
-		8493D40E1BB01D4B00D5D5F7 /* PickerCells */ = {
-			isa = PBXGroup;
-			children = (
-				8493D40F1BB01D4B00D5D5F7 /* PickerCells.h */,
-				8493D4101BB01D4B00D5D5F7 /* PickerCellsController.h */,
-				8493D4111BB01D4B00D5D5F7 /* PickerCellsController.m */,
-				8493D4121BB01D4B00D5D5F7 /* PickerCellsDelegate.h */,
-			);
-			name = PickerCells;
-			path = Utils/PickerCells;
-			sourceTree = "<group>";
-		};
 		8493D4141BB0221B00D5D5F7 /* EventInviteesVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,7 +808,6 @@
 		8497B11E1B37298A009CEC5E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				8493D40E1BB01D4B00D5D5F7 /* PickerCells */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1527,7 +1509,6 @@
 				842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */,
 				84F9A9881B11F7270067C3D0 /* PMMailMenuView.m in Sources */,
 				84ECA42C1B134E5400770F88 /* DBManager.m in Sources */,
-				8493D4131BB01D4B00D5D5F7 /* PickerCellsController.m in Sources */,
 				8460961C1B13063300924B61 /* CLPerson.m in Sources */,
 				84F9A9801B11E08D0067C3D0 /* PMRequest.m in Sources */,
 				84A9E3711B5F02DD009DD409 /* PMSelectionEmailView.m in Sources */,

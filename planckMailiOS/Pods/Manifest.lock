@@ -29,65 +29,31 @@ PODS:
   - InboxKit (0.0.6):
     - AFNetworking (~> 2.0)
     - FMDB
-  - JTCalendar (1.2.3)
-  - LIYDateTimePicker (0.1.9):
-    - JTCalendar
-    - Masonry
-    - MSCollectionViewCalendarLayout
-    - ObjectiveSugar
-    - PureLayout
-    - UIColor-HexString
-  - Masonry (0.6.2)
+  - JTCalendar (2.1.4)
   - MBProgressHUD (0.9.1)
-  - MSCollectionViewCalendarLayout (0.1.5)
-  - ObjectiveSugar (1.1.0)
-  - PureLayout (3.0.0)
   - SWTableViewCell (0.3.7)
   - UIActionSheet+Blocks (0.9)
   - UIAlertView+Blocks (0.9)
-  - UIColor-HexString (1.1.0)
 
 DEPENDENCIES:
   - AFNetworking
   - DateTools (= 1.4.3)
   - InboxKit
-  - JTCalendar (from `https://github.com/kgellci/JTCalendar.git`, branch `master`)
-  - LIYDateTimePicker (from `https://github.com/lyahdav/LIYDateTimePicker.git`)
+  - JTCalendar
   - MBProgressHUD
   - SWTableViewCell (~> 0.3.7)
   - UIActionSheet+Blocks
   - UIAlertView+Blocks
-
-EXTERNAL SOURCES:
-  JTCalendar:
-    :branch: master
-    :git: https://github.com/kgellci/JTCalendar.git
-  LIYDateTimePicker:
-    :git: https://github.com/lyahdav/LIYDateTimePicker.git
-
-CHECKOUT OPTIONS:
-  JTCalendar:
-    :commit: 9ef1daf42e57159a812b7c886ba358c7797862d5
-    :git: https://github.com/kgellci/JTCalendar.git
-  LIYDateTimePicker:
-    :commit: 9cfdd4492778467e538202b8587be05b252016e3
-    :git: https://github.com/lyahdav/LIYDateTimePicker.git
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   DateTools: c3d055af2c4d039c1791b5bffb1444ad1db32219
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   InboxKit: 1a5cd7b2a6e99a8d0c4a08b9e4d72d8a35d4b931
-  JTCalendar: 246ea3e338fb97624846ec77cdcde448242c4d5c
-  LIYDateTimePicker: 0c4c9f2aa66100bea016ae49fae6a6c54137bc2c
-  Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
+  JTCalendar: 9b1352c7ec41cc26b19c189d6608ba48060a53d9
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  MSCollectionViewCalendarLayout: 9c52894930d6b712951f18873618fc32c00cd4fa
-  ObjectiveSugar: a6a25f23d657c19df0a0b972466d5b5ca9f5295c
-  PureLayout: 270dfee2236f697ab1d5e2771c2e5c248495fa0d
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   UIActionSheet+Blocks: e180b7dad0a721ab7f212ac9742af799008bb358
   UIAlertView+Blocks: a46c99c5144f6c5dbc7d62fd2a0678daceec89a3
-  UIColor-HexString: f8a5612bd6772fed8db58ee594b42a0b2831750e
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2

@@ -12,11 +12,12 @@
 #import "UIViewController+PMStoryboard.h"
 #import "PMAPIManager.h"
 #import "MBProgressHUD.h"
+#import "PMLoginVC.h"
 
 #define DYNAMIC_SECTION 0
 #define CELL_IDENTIFIER @"journalTVCell"
 
-@interface PMSettigsTVC () <UIActionSheetDelegate> {
+@interface PMSettigsTVC () <UIActionSheetDelegate, PMLoginVCDelegate> {
     NSArray *_itemsArray;
     NSArray *_defaultItemsArray;
     NSIndexPath *_selectedIndex;
@@ -29,7 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _defaultItemsArray = @[@"Mail", @"Calendar", @"Signature", @"Swipe Options", @"Broswer", @"Week Start", @"Foused inbox"];
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,13 +41,9 @@
 - (void)addAccountBtnPressed:(id)sender {
     PMLoginVC *lNewLoginVC = [[PMLoginVC alloc] initWithStoryboard];
     [lNewLoginVC setAdditionalAccoutn:YES];
-    UINavigationController *lNav = [[UINavigationController alloc] initWithRootViewController:lNewLoginVC];
+    [lNewLoginVC setDelegate:self];
     
-    UIBarButtonItem *customBtn = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:lNewLoginVC action:@selector(backBtnPressed:)];
-    
-    [lNewLoginVC.navigationItem setRightBarButtonItem:customBtn];
-    
-    [self presentViewController:lNav animated:YES completion:nil];
+    [self presentViewController:lNewLoginVC animated:YES completion:nil];
 }
 
 - (void)configureCell:(UITableViewCell *)cell {
@@ -156,6 +152,16 @@
                 }
             });
         }];
+    }
+}
+
+#pragma mark - LoginVC delegate
+
+- (void)PMLoginVCDelegate:(PMLoginVC *)loginVC didSuccessLogin:(BOOL)state additionalAccount:(BOOL)additionalAccount {
+    if (state && !additionalAccount) {
+        UITabBarController *lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
+        [self.navigationController setNavigationBarHidden:YES];
+        [self.navigationController pushViewController:lMainTabBar animated:YES];
     }
 }
 

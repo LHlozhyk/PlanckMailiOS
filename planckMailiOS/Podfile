@@ -8,8 +8,7 @@ target "planckMailiOS" do
     pod 'AFNetworking'
     pod 'UIAlertView+Blocks'
     pod 'SWTableViewCell', '~> 0.3.7'
-    pod 'JTCalendar', :git => 'https://github.com/kgellci/JTCalendar.git', :branch => 'master' # This must be placed before LIYDateTimePicker
-    pod 'LIYDateTimePicker', :git => 'https://github.com/lyahdav/LIYDateTimePicker.git'
+    pod 'JTCalendar'
     
 end
 

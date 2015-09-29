@@ -16,6 +16,7 @@
     __weak IBOutlet UIWebView *_webView;
     
     BOOL _isAddtionalAccount;
+    BOOL _isSuccessLogin;
 }
 @end
 
@@ -27,6 +28,7 @@
     self = [super init];
     if (self) {
         _isAddtionalAccount = NO;
+        _isSuccessLogin = NO;
     }
     return self;
 }
@@ -47,14 +49,12 @@
     _isAddtionalAccount = state;
 }
 
-- (void)goToMainVC {
-    UITabBarController *lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
-    [self.navigationController setNavigationBarHidden:YES];
-    [self.navigationController pushViewController:lMainTabBar animated:YES];
-}
-
 - (void)backBtnPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (_delegate && [_delegate respondsToSelector:@selector(PMLoginVCDelegate:didSuccessLogin:additionalAccount:)]) {
+            [_delegate PMLoginVCDelegate:self didSuccessLogin:_isSuccessLogin additionalAccount:_isAddtionalAccount];
+        }
+    }];
 }
 
 #pragma mark - UIWebView delegates
@@ -69,11 +69,8 @@
         NSArray *lItems = [lUrlString componentsSeparatedByCharactersInSet:set];
         [[PMAPIManager shared] saveNamespaceIdFromToken:lItems[1] completion:^(id error, BOOL success) {
             if (success) {
-                if (_isAddtionalAccount) {
-                    [self backBtnPressed:nil];
-                } else {
-                    [self goToMainVC];
-                }
+                _isSuccessLogin = success;
+                [self backBtnPressed:nil];
             } else {
                 [[[UIAlertView alloc] initWithTitle:@"Error" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
             }

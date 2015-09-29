@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class PMLoginVC;
+
+@protocol PMLoginVCDelegate <NSObject>
+- (void)PMLoginVCDelegate:(PMLoginVC*)loginVC
+          didSuccessLogin:(BOOL)state
+        additionalAccount:(BOOL)additionalAccount;
+@end
+
 @interface PMLoginVC : UIViewController
-- (void)backBtnPressed:(id)sender;
+- (IBAction)backBtnPressed:(id)sender;
 - (void)setAdditionalAccoutn:(BOOL)state;
+
+@property(nonatomic, weak) id<PMLoginVCDelegate> delegate;
 @end

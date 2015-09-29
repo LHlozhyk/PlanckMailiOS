@@ -7,16 +7,17 @@
 //
 
 #import "PMMainVC.h"
+#import "PMLoginVC.h"
 
-
-@interface PMMainVC () <UIGestureRecognizerDelegate>
+@interface PMMainVC () <UIGestureRecognizerDelegate, PMLoginVCDelegate>
 @end
 
 @implementation PMMainVC
 
+#pragma mark - PMMainVC lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -29,6 +30,24 @@
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:NSStringFromClass([PMLoginVC class])]) {
+        PMLoginVC *lLoginVC = [segue destinationViewController];
+        [lLoginVC setDelegate:self];
+    }
+}
+
+#pragma mark - LoginVC delegate
+
+- (void)PMLoginVCDelegate:(PMLoginVC *)loginVC didSuccessLogin:(BOOL)state additionalAccount:(BOOL)additionalAccount {
+    if (state && !additionalAccount) {
+        UITabBarController *lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
+        [self.navigationController setNavigationBarHidden:YES];
+        [self.navigationController pushViewController:lMainTabBar animated:YES];
+    }
 }
 
 @end
