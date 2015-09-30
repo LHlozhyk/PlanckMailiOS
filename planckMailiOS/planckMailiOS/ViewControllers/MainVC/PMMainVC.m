@@ -28,16 +28,14 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
+    //[self.navigationController setNavigationBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:NSStringFromClass([PMLoginVC class])]) {
-        PMLoginVC *lLoginVC = [segue destinationViewController];
-        [lLoginVC setDelegate:self];
-    }
+    PMLoginVC *lLoginVC = [segue destinationViewController];
+    [lLoginVC setDelegate:self];
 }
 
 #pragma mark - LoginVC delegate
