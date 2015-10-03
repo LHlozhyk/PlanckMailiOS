@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840156DB1B27A51600E92CA7 /* PMPreviewMailVC.m */; };
-		84067D521B55E03700B4DB1E /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
 		84067D531B55E04400B4DB1E /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
-		84067D541B55E13500B4DB1E /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
 		840D8C8F1BAEBDF8001C8B60 /* PMEventDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8C8E1BAEBDF8001C8B60 /* PMEventDetailsVC.m */; };
 		840D8C931BAF4E8C001C8B60 /* PMEventAlertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8C921BAF4E8C001C8B60 /* PMEventAlertVC.m */; };
 		840D8C981BAF5DDD001C8B60 /* PMTextFieldTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8C971BAF5DDD001C8B60 /* PMTextFieldTVCell.m */; };
@@ -99,7 +97,6 @@
 		C3FF0E561B5596880041B70E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E551B5596880041B70E /* InterfaceController.m */; };
 		C3FF0E591B5596880041B70E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E581B5596880041B70E /* NotificationController.m */; };
 		C3FF0E5B1B5596880041B70E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5A1B5596880041B70E /* Images.xcassets */; };
-		C3FF0E5F1B5596880041B70E /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
 		C3FF0E671B5596880041B70E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E651B5596880041B70E /* Interface.storyboard */; };
 		C3FF0E691B5596880041B70E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E681B5596880041B70E /* Images.xcassets */; };
 		C3FF0E6C1B5596880041B70E /* planckMailiOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C3FF0E4F1B5596880041B70E /* planckMailiOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -1412,10 +1409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84067D531B55E04400B4DB1E /* planckMailiOS WatchKit App.app in Resources */,
-				C3FF0E5F1B5596880041B70E /* planckMailiOS WatchKit App.app in Resources */,
 				C3FF0E5B1B5596880041B70E /* Images.xcassets in Resources */,
-				84067D521B55E03700B4DB1E /* planckMailiOS WatchKit App.app in Resources */,
-				84067D541B55E13500B4DB1E /* planckMailiOS WatchKit App.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1719,7 +1713,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
@@ -1741,7 +1735,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
@@ -1763,6 +1757,7 @@
 				INFOPLIST_FILE = planckMailiOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/planckMailiOS.app/planckMailiOS";
 			};
 			name = Debug;
@@ -1778,6 +1773,7 @@
 				INFOPLIST_FILE = planckMailiOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/planckMailiOS.app/planckMailiOS";
 			};
 			name = Release;
@@ -1787,13 +1783,16 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				ENABLE_BITCODE = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "planckMailiOS WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.planckMailiOS.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 				SKIP_INSTALL = YES;
@@ -1805,9 +1804,11 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "planckMailiOS WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.planckMailiOS.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
 				SKIP_INSTALL = YES;
@@ -1826,7 +1827,7 @@
 				);
 				IBSC_MODULE = planckMailiOS_WatchKit_Extension;
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 				SKIP_INSTALL = YES;
@@ -1843,7 +1844,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				IBSC_MODULE = planckMailiOS_WatchKit_Extension;
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
 				SKIP_INSTALL = YES;
