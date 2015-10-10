@@ -1853,22 +1853,25 @@ Sent from PlanckMailiOS</string>
                                     <constraint firstAttribute="bottom" secondItem="xNz-N0-UWr" secondAttribute="bottom" id="wd6-wL-wE1"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Pf-vp-esL">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Pf-vp-esL">
                                 <rect key="frame" x="0.0" y="115" width="320" height="453"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ccR-rO-z97" id="YYO-ng-L8c"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="moN-kj-eGN" secondAttribute="trailing" constant="-16" id="8Bv-H0-iKU"/>
-                            <constraint firstItem="moN-kj-eGN" firstAttribute="leading" secondItem="TD4-c4-FHC" secondAttribute="leadingMargin" constant="-16" id="8z7-dh-PI4"/>
-                            <constraint firstItem="4Pf-vp-esL" firstAttribute="leading" secondItem="TD4-c4-FHC" secondAttribute="leadingMargin" constant="-16" id="Cll-De-gJZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="E6X-5B-DJY" secondAttribute="trailing" constant="-16" id="PF1-pB-EEt"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4Pf-vp-esL" secondAttribute="trailing" constant="-16" id="PWo-gQ-2WA"/>
+                            <constraint firstItem="moN-kj-eGN" firstAttribute="width" secondItem="TD4-c4-FHC" secondAttribute="width" id="H9c-LI-u2t"/>
+                            <constraint firstItem="4Pf-vp-esL" firstAttribute="width" secondItem="E6X-5B-DJY" secondAttribute="width" id="Jlk-zm-GDz"/>
                             <constraint firstItem="moN-kj-eGN" firstAttribute="top" secondItem="kDt-Zh-0jB" secondAttribute="bottom" constant="-20" id="Pch-aq-hfq"/>
+                            <constraint firstItem="E6X-5B-DJY" firstAttribute="centerX" secondItem="TD4-c4-FHC" secondAttribute="centerX" id="Pz0-Va-lDn"/>
                             <constraint firstItem="E6X-5B-DJY" firstAttribute="top" secondItem="moN-kj-eGN" secondAttribute="bottom" constant="1" id="RB5-tb-G45"/>
                             <constraint firstItem="QtR-MV-KDn" firstAttribute="top" secondItem="4Pf-vp-esL" secondAttribute="bottom" id="aGc-Fr-iJU"/>
+                            <constraint firstItem="4Pf-vp-esL" firstAttribute="centerX" secondItem="TD4-c4-FHC" secondAttribute="centerX" id="glV-MY-qN0"/>
                             <constraint firstItem="4Pf-vp-esL" firstAttribute="top" secondItem="TD4-c4-FHC" secondAttribute="topMargin" constant="115" id="jmP-kp-aS8"/>
-                            <constraint firstItem="E6X-5B-DJY" firstAttribute="leading" secondItem="TD4-c4-FHC" secondAttribute="leadingMargin" constant="-16" id="pNE-d7-vfb"/>
+                            <constraint firstItem="E6X-5B-DJY" firstAttribute="width" secondItem="moN-kj-eGN" secondAttribute="width" id="r7v-J7-azO"/>
+                            <constraint firstItem="moN-kj-eGN" firstAttribute="centerX" secondItem="TD4-c4-FHC" secondAttribute="centerX" id="uYJ-8D-5PP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wXu-oW-Mxr"/>

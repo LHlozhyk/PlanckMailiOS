@@ -19,6 +19,11 @@
 
 #define KEYBOARD_HEIGHT_OFFSET  (([UIScreen mainScreen].bounds.size.height < 568.0f) ? 175.0f : 90.0f)
 
+//screen
+
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+
 //save to userdefauls
 #define SAVE_VALUE(obj,key)[[NSUserDefaults standardUserDefaults] setObject:obj forKey:key];\
 [[NSUserDefaults standardUserDefaults] synchronize];

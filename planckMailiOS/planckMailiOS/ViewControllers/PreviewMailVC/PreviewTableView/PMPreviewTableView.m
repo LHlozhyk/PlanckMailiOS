@@ -64,7 +64,7 @@
     
     [self layoutSubviews];
     
-//    [self performSelector:@selector(selectLastRow) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(selectLastRow) withObject:nil afterDelay:0.7];
 }
 
 #pragma mark - Properties
@@ -159,7 +159,7 @@
         [self performSelectorOnMainThread:@selector(selectLastRow) withObject:nil waitUntilDone:NO];
     } else {
         NSIndexPath *lIndex = [NSIndexPath indexPathForRow:_messages.count - 1 inSection:0];
-        [_tableView selectRowAtIndexPath:lIndex animated:YES scrollPosition:UITableViewScrollPositionTop];
+//        [_tableView selectRowAtIndexPath:lIndex animated:YES scrollPosition:UITableViewScrollPositionTop];
         [self tableView:_tableView didSelectRowAtIndexPath:lIndex];
     }
 }
