@@ -24,4 +24,7 @@ typedef enum {
 @property(nonatomic, strong) PMInboxMailModel *inboxMailModel;
 @property(nonatomic, strong) NSArray *messages;
 @property(nonatomic, weak) id<PMPreviewMailVCDelegate> delegate;
+
+@property(nonatomic, strong) NSArray *inboxMailArray;
+@property(nonatomic, assign) NSInteger selectedMailIndex;
 @end

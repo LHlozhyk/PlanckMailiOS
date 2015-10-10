@@ -139,6 +139,9 @@
     PMInboxMailModel *lSelectedModel = _itemsArray[indexPath.row];
     lNewMailPreviewVC.inboxMailModel = lSelectedModel;
     
+    lNewMailPreviewVC.inboxMailArray = _itemsArray;
+    lNewMailPreviewVC.selectedMailIndex = [_itemsArray indexOfObject:lSelectedModel];
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId account:[PMAPIManager shared].namespaceId unread:lSelectedModel.isUnread completion:^(id data, id error, BOOL success) {

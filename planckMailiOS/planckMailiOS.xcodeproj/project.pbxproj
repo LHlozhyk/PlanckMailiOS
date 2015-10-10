@@ -88,6 +88,9 @@
 		C35BC1DF1B5EF9D100CCDC4D /* PMTypeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E861B55B6340041B70E /* PMTypeContainer.m */; };
 		C35BC1E01B5FCEB500CCDC4D /* PMInboxMailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F061B1428A00020AB6E /* PMInboxMailModel.m */; };
 		C35BC1E11B5FDE5800CCDC4D /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA42B1B134E5400770F88 /* DBManager.m */; };
+		C3654CE81BC94F1D00A08521 /* PMPreviewTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3654CE71BC94F1D00A08521 /* PMPreviewTableView.xib */; settings = {ASSET_TAGS = (); }; };
+		C3654CEB1BC94F3400A08521 /* PMPreviewTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3654CEA1BC94F3400A08521 /* PMPreviewTableView.m */; settings = {ASSET_TAGS = (); }; };
+		C368ACA71BC94DE500DD21BF /* PMPreviewMailTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C368ACA61BC94DE500DD21BF /* PMPreviewMailTVCell.xib */; settings = {ASSET_TAGS = (); }; };
 		C3908D071B55D36800939ADC /* WKEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D061B55D36800939ADC /* WKEmailController.m */; };
 		C3908D0B1B56C39A00939ADC /* microphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3908D0A1B56C39A00939ADC /* microphone@2x.png */; };
 		C3908D161B57A2EE00939ADC /* WKSelectedAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D151B57A2EE00939ADC /* WKSelectedAnswerController.m */; };
@@ -299,6 +302,10 @@
 		C35652501B57F9FF000ECF99 /* NSDate+DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateConverter.h"; sourceTree = "<group>"; };
 		C35652511B57F9FF000ECF99 /* NSDate+DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateConverter.m"; sourceTree = "<group>"; };
 		C35652581B5811D3000ECF99 /* unread_indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unread_indicator@2x.png"; sourceTree = "<group>"; };
+		C3654CE71BC94F1D00A08521 /* PMPreviewTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMPreviewTableView.xib; sourceTree = "<group>"; };
+		C3654CE91BC94F3400A08521 /* PMPreviewTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPreviewTableView.h; sourceTree = "<group>"; };
+		C3654CEA1BC94F3400A08521 /* PMPreviewTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPreviewTableView.m; sourceTree = "<group>"; };
+		C368ACA61BC94DE500DD21BF /* PMPreviewMailTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMPreviewMailTVCell.xib; path = ViewControllers/PreviewMailVC/PreviewMailTVCell/PMPreviewMailTVCell.xib; sourceTree = "<group>"; };
 		C3908D051B55D36800939ADC /* WKEmailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKEmailController.h; sourceTree = "<group>"; };
 		C3908D061B55D36800939ADC /* WKEmailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKEmailController.m; sourceTree = "<group>"; };
 		C3908D0A1B56C39A00939ADC /* microphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphone@2x.png"; sourceTree = "<group>"; };
@@ -383,6 +390,7 @@
 		840156D91B27A48100E92CA7 /* PreviewMailVC */ = {
 			isa = PBXGroup;
 			children = (
+				C3654CE61BC94F0100A08521 /* PreviewTableView */,
 				8497B1181B370C7E009CEC5E /* PreviewContentView */,
 				8478A0541B369F3E003C09AF /* PreviewMailTVCell */,
 				840156DA1B27A51600E92CA7 /* PMPreviewMailVC.h */,
@@ -612,6 +620,7 @@
 			children = (
 				8478A0551B36A1C4003C09AF /* PMPreviewMailTVCell.h */,
 				8478A0561B36A1C4003C09AF /* PMPreviewMailTVCell.m */,
+				C368ACA61BC94DE500DD21BF /* PMPreviewMailTVCell.xib */,
 			);
 			name = PreviewMailTVCell;
 			sourceTree = "<group>";
@@ -1117,6 +1126,17 @@
 			path = "Categories/NSDate+DateConverter";
 			sourceTree = "<group>";
 		};
+		C3654CE61BC94F0100A08521 /* PreviewTableView */ = {
+			isa = PBXGroup;
+			children = (
+				C3654CE91BC94F3400A08521 /* PMPreviewTableView.h */,
+				C3654CEA1BC94F3400A08521 /* PMPreviewTableView.m */,
+				C3654CE71BC94F1D00A08521 /* PMPreviewTableView.xib */,
+			);
+			name = PreviewTableView;
+			path = ViewControllers/PreviewMailVC/PreviewTableView;
+			sourceTree = "<group>";
+		};
 		C3908D041B55D34500939ADC /* EmailController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1389,8 +1409,10 @@
 				8475C1621B963DD40091F955 /* PMLoadMoreTVCell.xib in Resources */,
 				842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */,
 				84A9E3721B5F02DD009DD409 /* PMSelectionEmailView.xib in Resources */,
+				C3654CE81BC94F1D00A08521 /* PMPreviewTableView.xib in Resources */,
 				8475C1641B963DF90091F955 /* PMMailTVCell.xib in Resources */,
 				C3E1FC6A1B7F629C008F815C /* planckMailiOS WatchKit App.app in Resources */,
+				C368ACA71BC94DE500DD21BF /* PMPreviewMailTVCell.xib in Resources */,
 				842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */,
 				842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */,
 				84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */,
@@ -1481,6 +1503,7 @@
 				84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */,
 				846096171B13061400924B61 /* CLContactLibrary.m in Sources */,
 				840D8C931BAF4E8C001C8B60 /* PMEventAlertVC.m in Sources */,
+				C3654CEB1BC94F3400A08521 /* PMPreviewTableView.m in Sources */,
 				847D87D11B4334EE0044A676 /* PMSearchMailVC.m in Sources */,
 				8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */,
 				847B60FA1B617A7B0025DF58 /* PMMailComposeBodyTVCell.m in Sources */,
@@ -1713,7 +1736,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
@@ -1735,7 +1758,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
@@ -1789,7 +1812,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "planckMailiOS WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.planckMailiOS.extension;
@@ -1806,7 +1829,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "planckMailiOS WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.planckMailiOS.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1827,7 +1850,7 @@
 				);
 				IBSC_MODULE = planckMailiOS_WatchKit_Extension;
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 				SKIP_INSTALL = YES;
@@ -1844,7 +1867,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				IBSC_MODULE = planckMailiOS_WatchKit_Extension;
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
 				SKIP_INSTALL = YES;

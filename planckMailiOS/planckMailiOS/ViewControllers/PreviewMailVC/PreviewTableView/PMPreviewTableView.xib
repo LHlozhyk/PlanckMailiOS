@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PMPreviewTableView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="453"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="HsG-Mo-OTi">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="453"/>
+                    <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <view key="tableHeaderView" contentMode="scaleToFill" id="Zfj-37-tzf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RE: Microsoft acquisitio of productivity app - wunderlist" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsm-Q5-fbH">
+                                <rect key="frame" x="8" y="8" width="274" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uiz-eb-hxO">
+                                <rect key="frame" x="290" y="9" width="21" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="pVM-Im-neY"/>
+                                </constraints>
+                                <state key="normal" image="flagIconNormal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tsm-Q5-fbH" firstAttribute="top" secondItem="Zfj-37-tzf" secondAttribute="top" constant="8" id="1Zh-HO-35P"/>
+                            <constraint firstAttribute="centerY" secondItem="Uiz-eb-hxO" secondAttribute="centerY" id="4Gs-DU-lio"/>
+                            <constraint firstItem="Uiz-eb-hxO" firstAttribute="leading" secondItem="tsm-Q5-fbH" secondAttribute="trailing" constant="8" id="RuH-SX-vQS"/>
+                            <constraint firstAttribute="trailing" secondItem="Uiz-eb-hxO" secondAttribute="trailing" constant="9" id="eLA-Bb-lpG"/>
+                            <constraint firstAttribute="bottom" secondItem="tsm-Q5-fbH" secondAttribute="bottom" constant="8" id="lok-8n-awv"/>
+                            <constraint firstItem="tsm-Q5-fbH" firstAttribute="leading" secondItem="Zfj-37-tzf" secondAttribute="leading" constant="8" id="nF6-EI-CHh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="xGz-Rb-jtZ"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="Itt-Pg-UBS"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="HsG-Mo-OTi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="24F-Bg-y4m"/>
+                <constraint firstItem="HsG-Mo-OTi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EQ0-5A-MOA"/>
+                <constraint firstAttribute="bottom" secondItem="HsG-Mo-OTi" secondAttribute="bottom" id="KHE-bE-sJp"/>
+                <constraint firstAttribute="trailing" secondItem="HsG-Mo-OTi" secondAttribute="trailing" id="P3f-kN-dsu"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="_tableView" destination="HsG-Mo-OTi" id="4uL-aJ-JUK"/>
+                <outlet property="_titleLabel" destination="tsm-Q5-fbH" id="Wyy-j8-Kvm"/>
+                <outlet property="headerView" destination="Zfj-37-tzf" id="0eQ-18-zca"/>
+            </connections>
+            <point key="canvasLocation" x="203" y="236.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="flagIconNormal" width="21" height="21"/>
+    </resources>
+</document>

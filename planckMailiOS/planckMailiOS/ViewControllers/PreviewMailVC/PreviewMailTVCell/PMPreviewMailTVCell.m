@@ -20,6 +20,13 @@
 
 @implementation PMPreviewMailTVCell
 
++ (instancetype)newCell {
+    NSArray *cellsXIB = [[NSBundle mainBundle] loadNibNamed:@"PMPreviewMailTVCell" owner:nil options:nil];
+    PMPreviewMailTVCell *cell = [cellsXIB firstObject];
+    
+    return cell;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
