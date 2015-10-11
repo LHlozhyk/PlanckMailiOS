@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="JkJ-F0-cJA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="JkJ-F0-cJA">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -20,6 +20,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jm4-NY-ImG">
                                 <rect key="frame" x="32" y="449" width="257" height="60"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.72549019607843135" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="dv7-NN-Bzj"/>
@@ -36,6 +37,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIEW OUR PRIVACY POLICY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAA-0g-hRX">
                                 <rect key="frame" x="76" y="527" width="179" height="21"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="qGT-ft-t06"/>
                                 </constraints>
@@ -45,6 +47,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE PLANK THAT WORKS FOR YOU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bd-GF-o5K">
                                 <rect key="frame" x="21" y="279" width="288" height="21"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="QKB-tw-7au"/>
                                 </constraints>
@@ -54,12 +57,14 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountPageLogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ccS-YU-yVb">
                                 <rect key="frame" x="78" y="104" width="175" height="179"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="179" id="Mue-Vt-p1H"/>
                                     <constraint firstAttribute="width" constant="175" id="xc9-nq-ShH"/>
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2bd-GF-o5K" firstAttribute="leading" secondItem="dBv-En-Fga" secondAttribute="leadingMargin" constant="5" id="0zf-V1-Fik"/>
@@ -95,6 +100,7 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NK6-nu-uvm">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="3YB-Sm-aCz"/>
                                 </constraints>
@@ -108,12 +114,14 @@
                             </navigationBar>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yve-Ke-p80">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="cI4-Ad-lxY" id="eeq-ai-uHo"/>
                                 </connections>
                             </webView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NK6-nu-uvm" firstAttribute="top" secondItem="zts-HP-dvp" secondAttribute="top" id="37S-B0-EV0"/>
@@ -142,6 +150,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="j53-7u-Q5b">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
@@ -168,6 +177,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c58-em-BvU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="qxo-Zw-kJt" kind="relationship" relationship="rootViewController" id="zWu-bf-wE7"/>
@@ -177,7 +187,7 @@
             </objects>
             <point key="canvasLocation" x="1576" y="-1020"/>
         </scene>
-        <!--Calendar-->
+        <!--CalendarVC-->
         <scene sceneID="Nwx-TG-CsN">
             <objects>
                 <viewController storyboardIdentifier="PMCalendarVC" id="qxo-Zw-kJt" customClass="PMCalendarVC" sceneMemberID="viewController">
@@ -191,13 +201,15 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTb-zC-1ZG" userLabel="calendarView" customClass="JTHorizontalCalendarView">
                                 <rect key="frame" x="0.0" y="64" width="320" height="85"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="9a0-Yh-nls"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hvF-gU-Lry">
-                                <rect key="frame" x="0.0" y="149" width="320" height="419"/>
+                                <rect key="frame" x="0.0" y="149" width="320" height="370"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="70" id="C0m-NP-CAK" customClass="PMCalendarCell">
@@ -209,6 +221,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly PlanckLabs Teem Sync" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kag-ff-dze">
                                                     <rect key="frame" x="79" y="8" width="233" height="21"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="jMv-Gp-5a7"/>
                                                     </constraints>
@@ -218,6 +231,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skype Call" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7H-bS-Xfg">
                                                     <rect key="frame" x="79" y="37" width="233" height="21"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="hyJ-5g-5E6"/>
                                                     </constraints>
@@ -227,6 +241,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CLb-Mt-Ukx">
                                                     <rect key="frame" x="8" y="0.0" width="63" height="69"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="69" id="FOq-ka-eku"/>
                                                         <constraint firstAttribute="width" constant="63" id="bdL-tf-XaE"/>
@@ -238,6 +253,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="Kag-ff-dze" firstAttribute="leading" secondItem="CLb-Mt-Ukx" secondAttribute="trailing" constant="8" id="306-hY-aI0"/>
                                                 <constraint firstItem="Kag-ff-dze" firstAttribute="trailing" secondItem="xwk-In-yLY" secondAttribute="trailingMargin" id="FIN-GY-Qvb"/>
@@ -249,6 +265,7 @@
                                                 <constraint firstItem="CLb-Mt-Ukx" firstAttribute="top" secondItem="xwk-In-yLY" secondAttribute="topMargin" constant="-8" id="xAX-N6-7v4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="locationLabel" destination="e7H-bS-Xfg" id="Qn3-ji-g7e"/>
                                             <outlet property="timeLabel" destination="CLb-Mt-Ukx" id="vtC-gI-Tdj"/>
@@ -262,24 +279,42 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="OTb-zC-1ZG" secondAttribute="trailing" id="38O-l7-YlG"/>
                             <constraint firstAttribute="trailing" secondItem="hvF-gU-Lry" secondAttribute="trailing" id="Y4I-Rz-cfu"/>
                             <constraint firstItem="OTb-zC-1ZG" firstAttribute="top" secondItem="anx-TW-2sH" secondAttribute="bottom" id="ZWO-eI-c9b"/>
-                            <constraint firstAttribute="bottom" secondItem="hvF-gU-Lry" secondAttribute="bottom" id="eT1-hN-m6p"/>
+                            <constraint firstAttribute="bottom" secondItem="hvF-gU-Lry" secondAttribute="bottom" constant="49" id="eT1-hN-m6p"/>
                             <constraint firstItem="OTb-zC-1ZG" firstAttribute="leading" secondItem="UaK-s2-xSa" secondAttribute="leading" id="hgE-RS-zt8"/>
                             <constraint firstItem="hvF-gU-Lry" firstAttribute="leading" secondItem="UaK-s2-xSa" secondAttribute="leading" id="qv8-8t-RtT"/>
                             <constraint firstItem="hvF-gU-Lry" firstAttribute="top" secondItem="OTb-zC-1ZG" secondAttribute="bottom" id="wZ9-mE-LLF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar" id="yl5-V6-oer">
+                    <navigationItem key="navigationItem" id="yl5-V6-oer">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="menuIcon" id="QJn-H8-ZRp">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="menuBtnPressed:" destination="qxo-Zw-kJt" id="wNL-Hj-Bap"/>
                             </connections>
                         </barButtonItem>
+                        <view key="titleView" contentMode="scaleToFill" id="qab-1s-xCs">
+                            <rect key="frame" x="77" y="6" width="150" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akL-JP-829">
+                                    <rect key="frame" x="8" y="6" width="150" height="21"/>
+                                    <animations/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <animations/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Mdz-Cb-6kU">
                             <view key="customView" contentMode="scaleToFill" id="DYL-Xu-0Sc">
                                 <rect key="frame" x="233" y="5" width="71" height="33"/>
@@ -287,6 +322,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOs-dV-wuA">
                                         <rect key="frame" x="39" y="1" width="32" height="32"/>
+                                        <animations/>
                                         <state key="normal" image="addEvent_icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -296,16 +332,19 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h05-Gv-qdl">
                                         <rect key="frame" x="0.0" y="1" width="32" height="32"/>
+                                        <animations/>
                                         <state key="normal" image="tableEvent_icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="_currentMonth" destination="akL-JP-829" id="CFl-Uw-pzZ"/>
                         <outlet property="_tableView" destination="hvF-gU-Lry" id="lwQ-NL-t61"/>
                         <outlet property="calendarContentView" destination="OTb-zC-1ZG" id="6oK-IL-RJK"/>
                         <outlet property="calendarContentViewHeight" destination="9a0-Yh-nls" id="S0f-3N-8tN"/>
@@ -329,6 +368,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Shs-UA-NKJ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="eventTitleCell" rowHeight="40" id="OMY-f7-Opn" customClass="PMTextFieldTVCell">
@@ -340,10 +380,12 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vim-7X-QfE">
                                                     <rect key="frame" x="17" y="5" width="295" height="30"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="Vim-7X-QfE" firstAttribute="leading" secondItem="Lff-7b-scb" secondAttribute="leadingMargin" constant="9" id="5rz-ij-rZ9"/>
                                                 <constraint firstItem="Vim-7X-QfE" firstAttribute="top" secondItem="Lff-7b-scb" secondAttribute="topMargin" constant="-3" id="Aw5-XR-KXe"/>
@@ -351,6 +393,7 @@
                                                 <constraint firstItem="Vim-7X-QfE" firstAttribute="trailing" secondItem="Lff-7b-scb" secondAttribute="trailingMargin" id="qXg-EW-YdR"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="_textField" destination="Vim-7X-QfE" id="mPs-L9-Kcp"/>
                                         </connections>
@@ -365,22 +408,26 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="All day" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sbb-uo-Ez0">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="39"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vFl-Mg-AYr">
                                                     <rect key="frame" x="263" y="4" width="51" height="31"/>
+                                                    <animations/>
                                                     <connections>
                                                         <action selector="switchStateDidChange:" destination="VuM-0x-HLL" eventType="valueChanged" id="zbk-f2-ULF"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="vFl-Mg-AYr" firstAttribute="centerY" secondItem="Sbb-uo-Ez0" secondAttribute="centerY" id="Vyw-Z3-l34"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="vFl-Mg-AYr" secondAttribute="trailing" id="crb-uM-Q3s"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="allDaySwitch" destination="vFl-Mg-AYr" id="gnG-sR-H4q"/>
                                         </connections>
@@ -395,6 +442,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Starts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7j5-of-vX0">
                                                     <rect key="frame" x="15" y="14" width="39" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -402,11 +450,14 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="20.09.2015 12:0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EKb-qK-Gxc">
                                                     <rect key="frame" x="188" y="12" width="117" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventEndsCell" textLabel="9QU-gN-D28" detailTextLabel="Ay7-mc-hrx" style="IBUITableViewCellStyleValue1" id="e4s-lU-5eM">
                                         <rect key="frame" x="0.0" y="174" width="320" height="44"/>
@@ -418,6 +469,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Ends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9QU-gN-D28">
                                                     <rect key="frame" x="15" y="14" width="32" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -425,11 +477,14 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="20.09.2015 12:0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ay7-mc-hrx">
                                                     <rect key="frame" x="188" y="12" width="117" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="eventAlertCell" textLabel="Zpw-7u-pxu" detailTextLabel="0sr-fD-0yb" style="IBUITableViewCellStyleValue1" id="72D-2v-g11">
                                         <rect key="frame" x="0.0" y="218" width="320" height="44"/>
@@ -441,6 +496,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Alert" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zpw-7u-pxu">
                                                     <rect key="frame" x="15" y="14" width="32" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -448,11 +504,14 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0sr-fD-0yb">
                                                     <rect key="frame" x="246" y="12" width="39" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <segue destination="oSq-Kg-0Vr" kind="push" id="Bi0-LN-L8r"/>
                                         </connections>
@@ -467,6 +526,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Calendar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2W7-6S-T2D">
                                                     <rect key="frame" x="15" y="13" width="58" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -474,11 +534,14 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="lyubomyr.hlozhyk@gmail.com" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uut-jb-jL3">
                                                     <rect key="frame" x="93" y="13" width="192" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <segue destination="N18-Xk-uaf" kind="push" id="aws-aW-wZ4"/>
                                         </connections>
@@ -492,10 +555,12 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AKm-fC-ejh">
                                                     <rect key="frame" x="15" y="7" width="297" height="30"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="AKm-fC-ejh" firstAttribute="bottom" secondItem="bA0-R7-ilq" secondAttribute="bottomMargin" constant="2" id="GUv-bO-De4"/>
                                                 <constraint firstItem="AKm-fC-ejh" firstAttribute="top" secondItem="bA0-R7-ilq" secondAttribute="topMargin" constant="-1" id="Xk7-h9-7VV"/>
@@ -503,6 +568,7 @@
                                                 <constraint firstItem="AKm-fC-ejh" firstAttribute="trailing" secondItem="bA0-R7-ilq" secondAttribute="trailingMargin" id="yhl-ZK-qMe"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="_textField" destination="AKm-fC-ejh" id="QPd-A9-Iyj"/>
                                         </connections>
@@ -517,6 +583,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Invitees" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jAP-Kg-fB7">
                                                     <rect key="frame" x="15" y="14" width="50" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -524,11 +591,14 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xa6-dy-7SH">
                                                     <rect key="frame" x="275" y="12" width="10" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <segue destination="uL6-da-GdO" kind="push" id="hMs-I9-QC0"/>
                                         </connections>
@@ -542,11 +612,13 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Notes" translatesAutoresizingMaskIntoConstraints="NO" id="tO4-21-jd6">
                                                     <rect key="frame" x="8" y="0.0" width="304" height="89"/>
+                                                    <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="tO4-21-jd6" firstAttribute="top" secondItem="Bps-wV-sLF" secondAttribute="topMargin" constant="-8" id="2b6-GO-0nG"/>
                                                 <constraint firstItem="tO4-21-jd6" firstAttribute="trailing" secondItem="Bps-wV-sLF" secondAttribute="trailingMargin" id="79m-tW-Q8f"/>
@@ -554,6 +626,7 @@
                                                 <constraint firstItem="tO4-21-jd6" firstAttribute="leading" secondItem="Bps-wV-sLF" secondAttribute="leadingMargin" id="ZzS-3v-gG8"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -564,6 +637,7 @@
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97z-sp-skj">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="EUP-Ff-v7i"/>
                                 </constraints>
@@ -585,6 +659,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7tE-MB-qfQ" firstAttribute="top" secondItem="Shs-UA-NKJ" secondAttribute="bottom" id="D4Z-3G-zw1"/>
@@ -619,6 +694,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gNn-2G-78Q">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="alertCell" id="Odt-nZ-cmn">
@@ -627,7 +703,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Odt-nZ-cmn" id="n7Z-JI-fRz">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -636,6 +714,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gNn-2G-78Q" secondAttribute="trailing" id="0Mo-ts-l2v"/>
@@ -667,6 +746,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hf9-ud-dU8">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="titleInfo" rowHeight="100" id="nvn-3c-PYM">
@@ -678,12 +758,14 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekly PlanckLabs Team Sync" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8m-pw-3Eo">
                                                     <rect key="frame" x="8" y="8" width="304" height="21"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjB-JL-3de">
                                                     <rect key="frame" x="8" y="27" width="304" height="46"/>
+                                                    <animations/>
                                                     <string key="text">Thursday, Sep. 24, 2015
 7:00 - 7:30</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -692,12 +774,15 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lyubomyr.hlozhyk@gmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCw-J1-odF">
                                                     <rect key="frame" x="8" y="70" width="304" height="21"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="acceptTitle" rowHeight="44" id="sUb-WX-F6n">
                                         <rect key="frame" x="0.0" y="122" width="320" height="44"/>
@@ -708,24 +793,29 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMB-jr-woM">
                                                     <rect key="frame" x="8" y="7" width="58" height="30"/>
+                                                    <animations/>
                                                     <state key="normal" title="Accept">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tq-xA-HZ7">
                                                     <rect key="frame" x="129" y="7" width="63" height="30"/>
+                                                    <animations/>
                                                     <state key="normal" title="Tentative">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQq-Oh-BHJ">
                                                     <rect key="frame" x="254" y="7" width="58" height="30"/>
+                                                    <animations/>
                                                     <state key="normal" title="Decline">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="44" id="eN4-kR-gRw">
                                         <rect key="frame" x="0.0" y="166" width="320" height="44"/>
@@ -736,11 +826,14 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Skype Call" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipp-rH-eMj">
                                                     <rect key="frame" x="8" y="11" width="304" height="21"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="timeCell" rowHeight="44" id="qwW-L6-sr1">
                                         <rect key="frame" x="0.0" y="210" width="320" height="44"/>
@@ -751,11 +844,14 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20 minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1e-jA-lBx">
                                                     <rect key="frame" x="8" y="11" width="304" height="21"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="organizerCell" textLabel="aJh-2O-Cgo" detailTextLabel="cZE-Di-YxM" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="VgS-ht-exj">
                                         <rect key="frame" x="0.0" y="254" width="320" height="44"/>
@@ -767,6 +863,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Raj Kumar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aJh-2O-Cgo">
                                                     <rect key="frame" x="15" y="5" width="74" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -774,12 +871,15 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Organizer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cZE-Di-YxM">
                                                     <rect key="frame" x="15" y="25" width="52" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="inviteesCell" textLabel="uwk-VN-YoL" detailTextLabel="zi5-tR-iMs" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="irx-yP-jGx">
                                         <rect key="frame" x="0.0" y="298" width="320" height="44"/>
@@ -791,6 +891,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Invitees" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uwk-VN-YoL">
                                                     <rect key="frame" x="15" y="5" width="56" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -798,12 +899,15 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Raj Kumar, Lyubomyr.hlozhyk@gmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zi5-tR-iMs">
                                                     <rect key="frame" x="15" y="25" width="217" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -812,6 +916,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZUa-4G-3og" firstAttribute="top" secondItem="Hf9-ud-dU8" secondAttribute="bottom" id="1bK-QY-9HL"/>
@@ -839,6 +944,7 @@
                     <view key="view" contentMode="scaleToFill" id="mOz-5l-gfN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Lhu-bh-7dm"/>
@@ -858,6 +964,7 @@
                     <view key="view" contentMode="scaleToFill" id="6ub-bi-76j">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="JsC-yf-B0g"/>
@@ -880,6 +987,7 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuI-r7-B68">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="ZS2-fc-yyc"/>
                                 </constraints>
@@ -895,6 +1003,7 @@
                                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PdH-jW-OoE">
                                             <rect key="frame" x="54" y="27" width="212" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
                                             <state key="normal">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -914,6 +1023,7 @@
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="htx-nW-Kyq">
                                 <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="toCell" textLabel="s2f-Hx-8ak" style="IBUITableViewCellStyleDefault" id="bCc-qI-JYF" customClass="PMMailComposeTVCell">
@@ -926,12 +1036,14 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="To:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s2f-Hx-8ak">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xgu-HA-dDo">
                                                     <rect key="frame" x="42" y="7" width="270" height="30"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -939,12 +1051,14 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="Xgu-HA-dDo" firstAttribute="leading" secondItem="ru6-ng-sp7" secondAttribute="leadingMargin" constant="34" id="4af-95-RuB"/>
                                                 <constraint firstItem="Xgu-HA-dDo" firstAttribute="top" secondItem="ru6-ng-sp7" secondAttribute="topMargin" constant="-1" id="AMK-GN-oEy"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Xgu-HA-dDo" secondAttribute="trailing" id="lyQ-qX-pZE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="_textField" destination="Xgu-HA-dDo" id="1dz-Te-Chb"/>
                                         </connections>
@@ -959,12 +1073,14 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Cc:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QgZ-OT-2H9">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rnv-85-fc8">
                                                     <rect key="frame" x="78" y="7" width="234" height="30"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -972,12 +1088,14 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="Rnv-85-fc8" firstAttribute="top" secondItem="7XA-Vb-94l" secondAttribute="topMargin" constant="-1" id="Xff-rv-gsP"/>
                                                 <constraint firstItem="Rnv-85-fc8" firstAttribute="leading" secondItem="7XA-Vb-94l" secondAttribute="leadingMargin" constant="70" id="fa8-2g-Vt8"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Rnv-85-fc8" secondAttribute="trailing" id="rPm-JV-hf2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="_textField" destination="Rnv-85-fc8" id="AEe-og-k84"/>
                                         </connections>
@@ -992,12 +1110,14 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bcc:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JAP-yV-q2M">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="09E-rd-Cwj">
                                                     <rect key="frame" x="78" y="7" width="234" height="30"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -1005,12 +1125,14 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="09E-rd-Cwj" firstAttribute="top" secondItem="NvF-rw-cLG" secondAttribute="topMargin" constant="-1" id="1OB-xo-XfN"/>
                                                 <constraint firstItem="09E-rd-Cwj" firstAttribute="leading" secondItem="NvF-rw-cLG" secondAttribute="leadingMargin" constant="70" id="KNT-rc-cpN"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="09E-rd-Cwj" secondAttribute="trailing" id="UE0-ya-SBe"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="_textField" destination="09E-rd-Cwj" id="q9W-Kj-PKe"/>
                                         </connections>
@@ -1025,12 +1147,14 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subject:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cn1-5k-QFf">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ESl-NY-ucw">
                                                     <rect key="frame" x="79" y="7" width="233" height="30"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -1038,12 +1162,14 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="ESl-NY-ucw" firstAttribute="leading" secondItem="cch-kd-TfZ" secondAttribute="leadingMargin" constant="71" id="BnG-fU-4HG"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ESl-NY-ucw" secondAttribute="trailing" id="O4H-Dv-pty"/>
                                                 <constraint firstItem="ESl-NY-ucw" firstAttribute="top" secondItem="cch-kd-TfZ" secondAttribute="topMargin" constant="-1" id="o4B-bm-ed3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="_textField" destination="ESl-NY-ucw" id="kj8-jg-7ks"/>
                                         </connections>
@@ -1057,6 +1183,7 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bu1-BQ-DDd">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="193"/>
+                                                    <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">
 
@@ -1072,6 +1199,7 @@ Sent from PlanckMailiOS</string>
                                                     </connections>
                                                 </textView>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="bu1-BQ-DDd" secondAttribute="bottom" constant="-8" id="3JZ-Fh-r56"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="bu1-BQ-DDd" secondAttribute="trailing" constant="-8" id="8b0-W0-lT9"/>
@@ -1079,6 +1207,7 @@ Sent from PlanckMailiOS</string>
                                                 <constraint firstItem="bu1-BQ-DDd" firstAttribute="top" secondItem="cmZ-X2-r0z" secondAttribute="topMargin" constant="-8" id="WGX-bp-626"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="_textView" destination="bu1-BQ-DDd" id="Ewb-CH-jI3"/>
                                         </connections>
@@ -1090,6 +1219,7 @@ Sent from PlanckMailiOS</string>
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PkK-To-8Fg" firstAttribute="top" secondItem="htx-nW-Kyq" secondAttribute="bottom" id="0eD-74-WC8"/>
@@ -1123,6 +1253,7 @@ Sent from PlanckMailiOS</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rBe-cZ-nb0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="wVD-zo-myU" kind="relationship" relationship="rootViewController" id="dRR-tp-jCe"/>
@@ -1146,6 +1277,7 @@ Sent from PlanckMailiOS</string>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pnc-jl-o8x">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="wVD-zo-myU" id="z8K-XW-L40"/>
@@ -1153,6 +1285,7 @@ Sent from PlanckMailiOS</string>
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Pnc-jl-o8x" firstAttribute="top" secondItem="9JX-EO-oTP" secondAttribute="bottom" constant="-64" id="Kso-4M-jlP"/>
@@ -1182,6 +1315,7 @@ Sent from PlanckMailiOS</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FoI-nB-PNO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="csP-iT-XFB" kind="relationship" relationship="rootViewController" id="J92-UM-HP8"/>
@@ -1205,6 +1339,7 @@ Sent from PlanckMailiOS</string>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9f2-IO-gBU">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="peopleCell" rowHeight="54" id="Zw1-hU-kkK">
@@ -1213,7 +1348,9 @@ Sent from PlanckMailiOS</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zw1-hU-kkK" id="ThU-Kj-LV4">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <segue destination="lsA-G7-HE8" kind="push" identifier="PMPreviewPeopleVC" id="2Za-iN-pA5"/>
                                         </connections>
@@ -1225,6 +1362,7 @@ Sent from PlanckMailiOS</string>
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9f2-IO-gBU" firstAttribute="top" secondItem="Yt3-kl-RrU" secondAttribute="bottom" constant="-64" id="ArB-tX-36A"/>
@@ -1259,6 +1397,7 @@ Sent from PlanckMailiOS</string>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlW-Kn-Hjn">
                                         <rect key="frame" x="15" y="4" width="55" height="21"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="EzZ-y5-Uk6"/>
                                             <constraint firstAttribute="height" constant="21" id="zvm-9S-2V6"/>
@@ -1269,6 +1408,7 @@ Sent from PlanckMailiOS</string>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KwC-45-TWs">
                                         <rect key="frame" x="90" y="1" width="55" height="30"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="6Nj-PP-FNg"/>
                                             <constraint firstAttribute="width" constant="55" id="yML-FE-4za"/>
@@ -1279,6 +1419,7 @@ Sent from PlanckMailiOS</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haK-Zs-z9q">
                                         <rect key="frame" x="165" y="0.0" width="55" height="30"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="KJ3-i9-VTY"/>
                                             <constraint firstAttribute="height" constant="30" id="Xyq-L5-Luy"/>
@@ -1289,6 +1430,7 @@ Sent from PlanckMailiOS</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vlv-GZ-aZY">
                                         <rect key="frame" x="240" y="1" width="55" height="30"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="B6n-0h-ve3"/>
                                             <constraint firstAttribute="height" constant="30" id="PJ8-wh-USt"/>
@@ -1298,6 +1440,7 @@ Sent from PlanckMailiOS</string>
                                         </state>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="0I6-US-vHU"/>
@@ -1313,6 +1456,7 @@ Sent from PlanckMailiOS</string>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YsH-Go-kZJ">
                                 <rect key="frame" x="0.0" y="93" width="320" height="475"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactDetailsCell" textLabel="asM-wn-Ee9" detailTextLabel="WOs-bs-hQJ" rowHeight="66" style="IBUITableViewCellStyleSubtitle" id="wv6-8l-X4w">
@@ -1325,6 +1469,7 @@ Sent from PlanckMailiOS</string>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="CONTACT DETAILS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="asM-wn-Ee9">
                                                     <rect key="frame" x="15" y="16" width="141" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1332,12 +1477,15 @@ Sent from PlanckMailiOS</string>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Linked from: &quot;&quot; Contacts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WOs-bs-hQJ">
                                                     <rect key="frame" x="15" y="36" width="129" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1346,6 +1494,7 @@ Sent from PlanckMailiOS</string>
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aY9-7r-Wcn" firstAttribute="leading" secondItem="Rxm-P1-phT" secondAttribute="leadingMargin" constant="-16" id="C5Z-GD-f1l"/>
@@ -1373,6 +1522,7 @@ Sent from PlanckMailiOS</string>
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="xqz-2q-sTO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddAccount" id="gtc-yJ-6cF">
@@ -1384,6 +1534,7 @@ Sent from PlanckMailiOS</string>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqh-Gy-1CO">
                                             <rect key="frame" x="8" y="7" width="304" height="30"/>
+                                            <animations/>
                                             <state key="normal" title="+ Add Account">
                                                 <color key="titleColor" red="0.35686274509803922" green="0.77254901960784317" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1393,6 +1544,7 @@ Sent from PlanckMailiOS</string>
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="Oqh-Gy-1CO" firstAttribute="trailing" secondItem="EFI-hw-dSF" secondAttribute="trailingMargin" id="Mch-bK-zfk"/>
                                         <constraint firstItem="Oqh-Gy-1CO" firstAttribute="leading" secondItem="EFI-hw-dSF" secondAttribute="leadingMargin" id="hIp-XQ-BHd"/>
@@ -1400,6 +1552,7 @@ Sent from PlanckMailiOS</string>
                                         <constraint firstItem="Oqh-Gy-1CO" firstAttribute="top" secondItem="EFI-hw-dSF" secondAttribute="topMargin" constant="-1" id="xYy-kM-pCn"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -1426,6 +1579,7 @@ Sent from PlanckMailiOS</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pV8-XU-l9V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="lgm-OV-AuB" kind="relationship" relationship="rootViewController" id="CiO-IZ-Woo"/>
@@ -1447,6 +1601,7 @@ Sent from PlanckMailiOS</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2w9-rX-dxc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="jvz-4f-ywC" kind="relationship" relationship="rootViewController" id="yaa-be-8Hk"/>
@@ -1470,6 +1625,7 @@ Sent from PlanckMailiOS</string>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Gu2-dn-emu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mailCell" rowHeight="90" id="bFO-O9-BOk" customClass="PMMailTVCell">
@@ -1481,6 +1637,7 @@ Sent from PlanckMailiOS</string>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Raj Kumar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzi-Mj-2UJ">
                                                     <rect key="frame" x="24" y="8" width="239" height="21"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="x9s-mJ-dk6"/>
                                                     </constraints>
@@ -1490,6 +1647,7 @@ Sent from PlanckMailiOS</string>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Thursday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHw-V3-Zjz">
                                                     <rect key="frame" x="264" y="8" width="48" height="21"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="axB-5E-sJf"/>
                                                     </constraints>
@@ -1499,18 +1657,21 @@ Sent from PlanckMailiOS</string>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="link to Zero Mail Feed App :https://itunes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaF-bg-EiT">
                                                     <rect key="frame" x="24" y="25" width="288" height="21"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lik to Zero Mail Feed App : https://itunes.apple.com/us/app/zero-inbox-zero-" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCI-B0-ifY">
                                                     <rect key="frame" x="24" y="44" width="288" height="37"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attachedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="HYj-FS-8D0">
                                                     <rect key="frame" x="0.0" y="9" width="20" height="20"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="k14-im-9Me"/>
                                                         <constraint firstAttribute="height" constant="20" id="nNQ-ds-myp"/>
@@ -1518,12 +1679,14 @@ Sent from PlanckMailiOS</string>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unreadIcon" translatesAutoresizingMaskIntoConstraints="NO" id="nwS-g6-A1Z">
                                                     <rect key="frame" x="1" y="26" width="18" height="18"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="9MI-xx-IbM"/>
                                                         <constraint firstAttribute="width" constant="18" id="KXN-D6-E12"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="iHw-V3-Zjz" firstAttribute="leading" secondItem="nzi-Mj-2UJ" secondAttribute="trailing" constant="1" id="3AW-DC-lOG"/>
                                                 <constraint firstItem="CCI-B0-ifY" firstAttribute="leading" secondItem="Ehg-7n-qxW" secondAttribute="leadingMargin" constant="16" id="6VM-Xv-kmy"/>
@@ -1546,6 +1709,7 @@ Sent from PlanckMailiOS</string>
                                                 <constraint firstItem="CCI-B0-ifY" firstAttribute="trailing" secondItem="Ehg-7n-qxW" secondAttribute="trailingMargin" id="zjT-bq-eJn"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="_attachedFileImageView" destination="HYj-FS-8D0" id="KCF-hF-9X1"/>
                                             <outlet property="_personNameLabel" destination="nzi-Mj-2UJ" id="mwp-Up-8Y2"/>
@@ -1564,14 +1728,17 @@ Sent from PlanckMailiOS</string>
                                             <subviews>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="47m-US-10o">
                                                     <rect key="frame" x="292" y="9" width="20" height="20"/>
+                                                    <animations/>
                                                 </activityIndicatorView>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="47m-US-10o" firstAttribute="trailing" secondItem="wA9-ky-2ag" secondAttribute="trailingMargin" id="H2k-py-YDq"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="47m-US-10o" secondAttribute="bottom" constant="2" id="M7L-gY-ghW"/>
                                                 <constraint firstItem="47m-US-10o" firstAttribute="top" secondItem="wA9-ky-2ag" secondAttribute="topMargin" constant="1" id="Zne-3F-RRg"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="_activity" destination="47m-US-10o" id="wU0-wd-kTd"/>
                                         </connections>
@@ -1583,6 +1750,7 @@ Sent from PlanckMailiOS</string>
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Gu2-dn-emu" secondAttribute="trailing" constant="-16" id="83l-Dt-2dr"/>
@@ -1617,6 +1785,7 @@ Sent from PlanckMailiOS</string>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoD-pg-QLh">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
+                                        <animations/>
                                         <state key="normal" title="Important">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1629,6 +1798,7 @@ Sent from PlanckMailiOS</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="too-SV-fdW">
                                         <rect key="frame" x="160" y="0.0" width="160" height="44"/>
+                                        <animations/>
                                         <state key="normal" title="Read Later">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1640,6 +1810,7 @@ Sent from PlanckMailiOS</string>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="too-SV-fdW" firstAttribute="top" secondItem="GS1-cL-nYo" secondAttribute="top" id="27F-jY-TqQ"/>
@@ -1658,6 +1829,7 @@ Sent from PlanckMailiOS</string>
                                 </connections>
                             </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GS1-cL-nYo" firstAttribute="leading" secondItem="9lc-oA-Amo" secondAttribute="leadingMargin" constant="-16" id="3GH-7M-AHf"/>
@@ -1674,6 +1846,7 @@ Sent from PlanckMailiOS</string>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vb8-dn-z4E">
                                         <rect key="frame" x="0.0" y="3" width="30" height="30"/>
+                                        <animations/>
                                         <state key="normal" image="menuIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1682,6 +1855,7 @@ Sent from PlanckMailiOS</string>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </barButtonItem>
@@ -1692,6 +1866,7 @@ Sent from PlanckMailiOS</string>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-vs-YDp">
                                         <rect key="frame" x="0.0" y="2" width="30" height="30"/>
+                                        <animations/>
                                         <state key="normal" image="searchIcon"/>
                                         <connections>
                                             <action selector="searchBtnPressed:" destination="jvz-4f-ywC" eventType="touchUpInside" id="HOA-TC-vAz"/>
@@ -1699,6 +1874,7 @@ Sent from PlanckMailiOS</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2M-Yu-2KG">
                                         <rect key="frame" x="42" y="2" width="30" height="30"/>
+                                        <animations/>
                                         <state key="normal" image="createMailIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1707,6 +1883,7 @@ Sent from PlanckMailiOS</string>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </barButtonItem>
@@ -1734,6 +1911,7 @@ Sent from PlanckMailiOS</string>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moN-kj-eGN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="6iT-qe-hPB"/>
                                 </constraints>
@@ -1752,6 +1930,7 @@ Sent from PlanckMailiOS</string>
                                                 <subviews>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yyr-TN-0Cc" userLabel="dotsBtn">
                                                         <rect key="frame" x="0.0" y="7" width="32" height="32"/>
+                                                        <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="32" id="5s1-W8-s3D"/>
                                                             <constraint firstAttribute="height" constant="32" id="hf7-5g-ysq"/>
@@ -1762,6 +1941,7 @@ Sent from PlanckMailiOS</string>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wc8-xs-j8L" userLabel="trashBtn">
                                                         <rect key="frame" x="49" y="7" width="32" height="32"/>
+                                                        <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="CLR-Zp-dbO"/>
                                                             <constraint firstAttribute="width" constant="32" id="ph0-4E-6gd"/>
@@ -1775,6 +1955,7 @@ Sent from PlanckMailiOS</string>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smz-1w-750" userLabel="urchiveBtn">
                                                         <rect key="frame" x="98" y="7" width="32" height="32"/>
+                                                        <animations/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="nfT-Kl-6H7"/>
                                                             <constraint firstAttribute="width" constant="32" id="ntB-hQ-OE5"/>
@@ -1787,6 +1968,7 @@ Sent from PlanckMailiOS</string>
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="Yyr-TN-0Cc" firstAttribute="top" secondItem="Zje-4o-a1s" secondAttribute="top" constant="7" id="6lM-1h-8F6"/>
@@ -1810,6 +1992,7 @@ Sent from PlanckMailiOS</string>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8D-kL-Vza">
                                         <rect key="frame" x="8" y="0.0" width="96" height="50"/>
+                                        <animations/>
                                         <state key="normal" image="leftArrowIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1819,6 +2002,7 @@ Sent from PlanckMailiOS</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zX-4w-gby">
                                         <rect key="frame" x="216" y="0.0" width="96" height="50"/>
+                                        <animations/>
                                         <state key="normal" image="rightArrowIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1828,6 +2012,7 @@ Sent from PlanckMailiOS</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNz-N0-UWr">
                                         <rect key="frame" x="112" y="0.0" width="96" height="50"/>
+                                        <animations/>
                                         <state key="normal" image="doubleArrowIcon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1836,6 +2021,7 @@ Sent from PlanckMailiOS</string>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="5zX-4w-gby" firstAttribute="width" secondItem="w8D-kL-Vza" secondAttribute="width" id="79e-oG-fXk"/>
@@ -1855,6 +2041,7 @@ Sent from PlanckMailiOS</string>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="80" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Zv-5q-RKV">
                                 <rect key="frame" x="0.0" y="115" width="320" height="453"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="XC1-ip-BSB">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
@@ -1862,12 +2049,14 @@ Sent from PlanckMailiOS</string>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RE: Microsoft acquisitio of productivity app - wunderlist" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwU-Ic-H7M">
                                             <rect key="frame" x="8" y="8" width="274" height="24"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Sr-v8-HA2">
                                             <rect key="frame" x="290" y="9" width="21" height="22"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="21" id="fPf-SJ-u6u"/>
                                             </constraints>
@@ -1876,6 +2065,7 @@ Sent from PlanckMailiOS</string>
                                             </state>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="centerY" secondItem="2Sr-v8-HA2" secondAttribute="centerY" id="4PN-fH-Ncz"/>
@@ -1899,9 +2089,11 @@ Sent from PlanckMailiOS</string>
                                                     <subviews>
                                                         <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SH6-kK-fJO">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                                            <animations/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </webView>
                                                     </subviews>
+                                                    <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="SH6-kK-fJO" secondAttribute="bottom" id="Cf6-CG-D5f"/>
@@ -1918,6 +2110,7 @@ Sent from PlanckMailiOS</string>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INBOX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0O-Ek-93P">
                                                             <rect key="frame" x="270" y="0.0" width="42" height="20"/>
+                                                            <animations/>
                                                             <color key="backgroundColor" red="0.54901960780000003" green="0.82352941180000006" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="Lgk-g6-Rqr"/>
@@ -1929,6 +2122,7 @@ Sent from PlanckMailiOS</string>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozW-Jp-zGx">
                                                             <rect key="frame" x="80" y="20" width="232" height="21"/>
+                                                            <animations/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="95u-SH-mwo"/>
                                                             </constraints>
@@ -1938,6 +2132,7 @@ Sent from PlanckMailiOS</string>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbN-9w-TBf">
                                                             <rect key="frame" x="80" y="35" width="232" height="25"/>
+                                                            <animations/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="VXl-EF-b6X"/>
                                                             </constraints>
@@ -1947,6 +2142,7 @@ Sent from PlanckMailiOS</string>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="messageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Otw-lC-Stw">
                                                             <rect key="frame" x="8" y="6" width="64" height="64"/>
+                                                            <animations/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="64" id="Dn7-oM-EtE"/>
                                                                 <constraint firstAttribute="width" constant="64" id="pCx-sY-vDv"/>
@@ -1954,6 +2150,7 @@ Sent from PlanckMailiOS</string>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuB-2l-Lfh">
                                                             <rect key="frame" x="80" y="53" width="232" height="25"/>
+                                                            <animations/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="l7U-Jh-4mv"/>
                                                             </constraints>
@@ -1962,6 +2159,7 @@ Sent from PlanckMailiOS</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="Otw-lC-Stw" secondAttribute="bottom" constant="8" id="50D-Cw-loh"/>
@@ -1982,6 +2180,7 @@ Sent from PlanckMailiOS</string>
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="bbr-kq-4PU" firstAttribute="leading" secondItem="5ec-Ln-HbI" secondAttribute="leadingMargin" constant="-8" id="101-XC-rsT"/>
                                                 <constraint firstItem="Mf1-Xf-u91" firstAttribute="top" secondItem="bbr-kq-4PU" secondAttribute="bottom" id="2gv-CW-vcp"/>
@@ -1992,6 +2191,7 @@ Sent from PlanckMailiOS</string>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Mf1-Xf-u91" secondAttribute="bottom" constant="-8" id="u19-xo-vgf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <outlet property="_contentView" destination="Mf1-Xf-u91" id="ggk-HM-Ptv"/>
                                             <outlet property="_detailLabel" destination="UbN-9w-TBf" id="DUD-ZV-YBi"/>
@@ -2006,6 +2206,7 @@ Sent from PlanckMailiOS</string>
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="moN-kj-eGN" secondAttribute="trailing" constant="-16" id="8Bv-H0-iKU"/>
@@ -2046,6 +2247,7 @@ Sent from PlanckMailiOS</string>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qip-qr-l7R">
                                 <rect key="frame" x="0.0" y="0.0" width="250" height="668"/>
+                                <animations/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="cell" rowHeight="74" id="pDc-cg-rBf" customClass="LeftViewCell">
                                         <rect key="frame" x="0.0" y="22" width="250" height="74"/>
@@ -2053,7 +2255,9 @@ Sent from PlanckMailiOS</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pDc-cg-rBf" id="ZMC-jt-B57">
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -2062,6 +2266,7 @@ Sent from PlanckMailiOS</string>
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <constraints>
                             <constraint firstItem="qip-qr-l7R" firstAttribute="leading" secondItem="qtP-FW-HoZ" secondAttribute="leading" id="DK7-NI-bbn"/>
                             <constraint firstItem="qip-qr-l7R" firstAttribute="top" secondItem="qtP-FW-HoZ" secondAttribute="top" id="h7Q-P9-baH"/>
@@ -2093,6 +2298,7 @@ Sent from PlanckMailiOS</string>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydv-bz-ZyH">
                                 <rect key="frame" x="0.0" y="20" width="375" height="64"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="Hna-RM-vxT"/>
                                 </constraints>
@@ -2100,6 +2306,7 @@ Sent from PlanckMailiOS</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ydv-bz-ZyH" firstAttribute="top" secondItem="Dai-7o-K5E" secondAttribute="bottom" id="CtV-ra-OOq"/>
@@ -2124,6 +2331,7 @@ Sent from PlanckMailiOS</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VKh-hH-Cr3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="B4o-jX-Mb8" kind="relationship" relationship="rootViewController" id="XYs-MO-Zcp"/>

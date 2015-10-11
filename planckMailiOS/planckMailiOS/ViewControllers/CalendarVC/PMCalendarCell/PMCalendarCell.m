@@ -52,8 +52,8 @@
             break;
             
         case EventDateDateType: {
-            //NSDate *date = [NSDate eventDateFromString:event.startTime];
-            timeText = @"All Day";//[date dateStringValue];
+            NSDate *date = [NSDate eventDateFromString:event.startTime];
+            timeText = [date dateStringValue];
         }
             break;
             

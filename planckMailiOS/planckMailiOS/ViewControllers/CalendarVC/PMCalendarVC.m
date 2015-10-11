@@ -12,15 +12,16 @@
 #import "PMCreateEventVC.h"
 #import "PMEventDetailsVC.h"
 #import "PMCalendarCell.h"
+#import "NSDate+DateConverter.h"
 
-//#import "LIYDateTimePickerViewController.h"
-//#import "LIYCalendarPickerViewController.h"
 #import "PMAPIManager.h"
 
 #import <JTCalendar/JTCalendar.h>
+#import "UITableView+BackgroundText.h"
 
 @interface PMCalendarVC () <UITableViewDelegate, UITableViewDataSource, JTCalendarDelegate, UIGestureRecognizerDelegate> {
     IBOutlet UITableView *_tableView;
+    IBOutlet UILabel *_currentMonth;
     
     NSMutableDictionary *_eventsByDate;
     
@@ -29,6 +30,9 @@
     NSDate *_maxDate;
     
     NSDate *_dateSelected;
+
+    NSMutableArray *_dateItemsArray;
+
 }
 
 @property (nonatomic, strong) NSMutableArray *eventsArray;
@@ -46,31 +50,70 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSDateFormatter *df = [NSDateFormatter new];
-    [df setDateFormat:@"MMM. yyy"];
-    [self setTitle:@"Calendar"];
-    
-    NSString *lStartTimestamp = [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSinceNow]];
-    
-    
     _eventsArray = [NSMutableArray new];
     
+    [self customizeVC];
+    
+    NSDate *startDate = _minDate;
+    NSDate *endDate = _maxDate;
+    
+    _dateItemsArray = [@[startDate] mutableCopy];
+    
+    
+    NSCalendar *gregorianCalendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay
+                                                        fromDate:startDate
+                                                          toDate:endDate
+                                                         options:0];
+    
+    for (int i = 1; i < components.day; ++i) {
+        NSDateComponents *newComponents = [NSDateComponents new];
+        newComponents.day = i;
+        
+        NSDate *date = [gregorianCalendar dateByAddingComponents:newComponents
+                                                          toDate:startDate
+                                                         options:0];
+        [_dateItemsArray addObject:date];
+    }
+    
+    [_dateItemsArray addObject:endDate];
+    
+    
+    
+    NSDictionary *eventParams = @{
+                                  @"starts_after" : [NSString stringWithFormat:@"%f", [self timeStampWithDate:_minDate]],
+                                  @"ends_before" : [NSString stringWithFormat:@"%f", [self timeStampWithDate:_maxDate]]
+                                  
+                                  };
     __weak typeof(self)__self = self;
-    [[PMAPIManager shared] getEventsWithAccount:[[PMAPIManager shared] namespaceId] eventParams:nil comlpetion:^(id data, id error, BOOL success) {
+    [[PMAPIManager shared] getEventsWithAccount:[[PMAPIManager shared] namespaceId] eventParams:eventParams comlpetion:^(id data, id error, BOOL success) {
         __self.eventsArray = data;
         [_tableView reloadData];
+        if (__self.eventsArray.count == 0) {
+            [_tableView changeBackroundTextInSearcTVC:YES withMessage:@"Problem with load Calendar events. Please check your internet connection and try again"];
+        }
     }];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+   
+}
+
+- (NSTimeInterval)timeStampWithDate:(NSDate*)date {
+    return [date timeIntervalSince1970];
+}
+
+- (void)customizeVC {
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     _calendarManager = [JTCalendarManager new];
     _calendarManager.delegate = self;
     _calendarManager.settings.weekModeEnabled = YES;
     
-    UISwipeGestureRecognizer *swipeUpDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(extendedCalendarContentView)];
-    [swipeUpDown setDirection:(UISwipeGestureRecognizerDirectionUp | UISwipeGestureRecognizerDirectionDown )];
+    UISwipeGestureRecognizer *swipeUpDown = [[UISwipeGestureRecognizer alloc] initWithTarget:_calendarContentView action:@selector(extendedCalendarContentView)];
+    [swipeUpDown setDirection:(UISwipeGestureRecognizerDirectionUp | UISwipeGestureRecognizerDirectionDown)];
     [swipeUpDown setDelegate:self];
-    
     [_calendarContentView addGestureRecognizer:swipeUpDown];
     
     // Generate random events sort by date using a dateformatter for the demonstration
@@ -81,19 +124,6 @@
     
     [_calendarManager setContentView:_calendarContentView];
     [_calendarManager setDate:_todayDate];
-    
-    
-//    LIYDateTimePickerViewController *vc = [LIYDateTimePickerViewController timePickerForDate:[NSDate date] delegate:nil];
-//    vc.showCalendarPickerButton = YES;
-//    vc.showEventTimes = YES;
-//    vc.showDateInDayColumnHeader = NO;
-//    vc.allowTimeSelection = NO;
-//    [vc setVisibleCalendarsFromUserDefaults];
-//    
-//    [self addChildViewController:vc];
-//    vc.view.frame = self.view.frame;
-//    [self.view addSubview:vc.view];
-//    [vc didMoveToParentViewController:self];
 }
 
 - (void)extendedCalendarContentView {
@@ -111,15 +141,22 @@
 
 #pragma mark - TableView data source 
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [_dateItemsArray count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSDate *lCurrentDate = _dateItemsArray[section];
+    return [lCurrentDate dateStringValue];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_eventsArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PMCalendarCell *lCell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
-    
     [lCell setEvent:_eventsArray[indexPath.row]];
-    
     return lCell;
 }
 
@@ -151,8 +188,13 @@
 
 // Exemple of implementation of prepareDayView method
 // Used to customize the appearance of dayView
-- (void)calendar:(JTCalendarManager *)calendar prepareDayView:(JTCalendarDayView *)dayView
-{
+- (void)calendar:(JTCalendarManager *)calendar prepareDayView:(JTCalendarDayView *)dayView {
+    
+    NSDateFormatter *dateformate=[[NSDateFormatter alloc]init];
+    [dateformate setDateFormat:@"MMM yyy"]; // Date formater
+    NSString *date = [dateformate stringFromDate:calendar.date];
+    _currentMonth.text = date;
+    
     // Today
     if([_calendarManager.dateHelper date:[NSDate date] isTheSameDayThan:dayView.date]){
         dayView.circleView.hidden = NO;
@@ -188,8 +230,7 @@
     }
 }
 
-- (void)calendar:(JTCalendarManager *)calendar didTouchDayView:(JTCalendarDayView *)dayView
-{
+- (void)calendar:(JTCalendarManager *)calendar didTouchDayView:(JTCalendarDayView *)dayView {
     _dateSelected = dayView.date;
     
     // Animation for the circleView
@@ -235,15 +276,14 @@
 
 #pragma mark - Fake data
 
-- (void)createMinAndMaxDate
-{
+- (void)createMinAndMaxDate {
     _todayDate = [NSDate date];
     
     // Min date will be 2 month before today
-    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
+    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-3];
     
     // Max date will be 2 month after today
-    _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:2];
+    _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:12];
 }
 
 // Used only to have a key for _eventsByDate

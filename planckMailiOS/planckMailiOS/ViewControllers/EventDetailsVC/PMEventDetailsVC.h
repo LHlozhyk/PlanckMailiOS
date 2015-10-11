@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class PMEventModel;
 @interface PMEventDetailsVC : UIViewController
-
+- (instancetype)initWithEvent:(PMEventModel *)eventModel;
 @end

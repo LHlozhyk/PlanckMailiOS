@@ -71,6 +71,7 @@
 		84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F9A9891B11F78E0067C3D0 /* PMMailMenuView.xib */; };
 		84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */; };
 		84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */; };
+		AE53B1E71BC182240026296E /* UITableView+BackgroundText.m in Sources */ = {isa = PBXBuildFile; fileRef = AE53B1E61BC182240026296E /* UITableView+BackgroundText.m */; settings = {ASSET_TAGS = (); }; };
 		C30E9D4B1B8B1F99006BDD98 /* WKContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D4A1B8B1F99006BDD98 /* WKContactsController.m */; };
 		C30E9D4E1B8B1FBE006BDD98 /* WKContactInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D4D1B8B1FBE006BDD98 /* WKContactInfoController.m */; };
 		C30E9D511B8B1FD3006BDD98 /* WKContactPhonesController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D501B8B1FD3006BDD98 /* WKContactPhonesController.m */; };
@@ -277,6 +278,8 @@
 		84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+PMViewCreator.m"; path = "Categories/UIView+PMViewCreator/UIView+PMViewCreator.m"; sourceTree = "<group>"; };
 		84F9A9911B1215FC0067C3D0 /* UIViewController+PMStoryboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+PMStoryboard.h"; path = "Categories/UIViewController+PMStoryboard/UIViewController+PMStoryboard.h"; sourceTree = "<group>"; };
 		84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+PMStoryboard.m"; path = "Categories/UIViewController+PMStoryboard/UIViewController+PMStoryboard.m"; sourceTree = "<group>"; };
+		AE53B1E51BC182240026296E /* UITableView+BackgroundText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+BackgroundText.h"; path = "Categories/UITableView+BackgroundText/UITableView+BackgroundText.h"; sourceTree = "<group>"; };
+		AE53B1E61BC182240026296E /* UITableView+BackgroundText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+BackgroundText.m"; path = "Categories/UITableView+BackgroundText/UITableView+BackgroundText.m"; sourceTree = "<group>"; };
 		C30E9D491B8B1F99006BDD98 /* WKContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactsController.h; sourceTree = "<group>"; };
 		C30E9D4A1B8B1F99006BDD98 /* WKContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKContactsController.m; sourceTree = "<group>"; };
 		C30E9D4C1B8B1FBE006BDD98 /* WKContactInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactInfoController.h; sourceTree = "<group>"; };
@@ -995,6 +998,7 @@
 		84F9A98B1B1214700067C3D0 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				AE53B1E41BC181AC0026296E /* TableView+BackgroundText */,
 				C31ED3571B90AE4F006E1764 /* UIImage+ImageSize */,
 				C356524F1B57F860000ECF99 /* NSDate+DateConverter */,
 				84F9A9901B1215240067C3D0 /* UIViewController+PMStoryboard */,
@@ -1019,6 +1023,15 @@
 				84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */,
 			);
 			name = "UIViewController+PMStoryboard";
+			sourceTree = "<group>";
+		};
+		AE53B1E41BC181AC0026296E /* TableView+BackgroundText */ = {
+			isa = PBXGroup;
+			children = (
+				AE53B1E51BC182240026296E /* UITableView+BackgroundText.h */,
+				AE53B1E61BC182240026296E /* UITableView+BackgroundText.m */,
+			);
+			name = "TableView+BackgroundText";
 			sourceTree = "<group>";
 		};
 		C30E9D461B8B1F5D006BDD98 /* ContactsController */ = {
@@ -1480,6 +1493,7 @@
 				848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */,
 				84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */,
 				846096171B13061400924B61 /* CLContactLibrary.m in Sources */,
+				AE53B1E71BC182240026296E /* UITableView+BackgroundText.m in Sources */,
 				840D8C931BAF4E8C001C8B60 /* PMEventAlertVC.m in Sources */,
 				847D87D11B4334EE0044A676 /* PMSearchMailVC.m in Sources */,
 				8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */,
@@ -1704,8 +1718,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Volodymyr Shevchyk (M43AJU8B7V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Volodymyr Shevchyk (M43AJU8B7V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/planckMailiOS/Frameworks/Parse",
@@ -1713,10 +1727,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "a339e564-f59c-475b-9473-7f0452bdf8ed";
 			};
 			name = Debug;
 		};
@@ -1735,10 +1749,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
+				PROVISIONING_PROFILE = "a339e564-f59c-475b-9473-7f0452bdf8ed";
 			};
 			name = Release;
 		};
@@ -1781,20 +1795,20 @@
 		C3FF0E6D1B5596880041B70E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Volodymyr Shevchyk (M43AJU8B7V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Volodymyr Shevchyk (M43AJU8B7V)";
 				ENABLE_BITCODE = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "planckMailiOS WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.planckMailiOS.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "a339e564-f59c-475b-9473-7f0452bdf8ed";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1806,11 +1820,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "planckMailiOS WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.planckMailiOS.extension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
+				PROVISIONING_PROFILE = "a339e564-f59c-475b-9473-7f0452bdf8ed";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1819,17 +1833,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Volodymyr Shevchyk (M43AJU8B7V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Volodymyr Shevchyk (M43AJU8B7V)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				IBSC_MODULE = planckMailiOS_WatchKit_Extension;
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "a339e564-f59c-475b-9473-7f0452bdf8ed";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -1844,9 +1858,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rajesh Kumar (3HF5675724)";
 				IBSC_MODULE = planckMailiOS_WatchKit_Extension;
 				INFOPLIST_FILE = "planckMailiOS WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7cae6652-eafc-46a0-a4de-839e20ff75ae";
+				PROVISIONING_PROFILE = "a339e564-f59c-475b-9473-7f0452bdf8ed";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
