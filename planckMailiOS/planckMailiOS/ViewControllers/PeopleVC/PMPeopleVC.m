@@ -68,7 +68,7 @@
     _itemsArray = contactArray;
     
     [_tableView reloadData];
-    NSLog(@"contactArray - %@", contactArray);
+    DLog(@"contactArray - %@", contactArray);
 }
 
 - (void)didReceiveMemoryWarning {

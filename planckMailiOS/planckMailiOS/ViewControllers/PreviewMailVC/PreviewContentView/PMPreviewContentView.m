@@ -43,20 +43,16 @@
 #pragma mark - UIWebView delegates
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"didFailLoadWithError");
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSLog(@"shouldStartLoadWithRequest");
     return YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-     NSLog(@"webViewDidFinishLoad");
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"webViewDidStartLoad");
 }
 
 @end

@@ -90,7 +90,7 @@
 
 - (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
     // Handle the notificaton when the app is running
-    NSLog(@"Recieved Notification %@",notif);
+    DLog(@"Recieved Notification %@",notif);
 }
 
 #pragma mark - Private methods
@@ -112,7 +112,7 @@
   __block UIBackgroundTaskIdentifier watchKitHandler;
   watchKitHandler = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"backgroundTask"
                                                                  expirationHandler:^{
-                                                                   NSLog(@"Background handler called. Background tasks expirationHandler called.");
+                                                                   DLog(@"Background handler called. Background tasks expirationHandler called.");
                                                                    [[UIApplication sharedApplication] endBackgroundTask:watchKitHandler];
                                                                    watchKitHandler = UIBackgroundTaskInvalid;
                                                                  }];

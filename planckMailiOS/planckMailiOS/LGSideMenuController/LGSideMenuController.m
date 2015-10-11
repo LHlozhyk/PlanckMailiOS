@@ -1006,7 +1006,7 @@
         
         [self leftViewLayoutInvalidateWithPercentage:0.f];
     }
-    else NSLog(@"LGSideMenuController WARNING: Left view is already enabled");
+    else DLog(@"LGSideMenuController WARNING: Left view is already enabled");
 }
 
 - (void)setRightViewEnabledWithWidth:(CGFloat)width
@@ -1131,7 +1131,7 @@
         
         [self rightViewLayoutInvalidateWithPercentage:0.f];
     }
-    else NSLog(@"LGSideMenuController WARNING: Right view is already enabled");
+    else DLog(@"LGSideMenuController WARNING: Right view is already enabled");
 }
 
 #pragma mark - Show Hide

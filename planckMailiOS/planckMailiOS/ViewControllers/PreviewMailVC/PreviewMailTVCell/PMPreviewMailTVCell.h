@@ -10,6 +10,9 @@
 #import "PMPreviewContentView.h"
 
 @interface PMPreviewMailTVCell : UITableViewCell
+
++ (instancetype)newCell;
+
 - (void)updateCellWithInfo:(NSDictionary *)dataInfo;
 - (NSInteger)height;
 
