@@ -64,7 +64,7 @@
     
     [self layoutSubviews];
     
-    [self performSelector:@selector(selectLastRow) withObject:nil afterDelay:0.7];
+    [self performSelector:@selector(selectLastRow) withObject:nil afterDelay:1];
 }
 
 #pragma mark - Properties
@@ -81,7 +81,6 @@
                 __self.inboxMailModel.isUnread = NO;
             }
             [MBProgressHUD hideAllHUDsForView:__self animated:YES];
-            NSLog(@"data - %@", data);
             __self.messages = data;
             
             if([__self.delegate respondsToSelector:@selector(PMPreviewTableView:didUpdateMessages:)]) {
@@ -163,8 +162,8 @@
         [self performSelectorOnMainThread:@selector(selectLastRow) withObject:nil waitUntilDone:NO];
     } else {
         NSIndexPath *lIndex = [NSIndexPath indexPathForRow:_messages.count - 1 inSection:0];
-//        [_tableView selectRowAtIndexPath:lIndex animated:YES scrollPosition:UITableViewScrollPositionTop];
         [self tableView:_tableView didSelectRowAtIndexPath:lIndex];
+        [_tableView scrollToRowAtIndexPath:lIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
 }
 

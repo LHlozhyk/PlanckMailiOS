@@ -44,7 +44,6 @@
     }
     lTableViewCell.textLabel.text = @"Mobile";
     lTableViewCell.detailTextLabel.text = _currentPerson.phoneNumber;
-    NSLog(@"phone- %@", _currentPerson.phoneNumber);
     return lTableViewCell;
 }
 

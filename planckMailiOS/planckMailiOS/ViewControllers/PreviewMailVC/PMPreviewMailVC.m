@@ -198,7 +198,7 @@
             case 0: {
                 [[PMAPIManager shared] deleteMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
                     
-                    NSLog(@"deleteMailWithThreadId - %@", data);
+                    DLog(@"deleteMailWithThreadId - %@", data);
                     if (_delegate && [_delegate respondsToSelector:@selector(PMPreviewMailVCDelegateAction:mail:)]) {
                         [_delegate PMPreviewMailVCDelegateAction:PMPreviewMailVCTypeActionDelete mail:_inboxMailModel];
                     }
@@ -209,7 +209,7 @@
             case 1: {
                 [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
                     
-                    NSLog(@"archiveMailWithThreadId - %@", data);
+                    DLog(@"archiveMailWithThreadId - %@", data);
                     if (_delegate && [_delegate respondsToSelector:@selector(PMPreviewMailVCDelegateAction:mail:)]) {
                         [_delegate PMPreviewMailVCDelegateAction:PMPreviewMailVCTypeActionArchive mail:_inboxMailModel];
                     }

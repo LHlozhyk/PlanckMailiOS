@@ -383,7 +383,7 @@ IB_DESIGNABLE
             messageModel.isUnread = NO;
         }
         [MBProgressHUD hideAllHUDsForView:[self currentTableView] animated:YES];
-        NSLog(@"data - %@", data);
+        DLog(@"data - %@", data);
         lNewMailPreviewVC.messages = data;
         [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
     }];

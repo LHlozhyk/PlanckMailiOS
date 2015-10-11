@@ -150,7 +150,6 @@
             lSelectedModel.isUnread = NO;
         }
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        NSLog(@"data - %@", data);
         lNewMailPreviewVC.messages = data;
         [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
     }];

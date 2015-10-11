@@ -61,7 +61,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     BOOL lResult = YES;
-    NSLog(@"shouldStartLoadWithRequest - %@", request.URL.absoluteString);
+    DLog(@"shouldStartLoadWithRequest - %@", request.URL.absoluteString);
     NSString *lUrlString = request.URL.absoluteString;
     
     if ([lUrlString hasPrefix:@"in-5girg6tjmjuenujbsg0lnatlq://app/auth-response?"]) {
@@ -92,7 +92,7 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"didFailLoadWithError - %@", error);
+    DLog(@"didFailLoadWithError - %@", error);
 }
 
 @end

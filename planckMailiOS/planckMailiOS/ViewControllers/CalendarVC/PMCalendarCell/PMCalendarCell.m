@@ -68,7 +68,7 @@
         default:
             break;
     }
-    NSLog(@"time text - %@", timeText);
+    DLog(@"time text - %@", timeText);
     _timeLabel.text = timeText;
 }
 

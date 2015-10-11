@@ -166,7 +166,7 @@ static CLContactLibrary  *object;
             [personsArray addObject:personNames];
         }
     }
-    NSLog(@"names count: %li", [personsArray count]);
+    DLog(@"names count: %li", [personsArray count]);
     if([self.delegate respondsToSelector:@selector(getNamesOfContacts:)]) {
         [self.delegate getNamesOfContacts:personsArray];
     }
