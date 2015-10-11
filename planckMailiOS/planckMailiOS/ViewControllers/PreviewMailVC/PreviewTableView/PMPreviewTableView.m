@@ -83,6 +83,10 @@
             [MBProgressHUD hideAllHUDsForView:__self animated:YES];
             NSLog(@"data - %@", data);
             __self.messages = data;
+            
+            if([__self.delegate respondsToSelector:@selector(PMPreviewTableView:didUpdateMessages:)]) {
+                [__self.delegate PMPreviewTableView:__self didUpdateMessages:data];
+            }
         }];
     }
 }

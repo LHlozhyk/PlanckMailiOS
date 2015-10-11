@@ -14,7 +14,7 @@
 #import "PMAPIManager.h"
 #import "PMPreviewTableView.h"
 
-@interface PMPreviewMailVC () <UIAlertViewDelegate, UIScrollViewDelegate> {
+@interface PMPreviewMailVC () <UIAlertViewDelegate, UIScrollViewDelegate, PMPreviewTableViewDelegate> {
     __weak IBOutlet UIScrollView *emailsScrollView;
     
     NSMutableArray *_currentSelectedArray;
@@ -180,6 +180,9 @@
         prevMailIndex = _selectedMailIndex;
         _selectedMailIndex += indexOffset;
         
+        self.messages = nil;
+        self.inboxMailModel = _inboxMailArray[_selectedMailIndex];
+        
         currentTableIndex = _selectedMailIndex == 0 ? 0 : 1;
         
         [self updatePreviewTables];
@@ -217,6 +220,14 @@
             default:
                 break;
         }
+    }
+}
+
+#pragma mark - PMPreviewTableViewDelegate
+
+- (void)PMPreviewTableView:(PMPreviewTableView *)previewTable didUpdateMessages:(NSArray *)messages {
+    if([_inboxMailModel isEqual:previewTable.inboxMailModel]) {
+        self.messages = [messages copy];
     }
 }
 
@@ -265,6 +276,7 @@
 
 - (void)addPreviewTableForIndex:(NSInteger)index {
     PMPreviewTableView *previewTable = [PMPreviewTableView newPreviewView];
+    previewTable.delegate = self;
     NSInteger mailIndex = _selectedMailIndex + (index - 1);
     if(_selectedMailIndex == 0 || _selectedMailIndex == [_inboxMailArray count]) {
         mailIndex++;
@@ -321,5 +333,7 @@
         emailsScrollView.contentSize = scrollSize;
     }
 }
+
+
 
 @end
