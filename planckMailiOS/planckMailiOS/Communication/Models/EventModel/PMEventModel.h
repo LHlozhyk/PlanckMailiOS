@@ -25,9 +25,11 @@ typedef NS_ENUM(NSInteger, EventDateType) {
 @property(nonatomic, strong) NSArray *participants;
 @property(nonatomic, copy) NSString *owner;
 
+
 @property(nonatomic, assign) EventDateType eventDateType;
 
 @property(nonatomic) BOOL notifyParticipants;
+@property(nonatomic, readonly) BOOL readonly;
 
 - (instancetype)initWithDictionary:(NSDictionary *)eventDictionary;
 

@@ -16,7 +16,7 @@
 
 #import "MBProgressHUD.h"
 //PickerCellsDelegate
-@interface PMCreateEventVC () <UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, PMSwitchTVCellDelegate, PMTextFieldTVCellDelegate> {
+@interface PMCreateEventVC () <UITableViewDelegate, UITableViewDataSource, PMSwitchTVCellDelegate, PMTextFieldTVCellDelegate> {
     NSArray *_itemArray;
     
     IBOutlet UITableView *_tableiew;
@@ -144,15 +144,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSInteger lCountRows = 1;
-    id lItem = _itemArray[section];
-    if ([lItem isKindOfClass:[NSArray class]]) {
-        lCountRows = ((NSArray*)lItem).count;
-    }
+//    id lItem = _itemArray[section];
+//    if ([lItem isKindOfClass:[NSArray class]]) {
+//        lCountRows = ((NSArray*)lItem).count;
+//    }
     return lCountRows;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _itemArray.count;
+    return 7;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -162,9 +162,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat lEstimateHeight = 40;
     
-    if (_itemArray.count - 1 == indexPath.section) {
-        lEstimateHeight = 90;
-    }
+//    if (_itemArray.count - 1 == indexPath.section) {
+//        lEstimateHeight = 90;
+//    }
     return lEstimateHeight;
 }
 
@@ -204,10 +204,10 @@
 //        }
 //    }
     
-    if ([lCell.reuseIdentifier isEqualToString:@"eventTitleCell"] || [lCell.reuseIdentifier isEqualToString:@"eventLocationCell"]) {
-        [((PMTextFieldTVCell*)lCell) setDelegate:self];
-    }
-    
+//    if ([lCell.reuseIdentifier isEqualToString:@"eventTitleCell"] || [lCell.reuseIdentifier isEqualToString:@"eventLocationCell"]) {
+//        [((PMTextFieldTVCell*)lCell) setDelegate:self];
+//    }
+//    
     return lCell;
 }
 

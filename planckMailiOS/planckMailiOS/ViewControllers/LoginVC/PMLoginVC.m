@@ -61,7 +61,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     BOOL lResult = YES;
-    NSLog(@"shouldStartLoadWithRequest - %@", request.URL.absoluteString);
+    DLog(@"shouldStartLoadWithRequest - %@", request.URL.absoluteString);
     NSString *lUrlString = request.URL.absoluteString;
     
     if ([lUrlString hasPrefix:@"in-5girg6tjmjuenujbsg0lnatlq://app/auth-response?"]) {
@@ -75,24 +75,24 @@
                 [[[UIAlertView alloc] initWithTitle:@"Error" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
             }
         }];
-
+        
         lResult = NO;
     } else if ([lUrlString hasPrefix:@"about:"]) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [MBProgressHUD hideHUDForView:_webView animated:YES];
     }
     return lResult;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:_webView animated:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-   [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD hideHUDForView:_webView animated:YES];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"didFailLoadWithError - %@", error);
+    DLog(@"didFailLoadWithError - %@", error);
 }
 
 @end

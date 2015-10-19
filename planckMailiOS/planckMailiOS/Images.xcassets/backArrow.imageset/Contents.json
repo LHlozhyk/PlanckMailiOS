@@ -6,12 +6,13 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "android-arrow-back-64-000000 copy-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "android-arrow-back-64-000000.png"
+      "filename" : "android-arrow-back-64-000000.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

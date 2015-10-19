@@ -48,7 +48,7 @@
     
     [_networkManager setCurrentToken:token];
     [_networkManager GET:@"/n" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"saveNamespaceIdFromToken-  stask - %@  / response - %@", task, responseObject);
+        DLog(@"saveNamespaceIdFromToken-  stask - %@  / response - %@", task, responseObject);
         
         NSArray *lResponse = responseObject;
         
@@ -62,7 +62,7 @@
             lNewNamespace.name = lFirstItem[@"name"];
             lNewNamespace.namespace_id = lFirstItem[@"namespace_id"];
             
-            NSLog(@"namespace id - %@", lFirstItem[@"namespace_id"]);
+            DLog(@"namespace id - %@", lFirstItem[@"namespace_id"]);
             
             lNewNamespace.object = lFirstItem[@"object"];
             lNewNamespace.provider = lFirstItem[@"provider"];
@@ -70,7 +70,7 @@
             [[DBManager instance] save];
             
             [_networkManager GET:@"/messages" parameters:@{@"unread":@"true", @"view":@"count"} success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"unread count-  stask - %@  / response - %@", task, responseObject);
+                DLog(@"unread count-  stask - %@  / response - %@", task, responseObject);
                 lNewNamespace.unreadCount = responseObject[@"count"];
                 
                 [self saveToken:token andEmail:lNewNamespace.email_address completion:^(id error, BOOL success) {
@@ -78,7 +78,7 @@
                 }];
                 
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                NSLog(@"unread count - ftask - %@  / error - %@", task, error);
+                DLog(@"unread count - ftask - %@  / error - %@", task, error);
             }];
             
             
@@ -87,7 +87,7 @@
             handler(nil, NO);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"saveNamespaceIdFromToken - ftask - %@  / error - %@", task, error);
+        DLog(@"saveNamespaceIdFromToken - ftask - %@  / error - %@", task, error);
     }];
 }
 
@@ -101,7 +101,7 @@
     
     [_networkManager setCurrentToken:account.token];
     [_networkManager GET:@"/threads" parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
+        DLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
         
         NSMutableArray *lResultItems = [NSMutableArray new];
         NSArray *lResponse = responseObject;
@@ -142,7 +142,7 @@
         handler(lResultItems, nil, YES);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
+        DLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
     }];
 }
 
@@ -158,7 +158,7 @@
     NSString *namespace_id = [account namespace_id];
     [_networkManager setCurrentToken:account.token];
     [_networkManager GET:@"/threads" parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
+        DLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
         
         NSMutableArray *lResultItems = [NSMutableArray new];
         NSArray *lResponse = responseObject;
@@ -199,7 +199,7 @@
         handler(lResultItems, nil, YES);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
+        DLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
     }];
 }
 
@@ -207,14 +207,14 @@
                               limit:(NSUInteger)limit
                              offset:(NSUInteger)offset
                          completion:(ExtendedBlockHandler)handler{
-    NSDictionary *lParameters = @{@"in" : @"Read Later",
+    NSDictionary *lParameters = @{@"in" : @"READ_LATER",
                                   @"limit" : @(limit),
                                   @"offset" : @(offset)
                                   };
     
     [_networkManager setCurrentToken:account.token];
     [_networkManager GET:@"/threads" parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
+        DLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
         
         NSMutableArray *lResultItems = [NSMutableArray new];
         NSArray *lResponse = responseObject;
@@ -255,7 +255,7 @@
         handler(lResultItems, nil, YES);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
+        DLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
     }];
 }
 
@@ -265,22 +265,22 @@
     
     [_networkManager setCurrentToken:account.token];
     [_networkManager GET:[NSString stringWithFormat:@"/n/%@/messages", account.namespace_id] parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"getDetailWithMessageId-  stask - %@  / response - %@", task, responseObject);
+        DLog(@"getDetailWithMessageId-  stask - %@  / response - %@", task, responseObject);
         
         NSArray *lResponse = responseObject;
         
         if (unread) {
             [_networkManager PUT:[PMRequest deleteMailWithThreadId:messageId namespacesId:account.namespace_id] parameters:@{@"remove_tags":@[@"unread"]} success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"deleteMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
+                DLog(@"deleteMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
                 handler(lResponse,nil,YES);
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                NSLog(@"deleteMailWithThreadId - ftask - %@  / error - %@", task, error);
+                DLog(@"deleteMailWithThreadId - ftask - %@  / error - %@", task, error);
             }];
         } else {
             handler(lResponse,nil,YES);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getDetailWithMessageId - ftask - %@  / error - %@", task, error);
+        DLog(@"getDetailWithMessageId - ftask - %@  / error - %@", task, error);
     }];
 }
 
@@ -288,7 +288,7 @@
     
     [_networkManager setCurrentToken:account.token];
     [_networkManager GET:[NSString stringWithFormat:@"/n/%@/threads/search", account.namespace_id] parameters:@{@"q" : keyword} success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"getDetailWithMessageId-  stask - %@  / response - %@", task, responseObject);
+        DLog(@"getDetailWithMessageId-  stask - %@  / response - %@", task, responseObject);
         
         NSArray *lResponse = responseObject;
         
@@ -315,17 +315,17 @@
         handler(lResultItems, nil, YES);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getDetailWithMessageId - ftask - %@  / error - %@", task, error);
+        DLog(@"getDetailWithMessageId - ftask - %@  / error - %@", task, error);
     }];
 }
 
 - (void)deleteMailWithThreadId:(NSString *)threadId account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
     [_networkManager PUT:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id] parameters:@{@"add_tags":@[@"trash"]} success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"deleteMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
+        DLog(@"deleteMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
         handler(responseObject, nil, YES);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"getDetailWithMessageId - ftask - %@  / error - %@", task, error);
+        DLog(@"getDetailWithMessageId - ftask - %@  / error - %@", task, error);
         handler(nil, error, NO);
     }];
 }
@@ -333,22 +333,22 @@
 - (void)archiveMailWithThreadId:(NSString *)threadId account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler{
     [_networkManager setCurrentToken:account.token];
     [_networkManager PUT:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id] parameters:@{@"add_tags":@[@"archive"]} success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"archiveMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
+        DLog(@"archiveMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
         handler(responseObject, nil, YES);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"archiveMailWithThreadId - ftask - %@  / error - %@", task, error);
+        DLog(@"archiveMailWithThreadId - ftask - %@  / error - %@", task, error);
         handler(nil, error, NO);
     }];
 }
 
 - (void)replyMessage:(NSDictionary *)message completion:(ExtendedBlockHandler)handler {
     [_networkManager POST:[PMRequest replyMessageWithNamespacesId:self.namespaceId.namespace_id] parameters:message success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"replyMessage-  stask - %@  / response - %@", task, responseObject);
+        DLog(@"replyMessage-  stask - %@  / response - %@", task, responseObject);
         if(handler) {
             handler(responseObject, nil, YES);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"replyMessage - ftask - %@  / error - %@", task, error);
+        DLog(@"replyMessage - ftask - %@  / error - %@", task, error);
         if(handler) {
             handler(nil, error, NO);
         }
@@ -357,12 +357,12 @@
 
 - (void)createDrafts:(NSDictionary *)draftParams completion:(ExtendedBlockHandler)handler {
     [_networkManager POST:[PMRequest draftMessageWithNamespacesId:self.namespaceId.namespace_id] parameters:draftParams success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"createDrafts-  stask - %@  / response - %@", task, responseObject);
+        DLog(@"createDrafts-  stask - %@  / response - %@", task, responseObject);
         if(handler) {
             handler(responseObject, nil, YES);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"createDrafts - ftask - %@  / error - %@", task, error);
+        DLog(@"createDrafts - ftask - %@  / error - %@", task, error);
         if(handler) {
             handler(nil, error, NO);
         }
@@ -379,7 +379,7 @@
     
     [_networkManager setCurrentToken:token];
     [_networkManager GET:[PMRequest unreadMessagesCount] parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"getUnreadCountForNamespaseToken -  stask - %@  / response - %@", task, responseObject);
+        DLog(@"getUnreadCountForNamespaseToken -  stask - %@  / response - %@", task, responseObject);
         
         NSNumber *result = nil;
         if(responseObject) {
@@ -393,7 +393,7 @@
         if(handler) {
             handler(nil, error, NO);
         }
-        NSLog(@"getUnreadCountForNamespaseToken - ftask - %@  / error - %@", task, error);
+        DLog(@"getUnreadCountForNamespaseToken - ftask - %@  / error - %@", task, error);
     }];
 }
 
@@ -438,12 +438,12 @@
 - (void)getCalendarsWithAccount:(id<PMAccountProtocol>)account comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
     [_networkManager GET:@"/calendars" parameters:nil success:^ (NSURLSessionDataTask *task, id responseObjet) {
-        NSLog(@"getCalendarsWithAccount - %@", responseObjet);
+        DLog(@"getCalendarsWithAccount - %@", responseObjet);
         if(handler) {
             handler(responseObjet, nil, YES);
         }
     } failure:^ (NSURLSessionDataTask * task, NSError *error) {
-        NSLog(@"error: %@", error);
+        DLog(@"error: %@", error);
         if(handler) {
             handler(nil, error, YES);
         }
@@ -455,7 +455,7 @@
                   comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
     [_networkManager GET:@"/events" parameters:eventParams success:^(NSURLSessionDataTask *task, id responseObjet) {
-        NSLog(@"getEventsWithAccount - %@", responseObjet);
+        DLog(@"getEventsWithAccount - %@", responseObjet);
         
         NSMutableArray *events = [NSMutableArray new];
         if([responseObjet isKindOfClass:[NSArray class]]) {
@@ -469,7 +469,7 @@
             handler(events, nil, YES);
         }
     } failure:^ (NSURLSessionDataTask * task, NSError *error) {
-        NSLog(@"error: %@", error);
+        DLog(@"error: %@", error);
         if(handler) {
             handler(nil, error, NO);
         }
@@ -482,7 +482,7 @@
     
     [_networkManager setCurrentToken:account.token];
     [_networkManager POST:@"/events" parameters:eventParams success:^ (NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"createCalendarEventWithAccount - %@", responseObject);
+        DLog(@"createCalendarEventWithAccount - %@", responseObject);
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -494,7 +494,7 @@
     
     [_networkManager setCurrentToken:account.token];
     [_networkManager PUT:@"/events" parameters:eventParams success:^ (NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"createCalendarEventWithAccount - %@", responseObject);
+        DLog(@"createCalendarEventWithAccount - %@", responseObject);
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -506,7 +506,7 @@
     
     [_networkManager setCurrentToken:account.token];
     [_networkManager DELETE:@"/events" parameters:eventParams success:^ (NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"createCalendarEventWithAccount - %@", responseObject);
+        DLog(@"createCalendarEventWithAccount - %@", responseObject);
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -528,7 +528,7 @@
                               };
     
     [lNewSessionManager POST:@"save_token" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"saveToken -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        DLog(@"saveToken -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         if(handler) {
             handler(nil, YES);
         }
@@ -536,7 +536,7 @@
         if(handler) {
             handler(nil, NO);
         }
-        NSLog(@"saveToken - ftask - %@  / error - %@", task, error);
+        DLog(@"saveToken - ftask - %@  / error - %@", task, error);
     }];
 }
 
@@ -552,7 +552,7 @@
                               };
     
     [lNewSessionManager POST:@"get_token" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"getTokenWithEmail -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        DLog(@"getTokenWithEmail -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         if(handler) {
             handler(nil, YES);
         }
@@ -560,7 +560,7 @@
         if(handler) {
             handler(nil, NO);
         }
-        NSLog(@"getTokenWithEmail - ftask - %@  / error - %@", task, error);
+        DLog(@"getTokenWithEmail - ftask - %@  / error - %@", task, error);
     }];
 }
 
@@ -574,7 +574,7 @@
                               };
     
     [lNewSessionManager POST:@"delete_token" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"deleteTokenWithEmail -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        DLog(@"deleteTokenWithEmail -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         if(handler) {
             handler(nil, YES);
         }
@@ -582,7 +582,7 @@
         if(handler) {
             handler(nil, NO);
         }
-        NSLog(@"deleteTokenWithEmail - ftask - %@  / error - %@", task, error);
+        DLog(@"deleteTokenWithEmail - ftask - %@  / error - %@", task, error);
     }];
 }
 

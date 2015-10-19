@@ -53,7 +53,7 @@
             
         case EventDateDateType: {
             NSDate *date = [NSDate eventDateFromString:event.startTime];
-            timeText = [date dateStringValue];
+            timeText = @"All Day";//[date dateStringValue];
         }
             break;
             
@@ -68,7 +68,7 @@
         default:
             break;
     }
-    NSLog(@"time text - %@", timeText);
+    DLog(@"time text - %@", timeText);
     _timeLabel.text = timeText;
 }
 

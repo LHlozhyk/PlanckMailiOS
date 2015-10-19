@@ -33,14 +33,26 @@
     
     _itemsArray = [NSMutableArray new];
     
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 44.0f)];
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     [_searchBar setDelegate:self];
     [_searchBar setPlaceholder:@"Search"];
-    [_searchBar setTintColor:[UIColor blackColor]];
-    [_searchBar becomeFirstResponder];
-    [_searchBar setShowsCancelButton:YES];
+    [_searchBar setTintColor:[UIColor whiteColor]];
+    [_searchBar setBarTintColor:[UIColor whiteColor]];
+    
+    [_searchBar setImage:[UIImage imageNamed:@"searchIcon"]
+        forSearchBarIcon:UISearchBarIconSearch
+                   state:UIControlStateNormal];
+    
+    UITextField *searchTextField = [_searchBar valueForKey:@"_searchField"];
+    searchTextField.textColor = [UIColor whiteColor];
+    if ([searchTextField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        UIColor *color = [UIColor whiteColor];
+        [searchTextField setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:@"Search" attributes:@{NSForegroundColorAttributeName: color}]];
+    }
     
     self.navigationItem.titleView = _searchBar;
+    
+    [_searchBar setSearchFieldBackgroundImage:[[UIImage imageNamed:@"searhBarBg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 10, 0, 10)] forState:UIControlStateNormal];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -105,6 +117,16 @@
     [self startSearchWithEmail:searchBar.text];
 }
 
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    [_searchBar setShowsCancelButton:YES];
+    return YES;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+    [_searchBar setShowsCancelButton:NO];
+    return YES;
+}
+
 #pragma mark - UITableView data source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,6 +161,9 @@
     PMInboxMailModel *lSelectedModel = _itemsArray[indexPath.row];
     lNewMailPreviewVC.inboxMailModel = lSelectedModel;
     
+    lNewMailPreviewVC.inboxMailArray = _itemsArray;
+    lNewMailPreviewVC.selectedMailIndex = [_itemsArray indexOfObject:lSelectedModel];
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [[PMAPIManager shared] getDetailWithMessageId:lSelectedModel.messageId account:[PMAPIManager shared].namespaceId unread:lSelectedModel.isUnread completion:^(id data, id error, BOOL success) {
@@ -147,7 +172,6 @@
             lSelectedModel.isUnread = NO;
         }
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        NSLog(@"data - %@", data);
         lNewMailPreviewVC.messages = data;
         [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
     }];

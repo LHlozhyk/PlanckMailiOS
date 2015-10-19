@@ -24,7 +24,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view.backgroundColor = [UIColor whiteColor];
     NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
     self.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationController"];
     if (lNamespacesArray.count > 0) {

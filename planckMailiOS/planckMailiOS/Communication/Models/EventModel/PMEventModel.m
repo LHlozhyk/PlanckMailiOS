@@ -23,6 +23,8 @@
         self.eventDescription = stringValue(eventDictionary[@"description"]);
         self.owner = eventDictionary[@"owner"];
         
+        _readonly = [eventDictionary[@"read_only"] boolValue];
+        
         //init event participants
         NSMutableArray *participantsModels = [NSMutableArray new];
         NSArray *participants = eventDictionary[@"participants"];

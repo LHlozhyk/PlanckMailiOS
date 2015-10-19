@@ -373,6 +373,9 @@ IB_DESIGNABLE
     lNewMailPreviewVC.delegate = self;
     lNewMailPreviewVC.inboxMailModel = messageModel;
     
+    lNewMailPreviewVC.inboxMailArray = [self selectedDataSource];
+    lNewMailPreviewVC.selectedMailIndex = [[self selectedDataSource] indexOfObject:messageModel];
+    
     [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
     
     [[PMAPIManager shared] getDetailWithMessageId:messageModel.messageId account:[PMAPIManager shared].namespaceId unread:messageModel.isUnread completion:^(id data, id error, BOOL success) {
@@ -380,14 +383,14 @@ IB_DESIGNABLE
             messageModel.isUnread = NO;
         }
         [MBProgressHUD hideAllHUDsForView:[self currentTableView] animated:YES];
-        NSLog(@"data - %@", data);
+        DLog(@"data - %@", data);
         lNewMailPreviewVC.messages = data;
         [self.navigationController pushViewController:lNewMailPreviewVC animated:YES];
     }];
 }
 
 - (NSArray *)PMMessagesTableViewDelegateGetData:(PMMessagesTableView *)messagesTableView {
-    return (_selectedTableType == ImportantMessagesSelected) ? _itemMailArray : _itemReadLaterArray;
+    return [self selectedDataSource];
 }
 
 #pragma mark - PMPreviewMailVC delegate
@@ -463,6 +466,10 @@ IB_DESIGNABLE
     }
     
     return lNewArray;
+}
+
+- (NSArray *)selectedDataSource {
+    return (_selectedTableType == ImportantMessagesSelected) ? _itemMailArray : _itemReadLaterArray;
 }
 
 @end

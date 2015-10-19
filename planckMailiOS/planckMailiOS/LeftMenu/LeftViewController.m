@@ -37,7 +37,6 @@
                      @"Deleted"];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-   
     self.tableView.showsVerticalScrollIndicator = NO;
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }

@@ -6,12 +6,13 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "close copy-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "close.png"
+      "filename" : "close.png",
+      "scale" : "3x"
     }
   ],
   "info" : {
