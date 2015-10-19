@@ -37,6 +37,8 @@
     NSMutableArray *_dateItemsArray;
     NSMutableDictionary *_section;
     NSArray *_eventSections;
+    
+    NSInteger _offset;
 
 }
 @property (nonatomic, strong) UIButton *todayBtn;
@@ -60,16 +62,19 @@
     _section = [NSMutableDictionary new];
     
     [self customizeVC];
-    
+    _offset = 0;
     NSDictionary *eventParams = @{
                                   @"starts_after" : [NSString stringWithFormat:@"%f", [self timeStampWithDate:_minDate]],
-                                  @"ends_before" : [NSString stringWithFormat:@"%f", [self timeStampWithDate:_maxDate]]
-                                  
+                                  @"ends_before" : [NSString stringWithFormat:@"%f", [self timeStampWithDate:_maxDate]],
+                                  @"expand_recurring" : @"true",
+                                  @"limit" : @100,
+                                  @"offset" : @(_offset)
                                   };
     __weak typeof(self)__self = self;
     [[PMAPIManager shared] getEventsWithAccount:[[PMAPIManager shared] namespaceId] eventParams:eventParams comlpetion:^(id data, id error, BOOL success) {
         dispatch_async(dispatch_get_main_queue(), ^{
             __self.eventsArray = data;
+            _offset = __self.eventsArray.count;
             // Generate random events sort by date using a dateformatter for the demonstration
             [__self createRandomEvents];
             if (__self.eventsArray.count == 0) {
