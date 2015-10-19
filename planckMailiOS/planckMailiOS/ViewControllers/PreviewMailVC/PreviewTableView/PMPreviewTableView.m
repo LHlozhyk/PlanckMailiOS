@@ -161,8 +161,14 @@
         [self performSelectorOnMainThread:@selector(selectLastRow) withObject:nil waitUntilDone:NO];
     } else {
         NSIndexPath *lIndex = [NSIndexPath indexPathForRow:_messages.count - 1 inSection:0];
-        [self tableView:_tableView didSelectRowAtIndexPath:lIndex];
-        [_tableView scrollToRowAtIndexPath:lIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        
+        NSArray *visibleIndexes = [_tableView indexPathsForVisibleRows];
+        if([visibleIndexes containsObject:lIndex]) {
+            [self tableView:_tableView didSelectRowAtIndexPath:lIndex];
+        } else if([visibleIndexes count] > 0) {
+            [_tableView scrollToRowAtIndexPath:lIndex atScrollPosition:UITableViewScrollPositionTop animated:NO];
+            [self tableView:_tableView didSelectRowAtIndexPath:lIndex];
+        }
     }
 }
 
