@@ -180,6 +180,7 @@ IB_DESIGNABLE
         switch (lMessageTpe) {
             case Inbox:{
                 [self updateImportant];
+                [self setTitle:@"INBOX"];
             }
                 break;
             case Sent:{

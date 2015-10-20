@@ -23,6 +23,8 @@
 @property(nonatomic) BOOL isUnread;
 @property(nonatomic) BOOL isLoadMore;
 
++(PMInboxMailModel *)initWithDicationary:(NSDictionary *)info;
+
 - (BOOL)isReadLater;
 
 @end

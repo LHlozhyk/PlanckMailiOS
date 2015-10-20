@@ -78,7 +78,7 @@
     LeftViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     cell.textLabel.text = _titlesArray[indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_menu_icon", _titlesArray[indexPath.row]]];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_menu_icon", [_titlesArray[indexPath.row] lowercaseString]]];
     cell.tintColor = [UIColor whiteColor];
     return cell;
 }
