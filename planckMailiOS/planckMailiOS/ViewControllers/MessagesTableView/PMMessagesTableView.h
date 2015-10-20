@@ -16,11 +16,14 @@
 - (NSArray *)PMMessagesTableViewDelegateGetData:(PMMessagesTableView*)messagesTableView;
 - (void)PMMessagesTableViewDelegateupdateData:(PMMessagesTableView*)messagesTableVie;
 - (void)PMMessagesTableViewDelegate:(PMMessagesTableView*)messagesTableView selectedMessage:(PMInboxMailModel*)messageModel;
+- (void)PMMessagesTableViewDelegateShowAlert:(PMMessagesTableView*)messagesTableView;
+
 @end
 
 @interface PMMessagesTableView : UIView 
 @property(weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic, weak) id<PMMessagesTableViewDelegate> delegate;
+@property(nonatomic, strong) PMInboxMailModel *inboxMailModel;
 
 - (void)reloadMessagesTableView;
 @end

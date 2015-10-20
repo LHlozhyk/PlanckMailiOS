@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PMInboxMailModel.h"
-@interface PMMailTVCell : UITableViewCell
+#import "MGSwipeTableCell.h"
+#import "MGSwipeButton.h"
+
+@interface PMMailTVCell : MGSwipeTableCell
 - (void)updateWithModel:(PMInboxMailModel*)model;
 @end

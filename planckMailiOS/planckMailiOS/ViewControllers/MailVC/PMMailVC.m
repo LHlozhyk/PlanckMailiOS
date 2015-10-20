@@ -25,6 +25,8 @@
 #import "UIView+PMViewCreator.h"
 #import "PMMessagesTableView.h"
 #import "LeftViewController.h"
+#import "PMCollectionViewController.h"
+#import "PMAlertViewController.h"
 
 #define CELL_IDENTIFIER @"mailCell"
 #define COUNT_MESSAGES 50
@@ -40,7 +42,7 @@ typedef NS_ENUM(NSInteger, EEMessagesType) {
 };
 
 IB_DESIGNABLE
-@interface PMMailVC () <PMMailMenuViewDelegate, PMPreviewMailVCDelegate, PMTableViewTabBarDelegate, PMMessagesTableViewDelegate> {
+@interface PMMailVC () <PMMailMenuViewDelegate, PMPreviewMailVCDelegate, PMTableViewTabBarDelegate, PMMessagesTableViewDelegate, PMAlertViewControllerDelegate> {
     CGFloat _centerX;
     __weak IBOutlet PMTableViewTabBar *_tableViewTabBar;
     NSString *_currentNamespaeId;
@@ -130,7 +132,7 @@ IB_DESIGNABLE
                                                  name:@"setType"
                                                object:nil];
     _tableViewTabBar.delegate = self;
-    
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
@@ -393,11 +395,57 @@ IB_DESIGNABLE
     return [self selectedDataSource];
 }
 
+-(void)PMMessagesTableViewDelegateShowAlert:(PMMessagesTableView *)messagesTableView {
+
+    
+    PMAlertViewController *alert = [[PMAlertViewController alloc] init];
+    alert.view.backgroundColor = [UIColor clearColor];
+    alert.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    alert.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    alert.delegate = self;
+
+    [UIView animateWithDuration:0.4 animations:^{
+        self.view.alpha = 0.2;
+        self.navigationController.view.alpha = 0.2;
+        self.tabBarController.tabBar.alpha = 0.2;
+        self.tabBarController.tabBar.userInteractionEnabled = NO;
+    }];
+    
+    
+//    PMCollectionViewController *alert = [[PMCollectionViewController alloc] init];
+//    //alert.view.backgroundColor = [UIColor clearColor];
+//    alert.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//    alert.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+#pragma mark - PMAlertViewControllerDelegate
+
+-(void)PMAlertViewControllerDissmis:(PMAlertViewController *)viewContorller {
+
+    
+    [UIView animateWithDuration:1 animations:^{
+        self.view.alpha = 1;
+        self.navigationController.view.alpha = 1;
+        self.tabBarController.tabBar.alpha = 1;
+        self.tabBarController.tabBar.userInteractionEnabled = YES;
+
+
+    }];
+    
+    
+}
+
 #pragma mark - PMPreviewMailVC delegate
 
 - (void)PMPreviewMailVCDelegateAction:(PMPreviewMailVCTypeAction)typeAction mail:(PMInboxMailModel *)model {
     [_itemMailArray removeObject:model];
     [[self currentTableView] reloadMessagesTableView];
+    
 }
 
 #pragma mark - PMMailMenuView delegates
