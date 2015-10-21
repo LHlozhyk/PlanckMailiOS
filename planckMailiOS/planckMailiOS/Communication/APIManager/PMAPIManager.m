@@ -233,12 +233,16 @@
     }];
 }
 
+#pragma mark - Folders
+
 - (void)getFoldersWithAccount:(id<PMAccountProtocol>)account comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObjet) {
-        
+    [_networkManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
     } failure:^ (NSURLSessionDataTask * task, NSError *error) {
-        
+        handler(nil, error, NO);
     }];
 
 }
@@ -250,9 +254,13 @@
     NSDictionary *lParams = @{@"display_name":folderName};
     [_networkManager setCurrentToken:account.token];
     [_networkManager POST:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
-        
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
-        
+        if(handler) {
+            handler(nil, error, NO);
+        }
     }];
     
 }
@@ -265,9 +273,13 @@
     NSDictionary *lParams = @{@"display_name":newFolderName};
     [_networkManager setCurrentToken:account.token];
     [_networkManager PUT:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
-        
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
-        
+        if(handler) {
+            handler(nil, error, NO);
+        }
     }];
 }
 

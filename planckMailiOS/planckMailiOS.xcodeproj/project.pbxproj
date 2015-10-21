@@ -107,6 +107,7 @@
 		C3908D161B57A2EE00939ADC /* WKSelectedAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D151B57A2EE00939ADC /* WKSelectedAnswerController.m */; };
 		C3A8E3251B96DE63004AC4BF /* WKBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A8E3241B96DE63004AC4BF /* WKBaseController.m */; };
 		C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DDB8411B5E7539002131FA /* PMWatchRequestHandler.m */; };
+		C3E00EC71BD7A4990009AE78 /* PMStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E00EC61BD7A4990009AE78 /* PMStorageManager.m */; settings = {ASSET_TAGS = (); }; };
 		C3E1FC6A1B7F629C008F815C /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
 		C3FF0E561B5596880041B70E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E551B5596880041B70E /* InterfaceController.m */; };
 		C3FF0E591B5596880041B70E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E581B5596880041B70E /* NotificationController.m */; };
@@ -347,6 +348,8 @@
 		C3DDB83F1B5906F5002131FA /* WatchKitDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchKitDefines.h; sourceTree = "<group>"; };
 		C3DDB8401B5E7539002131FA /* PMWatchRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMWatchRequestHandler.h; sourceTree = "<group>"; };
 		C3DDB8411B5E7539002131FA /* PMWatchRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMWatchRequestHandler.m; sourceTree = "<group>"; };
+		C3E00EC51BD7A4990009AE78 /* PMStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMStorageManager.h; sourceTree = "<group>"; };
+		C3E00EC61BD7A4990009AE78 /* PMStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMStorageManager.m; sourceTree = "<group>"; };
 		C3FF0E4F1B5596880041B70E /* planckMailiOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "planckMailiOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FF0E521B5596880041B70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3FF0E531B5596880041B70E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -520,6 +523,7 @@
 				84F9A9811B11E0DA0067C3D0 /* Config.h */,
 				842E2FEB1AFEB13400B0C8DB /* AppDelegate.h */,
 				842E2FEC1AFEB13400B0C8DB /* AppDelegate.m */,
+				C3E00EC01BD7A3F80009AE78 /* Helpers */,
 				8497B11E1B37298A009CEC5E /* Utils */,
 				84F9A98B1B1214700067C3D0 /* Categories */,
 				84B751CD1AFF6FB700331CC0 /* Communication */,
@@ -1268,6 +1272,23 @@
 			path = Communication/WatchKit;
 			sourceTree = "<group>";
 		};
+		C3E00EC01BD7A3F80009AE78 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C3E00EC41BD7A4990009AE78 /* StorageManager */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C3E00EC41BD7A4990009AE78 /* StorageManager */ = {
+			isa = PBXGroup;
+			children = (
+				C3E00EC51BD7A4990009AE78 /* PMStorageManager.h */,
+				C3E00EC61BD7A4990009AE78 /* PMStorageManager.m */,
+			);
+			path = StorageManager;
+			sourceTree = "<group>";
+		};
 		C3FF0E501B5596880041B70E /* planckMailiOS WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -1596,6 +1617,7 @@
 				846E2FD21B8C20F800A019AC /* PMFilesVC.m in Sources */,
 				844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */,
 				84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */,
+				C3E00EC71BD7A4990009AE78 /* PMStorageManager.m in Sources */,
 				848E6F971B9484F000EA935D /* LeftViewController.m in Sources */,
 				848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */,
 				84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */,
@@ -1830,8 +1852,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/planckMailiOS/Frameworks/Parse",
@@ -1842,7 +1864,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
 			};
 			name = Debug;
 		};
@@ -1872,6 +1894,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1883,6 +1906,7 @@
 				INFOPLIST_FILE = planckMailiOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/planckMailiOS.app/planckMailiOS";
 			};
@@ -1892,6 +1916,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1899,6 +1924,7 @@
 				INFOPLIST_FILE = planckMailiOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/planckMailiOS.app/planckMailiOS";
 			};
@@ -1907,8 +1933,8 @@
 		C3FF0E6D1B5596880041B70E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1920,7 +1946,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.planckMailiOS.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "5d05e5ec-c45e-4ccb-94e4-ea94434af3a2";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
