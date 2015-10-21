@@ -25,7 +25,6 @@
 #import "UIView+PMViewCreator.h"
 #import "PMMessagesTableView.h"
 #import "LeftViewController.h"
-#import "PMCollectionViewController.h"
 #import "PMAlertViewController.h"
 
 #define CELL_IDENTIFIER @"mailCell"
@@ -411,14 +410,6 @@ IB_DESIGNABLE
         self.tabBarController.tabBar.alpha = 0.2;
         self.tabBarController.tabBar.userInteractionEnabled = NO;
     }];
-    
-    
-//    PMCollectionViewController *alert = [[PMCollectionViewController alloc] init];
-//    //alert.view.backgroundColor = [UIColor clearColor];
-//    alert.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-//    alert.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    
-    
     
     [self presentViewController:alert animated:YES completion:nil];
     

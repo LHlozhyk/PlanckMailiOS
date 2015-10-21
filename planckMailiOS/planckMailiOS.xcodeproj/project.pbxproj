@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		780EA11F1BD50A5200CBA45A /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA11C1BD50A5200CBA45A /* MGSwipeButton.m */; settings = {ASSET_TAGS = (); }; };
 		780EA1201BD50A5200CBA45A /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA11E1BD50A5200CBA45A /* MGSwipeTableCell.m */; settings = {ASSET_TAGS = (); }; };
-		780EA1311BD5484C00CBA45A /* PMCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA12F1BD5484C00CBA45A /* PMCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
-		780EA1321BD5484C00CBA45A /* PMCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780EA1301BD5484C00CBA45A /* PMCollectionViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		780EA1361BD54C4B00CBA45A /* PMAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA1341BD54C4B00CBA45A /* PMAlertViewController.m */; settings = {ASSET_TAGS = (); }; };
 		780EA1371BD54C4B00CBA45A /* PMAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780EA1351BD54C4B00CBA45A /* PMAlertViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		78AD2A931BD6986000D0C963 /* PMAlertCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AD2A911BD6986000D0C963 /* PMAlertCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
@@ -175,9 +173,6 @@
 		780EA11C1BD50A5200CBA45A /* MGSwipeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeButton.m; sourceTree = "<group>"; };
 		780EA11D1BD50A5200CBA45A /* MGSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGSwipeTableCell.h; sourceTree = "<group>"; };
 		780EA11E1BD50A5200CBA45A /* MGSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGSwipeTableCell.m; sourceTree = "<group>"; };
-		780EA12E1BD5484C00CBA45A /* PMCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCollectionViewController.h; sourceTree = "<group>"; };
-		780EA12F1BD5484C00CBA45A /* PMCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMCollectionViewController.m; sourceTree = "<group>"; };
-		780EA1301BD5484C00CBA45A /* PMCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMCollectionViewController.xib; sourceTree = "<group>"; };
 		780EA1331BD54C4B00CBA45A /* PMAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAlertViewController.h; sourceTree = "<group>"; };
 		780EA1341BD54C4B00CBA45A /* PMAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAlertViewController.m; sourceTree = "<group>"; };
 		780EA1351BD54C4B00CBA45A /* PMAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMAlertViewController.xib; sourceTree = "<group>"; };
@@ -661,9 +656,6 @@
 				847885621B96074200681EBA /* PMMessagesTableView.h */,
 				847885631B96074200681EBA /* PMMessagesTableView.m */,
 				847885651B96078000681EBA /* PMMessagesTableView.xib */,
-				780EA12E1BD5484C00CBA45A /* PMCollectionViewController.h */,
-				780EA12F1BD5484C00CBA45A /* PMCollectionViewController.m */,
-				780EA1301BD5484C00CBA45A /* PMCollectionViewController.xib */,
 				780EA1331BD54C4B00CBA45A /* PMAlertViewController.h */,
 				780EA1341BD54C4B00CBA45A /* PMAlertViewController.m */,
 				780EA1351BD54C4B00CBA45A /* PMAlertViewController.xib */,
@@ -1512,7 +1504,6 @@
 				842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */,
 				84A9E3721B5F02DD009DD409 /* PMSelectionEmailView.xib in Resources */,
 				C3654CE81BC94F1D00A08521 /* PMPreviewTableView.xib in Resources */,
-				780EA1321BD5484C00CBA45A /* PMCollectionViewController.xib in Resources */,
 				8475C1641B963DF90091F955 /* PMMailTVCell.xib in Resources */,
 				C3E1FC6A1B7F629C008F815C /* planckMailiOS WatchKit App.app in Resources */,
 				C368ACA71BC94DE500DD21BF /* PMPreviewMailTVCell.xib in Resources */,
@@ -1592,7 +1583,6 @@
 				780EA1201BD50A5200CBA45A /* MGSwipeTableCell.m in Sources */,
 				AE6DB4DC1BCC61A700949124 /* PMEventContentVC.m in Sources */,
 				AE6DB4D21BCAC13B00949124 /* PMEventDayModel.m in Sources */,
-				780EA1311BD5484C00CBA45A /* PMCollectionViewController.m in Sources */,
 				C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */,
 				84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */,
 				848E6F901B94846000EA935D /* LGSideMenuController.m in Sources */,
