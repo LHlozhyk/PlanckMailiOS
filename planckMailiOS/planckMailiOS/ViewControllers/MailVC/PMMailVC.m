@@ -48,16 +48,22 @@ IB_DESIGNABLE
     
     NSUInteger _offesetMails;
     NSUInteger _offsetReadLater;
+    NSUInteger _offsetFollowUps;
     NSMutableArray *_itemMailArray;
     NSMutableArray *_itemReadLaterArray;
+    NSMutableArray *_itemFollowUpsArray;
     NSIndexPath *_selectedIndex;
     
     PMMessagesTableView *_view1;
     PMMessagesTableView *_view2;
+    PMMessagesTableView *_view3;
+    
     CGRect readLaterRect;
     CGRect readLaterHiddenRect;
     CGRect importantRect;
     CGRect importantHiddenRect;
+    CGRect followUpsRect;
+    CGRect followUpsHiddenRect;
     
     selectedMessages _selectedTableType;
     
@@ -85,6 +91,8 @@ IB_DESIGNABLE
     
     _itemMailArray = [NSMutableArray array];
     _itemReadLaterArray = [NSMutableArray array];
+    _itemFollowUpsArray = [NSMutableArray array];
+    
     
     NSArray *lItemsArray = [[DBManager instance] getNamespaces];
     _currentNamespaeId = ((DBNamespace*)[lItemsArray firstObject]).namespace_id;
@@ -95,21 +103,32 @@ IB_DESIGNABLE
     CGFloat y = 64 + _tableViewTabBar.frame.size.height;
     CGFloat height = self.view.frame.size.height - _tableViewTabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - 64;
     CGFloat width = self.view.frame.size.width;
-    readLaterRect = CGRectMake(x, y, width, height);
-    readLaterHiddenRect = CGRectMake(width, y, width, height);
+    
+    
     importantRect = CGRectMake(x, y, width, height);
     importantHiddenRect = CGRectMake(-width, y, width, height);
+   
+    readLaterRect = CGRectMake(x, y, width, height);
+    readLaterHiddenRect = CGRectMake(width, y, width, height);
+    
+    followUpsRect = CGRectMake(x, y, width, height);
+    followUpsHiddenRect = CGRectMake(width*2, y, width, height);
     
     _view1 = [PMMessagesTableView createView];
     _view1.frame = importantRect;
-    _view1.backgroundColor = [UIColor redColor];
     _view1.delegate = self;
     [self.view addSubview:_view1];
+    
     _view2 = [PMMessagesTableView createView];
     _view2.delegate = self;
-    _view2.backgroundColor = [UIColor blueColor];
     _view2.frame = readLaterHiddenRect;
     [self.view addSubview:_view2];
+    
+    _view3 = [PMMessagesTableView createView];
+    _view3.frame = followUpsHiddenRect;
+    _view3.delegate = self;
+    [self.view addSubview:_view3];
+    
     
     [_tableViewTabBar selectMessages:_selectedTableType];
     
@@ -118,8 +137,10 @@ IB_DESIGNABLE
         [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
         _offesetMails = 0;
         _offsetReadLater = 0;
+        _offsetFollowUps = 0;
         [self updateImportant];
         [self updateReadLater];
+        [self updateFollowsUp];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didGetMyNotification:)
@@ -150,11 +171,12 @@ IB_DESIGNABLE
     if (![lItem.namespace_id isEqualToString:_currentNamespaeId]) {
         _offesetMails = 0;
         _offsetReadLater = 0;
-        
+        _offsetFollowUps = 0;
         _currentNamespaeId = lItem.namespace_id;
         [[PMAPIManager shared] setActiveNamespace:lItem];
         [_itemMailArray removeAllObjects];
         [_itemReadLaterArray removeAllObjects];
+        [_itemFollowUpsArray removeAllObjects];
         
         [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
         [self updateMails];
@@ -229,6 +251,8 @@ IB_DESIGNABLE
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+
     
     self.navigationController.navigationBarHidden = NO;
     
@@ -322,6 +346,19 @@ IB_DESIGNABLE
     }];
 }
 
+-(void)updateFollowsUp {
+ //TODO: implement snooze api method
+//    [[PMAPIManager shared] getFollowsUpMailWithAccount:[PMAPIManager shared].namespaceId limit:COUNT_MESSAGES offset:_offsetFollowUps completion:^(id data, id error, BOOL success) {
+//       
+//        [MBProgressHUD hideAllHUDsForView:_view3 animated:YES];
+//        [_itemFollowUpsArray addObjectsFromArray:data];
+//        [[self currentTableView] reloadMessagesTableView];
+//        _offsetFollowUps += COUNT_MESSAGES;
+//    }];
+//
+    
+}
+
 #pragma mark - IBAction selectors
 
 - (void)searchBtnPressed:(id)sender {
@@ -351,6 +388,8 @@ IB_DESIGNABLE
         lTableView = _view1;
     } else if (_selectedTableType == ReadLaterMessagesSelected) {
         lTableView = _view2;
+    }else if (_selectedTableType == FollowUpsMessagesSelected) {
+        lTableView = _view3;
     }
     return lTableView;
 }
@@ -403,16 +442,31 @@ IB_DESIGNABLE
     alert.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     alert.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     alert.delegate = self;
+    [self presentViewController:alert animated:YES completion:nil];
 
     [UIView animateWithDuration:0.4 animations:^{
+        UIViewController *controller = kMainViewController;
+        
+        controller.view.backgroundColor = [UIColor whiteColor];
+        MainViewController *vc;
+        vc.rightViewSwipeGestureEnabled = NO;
+        
         self.view.alpha = 0.2;
         self.navigationController.view.alpha = 0.2;
         self.tabBarController.tabBar.alpha = 0.2;
         self.tabBarController.tabBar.userInteractionEnabled = NO;
     }];
     
-    [self presentViewController:alert animated:YES completion:nil];
+
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"disableSwipe" object:nil];
+    
+    
+}
+
+- (selectedMessages)getMessagesType {
+    
+    return _selectedTableType;
 }
 
 #pragma mark - PMAlertViewControllerDelegate
@@ -421,6 +475,9 @@ IB_DESIGNABLE
 
     
     [UIView animateWithDuration:1 animations:^{
+        [UIApplication sharedApplication].keyWindow.window.backgroundColor = [UIColor clearColor];
+        UIViewController *controller = kMainViewController;
+        controller.view.backgroundColor = [UIColor whiteColor];
         self.view.alpha = 1;
         self.navigationController.view.alpha = 1;
         self.tabBarController.tabBar.alpha = 1;
@@ -428,7 +485,8 @@ IB_DESIGNABLE
 
 
     }];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"enableSwipe" object:nil];
+
     
 }
 
@@ -463,6 +521,7 @@ IB_DESIGNABLE
             [UIView animateWithDuration:0.3 animations:^{
                 _view1.frame = importantHiddenRect;
                 _view2.frame = readLaterRect;
+                _view3.frame = followUpsHiddenRect;
             } completion:^(BOOL finished) {
                 
                 [[self currentTableView] reloadMessagesTableView];
@@ -475,10 +534,24 @@ IB_DESIGNABLE
             [UIView animateWithDuration:0.3 animations:^{
                 _view2.frame = readLaterHiddenRect;
                 _view1.frame = importantRect;
+                _view3.frame = followUpsHiddenRect;
             } completion:^(BOOL finished) {
                 
                 [[self currentTableView] reloadMessagesTableView];
             }];
+        }
+            break;
+            
+            case FollowUpsMessagesSelected:
+        {
+            [UIView animateWithDuration:0.3 animations:^{
+                _view1.frame = importantHiddenRect;
+                _view2.frame = readLaterHiddenRect;
+                _view3.frame = followUpsRect;
+            } completion:^(BOOL finished) {
+                [[self currentTableView] reloadMessagesTableView];
+            }];
+        
         }
             break;
     }
@@ -509,7 +582,17 @@ IB_DESIGNABLE
 }
 
 - (NSArray *)selectedDataSource {
-    return (_selectedTableType == ImportantMessagesSelected) ? _itemMailArray : _itemReadLaterArray;
+    //return (_selectedTableType == ImportantMessagesSelected) ? _itemMailArray : _itemReadLaterArray;
+  
+    if (_selectedTableType == ImportantMessagesSelected) {
+        return _itemMailArray;
+    }else if (_selectedTableType == ReadLaterMessagesSelected) {
+        return _itemReadLaterArray;
+    }else if (_selectedTableType == FollowUpsMessagesSelected) {
+        return _itemFollowUpsArray;
+    }
+    
+    return nil;
 }
 
 @end

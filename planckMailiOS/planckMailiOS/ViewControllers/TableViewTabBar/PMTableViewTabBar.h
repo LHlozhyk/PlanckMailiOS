@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSInteger, selectedMessages) {
     ImportantMessagesSelected,
-    ReadLaterMessagesSelected
+    ReadLaterMessagesSelected,
+    FollowUpsMessagesSelected
 };
 
 @protocol PMTableViewTabBarDelegate <NSObject>
@@ -22,6 +23,7 @@ typedef NS_ENUM(NSInteger, selectedMessages) {
 
 @property (weak, nonatomic) IBOutlet UIButton *importantMessagesBtn;
 @property (weak, nonatomic) IBOutlet UIButton *readLaterMessageBtn;
+@property (weak, nonatomic) IBOutlet UIButton *followUpsMessagesBtn;
 @property (nonatomic, weak) UIView *line;
 
 - (void)selectMessages:(selectedMessages)messages;
@@ -29,6 +31,7 @@ typedef NS_ENUM(NSInteger, selectedMessages) {
 
 - (IBAction)importantBtnTaped:(id)sender;
 - (IBAction)readLaterBtnTaped:(id)sender;
+- (IBAction)followUpsBtnTapped:(id)sender;
 
 @property (nonatomic, assign)id <PMTableViewTabBarDelegate> delegate;
 

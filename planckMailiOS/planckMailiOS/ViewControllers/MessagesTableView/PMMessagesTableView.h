@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "PMInboxMailModel.h"
+#import "PMTableViewTabBar.h"
 
 @class PMMessagesTableView;
-
 @protocol PMMessagesTableViewDelegate <NSObject>
 @required
 - (NSArray *)PMMessagesTableViewDelegateGetData:(PMMessagesTableView*)messagesTableView;
 - (void)PMMessagesTableViewDelegateupdateData:(PMMessagesTableView*)messagesTableVie;
 - (void)PMMessagesTableViewDelegate:(PMMessagesTableView*)messagesTableView selectedMessage:(PMInboxMailModel*)messageModel;
 - (void)PMMessagesTableViewDelegateShowAlert:(PMMessagesTableView*)messagesTableView;
+- (selectedMessages)getMessagesType;
 
 @end
 

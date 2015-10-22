@@ -68,18 +68,22 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"SNOOZE FOR : %@", self.titlesArray[indexPath.row]);
+    [self dismissVc];
+    }
 
-    
+- (IBAction)dismissOnTapAction:(id)sender {
+    NSLog(@"SNOOZE");
 
+    [self dismissVc];
+}
 
-    
+-(void)dismissVc {
     if ([self.delegate respondsToSelector:@selector(PMAlertViewControllerDissmis:)]) {
         [self.delegate PMAlertViewControllerDissmis:self];
     }
-    
     [self dismissViewControllerAnimated:YES completion:NULL];
-    
-    
+
 }
 
 /*

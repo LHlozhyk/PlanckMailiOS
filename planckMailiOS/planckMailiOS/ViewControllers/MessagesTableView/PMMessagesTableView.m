@@ -12,8 +12,10 @@
 #import "MGSwipeButton.h"
 #import "MGSwipeTableCell.h"
 #import "PMAPIManager.h"
+
 @interface PMMessagesTableView () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
     NSArray *_itemMailArray;
+    selectedMessages _selectedTableType;
 }
 @end
 
@@ -24,10 +26,13 @@
     
     _itemMailArray = [NSArray array];
 
+    [self getSelectedTableType];
+    
     //delete empty separate lines for tableView
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([PMLoadMoreTVCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"loadMoreCell"];
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([PMMailTVCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"mailCell"];
+    
 
 }
 
@@ -79,6 +84,13 @@
     return _itemMailArray.count > 0 ? _itemMailArray.count + 1 : 0;
 }
 
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//
+//    
+//    
+//    
+//}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat lHeight = 90;
     if (_itemMailArray.count == indexPath.row) {
@@ -98,6 +110,17 @@
         PMInboxMailModel *lSelectedMessageModel = _itemMailArray[indexPath.row];
         [self selectedMessage:lSelectedMessageModel];
     }
+}
+
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    [self getSelectedTableType];
+    if (_selectedTableType == FollowUpsMessagesSelected) {
+    
+        return @"FollowUpsMessagesSelected";
+    }
+    
+    return nil;
 }
 
 #pragma mark - Public methods 
@@ -161,6 +184,16 @@
     
     }
 
+}
+
+#pragma mark - Enum stuff
+
+-(selectedMessages)getSelectedTableType {
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(getMessagesType)]) {
+        _selectedTableType = [_delegate getMessagesType];
+    }
+    return _selectedTableType;
 }
 
 @end

@@ -24,6 +24,12 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disableSwipe) name:@"disableSwipe" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enableSwipe) name:@"enableSwipe" object:nil];
+    
+    
+    
 //    self.view.backgroundColor = [UIColor whiteColor];
     NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
     self.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationController"];
@@ -49,6 +55,19 @@
     self.rootViewLayerBorderColor = [UIColor clearColor];
     self.mainTitle.textColor = [UIColor whiteColor];
     self.mainTitle.text = @"PLANCK";
+    
+}
+
+-(void)disableSwipe {
+
+    self.leftViewSwipeGestureEnabled = NO;
+    
+}
+
+-(void)enableSwipe {
+
+    self.leftViewSwipeGestureEnabled = YES;
+    
 }
 
 - (void)leftViewWillLayoutSubviewsWithSize:(CGSize)size {
