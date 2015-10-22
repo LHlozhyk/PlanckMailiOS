@@ -62,6 +62,7 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 - (void)getUnreadCountForNamespaseToken:(NSString *)token completion:(ExtendedBlockHandler)handler;
 - (void)getUnreadMessagesForNamespaseToken:(NSString *)token completion:(ExtendedBlockHandler)handler;
 
+//folders
 - (void)getFoldersWithAccount:(id<PMAccountProtocol>)account
                    comlpetion:(ExtendedBlockHandler)handler;
 
@@ -73,6 +74,7 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                      account:(id<PMAccountProtocol>)account
                     folderId:(NSString *)folderId
                   comlpetion:(ExtendedBlockHandler)handler;
+//----
 
 - (void)deleteTokenWithEmail:(NSString *)email
                   completion:(BasicBlockHandler)handler;

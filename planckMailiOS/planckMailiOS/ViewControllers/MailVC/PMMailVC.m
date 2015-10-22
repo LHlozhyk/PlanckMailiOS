@@ -27,6 +27,8 @@
 #import "LeftViewController.h"
 #import "PMAlertViewController.h"
 
+#import "PMStorageManager.h"
+
 #define CELL_IDENTIFIER @"mailCell"
 #define COUNT_MESSAGES 50
 
@@ -141,6 +143,7 @@ IB_DESIGNABLE
         [self updateImportant];
         [self updateReadLater];
         [self updateFollowsUp];
+        [self updateFolders];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didGetMyNotification:)
@@ -356,7 +359,15 @@ IB_DESIGNABLE
 //        _offsetFollowUps += COUNT_MESSAGES;
 //    }];
 //
-    
+}
+
+- (void)updateFolders {
+    if(![PMStorageManager getFoldersForAccount:[PMAPIManager shared].namespaceId.namespace_id]) {
+        __weak typeof(id<PMAccountProtocol>)account = [PMAPIManager shared].namespaceId;
+        [[PMAPIManager shared] getFoldersWithAccount:[PMAPIManager shared].namespaceId comlpetion:^(id data, id error, BOOL success) {
+            [PMStorageManager setFolders:data forAccount:account.namespace_id];
+        }];
+    }
 }
 
 #pragma mark - IBAction selectors
@@ -508,6 +519,7 @@ IB_DESIGNABLE
         [_itemMailArray removeAllObjects];
         [MBProgressHUD showHUDAddedTo:[self currentTableView] animated:YES];
         [self updateMails];
+        [self updateFolders];
     }
 }
 
