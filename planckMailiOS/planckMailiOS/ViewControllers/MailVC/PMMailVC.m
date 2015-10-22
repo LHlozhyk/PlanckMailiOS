@@ -461,10 +461,7 @@ IB_DESIGNABLE
         controller.view.backgroundColor = [UIColor whiteColor];
         MainViewController *vc;
         vc.rightViewSwipeGestureEnabled = NO;
-        
-        self.view.alpha = 0.2;
-        self.navigationController.view.alpha = 0.2;
-        self.tabBarController.tabBar.alpha = 0.2;
+        [self animateAlpha:0.2];
         self.tabBarController.tabBar.userInteractionEnabled = NO;
     }];
     
@@ -485,13 +482,11 @@ IB_DESIGNABLE
 -(void)PMAlertViewControllerDissmis:(PMAlertViewController *)viewContorller {
 
     
-    [UIView animateWithDuration:1 animations:^{
+    [UIView animateWithDuration:0.4 animations:^{
         [UIApplication sharedApplication].keyWindow.window.backgroundColor = [UIColor clearColor];
         UIViewController *controller = kMainViewController;
         controller.view.backgroundColor = [UIColor whiteColor];
-        self.view.alpha = 1;
-        self.navigationController.view.alpha = 1;
-        self.tabBarController.tabBar.alpha = 1;
+        [self animateAlpha:1];
         self.tabBarController.tabBar.userInteractionEnabled = YES;
 
 
@@ -606,5 +601,16 @@ IB_DESIGNABLE
     
     return nil;
 }
+
+#pragma mark - Animation Stuff 
+
+-(void)animateAlpha:(CGFloat)alpha {
+    
+    self.view.alpha = alpha;
+    self.navigationController.view.alpha = alpha;
+    self.tabBarController.tabBar.alpha = alpha;
+
+}
+
 
 @end

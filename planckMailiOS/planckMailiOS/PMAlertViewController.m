@@ -8,6 +8,7 @@
 
 #import "PMAlertViewController.h"
 #import "PMAlertCollectionViewCell.h"
+
 @interface PMAlertViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *iconsArray;
@@ -46,6 +47,8 @@
 
 }
 
+#pragma mark - UICollectionViewDataSource
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
@@ -59,29 +62,34 @@
 
     PMAlertCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
 
-  
-    cell.imageView.image = self.iconsArray[indexPath.row];
+      cell.imageView.image = self.iconsArray[indexPath.row];
     cell.titleLabel.text = self.titlesArray[indexPath.row];
+
     return cell;
-
-
 }
 
+#pragma mark - UICollectionViewDelegate
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"SNOOZE FOR : %@", self.titlesArray[indexPath.row]);
+    
     [self dismissVc];
-    }
+    
+}
+
+#pragma mark - Actions
 
 - (IBAction)dismissOnTapAction:(id)sender {
-    NSLog(@"SNOOZE");
 
     [self dismissVc];
+
 }
 
 -(void)dismissVc {
+    
     if ([self.delegate respondsToSelector:@selector(PMAlertViewControllerDissmis:)]) {
         [self.delegate PMAlertViewControllerDissmis:self];
     }
+   
     [self dismissViewControllerAnimated:YES completion:NULL];
 
 }
