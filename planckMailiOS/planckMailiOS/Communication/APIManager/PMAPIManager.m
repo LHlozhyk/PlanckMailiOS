@@ -12,6 +12,7 @@
 #import "PMInboxMailModel.h"
 #import "PMNetworkManager.h"
 #import "PMEventModel.h"
+#import "PMStorageManager.h"
 
 #define TOKEN @"namespaces"
 
@@ -119,6 +120,20 @@
                                   @"offset" : @(offset)
                                   };
     [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
+}
+
+-(void)getFollowUpsMailWithAccount:(id<PMAccountProtocol>)account
+                             limit:(NSUInteger)limit
+                            offset:(NSUInteger)offset
+                        completion:(ExtendedBlockHandler)handler{
+
+
+    NSDictionary *lParameters = @{@"in" : SCHEDULED,
+                                  @"limit" : @(limit),
+                                  @"offset" : @(offset)
+                                  };
+    [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
+
 }
 
 - (void)searchMailWithKeyword:(NSString *)keyword account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
@@ -247,6 +262,18 @@
 
 }
 
+- (void)getFoldersWithAccount:(id<PMAccountProtocol>)account folderId:(NSString*)folderId comlpetion:(ExtendedBlockHandler)handler {
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
+    } failure:^ (NSURLSessionDataTask * task, NSError *error) {
+        handler(nil, error, NO);
+    }];
+    
+}
+
 - (void)createFolderWithName:(NSString *)folderName
                      account:(id<PMAccountProtocol>)account
                   comlpetion:(ExtendedBlockHandler)handler{
@@ -259,7 +286,7 @@
         }
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
         if(handler) {
-            handler(nil, error, NO);
+            handler(nil, error, NO); 
         }
     }];
     
@@ -282,6 +309,45 @@
         }
     }];
 }
+
+-(void)deleteFolderWithId:(NSString*)folderId
+                  account:(id<PMAccountProtocol>)account
+               completion:(ExtendedBlockHandler)handler {
+
+//    NSLog(@"iddd %@",[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId]);
+//    NSLog(@"getScheduledFolderIdForAccount");
+    
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager DELETE:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:nil
+                    success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+                        if (handler) {
+                            handler(responseObject, nil, YES);
+                        }
+                    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+                        if (handler) {
+                            handler(nil, error, NO);
+                        }
+                    }];
+
+}
+
+-(void)moveMailWithThreadId:(NSString*)threadId account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId {
+
+    NSDictionary *lParameters = @{@"folder_id" : folderId};
+    
+    [_networkManager setCurrentToken:account.token];
+    
+    [_networkManager PUT:[PMRequest messageId:threadId namespacesId:account.namespace_id] parameters:lParameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"success");
+    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        NSLog(@"failure");
+        NSLog(@"error = %@",[error localizedDescription]);
+
+    }];
+
+}
+
+#pragma mark - Calendars
 
 - (void)getCalendarsWithAccount:(id<PMAccountProtocol>)account comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];

@@ -17,18 +17,23 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 @interface PMAPIManager : NSObject 
 
 + (PMAPIManager *)shared;
-
+// TODO:move message to folder
 - (void)saveNamespaceIdFromToken:(NSString *)token completion:(BasicBlockHandler)handler;
 
 - (void)getInboxMailWithAccount:(id<PMAccountProtocol>)account
                               limit:(NSUInteger)limit
                              offset:(NSUInteger)offset
                          completion:(ExtendedBlockHandler)handler;
+
 - (void)getReadLaterMailWithAccount:(id<PMAccountProtocol>)account
                           limit:(NSUInteger)limit
                          offset:(NSUInteger)offset
                      completion:(ExtendedBlockHandler)handler;
 
+-(void)getFollowUpsMailWithAccount:(id<PMAccountProtocol>)account
+                             limit:(NSUInteger)limit
+                            offset:(NSUInteger)offset
+                        completion:(ExtendedBlockHandler)handler;
 
 //- (void)getDetailWithMessageId:(NSString *)messageId
 //                  account:(id<PMAccountProtocol>)account
@@ -66,6 +71,8 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 - (void)getFoldersWithAccount:(id<PMAccountProtocol>)account
                    comlpetion:(ExtendedBlockHandler)handler;
 
+- (void)getFoldersWithAccount:(id<PMAccountProtocol>)account folderId:(NSString*)folderId comlpetion:(ExtendedBlockHandler)handler;
+
 - (void)createFolderWithName:(NSString *)folderName
                      account:(id<PMAccountProtocol>)account
                   comlpetion:(ExtendedBlockHandler)handler;
@@ -74,6 +81,10 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                      account:(id<PMAccountProtocol>)account
                     folderId:(NSString *)folderId
                   comlpetion:(ExtendedBlockHandler)handler;
+-(void)deleteFolderWithId:(NSString*)folderId
+                  account:(id<PMAccountProtocol>)account
+               completion:(ExtendedBlockHandler)handler;
+-(void)moveMailWithThreadId:(NSString*)threadId account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId;
 //----
 
 - (void)deleteTokenWithEmail:(NSString *)email

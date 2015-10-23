@@ -12,7 +12,6 @@
 #define ACCOUNT_FOLDERS @"account_folders"
 #define ACCOUNT_SCHEDULED_FOLDER_ID @"account_scheduled_folder_id"
 
-#define SCHEDULED @"scheduled"
 
 @implementation PMStorageManager
 
@@ -79,6 +78,16 @@
     return [accountInfo objectForKey:ACCOUNT_SCHEDULED_FOLDER_ID];
 }
 
++ (void)deleteScheduledFolderIdForAccout:(NSString *)accountId {
+
+    NSMutableDictionary *dict =[self infoForAccount:accountId];
+    
+    [dict removeObjectForKey:ACCOUNT_SCHEDULED_FOLDER_ID];
+    
+    [[PMStorageManager sharedInstance] writeInfo:dict intoFile:accountId];
+    
+}
+
 #pragma mark - Private methods
 
 + (NSMutableDictionary *)infoForAccount:(NSString *)name {
@@ -91,14 +100,20 @@
 
 - (NSMutableDictionary *)infoFileWithName:(NSString *)name {
     NSString *fileName = [name stringByAppendingString:@".plist"];
-    return [[NSMutableDictionary alloc] initWithContentsOfFile:[NSHomeDirectory() stringByAppendingString:fileName]];
+    return [[NSMutableDictionary alloc] initWithContentsOfFile:[self filePath:fileName]];
 }
 
 - (void)writeInfo:(NSDictionary *)info intoFile:(NSString *)name {
     if(info) {
         NSString *fileName = [name stringByAppendingString:@".plist"];
-        [info writeToFile:[NSHomeDirectory() stringByAppendingString:fileName] atomically:YES];
+        [info writeToFile:[self filePath:fileName] atomically:YES];
     }
 }
+
+- (NSString *)filePath:(NSString *)name {
+    NSString *filePath = [NSHomeDirectory() stringByAppendingString:[NSString stringWithFormat:@"/Documents/%@", name]];
+    return filePath;
+}
+
 
 @end

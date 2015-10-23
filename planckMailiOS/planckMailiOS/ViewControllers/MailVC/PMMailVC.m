@@ -315,8 +315,10 @@ IB_DESIGNABLE
             }
                 break;
         }
-    } else {
+    } else if (_selectedTableType == ReadLaterMessagesSelected){
         [self updateReadLater];
+    }else if (_selectedTableType == FollowUpsMessagesSelected){
+        [self updateFollowsUp];
     }
 }
 
@@ -350,15 +352,17 @@ IB_DESIGNABLE
 }
 
 -(void)updateFollowsUp {
- //TODO: implement snooze api method
-//    [[PMAPIManager shared] getFollowsUpMailWithAccount:[PMAPIManager shared].namespaceId limit:COUNT_MESSAGES offset:_offsetFollowUps completion:^(id data, id error, BOOL success) {
-//       
-//        [MBProgressHUD hideAllHUDsForView:_view3 animated:YES];
-//        [_itemFollowUpsArray addObjectsFromArray:data];
-//        [[self currentTableView] reloadMessagesTableView];
-//        _offsetFollowUps += COUNT_MESSAGES;
-//    }];
-//
+    
+    
+    [[PMAPIManager shared] getFollowUpsMailWithAccount:[PMAPIManager shared].namespaceId limit:COUNT_MESSAGES offset:_offsetFollowUps completion:^(id data, id error, BOOL success) {
+        
+        [MBProgressHUD hideAllHUDsForView:_view3 animated:YES];
+        [_itemFollowUpsArray addObjectsFromArray:data];
+        [[self currentTableView] reloadMessagesTableView];
+        _offsetFollowUps += COUNT_MESSAGES;
+        
+    }];
+    
 }
 
 - (void)updateFolders {
@@ -445,13 +449,14 @@ IB_DESIGNABLE
     return [self selectedDataSource];
 }
 
--(void)PMMessagesTableViewDelegateShowAlert:(PMMessagesTableView *)messagesTableView {
+-(void)PMMessagesTableViewDelegateShowAlert:(PMMessagesTableView *)messagesTableView inboxMailModel:(PMInboxMailModel*)mailModel {
 
     
     PMAlertViewController *alert = [[PMAlertViewController alloc] init];
     alert.view.backgroundColor = [UIColor clearColor];
     alert.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     alert.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    alert.inboxMailModel = mailModel;
     alert.delegate = self;
     [self presentViewController:alert animated:YES completion:nil];
 
@@ -589,7 +594,7 @@ IB_DESIGNABLE
 }
 
 - (NSArray *)selectedDataSource {
-    //return (_selectedTableType == ImportantMessagesSelected) ? _itemMailArray : _itemReadLaterArray;
+
   
     if (_selectedTableType == ImportantMessagesSelected) {
         return _itemMailArray;

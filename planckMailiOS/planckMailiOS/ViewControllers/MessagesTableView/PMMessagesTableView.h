@@ -16,7 +16,7 @@
 - (NSArray *)PMMessagesTableViewDelegateGetData:(PMMessagesTableView*)messagesTableView;
 - (void)PMMessagesTableViewDelegateupdateData:(PMMessagesTableView*)messagesTableVie;
 - (void)PMMessagesTableViewDelegate:(PMMessagesTableView*)messagesTableView selectedMessage:(PMInboxMailModel*)messageModel;
-- (void)PMMessagesTableViewDelegateShowAlert:(PMMessagesTableView*)messagesTableView;
+-(void)PMMessagesTableViewDelegateShowAlert:(PMMessagesTableView *)messagesTableView inboxMailModel:(PMInboxMailModel*)mailModel;
 - (selectedMessages)getMessagesType;
 
 @end

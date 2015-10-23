@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		780EA11F1BD50A5200CBA45A /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA11C1BD50A5200CBA45A /* MGSwipeButton.m */; settings = {ASSET_TAGS = (); }; };
-		780EA1201BD50A5200CBA45A /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA11E1BD50A5200CBA45A /* MGSwipeTableCell.m */; settings = {ASSET_TAGS = (); }; };
-		780EA1361BD54C4B00CBA45A /* PMAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA1341BD54C4B00CBA45A /* PMAlertViewController.m */; settings = {ASSET_TAGS = (); }; };
-		780EA1371BD54C4B00CBA45A /* PMAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780EA1351BD54C4B00CBA45A /* PMAlertViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		78AD2A931BD6986000D0C963 /* PMAlertCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AD2A911BD6986000D0C963 /* PMAlertCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		78AD2A941BD6986000D0C963 /* PMAlertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AD2A921BD6986000D0C963 /* PMAlertCollectionViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		780EA11F1BD50A5200CBA45A /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA11C1BD50A5200CBA45A /* MGSwipeButton.m */; };
+		780EA1201BD50A5200CBA45A /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA11E1BD50A5200CBA45A /* MGSwipeTableCell.m */; };
+		780EA1361BD54C4B00CBA45A /* PMAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA1341BD54C4B00CBA45A /* PMAlertViewController.m */; };
+		780EA1371BD54C4B00CBA45A /* PMAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780EA1351BD54C4B00CBA45A /* PMAlertViewController.xib */; };
+		78AD2A931BD6986000D0C963 /* PMAlertCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AD2A911BD6986000D0C963 /* PMAlertCollectionViewCell.m */; };
+		78AD2A941BD6986000D0C963 /* PMAlertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AD2A921BD6986000D0C963 /* PMAlertCollectionViewCell.xib */; };
 		840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840156DB1B27A51600E92CA7 /* PMPreviewMailVC.m */; };
 		84067D531B55E04400B4DB1E /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
 		840D8C8F1BAEBDF8001C8B60 /* PMEventDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D8C8E1BAEBDF8001C8B60 /* PMEventDetailsVC.m */; };
@@ -77,11 +77,11 @@
 		84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F9A9891B11F78E0067C3D0 /* PMMailMenuView.xib */; };
 		84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */; };
 		84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */; };
-		AE6DB4CB1BCABC9900949124 /* UITableView+BackgroundText.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4CA1BCABC9900949124 /* UITableView+BackgroundText.m */; settings = {ASSET_TAGS = (); }; };
-		AE6DB4CF1BCABD7F00949124 /* PMResposeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4CE1BCABD7F00949124 /* PMResposeBuilder.m */; settings = {ASSET_TAGS = (); }; };
-		AE6DB4D21BCAC13B00949124 /* PMEventDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4D11BCAC13B00949124 /* PMEventDayModel.m */; settings = {ASSET_TAGS = (); }; };
-		AE6DB4DC1BCC61A700949124 /* PMEventContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4DA1BCC61A700949124 /* PMEventContentVC.m */; settings = {ASSET_TAGS = (); }; };
-		AEF343381BD40B39000566D3 /* PMCalendarListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF343371BD40B39000566D3 /* PMCalendarListVC.m */; settings = {ASSET_TAGS = (); }; };
+		AE6DB4CB1BCABC9900949124 /* UITableView+BackgroundText.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4CA1BCABC9900949124 /* UITableView+BackgroundText.m */; };
+		AE6DB4CF1BCABD7F00949124 /* PMResposeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4CE1BCABD7F00949124 /* PMResposeBuilder.m */; };
+		AE6DB4D21BCAC13B00949124 /* PMEventDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4D11BCAC13B00949124 /* PMEventDayModel.m */; };
+		AE6DB4DC1BCC61A700949124 /* PMEventContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4DA1BCC61A700949124 /* PMEventContentVC.m */; };
+		AEF343381BD40B39000566D3 /* PMCalendarListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF343371BD40B39000566D3 /* PMCalendarListVC.m */; };
 		C30E9D4B1B8B1F99006BDD98 /* WKContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D4A1B8B1F99006BDD98 /* WKContactsController.m */; };
 		C30E9D4E1B8B1FBE006BDD98 /* WKContactInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D4D1B8B1FBE006BDD98 /* WKContactInfoController.m */; };
 		C30E9D511B8B1FD3006BDD98 /* WKContactPhonesController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D501B8B1FD3006BDD98 /* WKContactPhonesController.m */; };
@@ -99,15 +99,15 @@
 		C35BC1DF1B5EF9D100CCDC4D /* PMTypeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E861B55B6340041B70E /* PMTypeContainer.m */; };
 		C35BC1E01B5FCEB500CCDC4D /* PMInboxMailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84776F061B1428A00020AB6E /* PMInboxMailModel.m */; };
 		C35BC1E11B5FDE5800CCDC4D /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECA42B1B134E5400770F88 /* DBManager.m */; };
-		C3654CE81BC94F1D00A08521 /* PMPreviewTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3654CE71BC94F1D00A08521 /* PMPreviewTableView.xib */; settings = {ASSET_TAGS = (); }; };
-		C3654CEB1BC94F3400A08521 /* PMPreviewTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3654CEA1BC94F3400A08521 /* PMPreviewTableView.m */; settings = {ASSET_TAGS = (); }; };
-		C368ACA71BC94DE500DD21BF /* PMPreviewMailTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C368ACA61BC94DE500DD21BF /* PMPreviewMailTVCell.xib */; settings = {ASSET_TAGS = (); }; };
+		C3654CE81BC94F1D00A08521 /* PMPreviewTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3654CE71BC94F1D00A08521 /* PMPreviewTableView.xib */; };
+		C3654CEB1BC94F3400A08521 /* PMPreviewTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3654CEA1BC94F3400A08521 /* PMPreviewTableView.m */; };
+		C368ACA71BC94DE500DD21BF /* PMPreviewMailTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C368ACA61BC94DE500DD21BF /* PMPreviewMailTVCell.xib */; };
 		C3908D071B55D36800939ADC /* WKEmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D061B55D36800939ADC /* WKEmailController.m */; };
 		C3908D0B1B56C39A00939ADC /* microphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3908D0A1B56C39A00939ADC /* microphone@2x.png */; };
 		C3908D161B57A2EE00939ADC /* WKSelectedAnswerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3908D151B57A2EE00939ADC /* WKSelectedAnswerController.m */; };
 		C3A8E3251B96DE63004AC4BF /* WKBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A8E3241B96DE63004AC4BF /* WKBaseController.m */; };
 		C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DDB8411B5E7539002131FA /* PMWatchRequestHandler.m */; };
-		C3E00EC71BD7A4990009AE78 /* PMStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E00EC61BD7A4990009AE78 /* PMStorageManager.m */; settings = {ASSET_TAGS = (); }; };
+		C3E00EC71BD7A4990009AE78 /* PMStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E00EC61BD7A4990009AE78 /* PMStorageManager.m */; };
 		C3E1FC6A1B7F629C008F815C /* planckMailiOS WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = C3FF0E5E1B5596880041B70E /* planckMailiOS WatchKit App.app */; };
 		C3FF0E561B5596880041B70E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E551B5596880041B70E /* InterfaceController.m */; };
 		C3FF0E591B5596880041B70E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FF0E581B5596880041B70E /* NotificationController.m */; };
@@ -1802,7 +1802,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "9ea70a70-ff56-4fba-8f6b-ea286584b983";
+				PROVISIONING_PROFILE = "5d05e5ec-c45e-4ccb-94e4-ea94434af3a2";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1852,7 +1852,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rajesh Kumar (VQ92D76CMK)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1864,7 +1864,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17dfa985-fb40-4a01-a133-8f835c9a2219";
+				PROVISIONING_PROFILE = "5d05e5ec-c45e-4ccb-94e4-ea94434af3a2";
 			};
 			name = Debug;
 		};
@@ -1886,7 +1886,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9ea70a70-ff56-4fba-8f6b-ea286584b983";
+				PROVISIONING_PROFILE = "5d05e5ec-c45e-4ccb-94e4-ea94434af3a2";
 			};
 			name = Release;
 		};
@@ -1946,7 +1946,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.planckMailiOS.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5d05e5ec-c45e-4ccb-94e4-ea94434af3a2";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1982,7 +1982,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.planckMailiOS.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5d05e5ec-c45e-4ccb-94e4-ea94434af3a2";
+				PROVISIONING_PROFILE = "d6384c8a-6545-461e-86a1-60411ffae4dd";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";

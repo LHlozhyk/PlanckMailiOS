@@ -54,8 +54,12 @@
             
             
             
-            if (_delegate && [_delegate respondsToSelector:@selector(PMMessagesTableViewDelegateShowAlert:)]) {
-                [_delegate PMMessagesTableViewDelegateShowAlert:self];
+            if (_delegate && [_delegate respondsToSelector:@selector(PMMessagesTableViewDelegateShowAlert:inboxMailModel:)]) {
+                
+                NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+                _inboxMailModel = [_itemMailArray objectAtIndex:indexPath.row];
+                
+                [_delegate PMMessagesTableViewDelegateShowAlert:self inboxMailModel:_inboxMailModel];
             }
             
             return YES;
