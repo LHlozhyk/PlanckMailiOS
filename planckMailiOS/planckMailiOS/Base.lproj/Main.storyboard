@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="JkJ-F0-cJA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="JkJ-F0-cJA">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -798,14 +800,14 @@
                                                     <string key="text">sunday, sept. 20, 2015
 12pm - 1pm </string>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Untitled" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpu-xB-zia">
                                                     <rect key="frame" x="21" y="13" width="291" height="56"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -825,7 +827,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="clockIcon" id="miP-wQ-cuC">
@@ -850,7 +852,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="placeIcon" id="XKU-qw-uM1">
@@ -875,7 +877,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Organizer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s8Y-Fm-7ou">
@@ -883,7 +885,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -903,7 +905,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Organizer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="crM-gx-xAO">
@@ -911,7 +913,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -930,7 +932,7 @@
                                                     <rect key="frame" x="21" y="8" width="291" height="23"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2159,7 +2161,7 @@ Sent from PlanckMailiOS</string>
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoD-pg-QLh">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="44"/>
                                         <animations/>
                                         <state key="normal" title="Important">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -2171,8 +2173,21 @@ Sent from PlanckMailiOS</string>
                                             <action selector="importantBtnTaped:" destination="GS1-cL-nYo" eventType="touchUpInside" id="mv3-Ky-sab"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2La-Le-c09">
+                                        <rect key="frame" x="214" y="0.0" width="106" height="44"/>
+                                        <animations/>
+                                        <state key="normal" title="Follow - ups">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="followUpsBtnTapped:" destination="GS1-cL-nYo" eventType="touchUpInside" id="muf-KR-Avo"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="too-SV-fdW">
-                                        <rect key="frame" x="160" y="0.0" width="160" height="44"/>
+                                        <rect key="frame" x="107" y="0.0" width="106" height="44"/>
                                         <animations/>
                                         <state key="normal" title="Read Later">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -2188,17 +2203,24 @@ Sent from PlanckMailiOS</string>
                                 <animations/>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="too-SV-fdW" firstAttribute="top" secondItem="GS1-cL-nYo" secondAttribute="top" id="27F-jY-TqQ"/>
-                                    <constraint firstAttribute="bottom" secondItem="too-SV-fdW" secondAttribute="bottom" id="GDV-EQ-QJl"/>
+                                    <constraint firstItem="too-SV-fdW" firstAttribute="firstBaseline" secondItem="CoD-pg-QLh" secondAttribute="baseline" id="095-zA-jWy"/>
+                                    <constraint firstItem="too-SV-fdW" firstAttribute="leading" secondItem="CoD-pg-QLh" secondAttribute="trailing" constant="1" id="1V9-GK-2To"/>
+                                    <constraint firstAttribute="trailing" secondItem="2La-Le-c09" secondAttribute="trailing" id="3hI-Yx-gmr"/>
+                                    <constraint firstItem="too-SV-fdW" firstAttribute="baseline" secondItem="2La-Le-c09" secondAttribute="firstBaseline" id="45R-Bd-NVz"/>
+                                    <constraint firstItem="too-SV-fdW" firstAttribute="width" secondItem="2La-Le-c09" secondAttribute="width" id="8NR-BD-KXK"/>
                                     <constraint firstItem="CoD-pg-QLh" firstAttribute="leading" secondItem="GS1-cL-nYo" secondAttribute="leading" id="Hhh-W5-yrz"/>
+                                    <constraint firstItem="too-SV-fdW" firstAttribute="baseline" secondItem="CoD-pg-QLh" secondAttribute="firstBaseline" id="IN4-rH-HG6"/>
+                                    <constraint firstItem="2La-Le-c09" firstAttribute="leading" secondItem="too-SV-fdW" secondAttribute="trailing" constant="1" id="Ioy-ta-dWk"/>
                                     <constraint firstAttribute="height" constant="44" id="Iqm-XA-C2o"/>
-                                    <constraint firstItem="too-SV-fdW" firstAttribute="width" secondItem="CoD-pg-QLh" secondAttribute="width" id="NCY-Uu-8bU"/>
-                                    <constraint firstAttribute="trailing" secondItem="too-SV-fdW" secondAttribute="trailing" id="Wrm-Il-KpR"/>
+                                    <constraint firstItem="too-SV-fdW" firstAttribute="top" secondItem="CoD-pg-QLh" secondAttribute="top" id="WtB-rk-5uZ"/>
+                                    <constraint firstItem="too-SV-fdW" firstAttribute="top" secondItem="2La-Le-c09" secondAttribute="top" id="X6r-Rh-rKQ"/>
+                                    <constraint firstItem="too-SV-fdW" firstAttribute="baseline" secondItem="2La-Le-c09" secondAttribute="baseline" id="ZHj-Gy-9ta"/>
+                                    <constraint firstItem="too-SV-fdW" firstAttribute="width" secondItem="CoD-pg-QLh" secondAttribute="width" id="azq-J7-xCW"/>
                                     <constraint firstAttribute="bottom" secondItem="CoD-pg-QLh" secondAttribute="bottom" id="eNC-Td-9aC"/>
                                     <constraint firstItem="CoD-pg-QLh" firstAttribute="top" secondItem="GS1-cL-nYo" secondAttribute="top" id="fso-SU-Rb9"/>
-                                    <constraint firstItem="too-SV-fdW" firstAttribute="leading" secondItem="CoD-pg-QLh" secondAttribute="trailing" id="zy7-dR-fdq"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="followUpsMessagesBtn" destination="2La-Le-c09" id="U5J-N7-4x6"/>
                                     <outlet property="importantMessagesBtn" destination="CoD-pg-QLh" id="UM7-wm-vX7"/>
                                     <outlet property="readLaterMessageBtn" destination="too-SV-fdW" id="0D4-ul-08N"/>
                                 </connections>
@@ -2219,7 +2241,7 @@ Sent from PlanckMailiOS</string>
                                 <rect key="frame" x="16" y="5" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vb8-dn-z4E">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vb8-dn-z4E">
                                         <rect key="frame" x="0.0" y="3" width="30" height="30"/>
                                         <animations/>
                                         <state key="normal" image="menuIcon">
@@ -2232,6 +2254,12 @@ Sent from PlanckMailiOS</string>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="vb8-dn-z4E" firstAttribute="leading" secondItem="IPG-G3-mpN" secondAttribute="leading" id="NRo-ru-ANZ"/>
+                                    <constraint firstItem="vb8-dn-z4E" firstAttribute="top" secondItem="IPG-G3-mpN" secondAttribute="top" constant="3" id="SxY-L8-TgW"/>
+                                    <constraint firstAttribute="trailing" secondItem="vb8-dn-z4E" secondAttribute="trailing" constant="41" id="gXW-mt-iIW"/>
+                                    <constraint firstAttribute="bottom" secondItem="vb8-dn-z4E" secondAttribute="bottom" id="kGP-R9-fKk"/>
+                                </constraints>
                             </view>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="nNY-pZ-OPf">
@@ -2239,15 +2267,18 @@ Sent from PlanckMailiOS</string>
                                 <rect key="frame" x="232" y="5" width="72" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-vs-YDp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-vs-YDp">
                                         <rect key="frame" x="0.0" y="2" width="30" height="30"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="iY6-nF-XTq"/>
+                                        </constraints>
                                         <state key="normal" image="searchIcon"/>
                                         <connections>
                                             <action selector="searchBtnPressed:" destination="jvz-4f-ywC" eventType="touchUpInside" id="HOA-TC-vAz"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2M-Yu-2KG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2M-Yu-2KG">
                                         <rect key="frame" x="42" y="2" width="30" height="30"/>
                                         <animations/>
                                         <state key="normal" image="createMailIcon">
@@ -2260,6 +2291,16 @@ Sent from PlanckMailiOS</string>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="aZg-vs-YDp" firstAttribute="top" secondItem="Of9-Um-rpy" secondAttribute="top" constant="2" id="DqA-Bh-8pw"/>
+                                    <constraint firstItem="F2M-Yu-2KG" firstAttribute="firstBaseline" secondItem="aZg-vs-YDp" secondAttribute="firstBaseline" id="HUh-bU-xJ9"/>
+                                    <constraint firstItem="F2M-Yu-2KG" firstAttribute="leading" secondItem="aZg-vs-YDp" secondAttribute="trailing" constant="12" id="I2n-yB-qB4"/>
+                                    <constraint firstItem="aZg-vs-YDp" firstAttribute="top" secondItem="F2M-Yu-2KG" secondAttribute="top" id="TeA-6e-oDB"/>
+                                    <constraint firstAttribute="trailing" secondItem="F2M-Yu-2KG" secondAttribute="trailing" id="j1P-tV-kPn"/>
+                                    <constraint firstItem="aZg-vs-YDp" firstAttribute="leading" secondItem="Of9-Um-rpy" secondAttribute="leading" id="omN-Xw-mnN"/>
+                                    <constraint firstItem="F2M-Yu-2KG" firstAttribute="baseline" secondItem="aZg-vs-YDp" secondAttribute="baseline" id="qdw-kK-sY5"/>
+                                    <constraint firstItem="F2M-Yu-2KG" firstAttribute="centerY" secondItem="Of9-Um-rpy" secondAttribute="centerY" id="yW8-SG-ekA"/>
+                                </constraints>
                             </view>
                         </barButtonItem>
                     </navigationItem>
@@ -2270,7 +2311,7 @@ Sent from PlanckMailiOS</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTz-d4-Zao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2016" y="-1674"/>
+            <point key="canvasLocation" x="1998" y="-1674"/>
         </scene>
         <!--Preview MailVC-->
         <scene sceneID="g3E-69-6Y3">

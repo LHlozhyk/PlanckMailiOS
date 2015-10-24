@@ -116,9 +116,14 @@
 
 - (void)createEvent {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    //NSDictionary *lEventParams = [_eventModel getEventParams];
-    [[PMAPIManager shared] createCalendarEventWithAccount:[[PMAPIManager shared] namespaceId] eventParams:nil comlpetion:^(id data, id error, BOOL success) {
+    NSDictionary *lEventParams = [_eventModel getEventParams];
+    
+    [[PMAPIManager shared] createCalendarEventWithAccount:[[PMAPIManager shared] namespaceId] eventParams:lEventParams comlpetion:^(id data, id error, BOOL success) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (success && _eventModel.alertTime != nil) {
+                
+            }
+            
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             [self dismissViewControllerAnimated:YES completion:nil];
         });

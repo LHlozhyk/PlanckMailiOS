@@ -9,9 +9,13 @@
 #import "PMMessagesTableView.h"
 #import "PMMailTVCell.h"
 #import "PMLoadMoreTVCell.h"
+#import "MGSwipeButton.h"
+#import "MGSwipeTableCell.h"
+#import "PMAPIManager.h"
 
-@interface PMMessagesTableView () <UITableViewDelegate, UITableViewDataSource> {
+@interface PMMessagesTableView () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
     NSArray *_itemMailArray;
+    selectedMessages _selectedTableType;
 }
 @end
 
@@ -22,10 +26,13 @@
     
     _itemMailArray = [NSArray array];
 
+    [self getSelectedTableType];
+    
     //delete empty separate lines for tableView
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([PMLoadMoreTVCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"loadMoreCell"];
     [_tableView registerNib:[UINib nibWithNibName:NSStringFromClass([PMMailTVCell class]) bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"mailCell"];
+    
 
 }
 
@@ -34,14 +41,41 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell ;
+    MGSwipeTableCell *cell ;
     
     if ([tableView numberOfRowsInSection:indexPath.section]  - 1 == indexPath.row) {
         
-        cell = (PMLoadMoreTVCell *)[tableView dequeueReusableCellWithIdentifier:@"loadMoreCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"loadMoreCell"];
         [(PMLoadMoreTVCell*)cell show];
     } else {
         cell = (PMMailTVCell *)[tableView dequeueReusableCellWithIdentifier:@"mailCell"];
+      
+        cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Snooze" backgroundColor:[UIColor orangeColor] callback:^BOOL(MGSwipeTableCell *sender) {
+            
+            
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(PMMessagesTableViewDelegateShowAlert:inboxMailModel:)]) {
+                
+                NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+                _inboxMailModel = [_itemMailArray objectAtIndex:indexPath.row];
+                
+                [_delegate PMMessagesTableViewDelegateShowAlert:self inboxMailModel:_inboxMailModel];
+            }
+            
+            return YES;
+       }]];
+        
+        cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Archive" backgroundColor:[UIColor greenColor] callback:^BOOL(MGSwipeTableCell *sender) {
+           
+            [self showAlertWithCellIndexPath:[self.tableView indexPathForCell:cell]];
+            
+            return NO;
+        }]];
+        
+        cell.rightExpansion.buttonIndex = 0;
+        cell.leftExpansion.buttonIndex = 0;
+        cell.rightExpansion.fillOnTrigger = YES;
+        cell.leftExpansion.fillOnTrigger = YES;
         
         PMInboxMailModel *lItem = [_itemMailArray objectAtIndex:indexPath.row];
         [(PMMailTVCell *)cell updateWithModel:lItem];
@@ -53,6 +87,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _itemMailArray.count > 0 ? _itemMailArray.count + 1 : 0;
 }
+
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//
+//    
+//    
+//    
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat lHeight = 90;
@@ -73,6 +114,17 @@
         PMInboxMailModel *lSelectedMessageModel = _itemMailArray[indexPath.row];
         [self selectedMessage:lSelectedMessageModel];
     }
+}
+
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    [self getSelectedTableType];
+    if (_selectedTableType == FollowUpsMessagesSelected) {
+    
+        return @"FollowUpsMessagesSelected";
+    }
+    
+    return nil;
 }
 
 #pragma mark - Public methods 
@@ -103,5 +155,49 @@
     }
 }
 
+#pragma mark - Alert Stuff 
+
+-(void)showAlertWithCellIndexPath:(NSIndexPath*)indexPath {
+    
+    _inboxMailModel = _itemMailArray[indexPath.row];
+    
+    UIAlertView *lNewAlert = [[UIAlertView alloc] initWithTitle:@"Archive message" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [lNewAlert show];
+    
+}
+
+#pragma mark - UIAlertView delegate
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+    if (buttonIndex == 1) {
+    
+        
+        [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
+            
+            DLog(@"archiveMailWithThreadId - %@", data);
+            NSMutableArray *tmpArray = (NSMutableArray*)_itemMailArray;
+            [tmpArray removeObject:_inboxMailModel];
+            _itemMailArray = (NSArray*)tmpArray;
+            [self.tableView reloadData];
+            
+        }];
+    }else if (buttonIndex == 0) {
+        
+        [self.tableView reloadData];
+    
+    }
+
+}
+
+#pragma mark - Enum stuff
+
+-(selectedMessages)getSelectedTableType {
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(getMessagesType)]) {
+        _selectedTableType = [_delegate getMessagesType];
+    }
+    return _selectedTableType;
+}
 
 @end

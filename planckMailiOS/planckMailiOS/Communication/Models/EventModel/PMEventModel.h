@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, EventDateType) {
 @property(nonatomic, copy) NSString *eventDescription;
 @property(nonatomic, strong) NSArray *participants;
 @property(nonatomic, copy) NSString *owner;
+@property(nonatomic, copy) NSDate *alertTime;
 
 
 @property(nonatomic, assign) EventDateType eventDateType;

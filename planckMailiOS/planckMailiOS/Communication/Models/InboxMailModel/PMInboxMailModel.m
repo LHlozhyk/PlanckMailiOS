@@ -28,6 +28,30 @@
     return self;
 }
 
++ (PMInboxMailModel *)initWithDicationary:(NSDictionary *)item {
+    PMInboxMailModel *lNewItem = [PMInboxMailModel new];
+    lNewItem.snippet = item[@"snippet"];
+    lNewItem.subject = item[@"subject"];
+    lNewItem.namespaceId = item[@"namespace_id"];
+    lNewItem.messageId = item[@"id"];
+    lNewItem.version = [item[@"version"] unsignedIntegerValue];
+    lNewItem.labels = item[@"labels"];
+    lNewItem.isUnread = NO;
+    
+    NSTimeInterval lastTimeStamp = [item[@"last_message_timestamp"] doubleValue];
+    lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
+    
+    NSArray *lTagsArray =  item[@"tags"];
+    
+    for (NSDictionary *itemTag in lTagsArray) {
+        if ([itemTag[@"id"] isEqualToString:@"unread"]) {
+            lNewItem.isUnread = YES;
+        }
+    }
+    
+    return lNewItem;
+}
+
 + (BOOL)supportsSecureCoding {
   return YES;
 }

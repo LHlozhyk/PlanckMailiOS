@@ -19,6 +19,7 @@
     [super awakeFromNib];
     _importantMessagesBtn.tintColor = NAVIGATION_BAR_TIN_COLOR;
     _readLaterMessageBtn.tintColor = NAVIGATION_BAR_TIN_COLOR;
+    _followUpsMessagesBtn.tintColor = NAVIGATION_BAR_TIN_COLOR;
 //    
 //    _line = [[UIView alloc] initWithFrame:CGRectMake(_importantMessagesBtn.frame.origin.x, _importantMessagesBtn.frame.size.height - 4, <#CGFloat width#>, <#CGFloat height#>)]
     
@@ -29,9 +30,15 @@
     if (messages == ImportantMessagesSelected) {
         [_importantMessagesBtn setSelected:YES];
         [_readLaterMessageBtn setSelected:NO];
-    } else {
+        [_followUpsMessagesBtn setSelected:NO];
+    } else if (messages == ReadLaterMessagesSelected){
         [_importantMessagesBtn setSelected:NO];
         [_readLaterMessageBtn setSelected:YES];
+        [_followUpsMessagesBtn setSelected:NO];
+    }else if (messages == FollowUpsMessagesSelected) {
+        [_importantMessagesBtn setSelected:NO];
+        [_readLaterMessageBtn setSelected:NO];
+        [_followUpsMessagesBtn setSelected:YES];
     }
     
     SEL selector = @selector(messagesDidSelect:);
@@ -44,6 +51,7 @@
 - (void)hideButtons{
     [_importantMessagesBtn setHidden:YES];
     [_readLaterMessageBtn setHidden:YES];
+    [_followUpsMessagesBtn setHidden:YES];
 }
 
 - (IBAction)importantBtnTaped:(id)sender {
@@ -53,4 +61,9 @@
 - (IBAction)readLaterBtnTaped:(id)sender {
     [self selectMessages:ReadLaterMessagesSelected];
 }
+
+-(IBAction)followUpsBtnTapped:(id)sender {
+    [self selectMessages:FollowUpsMessagesSelected];
+}
+
 @end

@@ -12,49 +12,81 @@
 #import "PMWatchRequestHandler.h"
 #import "Config.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "PMLocalNotification.h"
 
+@interface AppDelegate () <UIAlertViewDelegate>
 
-@interface AppDelegate ()
 @end
 
-@implementation AppDelegate 
+@implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//TODO: don't remove this code
-//    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
-//        
-//        UIMutableUserNotificationAction *acceptAction = [UIMutableUserNotificationAction new];
-//        acceptAction.title = @"Okay";
-//        acceptAction.identifier = @"accept";
-//        acceptAction.activationMode = UIUserNotificationActivationModeForeground;
-//        acceptAction.authenticationRequired = NO;
-//        
-//        UIMutableUserNotificationAction *declineAction = [UIMutableUserNotificationAction new];
-//        declineAction.title = @"No";
-//        declineAction.identifier = @"decline";
-//        declineAction.activationMode = UIUserNotificationActivationModeForeground;
-//        declineAction.authenticationRequired = NO;
-//        
-//        UIMutableUserNotificationCategory *category = [UIMutableUserNotificationCategory new];
-//        [category setActions:@[acceptAction, declineAction] forContext:UIUserNotificationActionContextDefault];
-//        category.identifier = @"invite";
-//        
-//        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound
-//                                                                                 categories:[NSSet setWithObjects:acceptAction, declineAction, category, nil]];
-//        
-//        [application registerUserNotificationSettings: settings];
-//    }
+    //TODO: don't remove this code
+    //    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+    //
+    //        UIMutableUserNotificationAction *acceptAction = [UIMutableUserNotificationAction new];
+    //        acceptAction.title = @"Okay";
+    //        acceptAction.identifier = @"accept";
+    //        acceptAction.activationMode = UIUserNotificationActivationModeForeground;
+    //        acceptAction.authenticationRequired = NO;
+    //
+    //        UIMutableUserNotificationAction *declineAction = [UIMutableUserNotificationAction new];
+    //        declineAction.title = @"No";
+    //        declineAction.identifier = @"decline";
+    //        declineAction.activationMode = UIUserNotificationActivationModeForeground;
+    //        declineAction.authenticationRequired = NO;
+    //
+    //        UIMutableUserNotificationCategory *category = [UIMutableUserNotificationCategory new];
+    //        [category setActions:@[acceptAction, declineAction] forContext:UIUserNotificationActionContextDefault];
+    //        category.identifier = @"invite";
+    //
+    //        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound
+    //                                                                                 categories:[NSSet setWithObjects:acceptAction, declineAction, category, nil]];
+    //
+    //        [application registerUserNotificationSettings: settings];
+    //    }
     application.applicationIconBadgeNumber = 0;
     
     [self setUpCustomDesign];
+    
+    [PMLocalNotification setUpNotificationForApplication:application];
+    [PMLocalNotification cancelNotifications];
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
     if (lNamespacesArray.count > 0) {
-//        UITabBarController *lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
-//        [(UINavigationController *)self.window.rootViewController setNavigationBarHidden:YES];
-//        [(UINavigationController *)self.window.rootViewController pushViewController:lMainTabBar animated:NO];
+        //        UITabBarController *lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
+        //        [(UINavigationController *)self.window.rootViewController setNavigationBarHidden:YES];
+        //        [(UINavigationController *)self.window.rootViewController pushViewController:lMainTabBar animated:NO];
     }
+    
+    [PMLocalNotification checkDisabledLocalNotification:^(DisabledLocalNotificationType type) {
+        NSString *lStatusString = nil;
+        switch (type) {
+            case DisabledLocalNotificationTypeAlert: {
+                lStatusString = @"Alert Styles";
+                break;
+            }
+            case DisabledLocalNotificationTypeBadge: {
+                lStatusString = @"Badge App Icon";
+                break;
+            }
+            case DisabledLocalNotificationTypeSound: {
+                lStatusString = @"Sounds";
+                break;
+            }
+            case DisabledLocalNotificationTypeAll: {
+                lStatusString = @"Badge App Icon, Sounds, Alert Styles";
+                break;
+            }
+            default:
+                break;
+        }
+        if (lStatusString.length != 0) {
+            [[[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"This app requires access to the %@ selected. Enable in Settings -> Notification Center -> Planck Mail.", lStatusString] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Open Settings", nil] show];
+        }
+    }];
+    
     return YES;
 }
 
@@ -67,7 +99,7 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-  
+    [PMLocalNotification cancelNotifications];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -75,15 +107,15 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-
+    
 }
 
 - (BOOL)application:(UIApplication *)application willContinueUserActivityWithType:(NSString *)userActivityType {
-  return YES;
+    return YES;
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler {
-  return YES;
+    return YES;
 }
 
 - (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
@@ -103,19 +135,28 @@
     [[UITabBar appearance] setSelectedImageTintColor:NAVIGATION_BAR_TIN_COLOR];
 }
 
+#pragma mark - UIAlertView delegates
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    }
+}
+
+
 #pragma mark - WatchKit Extention
 
 - (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void (^)(NSDictionary *))reply {
-
-  __block UIBackgroundTaskIdentifier watchKitHandler;
-  watchKitHandler = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"backgroundTask"
-                                                                 expirationHandler:^{
-                                                                   DLog(@"Background handler called. Background tasks expirationHandler called.");
-                                                                   [[UIApplication sharedApplication] endBackgroundTask:watchKitHandler];
-                                                                   watchKitHandler = UIBackgroundTaskInvalid;
-                                                                 }];
-  
-  [[PMWatchRequestHandler sharedHandler] handleWatchKitExtensionRequest:userInfo reply:reply];
+    
+    __block UIBackgroundTaskIdentifier watchKitHandler;
+    watchKitHandler = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"backgroundTask"
+                                                                   expirationHandler:^{
+                                                                       DLog(@"Background handler called. Background tasks expirationHandler called.");
+                                                                       [[UIApplication sharedApplication] endBackgroundTask:watchKitHandler];
+                                                                       watchKitHandler = UIBackgroundTaskInvalid;
+                                                                   }];
+    
+    [[PMWatchRequestHandler sharedHandler] handleWatchKitExtensionRequest:userInfo reply:reply];
 }
 
 @end

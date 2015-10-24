@@ -12,6 +12,7 @@
 #import "PMInboxMailModel.h"
 #import "PMNetworkManager.h"
 #import "PMEventModel.h"
+#import "PMStorageManager.h"
 
 #define TOKEN @"namespaces"
 
@@ -92,58 +93,11 @@
 }
 
 - (void)getMailsWithAccount:(id<PMAccountProtocol>)account limit:(NSUInteger)limit offset:(NSUInteger)offset filter:(NSString*)filter completion:(ExtendedBlockHandler)handler {
-    
-    
     NSDictionary *lParameters = @{@"in" : filter,
                                   @"limit" : @(limit),
                                   @"offset" : @(offset)
                                   };
-    
-    [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:@"/threads" parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        DLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
-        
-        NSMutableArray *lResultItems = [NSMutableArray new];
-        NSArray *lResponse = responseObject;
-        for (NSDictionary *item in lResponse) {
-            
-            PMInboxMailModel *lNewItem = [PMInboxMailModel new];
-            lNewItem.snippet = item[@"snippet"];
-            lNewItem.subject = item[@"subject"];
-            lNewItem.namespaceId = item[@"namespace_id"];
-            lNewItem.messageId = item[@"id"];
-            lNewItem.version = [item[@"version"] unsignedIntegerValue];
-            lNewItem.labels = item[@"labels"];
-            lNewItem.isUnread = NO;
-            lNewItem.token = account.token;
-            
-            NSArray *participants = item[@"participants"];
-            
-            for (NSDictionary *user in participants) {
-                if (![user[@"email"] isEqualToString:_emailAddress]) {
-                    lNewItem.ownerName = user[@"name"];
-                    break;
-                }
-            }
-            
-            NSTimeInterval lastTimeStamp = [item[@"last_message_timestamp"] doubleValue];
-            lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
-            
-            NSArray *lTagsArray =  item[@"tags"];
-            
-            for (NSDictionary *itemTag in lTagsArray) {
-                if ([itemTag[@"id"] isEqualToString:@"unread"]) {
-                    lNewItem.isUnread = YES;
-                }
-            }
-            
-            [lResultItems addObject:lNewItem];
-        }
-        handler(lResultItems, nil, YES);
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        DLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
-    }];
+    [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
 }
 
 
@@ -154,53 +108,7 @@
                                   @"limit" : @(limit),
                                   @"offset" : @(offset)
                                   };
-    
-    NSString *namespace_id = [account namespace_id];
-    [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:@"/threads" parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        DLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
-        
-        NSMutableArray *lResultItems = [NSMutableArray new];
-        NSArray *lResponse = responseObject;
-        for (NSDictionary *item in lResponse) {
-            
-            PMInboxMailModel *lNewItem = [PMInboxMailModel new];
-            lNewItem.snippet = item[@"snippet"];
-            lNewItem.subject = item[@"subject"];
-            lNewItem.namespaceId = item[@"namespace_id"]?:namespace_id;
-            lNewItem.messageId = item[@"id"];
-            lNewItem.version = [item[@"version"] unsignedIntegerValue];
-            lNewItem.labels = item[@"labels"];
-            lNewItem.isUnread = NO;
-            lNewItem.token = account.token;
-            
-            NSArray *participants = item[@"participants"];
-            
-            for (NSDictionary *user in participants) {
-                if (![user[@"email"] isEqualToString:_emailAddress]) {
-                    lNewItem.ownerName = user[@"name"];
-                    break;
-                }
-            }
-            
-            NSTimeInterval lastTimeStamp = [item[@"last_message_timestamp"] doubleValue];
-            lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
-            
-            NSArray *lTagsArray =  item[@"tags"];
-            
-            for (NSDictionary *itemTag in lTagsArray) {
-                if ([itemTag[@"id"] isEqualToString:@"unread"]) {
-                    lNewItem.isUnread = YES;
-                }
-            }
-            
-            [lResultItems addObject:lNewItem];
-        }
-        handler(lResultItems, nil, YES);
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        DLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
-    }];
+    [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
 }
 
 - (void)getReadLaterMailWithAccount:(id<PMAccountProtocol>)account
@@ -211,52 +119,28 @@
                                   @"limit" : @(limit),
                                   @"offset" : @(offset)
                                   };
+    [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
+}
+
+-(void)getFollowUpsMailWithAccount:(id<PMAccountProtocol>)account
+                             limit:(NSUInteger)limit
+                            offset:(NSUInteger)offset
+                        completion:(ExtendedBlockHandler)handler{
+
+
+    NSDictionary *lParameters = @{@"in" : SCHEDULED,
+                                  @"limit" : @(limit),
+                                  @"offset" : @(offset)
+                                  };
+    [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
+
+}
+
+- (void)searchMailWithKeyword:(NSString *)keyword account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
     
-    [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:@"/threads" parameters:lParameters success:^(NSURLSessionDataTask *task, id responseObject) {
-        DLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
-        
-        NSMutableArray *lResultItems = [NSMutableArray new];
-        NSArray *lResponse = responseObject;
-        for (NSDictionary *item in lResponse) {
-            
-            PMInboxMailModel *lNewItem = [PMInboxMailModel new];
-            lNewItem.snippet = item[@"snippet"];
-            lNewItem.subject = item[@"subject"];
-            lNewItem.namespaceId = item[@"namespace_id"];
-            lNewItem.messageId = item[@"id"];
-            lNewItem.version = [item[@"version"] unsignedIntegerValue];
-            lNewItem.labels = item[@"labels"];
-            lNewItem.isUnread = NO;
-            lNewItem.token = account.token;
-            
-            NSArray *participants = item[@"participants"];
-            
-            for (NSDictionary *user in participants) {
-                if (![user[@"email"] isEqualToString:_emailAddress]) {
-                    lNewItem.ownerName = user[@"name"];
-                    break;
-                }
-            }
-            
-            NSTimeInterval lastTimeStamp = [item[@"last_message_timestamp"] doubleValue];
-            lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
-            
-            NSArray *lTagsArray =  item[@"tags"];
-            
-            for (NSDictionary *itemTag in lTagsArray) {
-                if ([itemTag[@"id"] isEqualToString:@"unread"]) {
-                    lNewItem.isUnread = YES;
-                }
-            }
-            
-            [lResultItems addObject:lNewItem];
-        }
-        handler(lResultItems, nil, YES);
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        DLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
-    }];
+    [self getMailsWithAccount:account parameters:@{@"q" : keyword}
+                         path:[NSString stringWithFormat:@"/n/%@/threads/search", account.namespace_id]
+                   completion:handler];
 }
 
 - (void)getDetailWithMessageId:(NSString *)messageId account:(id<PMAccountProtocol>)account unread:(BOOL)unread completion:(ExtendedBlockHandler)handler {
@@ -284,41 +168,6 @@
     }];
 }
 
-- (void)searchMailWithKeyword:(NSString *)keyword account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
-    
-    [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:[NSString stringWithFormat:@"/n/%@/threads/search", account.namespace_id] parameters:@{@"q" : keyword} success:^(NSURLSessionDataTask *task, id responseObject) {
-        DLog(@"getDetailWithMessageId-  stask - %@  / response - %@", task, responseObject);
-        
-        NSArray *lResponse = responseObject;
-        
-        NSMutableArray *lResultItems = [NSMutableArray new];
-        for (NSDictionary *item in lResponse) {
-            
-            PMInboxMailModel *lNewItem = [PMInboxMailModel new];
-            lNewItem.ownerName = [item[@"participants"] firstObject][@"name"];
-            lNewItem.snippet = item[@"snippet"];
-            lNewItem.subject = item[@"subject"];
-            lNewItem.namespaceId = item[@"namespace_id"];
-            lNewItem.messageId = item[@"id"];
-            lNewItem.isUnread = NO;
-            
-            NSArray *lTagsArray =  item[@"tags"];
-            
-            for (NSDictionary *itemTag in lTagsArray) {
-                if ([itemTag[@"id"] isEqualToString:@"unread"]) {
-                    lNewItem.isUnread = YES;
-                }
-            }
-            [lResultItems addObject:lNewItem];
-        }
-        handler(lResultItems, nil, YES);
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        DLog(@"getDetailWithMessageId - ftask - %@  / error - %@", task, error);
-    }];
-}
-
 - (void)deleteMailWithThreadId:(NSString *)threadId account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
     [_networkManager PUT:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id] parameters:@{@"add_tags":@[@"trash"]} success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -332,7 +181,9 @@
 
 - (void)archiveMailWithThreadId:(NSString *)threadId account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler{
     [_networkManager setCurrentToken:account.token];
-    [_networkManager PUT:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id] parameters:@{@"add_tags":@[@"archive"]} success:^(NSURLSessionDataTask *task, id responseObject) {
+    [_networkManager PUT:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id]
+              parameters:@{@"add_tags":@[@"archive"]}
+                 success:^(NSURLSessionDataTask *task, id responseObject) {
         DLog(@"archiveMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
         handler(responseObject, nil, YES);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -397,12 +248,28 @@
     }];
 }
 
+#pragma mark - Folders
+
 - (void)getFoldersWithAccount:(id<PMAccountProtocol>)account comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObjet) {
-        
+    [_networkManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
     } failure:^ (NSURLSessionDataTask * task, NSError *error) {
-        
+        handler(nil, error, NO);
+    }];
+    
+}
+
+- (void)getFoldersWithAccount:(id<PMAccountProtocol>)account folderId:(NSString*)folderId comlpetion:(ExtendedBlockHandler)handler {
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
+    } failure:^ (NSURLSessionDataTask * task, NSError *error) {
+        handler(nil, error, NO);
     }];
     
 }
@@ -414,9 +281,13 @@
     NSDictionary *lParams = @{@"display_name":folderName};
     [_networkManager setCurrentToken:account.token];
     [_networkManager POST:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
-        
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
-        
+        if(handler) {
+            handler(nil, error, NO); 
+        }
     }];
     
 }
@@ -429,11 +300,54 @@
     NSDictionary *lParams = @{@"display_name":newFolderName};
     [_networkManager setCurrentToken:account.token];
     [_networkManager PUT:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
-        
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
-        
+        if(handler) {
+            handler(nil, error, NO);
+        }
     }];
 }
+
+-(void)deleteFolderWithId:(NSString*)folderId
+                  account:(id<PMAccountProtocol>)account
+               completion:(ExtendedBlockHandler)handler {
+
+//    NSLog(@"iddd %@",[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId]);
+//    NSLog(@"getScheduledFolderIdForAccount");
+    
+    [_networkManager setCurrentToken:account.token];
+    [_networkManager DELETE:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:nil
+                    success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+                        if (handler) {
+                            handler(responseObject, nil, YES);
+                        }
+                    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+                        if (handler) {
+                            handler(nil, error, NO);
+                        }
+                    }];
+
+}
+
+-(void)moveMailWithThreadId:(NSString*)threadId account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId {
+
+    NSDictionary *lParameters = @{@"folder_id" : folderId};
+    
+    [_networkManager setCurrentToken:account.token];
+    
+    [_networkManager PUT:[PMRequest messageId:threadId namespacesId:account.namespace_id] parameters:lParameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"success");
+    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        NSLog(@"failure");
+        NSLog(@"error = %@",[error localizedDescription]);
+
+    }];
+
+}
+
+#pragma mark - Calendars
 
 - (void)getCalendarsWithAccount:(id<PMAccountProtocol>)account comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
@@ -586,5 +500,41 @@
     }];
 }
 
+- (void)getMailsWithAccount:(id<PMAccountProtocol>)account parameters:(NSDictionary *)parameters path:(NSString *)path completion:(ExtendedBlockHandler)handler {
+    NSString *namespace_id = [account namespace_id];
+    [_networkManager setCurrentToken:account.token];
+    
+    [_networkManager GET:path parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        DLog(@"getInboxMailWithAccount-  stask - %@  / response - %@", task, responseObject);
+        
+        NSMutableArray *lResultItems = [NSMutableArray new];
+        NSArray *lResponse = responseObject;
+        for (NSDictionary *item in lResponse) {
+            PMInboxMailModel *lNewItem = [PMInboxMailModel initWithDicationary:item];
+            lNewItem.namespace_id = lNewItem.namespace_id?:namespace_id;
+            lNewItem.token = account.token;
+            
+            NSArray *participants = item[@"participants"];
+            
+            for (NSDictionary *user in participants) {
+                if (![user[@"email"] isEqualToString:_emailAddress]) {
+                    lNewItem.ownerName = user[@"name"];
+                    break;
+                }
+            }
+            
+            [lResultItems addObject:lNewItem];
+        }
+        if(handler) {
+            handler(lResultItems, nil, YES);
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        DLog(@"getInboxMailWithAccount - ftask - %@  / error - %@", task, error);
+        if(handler) {
+            handler(nil, error, NO);
+        }
+    }];
+}
 
 @end

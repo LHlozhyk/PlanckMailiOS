@@ -9,8 +9,13 @@
 #import "PMEventModel.h"
 #import "PMParticipantModel.h"
 
-@implementation PMEventModel
+@interface PMEventModel ()
+- (id)whenEventTakePlaceParams;
+- (id)partisipantsParams;
+- (EventDateType)eventTypeForObject:(NSString *)object;
+@end
 
+@implementation PMEventModel
 
 - (instancetype)initWithDictionary:(NSDictionary *)eventDictionary {
     self = [super init];
@@ -28,7 +33,7 @@
         //init event participants
         NSMutableArray *participantsModels = [NSMutableArray new];
         NSArray *participants = eventDictionary[@"participants"];
-        if([participants count] > 0) {
+        if ([participants count] > 0) {
             for(NSDictionary *participant in participants) {
                 PMParticipantModel *participantModel = [[PMParticipantModel alloc] initWithDictionary:participant];
                 [participantsModels addObject:participantModel];
@@ -72,22 +77,69 @@
     return self;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self defaultInit];
+    }
+    return self;
+}
+
+- (void)defaultInit {
+    self.title = @"";
+    self.location = @"";
+    self.calendarId = @"";
+    self.eventDescription = @"";
+    self.owner = @"";
+    self.participants = @[];
+    self.eventDateType = EventDateTimespanType;
+    self.alertTime = nil;
+    _readonly = NO;
+}
+
+#pragma mark - Public methods
+
+- (NSDictionary *)getEventParams {
+    return @{
+             @"title" :_title,
+             @"description" : _eventDescription,
+             @"when" : [self whenEventTakePlaceParams],
+             @"location" : _location,
+             @"calendar_id" : _calendarId,
+             @"participants" : [self partisipantsParams]
+             };
+}
+
+#pragma mark - Private methods
+
 - (EventDateType)eventTypeForObject:(NSString *)object {
     EventDateType eventDateType = EventDateDateType;
     
-    if([object isEqualToString:@"time"]) {
+    if ([object isEqualToString:@"time"]) {
         eventDateType = EventDateTimeType;
-    } else if([object isEqualToString:@"timespan"]) {
+    } else if ([object isEqualToString:@"timespan"]) {
         eventDateType = EventDateTimespanType;
-    } else if([object isEqualToString:@"datespan"]) {
+    } else if ([object isEqualToString:@"datespan"]) {
         eventDateType = EventDateDatespanType;
     }
     
     return eventDateType;
 }
 
-- (NSDictionary*)getEventParams {
-    return @{};
+- (id)whenEventTakePlaceParams {
+    return @{
+             @"start_time" : _startTime,
+             @"end_time" : _endTime
+             };
+}
+
+- (id)partisipantsParams {
+    return @[
+             @{
+                 @"email": @"example@gmail.com",
+                 @"name": @"Ben Bitdiddle"
+                 }
+             ];
 }
 
 @end
