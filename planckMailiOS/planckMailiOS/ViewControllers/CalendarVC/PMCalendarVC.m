@@ -222,11 +222,11 @@
 }
 
 - (IBAction)createEventBtnPressed:(id)sender {
-//    PMCreateEventVC *lNewEventVC = [[PMCreateEventVC alloc] initWithStoryboard];
-//    UINavigationController *lNavContoller = [[UINavigationController alloc] initWithRootViewController:lNewEventVC];
-//    lNavContoller.navigationBarHidden = YES;
-//    [lNewEventVC setTitle:@"New Event"];
-//    [self.tabBarController presentViewController:lNavContoller animated:YES completion:nil];
+    PMCreateEventVC *lNewEventVC = [[PMCreateEventVC alloc] initWithStoryboard];
+    UINavigationController *lNavContoller = [[UINavigationController alloc] initWithRootViewController:lNewEventVC];
+    lNavContoller.navigationBarHidden = YES;
+    [lNewEventVC setTitle:@"New Event"];
+    [self.tabBarController presentViewController:lNavContoller animated:YES completion:nil];
 }
 
 #pragma mark - Private methods

@@ -40,15 +40,12 @@
     
     _eventModel = [PMEventModel new];
     
-    _itemArray = @[
-                       @"eventTitleCell",
-                       @[@"eventAllDayCell", @"eventStartsCell", @"eventEndsCell"],
-                       @"eventAlertCell",
-                       @"eventCalendarCell",
-                       @"eventLocationCell",
-                       @"eventInviteesCell",
-                       @"eventNotesCell"
-                   ];
+    _itemArray = @[@"eventTitleCell",
+                   @[@"eventAllDayCell", @"eventStartsCell", @"eventEndsCell"],
+                   @"eventAlertCell",
+                   @"eventLocationCell",
+                   @"eventInviteesCell"];
+   
     [_tableiew setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
 //    self.pickersController = [PickerCellsController new];
@@ -143,16 +140,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSInteger lCountRows = 1;
-//    id lItem = _itemArray[section];
-//    if ([lItem isKindOfClass:[NSArray class]]) {
-//        lCountRows = ((NSArray*)lItem).count;
-//    }
+    NSInteger lCountRows = 0;
+    id lItem = _itemArray.count > 0 ? _itemArray[section] : nil;
+    if (lItem) {
+        lCountRows = [lItem isKindOfClass:[NSArray class]] ? ((NSArray*)lItem).count : 1;
+    }
     return lCountRows;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 7;
+    return _itemArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

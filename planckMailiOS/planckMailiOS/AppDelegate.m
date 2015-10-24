@@ -17,10 +17,8 @@
 @interface AppDelegate ()
 @end
 
-@implementation AppDelegate
-
+@implementation AppDelegate 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
 //TODO: don't remove this code
 //    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
 //        

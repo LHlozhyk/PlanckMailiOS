@@ -94,6 +94,7 @@ IB_DESIGNABLE
     CGFloat y = 64 + _tableViewTabBar.frame.size.height;
     CGFloat height = self.view.frame.size.height - _tableViewTabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - 64;
     CGFloat width = self.view.frame.size.width;
+    
     readLaterRect = CGRectMake(x, y, width, height);
     readLaterHiddenRect = CGRectMake(width, y, width, height);
     importantRect = CGRectMake(x, y, width, height);
@@ -130,17 +131,10 @@ IB_DESIGNABLE
                                                  name:@"setType"
                                                object:nil];
     _tableViewTabBar.delegate = self;
-    
-}
-
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MenuNotification" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"setType" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didGetMyNotification:(NSNotification*)notification {

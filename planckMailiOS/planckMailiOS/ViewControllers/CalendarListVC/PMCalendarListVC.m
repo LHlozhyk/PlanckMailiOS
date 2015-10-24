@@ -8,6 +8,7 @@
 
 #import "PMCalendarListVC.h"
 #import "PMAPIManager.h"
+#import "DBManager.h"
 
 @interface PMCalendarListVC () <UITableViewDataSource, UITableViewDelegate> {
     IBOutlet UITableView *_tableView;
@@ -19,18 +20,33 @@
 
 @implementation PMCalendarListVC
 
+#pragma mark - PMCalendarListVC lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    _items = [NSArray array];
+    _items = [[DBManager instance] getCalendars];
+    if (_items.count == 0) {
+        __weak typeof(self)__self = self;
+        [[PMAPIManager shared] getCalendarsWithAccount:[[PMAPIManager shared] namespaceId] comlpetion:^(id data, id error, BOOL success) {
+            
+            for (NSDictionary *item in data) {
+                
+                DBCalendar *lNewCalendar = [DBManager createNewCalendar];
+                lNewCalendar.account_id = item[@"account_id"];
+                lNewCalendar.name = item[@"name"];
+                lNewCalendar.calendarId = item[@"id"];
+                lNewCalendar.object = item[@"object"];
+                lNewCalendar.readOnly = [item[@"read_only"] boolValue];
+                lNewCalendar.accountId = [[PMAPIManager shared] namespaceId];
+            }
+            [[DBManager instance] save];
+            __self.items = [[DBManager instance] getCalendars];
+            [_tableView reloadData];
+            DLog(@"getCalendarsWithAccount - %@", data);
+        }];
+    }
     
-    __weak typeof(self)__self = self;
-    [[PMAPIManager shared] getCalendarsWithAccount:[[PMAPIManager shared] namespaceId] comlpetion:^(id data, id error, BOOL success) {
-        __self.items = data;
-        [_tableView reloadData];
-        NSLog(@"getCalendarsWithAccount - %@", data);
-    }];
     [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
@@ -53,8 +69,8 @@
         lCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    NSDictionary *lItemCell = _items[indexPath.row];
-    lCell.textLabel.text = lItemCell[@"name"];
+    DBCalendar *lItemCell = _items[indexPath.row];
+    lCell.textLabel.text = [NSString stringWithFormat:@"%@ read - %i", lItemCell.name , lItemCell.readOnly];
     return lCell;
 }
 

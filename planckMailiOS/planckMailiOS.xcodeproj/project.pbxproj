@@ -75,6 +75,8 @@
 		AE6DB4CF1BCABD7F00949124 /* PMResposeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4CE1BCABD7F00949124 /* PMResposeBuilder.m */; settings = {ASSET_TAGS = (); }; };
 		AE6DB4D21BCAC13B00949124 /* PMEventDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4D11BCAC13B00949124 /* PMEventDayModel.m */; settings = {ASSET_TAGS = (); }; };
 		AE6DB4DC1BCC61A700949124 /* PMEventContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4DA1BCC61A700949124 /* PMEventContentVC.m */; settings = {ASSET_TAGS = (); }; };
+		AE81DF2C1BD5A93000255622 /* DBCalendar+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AE81DF291BD5A93000255622 /* DBCalendar+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		AE81DF2D1BD5A93000255622 /* DBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE81DF2B1BD5A93000255622 /* DBCalendar.m */; settings = {ASSET_TAGS = (); }; };
 		AEF343381BD40B39000566D3 /* PMCalendarListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF343371BD40B39000566D3 /* PMCalendarListVC.m */; settings = {ASSET_TAGS = (); }; };
 		C30E9D4B1B8B1F99006BDD98 /* WKContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D4A1B8B1F99006BDD98 /* WKContactsController.m */; };
 		C30E9D4E1B8B1FBE006BDD98 /* WKContactInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D4D1B8B1FBE006BDD98 /* WKContactInfoController.m */; };
@@ -293,6 +295,10 @@
 		AE6DB4D11BCAC13B00949124 /* PMEventDayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMEventDayModel.m; path = Communication/Models/EventModel/PMEventDayModel.m; sourceTree = "<group>"; };
 		AE6DB4D91BCC61A700949124 /* PMEventContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMEventContentVC.h; path = ViewControllers/EventDetailsVC/EventContentVC/PMEventContentVC.h; sourceTree = "<group>"; };
 		AE6DB4DA1BCC61A700949124 /* PMEventContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMEventContentVC.m; path = ViewControllers/EventDetailsVC/EventContentVC/PMEventContentVC.m; sourceTree = "<group>"; };
+		AE81DF281BD5A93000255622 /* DBCalendar+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DBCalendar+CoreDataProperties.h"; path = "Communication/DB/DBCalendar/DBCalendar+CoreDataProperties.h"; sourceTree = "<group>"; };
+		AE81DF291BD5A93000255622 /* DBCalendar+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DBCalendar+CoreDataProperties.m"; path = "Communication/DB/DBCalendar/DBCalendar+CoreDataProperties.m"; sourceTree = "<group>"; };
+		AE81DF2A1BD5A93000255622 /* DBCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBCalendar.h; path = Communication/DB/DBCalendar/DBCalendar.h; sourceTree = "<group>"; };
+		AE81DF2B1BD5A93000255622 /* DBCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBCalendar.m; path = Communication/DB/DBCalendar/DBCalendar.m; sourceTree = "<group>"; };
 		AEF343361BD40B39000566D3 /* PMCalendarListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMCalendarListVC.h; path = ViewControllers/CalendarListVC/PMCalendarListVC.h; sourceTree = "<group>"; };
 		AEF343371BD40B39000566D3 /* PMCalendarListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMCalendarListVC.m; path = ViewControllers/CalendarListVC/PMCalendarListVC.m; sourceTree = "<group>"; };
 		C30E9D491B8B1F99006BDD98 /* WKContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactsController.h; sourceTree = "<group>"; };
@@ -995,6 +1001,7 @@
 		84F407981B12710700AA627B /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				AE81DF241BD5A8C100255622 /* DBCalendar */,
 				84ECA42D1B134EF900770F88 /* DBNamespace */,
 				84ECA4291B134E5400770F88 /* DBManager */,
 				84ECA4261B134C1800770F88 /* planckMailiOS.xcdatamodeld */,
@@ -1077,6 +1084,17 @@
 				AE6DB4DA1BCC61A700949124 /* PMEventContentVC.m */,
 			);
 			name = EventContentVC;
+			sourceTree = "<group>";
+		};
+		AE81DF241BD5A8C100255622 /* DBCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				AE81DF281BD5A93000255622 /* DBCalendar+CoreDataProperties.h */,
+				AE81DF291BD5A93000255622 /* DBCalendar+CoreDataProperties.m */,
+				AE81DF2A1BD5A93000255622 /* DBCalendar.h */,
+				AE81DF2B1BD5A93000255622 /* DBCalendar.m */,
+			);
+			name = DBCalendar;
 			sourceTree = "<group>";
 		};
 		AEF343341BD40A9A000566D3 /* CalendarListVC */ = {
@@ -1553,6 +1571,7 @@
 				840D8C9B1BAF5E3C001C8B60 /* PMSwitchTVCell.m in Sources */,
 				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
 				840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */,
+				AE81DF2D1BD5A93000255622 /* DBCalendar.m in Sources */,
 				8478A0571B36A1C4003C09AF /* PMPreviewMailTVCell.m in Sources */,
 				84C79A151B60D34300F2C855 /* PMDraftModel.m in Sources */,
 				846E2FD21B8C20F800A019AC /* PMFilesVC.m in Sources */,
@@ -1599,6 +1618,7 @@
 				8493D41C1BB02C6500D5D5F7 /* PMEventModel.m in Sources */,
 				AE6DB4CF1BCABD7F00949124 /* PMResposeBuilder.m in Sources */,
 				84F4286C1B1256820006B530 /* PMSettigsTVC.m in Sources */,
+				AE81DF2C1BD5A93000255622 /* DBCalendar+CoreDataProperties.m in Sources */,
 				8478855F1B95DB5400681EBA /* PMTableViewTabBar.m in Sources */,
 				842E2FEA1AFEB13400B0C8DB /* main.m in Sources */,
 				84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */,

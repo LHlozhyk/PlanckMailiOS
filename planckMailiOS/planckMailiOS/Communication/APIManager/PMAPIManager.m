@@ -404,7 +404,7 @@
     } failure:^ (NSURLSessionDataTask * task, NSError *error) {
         
     }];
-
+    
 }
 
 - (void)createFolderWithName:(NSString *)folderName
@@ -477,7 +477,7 @@
 }
 
 - (void)createCalendarEventWithAccount:(id<PMAccountProtocol>)account
-                             eventParams:(NSDictionary *)eventParams
+                           eventParams:(NSDictionary *)eventParams
                             comlpetion:(ExtendedBlockHandler)handler {
     
     [_networkManager setCurrentToken:account.token];

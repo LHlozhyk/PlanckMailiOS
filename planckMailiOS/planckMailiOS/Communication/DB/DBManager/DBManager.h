@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 
 #import "DBNamespace.h"
+#import "DBCalendar.h"
 
 @interface DBManager : NSObject
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -17,14 +18,16 @@
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (nonatomic, strong) NSArray *namespaces;
+@property (nonatomic, strong) NSArray *calendars;
 
 - (void)save;
 - (NSArray *)getNamespaces;
+- (NSArray *)getCalendars;
 
 + (void)deleteAllDataFromDB;
 + (void)deleteNamespace:(DBNamespace *)item;
 + (DBManager *)instance;
 + (DBNamespace *)createNewNamespace;
-
++ (DBCalendar *)createNewCalendar;
 
 @end

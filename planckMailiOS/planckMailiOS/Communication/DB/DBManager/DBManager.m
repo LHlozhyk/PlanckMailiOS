@@ -9,6 +9,7 @@
 #import "DBManager.h"
 
 #define DB_FORM @"DBNamespace"
+#define DB_Calendar @"DBCalendar"
 
 @implementation DBManager
 - (NSManagedObjectContext *)managedObjectContext {
@@ -80,36 +81,26 @@
     lForm.name = @"";
     lForm.provider = @"";
     lForm.token = @"";
-
+    
     return lForm;
 }
 
++ (DBCalendar*)createNewCalendar {
+    DBManager *lDBManager = [DBManager instance];
+    DBCalendar *lDBCalendar = (DBCalendar *)[NSEntityDescription insertNewObjectForEntityForName:DB_Calendar inManagedObjectContext:lDBManager.managedObjectContext];
+    
+    lDBCalendar.account_id = @"";
+    lDBCalendar.calendarDescription = @"";
+    lDBCalendar.calendarId = @"";
+    lDBCalendar.name = @"";
+    lDBCalendar.object = @"";
+    lDBCalendar.readOnly = NO;
+    lDBCalendar.accountId = nil;
+    
+    return lDBCalendar;
+}
+
 #pragma mark - properties
-//- (NSArray *)forms {
-//    if (_forms == nil) {
-//        NSError *lError;
-//        NSFetchRequest *lFetchRequest = [[NSFetchRequest alloc] init];
-//        NSEntityDescription *entity = [NSEntityDescription entityForName:DB_FORM
-//                                                  inManagedObjectContext:[self managedObjectContext]];
-//        [lFetchRequest setEntity:entity];
-//        _forms = [[self managedObjectContext] executeFetchRequest:lFetchRequest error:&lError];
-//        
-//        
-//        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"attribute" ascending:NO];
-//        lFetchRequest.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-//        
-//        
-//        NSFetchedResultsController *lFetchedResultsController = [[NSFetchedResultsController alloc]
-//                                    initWithFetchRequest:lFetchRequest
-//                                    managedObjectContext:[DBManager instance].managedObjectContext
-//                                    sectionNameKeyPath:nil
-//                                    cacheName:@"ListCache"];
-//        NSError *error = nil;
-//        [lFetchedResultsController performFetch:&error];
-//        
-//    }
-//    return _forms;
-//}
 
 - (NSArray *)getNamespaces {
     NSError *lError;
@@ -118,13 +109,24 @@
                                               inManagedObjectContext:[self managedObjectContext]];
     [lFetchRequest setEntity:entity];
     _namespaces = [[self managedObjectContext] executeFetchRequest:lFetchRequest error:&lError];
-        
+    
     return _namespaces;
+}
+
+- (NSArray *)getCalendars {
+    NSError *lError;
+    NSFetchRequest *lFetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:DB_Calendar
+                                              inManagedObjectContext:[self managedObjectContext]];
+    [lFetchRequest setEntity:entity];
+    _calendars = [[self managedObjectContext] executeFetchRequest:lFetchRequest error:&lError];
+    
+    return _calendars;
 }
 
 + (void)deleteAllDataFromDB {
     DBManager *lDBManager = [DBManager instance];
-
+    
     NSFetchRequest * allCars = [[NSFetchRequest alloc] init];
     [allCars setEntity:[NSEntityDescription entityForName:DB_FORM inManagedObjectContext:lDBManager.managedObjectContext]];
     [allCars setIncludesPropertyValues:NO]; //only fetch the managedObjectID
