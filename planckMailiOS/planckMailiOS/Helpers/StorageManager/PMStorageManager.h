@@ -18,10 +18,11 @@
 + (void)setFolders:(NSArray *)folders forAccount:(NSString *)accountId;
 + (void)setScheduledFolderId:(NSString *)folderId forAccount:(NSString *)accountId;
 + (void)deleteScheduledFolderIdForAccout:(NSString *)accountId;
++ (void)setFolderId:(NSString *)folderId forAccount:(NSString*)accountId forKey:(NSString*)key;
 
 + (NSArray *)getFoldersForAccount:(NSString *)accountId;
 + (NSString *)getScheduledFolderIdForAccount:(NSString *)accountId;
-
++ (NSString *)getFolderIdForAccount:(NSString *)accountId forKey:(NSString*)key;
 @end
 /*
 if true

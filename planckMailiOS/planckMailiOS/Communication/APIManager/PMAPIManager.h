@@ -17,7 +17,6 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 @interface PMAPIManager : NSObject 
 
 + (PMAPIManager *)shared;
-// TODO:move message to folder
 - (void)saveNamespaceIdFromToken:(NSString *)token completion:(BasicBlockHandler)handler;
 
 - (void)getInboxMailWithAccount:(id<PMAccountProtocol>)account
@@ -84,7 +83,7 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 -(void)deleteFolderWithId:(NSString*)folderId
                   account:(id<PMAccountProtocol>)account
                completion:(ExtendedBlockHandler)handler;
--(void)moveMailWithThreadId:(NSString*)threadId account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId;
+-(void)moveMailWithThreadId:(NSString*)threadId account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId completion:(ExtendedBlockHandler)handler;
 //----
 
 - (void)deleteTokenWithEmail:(NSString *)email

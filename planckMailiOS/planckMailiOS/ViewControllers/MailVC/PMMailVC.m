@@ -366,12 +366,10 @@ IB_DESIGNABLE
 }
 
 - (void)updateFolders {
-    if(![PMStorageManager getFoldersForAccount:[PMAPIManager shared].namespaceId.namespace_id]) {
-        __weak typeof(id<PMAccountProtocol>)account = [PMAPIManager shared].namespaceId;
-        [[PMAPIManager shared] getFoldersWithAccount:[PMAPIManager shared].namespaceId comlpetion:^(id data, id error, BOOL success) {
-            [PMStorageManager setFolders:data forAccount:account.namespace_id];
-        }];
-    }
+    __weak typeof(id<PMAccountProtocol>)account = [PMAPIManager shared].namespaceId;
+    [[PMAPIManager shared] getFoldersWithAccount:[PMAPIManager shared].namespaceId comlpetion:^(id data, id error, BOOL success) {
+        [PMStorageManager setFolders:data forAccount:account.namespace_id];
+    }];
 }
 
 #pragma mark - IBAction selectors
@@ -461,6 +459,7 @@ IB_DESIGNABLE
     [self presentViewController:alert animated:YES completion:nil];
 
     [UIView animateWithDuration:0.4 animations:^{
+
         UIViewController *controller = kMainViewController;
         
         controller.view.backgroundColor = [UIColor whiteColor];
@@ -468,12 +467,10 @@ IB_DESIGNABLE
         vc.rightViewSwipeGestureEnabled = NO;
         [self animateAlpha:0.2];
         self.tabBarController.tabBar.userInteractionEnabled = NO;
+  
     }];
     
-
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"disableSwipe" object:nil];
-    
     
 }
 

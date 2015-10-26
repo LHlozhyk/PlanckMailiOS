@@ -117,17 +117,20 @@
         [self.fakeTextField becomeFirstResponder];
     }else {
     
-    if ([PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id]) {
         
         NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
-//        
-//        [[PMAPIManager shared] getFoldersWithAccount:[PMAPIManager shared].namespaceId folderId:scheduledFolderId comlpetion:^(id data, id error, BOOL success) {
-//            
-//        }];
-        [[PMAPIManager shared] moveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId toFolder:scheduledFolderId];
+    
+        if (![scheduledFolderId isEqualToString:@""]) {
         
+        NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
         DLog(@" messageId %@\n scheduledFolderId = %@",_inboxMailModel.messageId, scheduledFolderId);
-        
+        if (scheduledFolderId && _inboxMailModel.messageId) {
+            [[PMAPIManager shared] moveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId toFolder:scheduledFolderId completion:^(id data, id error, BOOL success) {
+                
+            }];
+
+        }
+      
     }else {
         
         [[PMAPIManager shared] createFolderWithName:SCHEDULED account:[PMAPIManager shared].namespaceId comlpetion:^(id data, id error, BOOL success) {
@@ -135,9 +138,12 @@
             if (!error) {
                 
             NSDictionary *dict = (NSDictionary*)data;
-
+                DLog(@"dict = %@", dict);
                 [PMStorageManager setScheduledFolderId:dict[@"id"] forAccount:[PMAPIManager shared].namespaceId.namespace_id];
                 
+            }else {
+                DLog(@"error = %@", error);
+
             }
             
         }];

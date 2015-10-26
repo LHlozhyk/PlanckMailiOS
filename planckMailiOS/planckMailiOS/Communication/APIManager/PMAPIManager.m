@@ -13,7 +13,7 @@
 #import "PMNetworkManager.h"
 #import "PMEventModel.h"
 #import "PMStorageManager.h"
-
+#import "Config.h"
 #define TOKEN @"namespaces"
 
 @interface PMAPIManager ()
@@ -180,16 +180,18 @@
 }
 
 - (void)archiveMailWithThreadId:(NSString *)threadId account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler{
-    [_networkManager setCurrentToken:account.token];
-    [_networkManager PUT:[PMRequest deleteMailWithThreadId:threadId namespacesId:account.namespace_id]
-              parameters:@{@"add_tags":@[@"archive"]}
-                 success:^(NSURLSessionDataTask *task, id responseObject) {
-        DLog(@"archiveMailWithThreadId-  stask - %@  / response - %@", task, responseObject);
-        handler(responseObject, nil, YES);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        DLog(@"archiveMailWithThreadId - ftask - %@  / error - %@", task, error);
-        handler(nil, error, NO);
+    
+    NSString *archiveFolderId = [PMStorageManager getFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id forKey:ARCHIVE];
+    DLog(@"archiveFolderId = %@", archiveFolderId);
+    
+    [[PMAPIManager shared] moveMailWithThreadId:threadId account:[PMAPIManager shared].namespaceId toFolder:archiveFolderId completion:^(id data, id error, BOOL success) {
+        if (success) {
+            handler(data, nil, YES);
+        }else {
+            handler(nil, error, NO);
+        }
     }];
+    
 }
 
 - (void)replyMessage:(NSDictionary *)message completion:(ExtendedBlockHandler)handler {
@@ -331,18 +333,19 @@
 
 }
 
--(void)moveMailWithThreadId:(NSString*)threadId account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId {
-
+-(void)moveMailWithThreadId:(NSString*)threadId account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId completion:(ExtendedBlockHandler)handler {
+    
     NSDictionary *lParameters = @{@"folder_id" : folderId};
-    
-    [_networkManager setCurrentToken:account.token];
-    
-    [_networkManager PUT:[PMRequest messageId:threadId namespacesId:account.namespace_id] parameters:lParameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        NSLog(@"success");
-    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
-        NSLog(@"failure");
-        NSLog(@"error = %@",[error localizedDescription]);
 
+    [_networkManager setCurrentToken:account.token];
+
+    [_networkManager PUT:[PMRequest messageId:threadId] parameters:lParameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        DLog(@"success");
+        handler(responseObject, nil, YES);
+    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        DLog(@"failure");
+        DLog(@"error = %@",[error localizedDescription]);
+        handler(nil, error, NO);
     }];
 
 }

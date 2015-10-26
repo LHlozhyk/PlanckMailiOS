@@ -12,10 +12,13 @@
 #import "MGSwipeButton.h"
 #import "MGSwipeTableCell.h"
 #import "PMAPIManager.h"
+#import "PMStorageManager.h"
+#import "Config.h"
 
 @interface PMMessagesTableView () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
     NSArray *_itemMailArray;
     selectedMessages _selectedTableType;
+    UIAlertView * _alertView;
 }
 @end
 
@@ -166,26 +169,70 @@
     
 }
 
+-(void)showAlert {
+
+    _alertView = [[UIAlertView alloc] initWithTitle:@"Do you want to create new folder with name 'Archive' ?" message:nil delegate:self cancelButtonTitle:@"No, thanks." otherButtonTitles:@"Yes!", nil];
+    [_alertView show];
+}
+
 #pragma mark - UIAlertView delegate
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 
-    if (buttonIndex == 1) {
-    
+    if (alertView == _alertView) {
         
-        [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
+        if (buttonIndex == 1) {
             
-            DLog(@"archiveMailWithThreadId - %@", data);
-            NSMutableArray *tmpArray = (NSMutableArray*)_itemMailArray;
-            [tmpArray removeObject:_inboxMailModel];
-            _itemMailArray = (NSArray*)tmpArray;
+            [[PMAPIManager shared] createFolderWithName:ARCHIVE account:[PMAPIManager shared].namespaceId comlpetion:^(id data, id error, BOOL success) {
+                if (!error) {
+                    
+                    [PMStorageManager setFolderId:data[@"id"] forAccount:[PMAPIManager shared].namespaceId.namespace_id forKey:ARCHIVE];
+                    
+                }else {
+                    
+                    DLog(@"error = %@",[error localizedDescription]);
+                
+                }
+                
+            }];
+            
+        }else {
             [self.tableView reloadData];
+        }
+        
+    }else {
+    if (buttonIndex == 1) {
+        
+        if (![PMStorageManager getFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id forKey:ARCHIVE]) {
             
-        }];
+            [self showAlert];
+            
+            }else {
+            
+            [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
+                if (success) {
+                    DLog(@"archiveMailWithThreadId - %@", data);
+                    NSMutableArray *tmpArray = (NSMutableArray*)_itemMailArray;
+                    [tmpArray removeObject:_inboxMailModel];
+                    _itemMailArray = (NSArray*)tmpArray;
+                    [self.tableView reloadData];
+                }else {
+                    
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An error has occured" message:[NSString stringWithFormat:@"%@",[error localizedDescription]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    [alertView show];
+                    [self.tableView reloadData];
+
+                }
+            
+            }];
+
+        }
+      
     }else if (buttonIndex == 0) {
         
         [self.tableView reloadData];
     
+    }
     }
 
 }

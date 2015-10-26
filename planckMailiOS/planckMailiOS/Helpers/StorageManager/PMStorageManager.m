@@ -7,6 +7,7 @@
 //
 
 #import "PMStorageManager.h"
+#import "Config.h"
 
 //info keys
 #define ACCOUNT_FOLDERS @"account_folders"
@@ -53,6 +54,13 @@
             scheduledId = folder[@"id"];
             break;
         }
+        else{
+        
+            scheduledId = folder[@"id"];
+            
+            DLog(@"displayed_name = %@ folder name = %@ folder id = %@",folder[@"display_name"],folder[@"name"], scheduledId);
+      
+        }
     }
     [accountInfo setObject:scheduledId forKey:ACCOUNT_SCHEDULED_FOLDER_ID];
     
@@ -68,6 +76,15 @@
     }
 }
 
++ (void)setFolderId:(NSString *)folderId forAccount:(NSString*)accountId forKey:(NSString*)key{
+    if(folderId) {
+        NSMutableDictionary *accountInfo = [self infoForAccount:accountId];
+        [accountInfo setObject:folderId forKey:key];
+        
+        [[PMStorageManager sharedInstance] writeInfo:accountInfo intoFile:accountId];
+    }
+}
+
 + (NSArray *)getFoldersForAccount:(NSString *)accountId {
     NSMutableDictionary *accountInfo = [self infoForAccount:accountId];
     return [accountInfo objectForKey:ACCOUNT_FOLDERS];
@@ -76,6 +93,13 @@
 + (NSString *)getScheduledFolderIdForAccount:(NSString *)accountId {
     NSMutableDictionary *accountInfo = [self infoForAccount:accountId];
     return [accountInfo objectForKey:ACCOUNT_SCHEDULED_FOLDER_ID];
+}
+
++ (NSString *)getFolderIdForAccount:(NSString *)accountId forKey:(NSString*)key {
+  
+    NSMutableDictionary *accountInfo = [self infoForAccount:accountId];
+    return [accountInfo objectForKey:key];
+    
 }
 
 + (void)deleteScheduledFolderIdForAccout:(NSString *)accountId {
