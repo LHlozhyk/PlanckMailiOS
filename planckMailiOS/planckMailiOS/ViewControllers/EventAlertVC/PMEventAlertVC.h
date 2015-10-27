@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PMEventAlertVC : UIViewController
+@class PMEventAlertVC;
+@protocol PMEventAlertVCDelegate <NSObject>
+- (void)PMEventAlertVCDelegate:(PMEventAlertVC *)eventAlertVC
+            alertTimeDidChange:(NSDate *)date
+                       message:(NSString *)message;
+@end
 
+@interface PMEventAlertVC : UIViewController
+@property (nonatomic, weak) NSDate *startTime;
+@property (nonatomic, weak) id<PMEventAlertVCDelegate> delegate;
 @end

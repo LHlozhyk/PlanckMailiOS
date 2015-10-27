@@ -29,7 +29,7 @@
 - (void)switchStateDidChange:(id)sender {
     UISwitch *lSwitch = (UISwitch*)sender;
     if (_delegate && [_delegate respondsToSelector:@selector(PMSwitchTVCell:stateDidChange:)]) {
-        [_delegate PMSwitchTVCell:self stateDidChange:lSwitch.selected];
+        [_delegate PMSwitchTVCell:self stateDidChange:lSwitch.isOn];
     }
 }
 

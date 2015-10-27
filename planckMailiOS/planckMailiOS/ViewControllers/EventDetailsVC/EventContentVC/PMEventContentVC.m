@@ -81,6 +81,14 @@
         [_placeCell setHidden:YES];
     }
     
+    if (_currentEvent.owner.length != 0) {
+        _organizerCell.textLabel.text = _currentEvent.owner;
+    } else {
+        [_organizerCell setHidden:YES];
+    }
+    
+    [_timeCell setHidden:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,9 +114,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    
-    if(cell == _placeCell && _placeCell.hidden)
-        return 0; //set the hidden cell's height to 0
+
+    if(cell.hidden) {
+        return 0;
+    }
     
     return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 }

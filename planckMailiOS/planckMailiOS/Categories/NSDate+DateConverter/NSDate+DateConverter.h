@@ -16,5 +16,6 @@
 - (NSString *)dateStringValue;
 
 + (NSDate *)eventDateFromString:(NSString *)string;
++ (NSDate *)eventDateFromString:(NSString *)string dateFormat:(NSString*)dateFormat;
 
 @end

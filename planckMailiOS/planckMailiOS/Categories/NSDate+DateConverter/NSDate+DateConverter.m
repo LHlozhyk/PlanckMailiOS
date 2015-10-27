@@ -54,6 +54,15 @@
     return date;
 }
 
++ (NSDate *)eventDateFromString:(NSString *)string dateFormat:(NSString*)dateFormat {
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:dateFormat];
+    
+    NSDate *date = [dateFormater dateFromString:string];
+    return date;
+}
+
+
 #pragma mark - Private methods
 
 - (NSUInteger)daysBetween:(NSDate *)date {

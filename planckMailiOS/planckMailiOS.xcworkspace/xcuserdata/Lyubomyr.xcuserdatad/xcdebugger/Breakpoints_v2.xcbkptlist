@@ -10,12 +10,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "planckMailiOS/ViewControllers/CalendarVC/PMCalendarVC.m"
-            timestampString = "466983971.130688"
+            timestampString = "467501442.367948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "394"
-            endingLineNumber = "394"
+            startingLineNumber = "395"
+            endingLineNumber = "395"
             landmarkName = "-createRandomEvents"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "planckMailiOS/ViewControllers/CreateEventVC/PMCreateEventVC.m"
+            timestampString = "467487288.31263"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-createEvent"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMCreateEventVC createEvent]"
+                  moduleName = "planckMailiOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Lyubomyr/Projects/PlanckMailiOS/planckMailiOS/planckMailiOS/ViewControllers/CreateEventVC/PMCreateEventVC.m"
+                  timestampString = "467506886.191308"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "424">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__30-[PMCreateEventVC createEvent]_block_invoke"
+                  moduleName = "planckMailiOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Lyubomyr/Projects/PlanckMailiOS/planckMailiOS/planckMailiOS/ViewControllers/CreateEventVC/PMCreateEventVC.m"
+                  timestampString = "467506886.192373"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "planckMailiOS/ViewControllers/CreateEventVC/PMCreateEventVC.m"
+            timestampString = "467487323.870064"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "-createEvent"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

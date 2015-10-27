@@ -65,6 +65,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (_delegate && [_delegate respondsToSelector:@selector(PMEventAlertVCDelegate:alertTimeDidChange:message:)]) {
+        [_delegate PMEventAlertVCDelegate:self alertTimeDidChange:nil message:_itemsArray[indexPath.row]];
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

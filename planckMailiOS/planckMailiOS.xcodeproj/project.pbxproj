@@ -84,6 +84,19 @@
 		AE9892721BDBAFBB000AF215 /* DBCalendar+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = AE98926D1BDBAFBB000AF215 /* DBCalendar+CoreDataProperties.m */; };
 		AE9892731BDBAFBB000AF215 /* DBCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE98926F1BDBAFBB000AF215 /* DBCalendar.m */; };
 		AE9892781BDBBA5C000AF215 /* PMLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9892771BDBBA5C000AF215 /* PMLocalNotification.m */; };
+		AE9892831BDC07A2000AF215 /* PickerCellsController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9892801BDC07A2000AF215 /* PickerCellsController.m */; };
+		AEB91A5D1BDD575800599BC0 /* PMCalendarGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A5C1BDD575800599BC0 /* PMCalendarGridView.m */; };
+		AEB91A5F1BDD577900599BC0 /* PMCalendarGridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEB91A5E1BDD577900599BC0 /* PMCalendarGridView.xib */; };
+		AEB91A9D1BDD723F00599BC0 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A851BDD723F00599BC0 /* MASCompositeConstraint.m */; };
+		AEB91A9E1BDD723F00599BC0 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A881BDD723F00599BC0 /* MASConstraint.m */; };
+		AEB91A9F1BDD723F00599BC0 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A8A1BDD723F00599BC0 /* MASConstraintMaker.m */; };
+		AEB91AA01BDD723F00599BC0 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A8C1BDD723F00599BC0 /* MASLayoutConstraint.m */; };
+		AEB91AA11BDD723F00599BC0 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A901BDD723F00599BC0 /* MASViewAttribute.m */; };
+		AEB91AA21BDD723F00599BC0 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A921BDD723F00599BC0 /* MASViewConstraint.m */; };
+		AEB91AA31BDD723F00599BC0 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A941BDD723F00599BC0 /* NSArray+MASAdditions.m */; };
+		AEB91AA41BDD723F00599BC0 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A971BDD723F00599BC0 /* NSLayoutConstraint+MASDebugAdditions.m */; };
+		AEB91AA51BDD723F00599BC0 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A991BDD723F00599BC0 /* View+MASAdditions.m */; };
+		AEB91AA61BDD723F00599BC0 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB91A9C1BDD723F00599BC0 /* ViewController+MASAdditions.m */; };
 		AEF343381BD40B39000566D3 /* PMCalendarListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF343371BD40B39000566D3 /* PMCalendarListVC.m */; };
 		C30E9D4B1B8B1F99006BDD98 /* WKContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D4A1B8B1F99006BDD98 /* WKContactsController.m */; };
 		C30E9D4E1B8B1FBE006BDD98 /* WKContactInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = C30E9D4D1B8B1FBE006BDD98 /* WKContactInfoController.m */; };
@@ -319,6 +332,38 @@
 		AE98926F1BDBAFBB000AF215 /* DBCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCalendar.m; sourceTree = "<group>"; };
 		AE9892761BDBBA5C000AF215 /* PMLocalNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLocalNotification.h; path = Utils/PMLocalNotification/PMLocalNotification.h; sourceTree = "<group>"; };
 		AE9892771BDBBA5C000AF215 /* PMLocalNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMLocalNotification.m; path = Utils/PMLocalNotification/PMLocalNotification.m; sourceTree = "<group>"; };
+		AE98927E1BDC07A2000AF215 /* PickerCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCells.h; sourceTree = "<group>"; };
+		AE98927F1BDC07A2000AF215 /* PickerCellsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCellsController.h; sourceTree = "<group>"; };
+		AE9892801BDC07A2000AF215 /* PickerCellsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerCellsController.m; sourceTree = "<group>"; };
+		AE9892811BDC07A2000AF215 /* PickerCellsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCellsDelegate.h; sourceTree = "<group>"; };
+		AEB91A5B1BDD575800599BC0 /* PMCalendarGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMCalendarGridView.h; path = ViewControllers/CalendarVC/CalendarGridView/PMCalendarGridView.h; sourceTree = "<group>"; };
+		AEB91A5C1BDD575800599BC0 /* PMCalendarGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMCalendarGridView.m; path = ViewControllers/CalendarVC/CalendarGridView/PMCalendarGridView.m; sourceTree = "<group>"; };
+		AEB91A5E1BDD577900599BC0 /* PMCalendarGridView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMCalendarGridView.xib; path = ViewControllers/CalendarVC/CalendarGridView/PMCalendarGridView.xib; sourceTree = "<group>"; };
+		AEB91A841BDD723F00599BC0 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
+		AEB91A851BDD723F00599BC0 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
+		AEB91A861BDD723F00599BC0 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
+		AEB91A871BDD723F00599BC0 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
+		AEB91A881BDD723F00599BC0 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
+		AEB91A891BDD723F00599BC0 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
+		AEB91A8A1BDD723F00599BC0 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
+		AEB91A8B1BDD723F00599BC0 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
+		AEB91A8C1BDD723F00599BC0 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
+		AEB91A8D1BDD723F00599BC0 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
+		AEB91A8E1BDD723F00599BC0 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
+		AEB91A8F1BDD723F00599BC0 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
+		AEB91A901BDD723F00599BC0 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		AEB91A911BDD723F00599BC0 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
+		AEB91A921BDD723F00599BC0 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
+		AEB91A931BDD723F00599BC0 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
+		AEB91A941BDD723F00599BC0 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
+		AEB91A951BDD723F00599BC0 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		AEB91A961BDD723F00599BC0 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
+		AEB91A971BDD723F00599BC0 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
+		AEB91A981BDD723F00599BC0 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
+		AEB91A991BDD723F00599BC0 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
+		AEB91A9A1BDD723F00599BC0 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		AEB91A9B1BDD723F00599BC0 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
+		AEB91A9C1BDD723F00599BC0 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		AEF343361BD40B39000566D3 /* PMCalendarListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMCalendarListVC.h; path = ViewControllers/CalendarListVC/PMCalendarListVC.h; sourceTree = "<group>"; };
 		AEF343371BD40B39000566D3 /* PMCalendarListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMCalendarListVC.m; path = ViewControllers/CalendarListVC/PMCalendarListVC.m; sourceTree = "<group>"; };
 		C30E9D491B8B1F99006BDD98 /* WKContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKContactsController.h; sourceTree = "<group>"; };
@@ -579,7 +624,7 @@
 				840D8C901BAF4E43001C8B60 /* EventAlertVC */,
 				840D8C8C1BAEBD8E001C8B60 /* EventDetailsVC */,
 				8431BB261BAE05B800C8F6DC /* CreateEventVC */,
-				8479B71A1B11B962006E4235 /* CalendarVC */,
+				8479B71A1B11B962006E4235 /* Calendar */,
 			);
 			name = CalendarViewControllers;
 			sourceTree = "<group>";
@@ -739,14 +784,15 @@
 			name = FilesVC;
 			sourceTree = "<group>";
 		};
-		8479B71A1B11B962006E4235 /* CalendarVC */ = {
+		8479B71A1B11B962006E4235 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				AEB91A5A1BDD572900599BC0 /* CalendarGridView */,
 				C33768721BB1698600DE82FC /* PMCalendarCell */,
 				84A3BCB71B5ACBF1005A244F /* PMCalendarVC.h */,
 				84A3BCB81B5ACBF1005A244F /* PMCalendarVC.m */,
 			);
-			name = CalendarVC;
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 		847B60F71B6179DB0025DF58 /* MailComposeBodyTVCell */ = {
@@ -880,6 +926,8 @@
 		8497B11E1B37298A009CEC5E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AEB91A831BDD723F00599BC0 /* Masonry */,
+				AE9892791BDC07A2000AF215 /* PickerCells */,
 				AE9892751BDBB993000AF215 /* PMLocalNotification */,
 			);
 			name = Utils;
@@ -1147,6 +1195,61 @@
 				AE9892771BDBBA5C000AF215 /* PMLocalNotification.m */,
 			);
 			name = PMLocalNotification;
+			sourceTree = "<group>";
+		};
+		AE9892791BDC07A2000AF215 /* PickerCells */ = {
+			isa = PBXGroup;
+			children = (
+				AE98927E1BDC07A2000AF215 /* PickerCells.h */,
+				AE98927F1BDC07A2000AF215 /* PickerCellsController.h */,
+				AE9892801BDC07A2000AF215 /* PickerCellsController.m */,
+				AE9892811BDC07A2000AF215 /* PickerCellsDelegate.h */,
+			);
+			name = PickerCells;
+			path = Utils/PickerCells;
+			sourceTree = "<group>";
+		};
+		AEB91A5A1BDD572900599BC0 /* CalendarGridView */ = {
+			isa = PBXGroup;
+			children = (
+				AEB91A5B1BDD575800599BC0 /* PMCalendarGridView.h */,
+				AEB91A5C1BDD575800599BC0 /* PMCalendarGridView.m */,
+				AEB91A5E1BDD577900599BC0 /* PMCalendarGridView.xib */,
+			);
+			name = CalendarGridView;
+			sourceTree = "<group>";
+		};
+		AEB91A831BDD723F00599BC0 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				AEB91A841BDD723F00599BC0 /* MASCompositeConstraint.h */,
+				AEB91A851BDD723F00599BC0 /* MASCompositeConstraint.m */,
+				AEB91A861BDD723F00599BC0 /* MASConstraint+Private.h */,
+				AEB91A871BDD723F00599BC0 /* MASConstraint.h */,
+				AEB91A881BDD723F00599BC0 /* MASConstraint.m */,
+				AEB91A891BDD723F00599BC0 /* MASConstraintMaker.h */,
+				AEB91A8A1BDD723F00599BC0 /* MASConstraintMaker.m */,
+				AEB91A8B1BDD723F00599BC0 /* MASLayoutConstraint.h */,
+				AEB91A8C1BDD723F00599BC0 /* MASLayoutConstraint.m */,
+				AEB91A8D1BDD723F00599BC0 /* Masonry.h */,
+				AEB91A8E1BDD723F00599BC0 /* MASUtilities.h */,
+				AEB91A8F1BDD723F00599BC0 /* MASViewAttribute.h */,
+				AEB91A901BDD723F00599BC0 /* MASViewAttribute.m */,
+				AEB91A911BDD723F00599BC0 /* MASViewConstraint.h */,
+				AEB91A921BDD723F00599BC0 /* MASViewConstraint.m */,
+				AEB91A931BDD723F00599BC0 /* NSArray+MASAdditions.h */,
+				AEB91A941BDD723F00599BC0 /* NSArray+MASAdditions.m */,
+				AEB91A951BDD723F00599BC0 /* NSArray+MASShorthandAdditions.h */,
+				AEB91A961BDD723F00599BC0 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				AEB91A971BDD723F00599BC0 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				AEB91A981BDD723F00599BC0 /* View+MASAdditions.h */,
+				AEB91A991BDD723F00599BC0 /* View+MASAdditions.m */,
+				AEB91A9A1BDD723F00599BC0 /* View+MASShorthandAdditions.h */,
+				AEB91A9B1BDD723F00599BC0 /* ViewController+MASAdditions.h */,
+				AEB91A9C1BDD723F00599BC0 /* ViewController+MASAdditions.m */,
+			);
+			name = Masonry;
+			path = Utils/Masonry/Masonry;
 			sourceTree = "<group>";
 		};
 		AEF343341BD40A9A000566D3 /* CalendarListVC */ = {
@@ -1562,6 +1665,7 @@
 				C368ACA71BC94DE500DD21BF /* PMPreviewMailTVCell.xib in Resources */,
 				842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */,
 				842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */,
+				AEB91A5F1BDD577900599BC0 /* PMCalendarGridView.xib in Resources */,
 				84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1638,12 +1742,15 @@
 				AE6DB4D21BCAC13B00949124 /* PMEventDayModel.m in Sources */,
 				C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */,
 				84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */,
+				AEB91AA11BDD723F00599BC0 /* MASViewAttribute.m in Sources */,
 				848E6F901B94846000EA935D /* LGSideMenuController.m in Sources */,
 				84ECA4341B13550D00770F88 /* OPDataLoader.m in Sources */,
 				840D8C9B1BAF5E3C001C8B60 /* PMSwitchTVCell.m in Sources */,
 				780EA1361BD54C4B00CBA45A /* PMAlertViewController.m in Sources */,
+				AEB91A5D1BDD575800599BC0 /* PMCalendarGridView.m in Sources */,
 				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
 				840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */,
+				AEB91A9D1BDD723F00599BC0 /* MASCompositeConstraint.m in Sources */,
 				8478A0571B36A1C4003C09AF /* PMPreviewMailTVCell.m in Sources */,
 				84C79A151B60D34300F2C855 /* PMDraftModel.m in Sources */,
 				846E2FD21B8C20F800A019AC /* PMFilesVC.m in Sources */,
@@ -1668,10 +1775,12 @@
 				AE9892731BDBAFBB000AF215 /* DBCalendar.m in Sources */,
 				847D68271B43A87B005FE7EF /* PMSearchMailTVCell.m in Sources */,
 				840D8C9F1BAF6425001C8B60 /* PMEventCalendarListVC.m in Sources */,
+				AEB91AA21BDD723F00599BC0 /* MASViewConstraint.m in Sources */,
 				84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */,
 				AE6DB4CB1BCABC9900949124 /* UITableView+BackgroundText.m in Sources */,
 				848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */,
 				8483D5BB1B94F671008E8B6A /* PMMenuHeaderView.m in Sources */,
+				AEB91AA51BDD723F00599BC0 /* View+MASAdditions.m in Sources */,
 				840D8C8F1BAEBDF8001C8B60 /* PMEventDetailsVC.m in Sources */,
 				84F9A9841B11F6D10067C3D0 /* PMMailVC.m in Sources */,
 				8467F01C1B8785FC00FA7827 /* NSDate+CupertinoYankee.m in Sources */,
@@ -1681,18 +1790,22 @@
 				C35652521B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */,
 				848E6F961B9484F000EA935D /* LeftViewCell.m in Sources */,
 				842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */,
+				AEB91A9F1BDD723F00599BC0 /* MASConstraintMaker.m in Sources */,
 				84F9A9881B11F7270067C3D0 /* PMMailMenuView.m in Sources */,
 				AE9892721BDBAFBB000AF215 /* DBCalendar+CoreDataProperties.m in Sources */,
 				84ECA42C1B134E5400770F88 /* DBManager.m in Sources */,
+				AEB91AA01BDD723F00599BC0 /* MASLayoutConstraint.m in Sources */,
 				8460961C1B13063300924B61 /* CLPerson.m in Sources */,
 				84F9A9801B11E08D0067C3D0 /* PMRequest.m in Sources */,
 				84A9E3711B5F02DD009DD409 /* PMSelectionEmailView.m in Sources */,
 				84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */,
+				AEB91AA31BDD723F00599BC0 /* NSArray+MASAdditions.m in Sources */,
 				C33768711BB15C5800DE82FC /* PMParticipantModel.m in Sources */,
 				8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */,
 				84D8C2E11B8E3B4400D82BB4 /* PMNetworkManager.m in Sources */,
 				84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */,
 				78AD2A931BD6986000D0C963 /* PMAlertCollectionViewCell.m in Sources */,
+				AE9892831BDC07A2000AF215 /* PickerCellsController.m in Sources */,
 				8493D41C1BB02C6500D5D5F7 /* PMEventModel.m in Sources */,
 				AE6DB4CF1BCABD7F00949124 /* PMResposeBuilder.m in Sources */,
 				84F4286C1B1256820006B530 /* PMSettigsTVC.m in Sources */,
@@ -1701,6 +1814,9 @@
 				84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */,
 				84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */,
 				C35BC1DF1B5EF9D100CCDC4D /* PMTypeContainer.m in Sources */,
+				AEB91AA61BDD723F00599BC0 /* ViewController+MASAdditions.m in Sources */,
+				AEB91A9E1BDD723F00599BC0 /* MASConstraint.m in Sources */,
+				AEB91AA41BDD723F00599BC0 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				8493D4171BB0231C00D5D5F7 /* PMEventInviteesVC.m in Sources */,
 				84ECA4301B13500000770F88 /* DBNamespace.m in Sources */,
 				8431BB291BAE062500C8F6DC /* PMCreateEventVC.m in Sources */,
@@ -1899,7 +2015,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5d05e5ec-c45e-4ccb-94e4-ea94434af3a2";
+				PROVISIONING_PROFILE = "76ccc534-4701-4925-afc9-4a10be00d2ba";
 			};
 			name = Debug;
 		};
@@ -1921,7 +2037,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5d05e5ec-c45e-4ccb-94e4-ea94434af3a2";
+				PROVISIONING_PROFILE = "9ea70a70-ff56-4fba-8f6b-ea286584b983";
 			};
 			name = Release;
 		};
@@ -1981,7 +2097,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.planckMailiOS.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "5d05e5ec-c45e-4ccb-94e4-ea94434af3a2";
+				PROVISIONING_PROFILE = "d6384c8a-6545-461e-86a1-60411ffae4dd";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;

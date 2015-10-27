@@ -12,8 +12,5 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
-
-- (void)setBoookCount:(int)countB :(int)copy;
-- (void)setBoookCount:(int)countB withCopy:(int)copy;
 @end
 

@@ -397,8 +397,14 @@
     [_networkManager setCurrentToken:account.token];
     [_networkManager POST:@"/events" parameters:eventParams success:^ (NSURLSessionDataTask *task, id responseObject) {
         DLog(@"createCalendarEventWithAccount - %@", responseObject);
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
-        
+        DLog(@"error: %@", error);
+        if(handler) {
+            handler(nil, error, NO);
+        }
     }];
 }
 
