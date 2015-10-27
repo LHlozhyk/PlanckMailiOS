@@ -63,6 +63,9 @@
     }
 }
 
++ (NSString*)messageId:(NSString*)messageId {
 
+    return [NSString stringWithFormat:@"%@/messages/%@",APP_SERVER_LINK,messageId];
+}
 
 @end

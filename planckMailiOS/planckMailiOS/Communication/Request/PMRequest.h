@@ -37,5 +37,6 @@
 
 + (NSString *)unreadMessages;
 + (NSString *)unreadMessagesCount;
++ (NSString*)messageId:(NSString*)messageId;
 
 @end
