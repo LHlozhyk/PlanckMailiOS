@@ -52,6 +52,8 @@
     for(NSDictionary *folder in folders) {
         if([[folder[@"display_name"] lowercaseString] isEqualToString:SCHEDULED]) {
             scheduledId = folder[@"id"];
+            [accountInfo setObject:scheduledId forKey:ACCOUNT_SCHEDULED_FOLDER_ID];
+
             break;
         }
         else{
@@ -59,10 +61,14 @@
             scheduledId = folder[@"id"];
             
             DLog(@"displayed_name = %@ folder name = %@ folder id = %@",folder[@"display_name"],folder[@"name"], scheduledId);
+
+            
+            if (![folder[@"name"] isKindOfClass:[NSNull class]]) {
+                [accountInfo setObject:scheduledId forKey:folder[@"name"]];
+            }
       
         }
     }
-    [accountInfo setObject:scheduledId forKey:ACCOUNT_SCHEDULED_FOLDER_ID];
     
     [[PMStorageManager sharedInstance] writeInfo:accountInfo intoFile:accountId];
 }
