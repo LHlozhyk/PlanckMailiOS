@@ -63,6 +63,29 @@
             DLog(@"displayed_name = %@ folder name = %@ folder id = %@",folder[@"display_name"],folder[@"name"], scheduledId);
 
             
+            //TODO:
+            /*
+             в accountInfo зберігати окремо масив отаких штук @{"folderName": folderId}, -> ACCOUNT_FOLDERS
+             і окремо id scheduled folder ACCOUNT_SCHEDULED_FOLDER_ID
+             
+             folderName = folder[@"name"](якщо таке існує в іншому випадку folder[@"display_name"])
+             
+             if якщо немає значення ACCOUNT_SCHEDULED_FOLDER_ID то: {
+                кожного разу коли переписується масив фолдерів шукати папку з display_name = SCHEDULED, і якщо така є то запихнути folderId за ключем ACCOUNT_SCHEDULED_FOLDER_ID;
+             }
+             else {
+                якщо є значення ACCOUNT_SCHEDULED_FOLDER_ID то:
+                перевірити чи з серед нових фолдерів є фолдер з id який записаний за ключем ACCOUNT_SCHEDULED_FOLDER_ID
+                if якщо немає такого фолдера {
+                    то видалити значення за ключем ACCOUNT_SCHEDULED_FOLDER_ID (тобто це означає, що користувач видалив папку SCHEDULED)
+                } 
+                else {
+                    якщо є така папка то нічого не робити
+                }
+             }
+             
+             */
+            
             if (![folder[@"name"] isKindOfClass:[NSNull class]]) {
                 [accountInfo setObject:scheduledId forKey:folder[@"name"]];
             }
