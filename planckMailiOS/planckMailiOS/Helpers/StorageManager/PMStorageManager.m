@@ -49,53 +49,75 @@
     [accountInfo setObject:folders forKey:ACCOUNT_FOLDERS];
     
     NSString *scheduledId = @"";
+    NSMutableArray *foldersArray = [NSMutableArray array];
+    
+    BOOL hasScheduledFolder = NO;
     for(NSDictionary *folder in folders) {
-        if([[folder[@"display_name"] lowercaseString] isEqualToString:SCHEDULED]) {
-            scheduledId = folder[@"id"];
-            [accountInfo setObject:scheduledId forKey:ACCOUNT_SCHEDULED_FOLDER_ID];
+        NSDictionary *folderDict = [NSDictionary dictionary];
 
-            break;
-        }
-        else{
+        scheduledId = folder[@"id"];
         
-            scheduledId = folder[@"id"];
+        if (folder[@"name"] && ![folder[@"name"] isKindOfClass:[NSNull class]]) {
             
-            DLog(@"displayed_name = %@ folder name = %@ folder id = %@",folder[@"display_name"],folder[@"name"], scheduledId);
+            folderDict = @{folder[@"name"] : scheduledId};
+            [foldersArray addObject:folderDict];
 
+        } else {
+            folderDict = @{folder[@"display_name"] : scheduledId};
+            [foldersArray addObject:folderDict];
             
-            //TODO:
-            /*
-             в accountInfo зберігати окремо масив отаких штук @{"folderName": folderId}, -> ACCOUNT_FOLDERS
-             і окремо id scheduled folder ACCOUNT_SCHEDULED_FOLDER_ID
-             
-             folderName = folder[@"name"](якщо таке існує в іншому випадку folder[@"display_name"])
-             
-             if якщо немає значення ACCOUNT_SCHEDULED_FOLDER_ID то: {
-                кожного разу коли переписується масив фолдерів шукати папку з display_name = SCHEDULED, і якщо така є то запихнути folderId за ключем ACCOUNT_SCHEDULED_FOLDER_ID;
-             }
-             else {
-                якщо є значення ACCOUNT_SCHEDULED_FOLDER_ID то:
-                перевірити чи з серед нових фолдерів є фолдер з id який записаний за ключем ACCOUNT_SCHEDULED_FOLDER_ID
-                if якщо немає такого фолдера {
-                    то видалити значення за ключем ACCOUNT_SCHEDULED_FOLDER_ID (тобто це означає, що користувач видалив папку SCHEDULED)
-                } 
-                else {
-                    якщо є така папка то нічого не робити
+            if (!accountInfo[ACCOUNT_SCHEDULED_FOLDER_ID]) {
+                if ([[folder[@"display_name"] lowercaseString] isEqualToString:[SCHEDULED lowercaseString]]) {
+                    [accountInfo setObject:scheduledId forKey:ACCOUNT_SCHEDULED_FOLDER_ID];
+                    hasScheduledFolder = YES;
                 }
-             }
-             
-             */
-            
-            if (![folder[@"name"] isKindOfClass:[NSNull class]]) {
-                [accountInfo setObject:scheduledId forKey:folder[@"name"]];
+            } else if(!hasScheduledFolder) {
+                if([[accountInfo objectForKey:ACCOUNT_SCHEDULED_FOLDER_ID] isEqualToString:scheduledId]) {
+                    hasScheduledFolder = YES;
+                }
             }
-      
         }
+        [accountInfo setObject:foldersArray forKey:ACCOUNT_FOLDERS];
+    }
+    
+    if(!hasScheduledFolder) {
+        [accountInfo removeObjectForKey:ACCOUNT_SCHEDULED_FOLDER_ID];
     }
     
     [[PMStorageManager sharedInstance] writeInfo:accountInfo intoFile:accountId];
 }
 
+//TODO:
+/*
+ в accountInfo зберігати окремо масив отаких штук @{"folderName": folderId}, -> ACCOUNT_FOLDERS
+ і окремо id scheduled folder ACCOUNT_SCHEDULED_FOLDER_ID
+ 
+ folderName = folder[@"name"](якщо таке існує в іншому випадку folder[@"display_name"])
+ 
+ if якщо немає значення ACCOUNT_SCHEDULED_FOLDER_ID то: {
+ 
+ кожного разу коли переписується масив фолдерів шукати папку з display_name = SCHEDULED, і якщо така є то запихнути folderId за ключем ACCOUNT_SCHEDULED_FOLDER_ID;
+ 
+ }else {
+ 
+ якщо є значення ACCOUNT_SCHEDULED_FOLDER_ID то:
+ перевірити чи з серед нових фолдерів є фолдер з id який записаний за ключем ACCOUNT_SCHEDULED_FOLDER_ID
+ 
+ if якщо немає такого фолдера {
+ 
+ то видалити значення за ключем ACCOUNT_SCHEDULED_FOLDER_ID (тобто це означає, що користувач видалив папку SCHEDULED)
+ 
+ }
+ 
+ else {
+ 
+ якщо є така папка то нічого не робити
+ 
+ }
+ 
+ }
+ 
+ */
 + (void)setScheduledFolderId:(NSString *)folderId forAccount:(NSString *)accountId {
     if(folderId) {
         NSMutableDictionary *accountInfo = [self infoForAccount:accountId];
