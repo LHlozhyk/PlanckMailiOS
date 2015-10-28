@@ -11,12 +11,13 @@
 #import "PMAPIManager.h"
 #import "PMStorageManager.h"
 
-@interface PMAlertViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface PMAlertViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *iconsArray;
 @property (nonatomic, strong) NSArray *titlesArray;
 @property (nonatomic, strong) UITextField *fakeTextField;
 @property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UIAlertView *alertView;
 @end
 
 @implementation PMAlertViewController
@@ -113,40 +114,42 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    
+//    [[PMAPIManager shared] deleteFolderWithId:@"36m61hvf5qidcc6l40r8au09u" account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
+//        
+//    }];
+    
     if (indexPath.row == 8) {
         [self.fakeTextField becomeFirstResponder];
     }else {
     
         
         NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
-    
-        if (![scheduledFolderId isEqualToString:@""]) {
+        DLog(@"scheduledFolderId = %@", scheduledFolderId);
+
+        if (![scheduledFolderId isEqualToString:@""] && ![scheduledFolderId isKindOfClass:[NSNull class]] && scheduledFolderId != nil) {
         
         NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
-        DLog(@" messageId %@\n scheduledFolderId = %@",_inboxMailModel.messageId, scheduledFolderId);
-        if (scheduledFolderId && _inboxMailModel.messageId) {
-            [[PMAPIManager shared] moveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId toFolder:scheduledFolderId completion:^(id data, id error, BOOL success) {
-                
+       
+            DLog(@" messageId %@\n scheduledFolderId = %@",_inboxMailModel.messageId, scheduledFolderId);
+       
+            if (scheduledFolderId && _inboxMailModel.messageId) {
+            
+                [[PMAPIManager shared] moveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId toFolder:scheduledFolderId completion:^(id data, id error, BOOL success) {
+               
+                    if (error) {
+                   
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You can't move   mail" message:[NSString stringWithFormat:@"%@", [error localizedDescription]] delegate:self cancelButtonTitle:@"I got it." otherButtonTitles:nil, nil];
+                       [alert show];
+
+                }
             }];
 
         }
       
     }else {
-        
-        [[PMAPIManager shared] createFolderWithName:SCHEDULED account:[PMAPIManager shared].namespaceId comlpetion:^(id data, id error, BOOL success) {
-            
-            if (!error) {
-                
-            NSDictionary *dict = (NSDictionary*)data;
-                DLog(@"dict = %@", dict);
-                [PMStorageManager setScheduledFolderId:dict[@"id"] forAccount:[PMAPIManager shared].namespaceId.namespace_id];
-                
-            }else {
-                DLog(@"error = %@", error);
-
-            }
-            
-        }];
+        [self showAlert];
+        return;
         
     }
     
@@ -172,6 +175,42 @@
 
 }
 
+#pragma mark - Alerts Stuff
+
+-(void)showAlert {
+    
+    self.alertView = [[UIAlertView alloc] initWithTitle:@"Do you want to create new folder with name 'Follow up' ?" message:nil delegate:self cancelButtonTitle:@"No, thanks." otherButtonTitles:@"Yes!", nil];
+    [self.alertView show];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+    if (buttonIndex == 1) {
+        
+        [[PMAPIManager shared] createFolderWithName:SCHEDULED account:[PMAPIManager shared].namespaceId comlpetion:^(id data, id error, BOOL success) {
+            
+            if (!error) {
+                
+                NSDictionary *dict = (NSDictionary*)data;
+                DLog(@"dict = %@", dict);
+                [PMStorageManager setScheduledFolderId:dict[@"id"] forAccount:[PMAPIManager shared].namespaceId.namespace_id];
+                
+            }else {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You can't create folder" message:[NSString stringWithFormat:@"%@", [error localizedDescription]] delegate:self cancelButtonTitle:@"I got it." otherButtonTitles:nil, nil];
+                [alert show];
+
+                DLog(@"error = %@", error);
+                
+            }
+            
+        }];
+
+        
+    }
+
+}
 /*
 #pragma mark - Navigation
 

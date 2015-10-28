@@ -189,9 +189,9 @@
                     [PMStorageManager setFolderId:data[@"id"] forAccount:[PMAPIManager shared].namespaceId.namespace_id forKey:ARCHIVE];
                     
                 }else {
-                    
                     DLog(@"error = %@",[error localizedDescription]);
-                
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You can't create folder" message:[NSString stringWithFormat:@"%@",[error localizedDescription]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    [alertView show];
                 }
                 
             }];
@@ -202,12 +202,12 @@
         
     }else {
     if (buttonIndex == 1) {
+        NSString *archiveFolderId = [PMStorageManager getFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id forKey:ARCHIVE];
+        DLog(@"getFolderIdForAccount = %@",archiveFolderId);
+
         
-        if (![PMStorageManager getFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id forKey:ARCHIVE]) {
+        if (![archiveFolderId isEqualToString:@""] && ![archiveFolderId isKindOfClass:[NSNull class]] && archiveFolderId != nil) {
             
-            [self showAlert];
-            
-            }else {
             
             [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
                 if (success) {
@@ -218,13 +218,19 @@
                     [self.tableView reloadData];
                 }else {
                     
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An error has occured" message:[NSString stringWithFormat:@"%@",[error localizedDescription]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You can't archive" message:[NSString stringWithFormat:@"%@",[error localizedDescription]] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                     [alertView show];
                     [self.tableView reloadData];
-
+                    
                 }
-            
+                
             }];
+
+            
+            
+            }else {
+            
+                [self showAlert];
 
         }
       

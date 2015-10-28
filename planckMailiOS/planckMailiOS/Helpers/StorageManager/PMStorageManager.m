@@ -83,7 +83,7 @@
     if(!hasScheduledFolder) {
         [accountInfo removeObjectForKey:ACCOUNT_SCHEDULED_FOLDER_ID];
     }
-    
+    DLog(@"account info = %@", accountInfo);
     [[PMStorageManager sharedInstance] writeInfo:accountInfo intoFile:accountId];
 }
 
@@ -137,19 +137,36 @@
 }
 
 + (NSArray *)getFoldersForAccount:(NSString *)accountId {
+    
     NSMutableDictionary *accountInfo = [self infoForAccount:accountId];
     return [accountInfo objectForKey:ACCOUNT_FOLDERS];
 }
 
 + (NSString *)getScheduledFolderIdForAccount:(NSString *)accountId {
+    DLog(@"account id = %@", accountId);
+    
     NSMutableDictionary *accountInfo = [self infoForAccount:accountId];
+    DLog(@"return [accountInfo] = %@",accountInfo);
+
     return [accountInfo objectForKey:ACCOUNT_SCHEDULED_FOLDER_ID];
 }
 
 + (NSString *)getFolderIdForAccount:(NSString *)accountId forKey:(NSString*)key {
   
     NSMutableDictionary *accountInfo = [self infoForAccount:accountId];
-    return [accountInfo objectForKey:key];
+    DLog(@"return [accountInfo] = %@",accountInfo);
+    
+    NSArray *folders = accountInfo[ACCOUNT_FOLDERS];
+    __block NSString *folderId = [NSString new];
+    [folders enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *folder = (NSDictionary *)obj;
+        if (folder[key]) {
+            folderId = folder[key];
+        }
+        
+    }];
+    
+    return folderId;
     
 }
 
