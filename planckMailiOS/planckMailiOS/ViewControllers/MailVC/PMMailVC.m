@@ -493,7 +493,11 @@ IB_DESIGNABLE
 }
 
 - (void)didShoozedMeil:(PMInboxMailModel *)meil {
+    [_itemFollowUpsArray addObject:meil];
+    [[self selectedDataSource] removeObject:meil];
     
+    [[self currentTableView] reloadMessagesTableView];
+
 }
 
 #pragma mark - PMPreviewMailVC delegate
@@ -588,9 +592,7 @@ IB_DESIGNABLE
     return lNewArray;
 }
 
-- (NSArray *)selectedDataSource {
-
-  
+- (NSMutableArray *)selectedDataSource {
     if (_selectedTableType == ImportantMessagesSelected) {
         return _itemMailArray;
     }else if (_selectedTableType == ReadLaterMessagesSelected) {

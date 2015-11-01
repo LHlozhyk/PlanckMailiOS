@@ -164,10 +164,13 @@
     DLog(@" messageId %@\n scheduledFolderId = %@",_inboxMailModel.messageId, scheduledFolderId);
     if (_inboxMailModel.messageId) {
         [[PMAPIManager shared] moveMailWithThreadId:_inboxMailModel account:[PMAPIManager shared].namespaceId toFolder:scheduledFolderId completion:^(id data, id error, BOOL success) {
-            [__self dismissVc];
             if(!error) {
-                
+                if ([__self.delegate respondsToSelector:@selector(didShoozedMeil:)]) {
+                    [__self.delegate didShoozedMeil:__self.inboxMailModel];
+                }
             }
+            
+            [__self dismissVc];
         }];
     }
 }
