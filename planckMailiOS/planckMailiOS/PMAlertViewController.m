@@ -10,6 +10,7 @@
 #import "PMAlertCollectionViewCell.h"
 #import "PMAPIManager.h"
 #import "PMStorageManager.h"
+#import "MBProgressHUD.h"
 
 @interface PMAlertViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
@@ -115,61 +116,60 @@
     
     if (indexPath.row == 8) {
         [self.fakeTextField becomeFirstResponder];
-    }else {
-    
-        
+    } else {
         NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
-    
-        if (![scheduledFolderId isEqualToString:@""]) {
         
-        NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
-        DLog(@" messageId %@\n scheduledFolderId = %@",_inboxMailModel.messageId, scheduledFolderId);
-        if (scheduledFolderId && _inboxMailModel.messageId) {
-            [[PMAPIManager shared] moveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId toFolder:scheduledFolderId completion:^(id data, id error, BOOL success) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        if ([scheduledFolderId length] > 0) {
+            
+            [self moveMeilToFollowUp];
+            
+        } else {
+            __weak typeof(self)__self = self;
+            [[PMAPIManager shared] createFolderWithName:SCHEDULED account:[PMAPIManager shared].namespaceId comlpetion:^(id data, id error, BOOL success) {
                 
+                if (!error) {
+                    NSDictionary *dict = (NSDictionary*)data;
+                    DLog(@"dict = %@", dict);
+                    NSString *scheduledID = dict[@"id"];
+                    [PMStorageManager setScheduledFolderId:scheduledID forAccount:[PMAPIManager shared].namespaceId.namespace_id];
+                    [__self moveMeilToFollowUp];
+                } else {
+                    DLog(@"error = %@", error);
+                    [MBProgressHUD hideAllHUDsForView:__self.view animated:YES];
+                }
             }];
-
         }
-      
-    }else {
-        
-        [[PMAPIManager shared] createFolderWithName:SCHEDULED account:[PMAPIManager shared].namespaceId comlpetion:^(id data, id error, BOOL success) {
-            
-            if (!error) {
-                
-            NSDictionary *dict = (NSDictionary*)data;
-                DLog(@"dict = %@", dict);
-                [PMStorageManager setScheduledFolderId:dict[@"id"] forAccount:[PMAPIManager shared].namespaceId.namespace_id];
-                
-            }else {
-                DLog(@"error = %@", error);
-
-            }
-            
-        }];
-        
-    }
-    
-    [self dismissVc];
     }
 }
 
 #pragma mark - Actions
 
 - (IBAction)dismissOnTapAction:(id)sender {
-
     [self dismissVc];
-
 }
 
 -(void)dismissVc {
-    
     if ([self.delegate respondsToSelector:@selector(PMAlertViewControllerDissmis:)]) {
         [self.delegate PMAlertViewControllerDissmis:self];
     }
    
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
 
+- (void) moveMeilToFollowUp {
+    NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
+    
+    __weak typeof(self)__self = self;
+    DLog(@" messageId %@\n scheduledFolderId = %@",_inboxMailModel.messageId, scheduledFolderId);
+    if (_inboxMailModel.messageId) {
+        [[PMAPIManager shared] moveMailWithThreadId:_inboxMailModel account:[PMAPIManager shared].namespaceId toFolder:scheduledFolderId completion:^(id data, id error, BOOL success) {
+            [__self dismissVc];
+            if(!error) {
+                
+            }
+        }];
+    }
 }
 
 /*

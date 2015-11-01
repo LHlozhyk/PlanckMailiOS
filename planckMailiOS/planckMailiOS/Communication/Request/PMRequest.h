@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class DBNamespace;
 @interface PMRequest : NSObject
 + (NSString*)loginWithAppId:(NSString *)appId
                        mail:(NSString *)mail
@@ -32,11 +33,12 @@
 
 + (NSString *)draftMessageWithNamespacesId:(NSString *)namespacesId;
 
-+ (NSString *)foldersWithNamespaceId:(NSString *)namespaceId
++ (NSString *)foldersWithNamespaceId:(DBNamespace *)namespaceId
                             folderId:(NSString *)folderId;
 
 + (NSString *)unreadMessages;
 + (NSString *)unreadMessagesCount;
 + (NSString*)messageId:(NSString*)messageId;
++ (NSString*)threadId:(NSString*)messageId;
 
 @end

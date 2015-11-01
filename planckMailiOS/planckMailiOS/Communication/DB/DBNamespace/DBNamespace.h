@@ -16,4 +16,5 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * provider;
 @property (nonatomic, retain) NSNumber * unreadCount;
+@property (nonatomic, retain) NSString * organizationUnit;
 @end

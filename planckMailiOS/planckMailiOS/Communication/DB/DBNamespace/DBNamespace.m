@@ -20,5 +20,6 @@
 @dynamic provider;
 @dynamic token;
 @dynamic unreadCount;
+@dynamic organizationUnit;
 
 @end

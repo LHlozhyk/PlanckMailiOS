@@ -209,7 +209,7 @@
             
             }else {
             
-            [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
+            [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
                 if (success) {
                     DLog(@"archiveMailWithThreadId - %@", data);
                     NSMutableArray *tmpArray = (NSMutableArray*)_itemMailArray;

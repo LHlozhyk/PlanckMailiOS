@@ -18,6 +18,7 @@
 @property(nonatomic, copy) NSString *lastMessageTimestamp;
 @property(nonatomic, copy) NSString *token;
 @property(nonatomic, copy) NSArray *labels;
+@property(nonatomic, copy) NSArray *folders;
 @property(nonatomic, copy) NSDate *lastMessageDate;
 @property(nonatomic, assign) NSUInteger version;
 @property(nonatomic) BOOL isUnread;
@@ -26,5 +27,6 @@
 +(PMInboxMailModel *)initWithDicationary:(NSDictionary *)info;
 
 - (BOOL)isReadLater;
+- (NSString *)sentLabelID;
 
 @end

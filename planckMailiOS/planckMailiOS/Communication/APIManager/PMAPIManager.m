@@ -62,6 +62,7 @@
             lNewNamespace.email_address = lFirstItem[@"email_address"];
             lNewNamespace.name = lFirstItem[@"name"];
             lNewNamespace.namespace_id = lFirstItem[@"namespace_id"];
+            lNewNamespace.organizationUnit = lFirstItem[@"organization_unit"];
             
             DLog(@"namespace id - %@", lFirstItem[@"namespace_id"]);
             
@@ -102,11 +103,10 @@
     [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
 }
 
-
 - (void)getInboxMailWithAccount:(id<PMAccountProtocol>)account limit:(NSUInteger)limit offset:(NSUInteger)offset completion:(ExtendedBlockHandler)handler {
     
     
-    NSDictionary *lParameters = @{@"in" : @"READ NOW",
+    NSDictionary *lParameters = @{@"in" : @"inbox",
                                   @"limit" : @(limit),
                                   @"offset" : @(offset)
                                   };
@@ -122,20 +122,6 @@
                                   @"offset" : @(offset)
                                   };
     [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
-}
-
--(void)getFollowUpsMailWithAccount:(id<PMAccountProtocol>)account
-                             limit:(NSUInteger)limit
-                            offset:(NSUInteger)offset
-                        completion:(ExtendedBlockHandler)handler{
-    
-    
-    NSDictionary *lParameters = @{@"in" : SCHEDULED,
-                                  @"limit" : @(limit),
-                                  @"offset" : @(offset)
-                                  };
-    [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
-    
 }
 
 - (void)searchMailWithKeyword:(NSString *)keyword account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
@@ -181,12 +167,12 @@
     }];
 }
 
-- (void)archiveMailWithThreadId:(NSString *)threadId account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler{
+- (void)archiveMailWithThreadId:(PMInboxMailModel *)thread account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler{
     
     NSString *archiveFolderId = [PMStorageManager getFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id forKey:ARCHIVE];
     DLog(@"archiveFolderId = %@", archiveFolderId);
     
-    [[PMAPIManager shared] moveMailWithThreadId:threadId account:[PMAPIManager shared].namespaceId toFolder:archiveFolderId completion:^(id data, id error, BOOL success) {
+    [[PMAPIManager shared] moveMailWithThreadId:thread account:[PMAPIManager shared].namespaceId toFolder:archiveFolderId completion:^(id data, id error, BOOL success) {
         if (success) {
             handler(data, nil, YES);
         }else {
@@ -256,7 +242,7 @@
 
 - (void)getFoldersWithAccount:(id<PMAccountProtocol>)account comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
+    [_networkManager GET:[PMRequest foldersWithNamespaceId:account folderId:nil] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
         if(handler) {
             handler(responseObject, nil, YES);
         }
@@ -268,7 +254,7 @@
 
 - (void)getFoldersWithAccount:(id<PMAccountProtocol>)account folderId:(NSString*)folderId comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
+    [_networkManager GET:[PMRequest foldersWithNamespaceId:account folderId:folderId] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
         if(handler) {
             handler(responseObject, nil, YES);
         }
@@ -284,7 +270,7 @@
     
     NSDictionary *lParams = @{@"display_name":folderName};
     [_networkManager setCurrentToken:account.token];
-    [_networkManager POST:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
+    [_networkManager POST:[PMRequest foldersWithNamespaceId:account folderId:nil] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
         if(handler) {
             handler(responseObject, nil, YES);
         }
@@ -303,7 +289,7 @@
     
     NSDictionary *lParams = @{@"display_name":newFolderName};
     [_networkManager setCurrentToken:account.token];
-    [_networkManager PUT:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
+    [_networkManager PUT:[PMRequest foldersWithNamespaceId:account folderId:folderId] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
         if(handler) {
             handler(responseObject, nil, YES);
         }
@@ -318,11 +304,8 @@
                    account:(id<PMAccountProtocol>)account
                 completion:(ExtendedBlockHandler)handler {
     
-    //    NSLog(@"iddd %@",[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId]);
-    //    NSLog(@"getScheduledFolderIdForAccount");
-    
     [_networkManager setCurrentToken:account.token];
-    [_networkManager DELETE:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:nil
+    [_networkManager DELETE:[PMRequest foldersWithNamespaceId:account folderId:folderId] parameters:nil
                     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
                         if (handler) {
                             handler(responseObject, nil, YES);
@@ -335,13 +318,22 @@
     
 }
 
-- (void)moveMailWithThreadId:(NSString*)threadId account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId completion:(ExtendedBlockHandler)handler {
-    
-    NSDictionary *lParameters = @{@"folder_id" : folderId};
+- (void)moveMailWithThreadId:(PMInboxMailModel*)thread account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId completion:(ExtendedBlockHandler)handler {
+    NSDictionary *lParameters = nil;
+    if(thread.folders) {
+        lParameters = @{@"folder_id" : folderId};
+    } else {
+        NSMutableArray *labelIDs = [NSMutableArray arrayWithArray:@[folderId]];
+        NSString *sentID = [thread sentLabelID];
+        if(sentID) {
+            [labelIDs addObject:sentID];
+        }
+        lParameters = @{@"label_ids" : labelIDs};
+    }
     
     [_networkManager setCurrentToken:account.token];
     
-    [_networkManager PUT:[PMRequest messageId:threadId] parameters:lParameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [_networkManager PUT:[PMRequest threadId:thread.messageId] parameters:lParameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         DLog(@"success");
         handler(responseObject, nil, YES);
     } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {

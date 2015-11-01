@@ -7,6 +7,7 @@
 //
 
 #import "PMInboxMailModel.h"
+#import "Config.h"
 
 @implementation PMInboxMailModel
 
@@ -36,6 +37,7 @@
     lNewItem.messageId = item[@"id"];
     lNewItem.version = [item[@"version"] unsignedIntegerValue];
     lNewItem.labels = item[@"labels"];
+    lNewItem.folders = item[@"folders"];
     lNewItem.isUnread = NO;
     
     NSTimeInterval lastTimeStamp = [item[@"last_message_timestamp"] doubleValue];
@@ -67,6 +69,7 @@
     [aCoder encodeObject:_lastMessageDate forKey:@"lastMessageDate"];
     [aCoder encodeObject:[NSNumber numberWithUnsignedInteger:_version] forKey:@"version"];
     [aCoder encodeObject:_labels forKey:@"labels"];
+    [aCoder encodeObject:_folders forKey:@"folders"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -81,6 +84,7 @@
     newMail.isUnread = [aDecoder decodeBoolForKey:@"isUnread"];
     newMail.lastMessageDate = [aDecoder decodeObjectForKey:@"lastMessageDate"];
     newMail.labels = [aDecoder decodeObjectForKey:@"labels"];
+    newMail.folders = [aDecoder decodeObjectForKey:@"folders"];
     newMail.version = [[aDecoder decodeObjectForKey:@"version"] unsignedIntegerValue];
   
   return newMail;
@@ -103,6 +107,21 @@
         }
     }
         return readLater;
+}
+
+- (NSString *)sentLabelID {
+    NSString *labelID = nil;
+    
+    if(self.labels) {
+        for(NSDictionary *labelObj in self.labels) {
+            if([labelObj[@"name"] isEqualToString:LABEL_SENT]) {
+                labelID = labelObj[@"id"];
+                break;
+            }
+        }
+    }
+    
+    return labelID;
 }
 
 @end

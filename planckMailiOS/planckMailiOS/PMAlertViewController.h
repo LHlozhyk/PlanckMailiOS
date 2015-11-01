@@ -20,7 +20,7 @@
 
 @protocol PMAlertViewControllerDelegate <NSObject>
 
--(void)PMAlertViewControllerDissmis:(PMAlertViewController*)viewContorller;
-
+- (void)PMAlertViewControllerDissmis:(PMAlertViewController*)viewContorller;
+- (void)didShoozedMeil:(PMInboxMailModel *)meil;
 
 @end
