@@ -122,6 +122,7 @@
     
     if (indexPath.row == 8) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 80, 80)];
+        label.textColor = [UIColor colorWithRed: 51.f/255.f green: 201.f/255.f blue: 180.f/255.f alpha:1.0];
         label.text = @"08";
         label.font = [UIFont systemFontOfSize:55];
         //[cell addSubview:label];
