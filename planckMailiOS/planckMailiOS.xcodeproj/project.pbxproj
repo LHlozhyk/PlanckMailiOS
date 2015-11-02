@@ -11,6 +11,8 @@
 		780EA1201BD50A5200CBA45A /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA11E1BD50A5200CBA45A /* MGSwipeTableCell.m */; };
 		780EA1361BD54C4B00CBA45A /* PMAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 780EA1341BD54C4B00CBA45A /* PMAlertViewController.m */; };
 		780EA1371BD54C4B00CBA45A /* PMAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780EA1351BD54C4B00CBA45A /* PMAlertViewController.xib */; };
+		781259B81BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 781259B51BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.m */; };
+		781259B91BE770EF008D4921 /* DBInboxMailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 781259B71BE770EF008D4921 /* DBInboxMailModel.m */; };
 		78AD2A931BD6986000D0C963 /* PMAlertCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AD2A911BD6986000D0C963 /* PMAlertCollectionViewCell.m */; };
 		78AD2A941BD6986000D0C963 /* PMAlertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AD2A921BD6986000D0C963 /* PMAlertCollectionViewCell.xib */; };
 		840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840156DB1B27A51600E92CA7 /* PMPreviewMailVC.m */; };
@@ -193,6 +195,10 @@
 		780EA1331BD54C4B00CBA45A /* PMAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAlertViewController.h; sourceTree = "<group>"; };
 		780EA1341BD54C4B00CBA45A /* PMAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAlertViewController.m; sourceTree = "<group>"; };
 		780EA1351BD54C4B00CBA45A /* PMAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMAlertViewController.xib; sourceTree = "<group>"; };
+		781259B41BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DBInboxMailModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		781259B51BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBInboxMailModel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		781259B61BE770EF008D4921 /* DBInboxMailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBInboxMailModel.h; sourceTree = "<group>"; };
+		781259B71BE770EF008D4921 /* DBInboxMailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBInboxMailModel.m; sourceTree = "<group>"; };
 		78AD2A901BD6986000D0C963 /* PMAlertCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAlertCollectionViewCell.h; sourceTree = "<group>"; };
 		78AD2A911BD6986000D0C963 /* PMAlertCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAlertCollectionViewCell.m; sourceTree = "<group>"; };
 		78AD2A921BD6986000D0C963 /* PMAlertCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMAlertCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -484,6 +490,18 @@
 				780EA11E1BD50A5200CBA45A /* MGSwipeTableCell.m */,
 			);
 			path = MGSwipeTableCell;
+			sourceTree = "<group>";
+		};
+		781259B31BE770EF008D4921 /* DBInboxMailModel */ = {
+			isa = PBXGroup;
+			children = (
+				781259B41BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.h */,
+				781259B51BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.m */,
+				781259B61BE770EF008D4921 /* DBInboxMailModel.h */,
+				781259B71BE770EF008D4921 /* DBInboxMailModel.m */,
+			);
+			name = DBInboxMailModel;
+			path = Communication/DB/DBInboxMailModel;
 			sourceTree = "<group>";
 		};
 		840156D91B27A48100E92CA7 /* PreviewMailVC */ = {
@@ -1091,6 +1109,7 @@
 		84F407981B12710700AA627B /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				781259B31BE770EF008D4921 /* DBInboxMailModel */,
 				AE98926B1BDBAFBB000AF215 /* DBCalendar */,
 				84ECA42D1B134EF900770F88 /* DBNamespace */,
 				84ECA4291B134E5400770F88 /* DBManager */,
@@ -1741,6 +1760,7 @@
 				AE6DB4DC1BCC61A700949124 /* PMEventContentVC.m in Sources */,
 				AE6DB4D21BCAC13B00949124 /* PMEventDayModel.m in Sources */,
 				C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */,
+				781259B91BE770EF008D4921 /* DBInboxMailModel.m in Sources */,
 				84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */,
 				AEB91AA11BDD723F00599BC0 /* MASViewAttribute.m in Sources */,
 				848E6F901B94846000EA935D /* LGSideMenuController.m in Sources */,
@@ -1762,6 +1782,7 @@
 				84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */,
 				AE9892781BDBBA5C000AF215 /* PMLocalNotification.m in Sources */,
 				846096171B13061400924B61 /* CLContactLibrary.m in Sources */,
+				781259B81BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.m in Sources */,
 				840D8C931BAF4E8C001C8B60 /* PMEventAlertVC.m in Sources */,
 				C3654CEB1BC94F3400A08521 /* PMPreviewTableView.m in Sources */,
 				847D87D11B4334EE0044A676 /* PMSearchMailVC.m in Sources */,

@@ -33,6 +33,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="namespace_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="object" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="organizationUnit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="provider" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unreadCount" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
@@ -42,6 +43,6 @@
     <elements>
         <element name="DBCalendar" positionX="-144" positionY="-72" width="128" height="150"/>
         <element name="DBInboxMailModel" positionX="-144" positionY="137" width="126" height="268"/>
-        <element name="DBNamespace" positionX="-369" positionY="-13" width="128" height="208"/>
+        <element name="DBNamespace" positionX="-369" positionY="-13" width="128" height="225"/>
     </elements>
 </model>
