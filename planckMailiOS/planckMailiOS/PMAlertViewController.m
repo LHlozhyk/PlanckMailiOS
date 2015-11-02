@@ -111,6 +111,9 @@
 
       cell.imageView.image = self.iconsArray[indexPath.row];
     cell.titleLabel.text = self.titlesArray[indexPath.row];
+    [cell.contentView.layer setBorderColor:[UIColor colorWithRed:0.83 green:0.82 blue:0.8 alpha:1].CGColor];
+    [cell.contentView.layer setBorderWidth:1];
+   
 
     return cell;
 }
@@ -123,8 +126,10 @@
 //    [[PMAPIManager shared] deleteFolderWithId:@"36m61hvf5qidcc6l40r8au09u" account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
 //        
 //    }];
-    
-    if (indexPath.row == 8) {
+    if (indexPath.row == 7) {
+        [self dismissVc];
+    }
+    else if (indexPath.row == 8) {
         [DBManager deleteAllInboxMailModelFromDB];
         [self.fakeTextField becomeFirstResponder];
     } else {
@@ -152,6 +157,33 @@
             }];
         }
     }
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    int numberOfCellInRow = 3;
+    int cellHeight =  [[UIScreen mainScreen] bounds].size.height/numberOfCellInRow;
+    int cellWidth = [[UIScreen mainScreen] bounds].size.width/numberOfCellInRow;
+    
+    if (indexPath.row == 2 || indexPath.row == 5) {
+        
+       
+        cellWidth += [[UIScreen mainScreen] bounds].size.width - cellWidth*numberOfCellInRow;
+    }
+    return CGSizeMake(cellWidth, cellHeight);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(0, 0, 0, 0); // top, left, bottom, right
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return 0.0;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0.0;
 }
 
 #pragma mark - Actions

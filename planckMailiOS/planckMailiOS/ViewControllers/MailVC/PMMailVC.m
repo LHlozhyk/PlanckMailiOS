@@ -451,7 +451,7 @@ IB_DESIGNABLE
 
     
     PMAlertViewController *alert = [[PMAlertViewController alloc] init];
-    alert.view.backgroundColor = [UIColor clearColor];
+    //alert.view.backgroundColor = [UIColor clearColor];
     alert.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     alert.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     alert.inboxMailModel = mailModel;
@@ -460,14 +460,15 @@ IB_DESIGNABLE
 
     [UIView animateWithDuration:0.4 animations:^{
 
-        UIViewController *controller = kMainViewController;
-        
-        controller.view.backgroundColor = [UIColor whiteColor];
-        MainViewController *vc;
-        vc.rightViewSwipeGestureEnabled = NO;
-        [self animateAlpha:0.2];
+//        UIViewController *controller = kMainViewController;
+//        
+//        controller.view.backgroundColor = [UIColor whiteColor];
+//        MainViewController *vc;
+//        vc.rightViewSwipeGestureEnabled = NO;
+//        [self animateAlpha:0.2];
         self.tabBarController.tabBar.userInteractionEnabled = NO;
-  
+        self.tabBarController.tabBar.hidden = YES;
+        alert.view.backgroundColor = [UIColor colorWithRed:0.96 green:0.96 blue:0.96 alpha:1];
     }];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"disableSwipe" object:nil];
@@ -483,11 +484,13 @@ IB_DESIGNABLE
 
 -(void)PMAlertViewControllerDissmis:(PMAlertViewController *)viewContorller {
     [UIView animateWithDuration:0.4 animations:^{
-        [UIApplication sharedApplication].keyWindow.window.backgroundColor = [UIColor clearColor];
-        UIViewController *controller = kMainViewController;
-        controller.view.backgroundColor = [UIColor whiteColor];
-        [self animateAlpha:1];
+//        [UIApplication sharedApplication].keyWindow.window.backgroundColor = [UIColor clearColor];
+//        UIViewController *controller = kMainViewController;
+//        controller.view.backgroundColor = [UIColor whiteColor];
+//        [self animateAlpha:1];
         self.tabBarController.tabBar.userInteractionEnabled = YES;
+        self.tabBarController.tabBar.hidden = NO;
+
     }];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"enableSwipe" object:nil];
 }
