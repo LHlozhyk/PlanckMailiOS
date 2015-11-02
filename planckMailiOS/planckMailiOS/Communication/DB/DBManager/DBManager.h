@@ -11,6 +11,7 @@
 
 #import "DBNamespace.h"
 #import "DBCalendar.h"
+#import "DBInboxMailModel.h"
 
 @interface DBManager : NSObject
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -19,13 +20,17 @@
 
 @property (nonatomic, strong) NSArray *namespaces;
 @property (nonatomic, strong) NSArray *calendars;
+@property (nonatomic, strong) NSArray *inboxInboxMailModels;
 
 - (void)save;
 - (NSArray *)getNamespaces;
 - (NSArray *)getCalendars;
+- (NSArray *)getInboxMailModel;
+
 
 + (void)deleteAllDataFromDB;
 + (void)deleteNamespace:(DBNamespace *)item;
++ (void)deleteAllInboxMailModelFromDB;
 + (DBManager *)instance;
 + (DBNamespace *)createNewNamespace;
 + (DBCalendar *)createNewCalendar;

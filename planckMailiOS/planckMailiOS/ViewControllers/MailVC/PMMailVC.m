@@ -354,14 +354,13 @@ IB_DESIGNABLE
 -(void)updateFollowsUp {
     
     
-    [[PMAPIManager shared] getFollowUpsMailWithAccount:[PMAPIManager shared].namespaceId limit:COUNT_MESSAGES offset:_offsetFollowUps completion:^(id data, id error, BOOL success) {
-        
+    //[[PMAPIManager shared] getFollowUpsMailWithAccount:[PMAPIManager shared].namespaceId limit:COUNT_MESSAGES offset:_offsetFollowUps completion:^(id data, id error, BOOL success) {
         [MBProgressHUD hideAllHUDsForView:_view3 animated:YES];
-        [_itemFollowUpsArray addObjectsFromArray:data];
+        [_itemFollowUpsArray addObjectsFromArray:[[DBManager instance] getInboxMailModel]];
         [[self currentTableView] reloadMessagesTableView];
         _offsetFollowUps += COUNT_MESSAGES;
         
-    }];
+    //}];
     
 }
 

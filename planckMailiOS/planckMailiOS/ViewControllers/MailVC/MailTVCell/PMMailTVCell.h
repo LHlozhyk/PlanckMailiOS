@@ -12,5 +12,6 @@
 #import "MGSwipeButton.h"
 
 @interface PMMailTVCell : MGSwipeTableCell
+//-(void)updateWithDBMailInboxModel:(DBInboxMailModel*)model;
 - (void)updateWithModel:(PMInboxMailModel*)model;
 @end

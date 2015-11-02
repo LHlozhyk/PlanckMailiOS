@@ -10,6 +10,7 @@
 
 #define DB_FORM @"DBNamespace"
 #define DB_Calendar @"DBCalendar"
+#define DB_MailModel @"DBInboxMailModel"
 
 @implementation DBManager
 - (NSManagedObjectContext *)managedObjectContext {
@@ -124,6 +125,18 @@
     return _calendars;
 }
 
+- (NSArray *)getInboxMailModel {
+    NSError *lError;
+    NSFetchRequest *lFetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DBInboxMailModel"
+                                              inManagedObjectContext:[self managedObjectContext]];
+    [lFetchRequest setEntity:entity];
+    _inboxInboxMailModels = [[self managedObjectContext] executeFetchRequest:lFetchRequest error:&lError];
+    
+    return _inboxInboxMailModels;
+    
+}
+
 + (void)deleteAllDataFromDB {
     DBManager *lDBManager = [DBManager instance];
     
@@ -135,6 +148,23 @@
     NSArray * cars = [lDBManager.managedObjectContext executeFetchRequest:allCars error:&error];
     //error handling goes here
     for (NSManagedObject * car in cars) {
+        [lDBManager.managedObjectContext deleteObject:car];
+    }
+    NSError *saveError = nil;
+    [lDBManager.managedObjectContext save:&saveError];
+}
+
++ (void)deleteAllInboxMailModelFromDB {
+    DBManager *lDBManager = [DBManager instance];
+    
+    NSFetchRequest * allInboxMailModels = [[NSFetchRequest alloc] init];
+    [allInboxMailModels setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    [allInboxMailModels setEntity:[NSEntityDescription entityForName:DB_MailModel inManagedObjectContext:lDBManager.managedObjectContext]];
+
+    NSError * error = nil;
+    NSArray * inboxMailModels = [lDBManager.managedObjectContext executeFetchRequest:allInboxMailModels error:&error];
+    //error handling goes here
+    for (NSManagedObject * car in inboxMailModels) {
         [lDBManager.managedObjectContext deleteObject:car];
     }
     NSError *saveError = nil;

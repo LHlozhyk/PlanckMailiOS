@@ -10,6 +10,9 @@
 #import "PMAlertCollectionViewCell.h"
 #import "PMAPIManager.h"
 #import "PMStorageManager.h"
+#import "DBInboxMailModel.h"
+#import "DBManager.h"
+#import "DBNamespace.h"
 
 @interface PMAlertViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
@@ -18,6 +21,7 @@
 @property (nonatomic, strong) UITextField *fakeTextField;
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIAlertView *alertView;
+@property (nonatomic, weak) DBNamespace *namespace;
 @end
 
 @implementation PMAlertViewController
@@ -120,41 +124,55 @@
 //    }];
     
     if (indexPath.row == 8) {
+        [DBManager deleteAllInboxMailModelFromDB];
         [self.fakeTextField becomeFirstResponder];
     }else {
-    
         
-        NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
-        DLog(@"scheduledFolderId = %@", scheduledFolderId);
-
-        if (![scheduledFolderId isEqualToString:@""] && ![scheduledFolderId isKindOfClass:[NSNull class]] && scheduledFolderId != nil) {
         
-        NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
-       
-            DLog(@" messageId %@\n scheduledFolderId = %@",_inboxMailModel.messageId, scheduledFolderId);
-       
-            if (scheduledFolderId && _inboxMailModel.messageId) {
-            
-                [[PMAPIManager shared] moveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId toFolder:scheduledFolderId completion:^(id data, id error, BOOL success) {
-               
-                    if (error) {
-                   
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You can't move   mail" message:[NSString stringWithFormat:@"%@", [error localizedDescription]] delegate:self cancelButtonTitle:@"I got it." otherButtonTitles:nil, nil];
-                       [alert show];
-
-                }
-            }];
-
-        }
-      
-    }else {
-        [self showAlert];
-        return;
-        
+//        NSDictionary *message = @{@"snippet":@"lol"};
+//    
+//        DBInboxMailModel *imm = [DBInboxMailModel createNewMailModelFromDictionary:message];
+//        [self.namespace addFollow_ups:imm];
+//        [[DBManager instance] save];
     }
     
-    [self dismissVc];
-    }
+    
+//    if (indexPath.row == 8) {
+//        [self.fakeTextField becomeFirstResponder];
+//    }else {
+//    
+//        
+//        NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
+//        DLog(@"scheduledFolderId = %@", scheduledFolderId);
+//
+//        if (![scheduledFolderId isEqualToString:@""] && ![scheduledFolderId isKindOfClass:[NSNull class]] && scheduledFolderId != nil) {
+//        
+//        NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
+//       
+//            DLog(@" messageId %@\n scheduledFolderId = %@",_inboxMailModel.messageId, scheduledFolderId);
+//       
+//            if (scheduledFolderId && _inboxMailModel.messageId) {
+//            
+//                [[PMAPIManager shared] moveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId toFolder:scheduledFolderId completion:^(id data, id error, BOOL success) {
+//               
+//                    if (error) {
+//                   
+//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You can't move   mail" message:[NSString stringWithFormat:@"%@", [error localizedDescription]] delegate:self cancelButtonTitle:@"I got it." otherButtonTitles:nil, nil];
+//                       [alert show];
+//
+//                }
+//            }];
+//
+//        }
+//      
+//    }else {
+//        [self showAlert];
+//        return;
+//        
+//    }
+//    
+//    [self dismissVc];
+//    }
 }
 
 #pragma mark - Actions

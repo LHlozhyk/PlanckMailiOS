@@ -8,6 +8,7 @@
 
 #import "PMMailTVCell.h"
 #import "NSDate+DateConverter.h"
+#import "DBInboxMailModel.h"
 
 @interface PMMailTVCell () {
     __weak IBOutlet UIImageView *_attachedFileImageView;
@@ -28,6 +29,20 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+}
+
+-(void)updateWithDBMailInboxModel:(DBInboxMailModel*)model {
+
+    _attachedFileImageView.hidden = YES;
+    _replyImageView.hidden = !model.isUnread;
+    
+    //nsdate *lNewDate = [NSDate dateWithTimeIntervalSince1970:model.]
+    
+    timeLabel.hidden = YES;
+    _personNameLabel.text = model.owner_name;
+    _titleNameLabel.text = model.subject;
+    descriptionLabel.text = model.snippet;
+    
 }
 
 - (void)updateWithModel:(PMInboxMailModel *)model {
