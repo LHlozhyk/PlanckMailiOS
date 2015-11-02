@@ -26,6 +26,7 @@
 #import "PMMessagesTableView.h"
 #import "LeftViewController.h"
 #import "PMAlertViewController.h"
+#import "PMPickerViewController.h"
 
 #import "PMStorageManager.h"
 
@@ -450,6 +451,11 @@ IB_DESIGNABLE
 -(void)PMMessagesTableViewDelegateShowAlert:(PMMessagesTableView *)messagesTableView inboxMailModel:(PMInboxMailModel*)mailModel {
 
     
+//    PMPickerViewController *alert = [[PMPickerViewController alloc] init];
+//    alert.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//    alert.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//    [self presentViewController:alert animated:YES completion:NULL];
+    
     PMAlertViewController *alert = [[PMAlertViewController alloc] init];
     //alert.view.backgroundColor = [UIColor clearColor];
     alert.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -460,12 +466,7 @@ IB_DESIGNABLE
 
     [UIView animateWithDuration:0.4 animations:^{
 
-//        UIViewController *controller = kMainViewController;
-//        
-//        controller.view.backgroundColor = [UIColor whiteColor];
-//        MainViewController *vc;
-//        vc.rightViewSwipeGestureEnabled = NO;
-//        [self animateAlpha:0.2];
+
         self.tabBarController.tabBar.userInteractionEnabled = NO;
         self.tabBarController.tabBar.hidden = YES;
         alert.view.backgroundColor = [UIColor colorWithRed:0.96 green:0.96 blue:0.96 alpha:1];
@@ -484,10 +485,7 @@ IB_DESIGNABLE
 
 -(void)PMAlertViewControllerDissmis:(PMAlertViewController *)viewContorller {
     [UIView animateWithDuration:0.4 animations:^{
-//        [UIApplication sharedApplication].keyWindow.window.backgroundColor = [UIColor clearColor];
-//        UIViewController *controller = kMainViewController;
-//        controller.view.backgroundColor = [UIColor whiteColor];
-//        [self animateAlpha:1];
+
         self.tabBarController.tabBar.userInteractionEnabled = YES;
         self.tabBarController.tabBar.hidden = NO;
 

@@ -3,7 +3,7 @@
 //  planckMailiOS
 //
 //  Created by nazar on 10/19/15.
-//  Copyright © 2015 LHlozhyk. All rights reserved.
+//  Copyright © 2015 Nazar Stadnytsky. All rights reserved.
 //
 
 #import "PMAlertViewController.h"
@@ -14,8 +14,9 @@
 #import "DBManager.h"
 #import "DBNamespace.h"
 #import "MBProgressHUD.h"
+#import "PMPickerViewController.h"
 
-@interface PMAlertViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate>
+@interface PMAlertViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate, PMPickerViewControllerDelegate>
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *iconsArray;
 @property (nonatomic, strong) NSArray *titlesArray;
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIAlertView *alertView;
 @property (nonatomic, weak) DBNamespace *namespace;
+@property (nonatomic, strong) UIVisualEffectView *blurEffectView;
 @end
 
 @implementation PMAlertViewController
@@ -37,6 +39,11 @@
     
     [self confrigurCollectionView];
     [self configureFakeTextField];
+    
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+   self.blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    
+    self.blurEffectView.frame = self.view.bounds;
     
 }
 
@@ -104,7 +111,6 @@
     return [self.titlesArray count];
 }
 
-
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     PMAlertCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
@@ -113,6 +119,16 @@
     cell.titleLabel.text = self.titlesArray[indexPath.row];
     [cell.contentView.layer setBorderColor:[UIColor colorWithRed:0.83 green:0.82 blue:0.8 alpha:1].CGColor];
     [cell.contentView.layer setBorderWidth:1];
+    
+    if (indexPath.row == 8) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, 80, 80)];
+        label.text = @"08";
+        label.font = [UIFont systemFontOfSize:55];
+        //[cell addSubview:label];
+        [cell.imageView addSubview:label];
+    }
+    
+    
    
 
     return cell;
@@ -122,16 +138,22 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-//    [[PMAPIManager shared] deleteFolderWithId:@"36m61hvf5qidcc6l40r8au09u" account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
-//        
-//    }];
     if (indexPath.row == 7) {
         [self dismissVc];
     }
     else if (indexPath.row == 8) {
-        [DBManager deleteAllInboxMailModelFromDB];
-        [self.fakeTextField becomeFirstResponder];
+        //[DBManager deleteAllInboxMailModelFromDB];
+        //[self.fakeTextField becomeFirstResponder];
+            PMPickerViewController *alert = [[PMPickerViewController alloc] init];
+            alert.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            alert.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            alert.view.backgroundColor = [UIColor clearColor];
+        
+        
+        [self.view addSubview:self.blurEffectView];
+            alert.delegate = self;
+            [self presentViewController:alert animated:YES completion:NULL];
+        
     } else {
         NSString *scheduledFolderId = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
         
@@ -249,9 +271,26 @@
             }
             
         }];
-
-        
     }
+
+}
+
+#pragma mark - PMPickerViewControllerDelegate
+
+-(void)PMPickerViewController:(PMPickerViewController *)viewController setDate:(NSDate *)date {
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.blurEffectView removeFromSuperview];
+
+    });
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    [self moveMeilToFollowUp];
+    
+}
+-(void)PMPickerViewControllerDismiss:(PMPickerViewController*)viewController {
+    [self.blurEffectView removeFromSuperview];
 
 }
 /*

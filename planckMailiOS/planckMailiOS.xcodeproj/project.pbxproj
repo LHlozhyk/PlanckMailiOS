@@ -13,6 +13,8 @@
 		780EA1371BD54C4B00CBA45A /* PMAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780EA1351BD54C4B00CBA45A /* PMAlertViewController.xib */; };
 		781259B81BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 781259B51BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.m */; };
 		781259B91BE770EF008D4921 /* DBInboxMailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 781259B71BE770EF008D4921 /* DBInboxMailModel.m */; };
+		783BAD9B1BE7AA7700FF3022 /* PMPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 783BAD991BE7AA7700FF3022 /* PMPickerViewController.m */; };
+		783BAD9C1BE7AA7700FF3022 /* PMPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783BAD9A1BE7AA7700FF3022 /* PMPickerViewController.xib */; };
 		78AD2A931BD6986000D0C963 /* PMAlertCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AD2A911BD6986000D0C963 /* PMAlertCollectionViewCell.m */; };
 		78AD2A941BD6986000D0C963 /* PMAlertCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78AD2A921BD6986000D0C963 /* PMAlertCollectionViewCell.xib */; };
 		840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 840156DB1B27A51600E92CA7 /* PMPreviewMailVC.m */; };
@@ -199,6 +201,9 @@
 		781259B51BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DBInboxMailModel+CoreDataProperties.m"; sourceTree = "<group>"; };
 		781259B61BE770EF008D4921 /* DBInboxMailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBInboxMailModel.h; sourceTree = "<group>"; };
 		781259B71BE770EF008D4921 /* DBInboxMailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBInboxMailModel.m; sourceTree = "<group>"; };
+		783BAD981BE7AA7700FF3022 /* PMPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPickerViewController.h; sourceTree = "<group>"; };
+		783BAD991BE7AA7700FF3022 /* PMPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPickerViewController.m; sourceTree = "<group>"; };
+		783BAD9A1BE7AA7700FF3022 /* PMPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMPickerViewController.xib; sourceTree = "<group>"; };
 		78AD2A901BD6986000D0C963 /* PMAlertCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMAlertCollectionViewCell.h; sourceTree = "<group>"; };
 		78AD2A911BD6986000D0C963 /* PMAlertCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMAlertCollectionViewCell.m; sourceTree = "<group>"; };
 		78AD2A921BD6986000D0C963 /* PMAlertCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMAlertCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -738,6 +743,9 @@
 				78AD2A901BD6986000D0C963 /* PMAlertCollectionViewCell.h */,
 				78AD2A911BD6986000D0C963 /* PMAlertCollectionViewCell.m */,
 				78AD2A921BD6986000D0C963 /* PMAlertCollectionViewCell.xib */,
+				783BAD981BE7AA7700FF3022 /* PMPickerViewController.h */,
+				783BAD991BE7AA7700FF3022 /* PMPickerViewController.m */,
+				783BAD9A1BE7AA7700FF3022 /* PMPickerViewController.xib */,
 			);
 			name = MessagesTableView;
 			sourceTree = "<group>";
@@ -1676,6 +1684,7 @@
 				847885661B96078000681EBA /* PMMessagesTableView.xib in Resources */,
 				8475C1621B963DD40091F955 /* PMLoadMoreTVCell.xib in Resources */,
 				78AD2A941BD6986000D0C963 /* PMAlertCollectionViewCell.xib in Resources */,
+				783BAD9C1BE7AA7700FF3022 /* PMPickerViewController.xib in Resources */,
 				842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */,
 				84A9E3721B5F02DD009DD409 /* PMSelectionEmailView.xib in Resources */,
 				C3654CE81BC94F1D00A08521 /* PMPreviewTableView.xib in Resources */,
@@ -1785,6 +1794,7 @@
 				781259B81BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.m in Sources */,
 				840D8C931BAF4E8C001C8B60 /* PMEventAlertVC.m in Sources */,
 				C3654CEB1BC94F3400A08521 /* PMPreviewTableView.m in Sources */,
+				783BAD9B1BE7AA7700FF3022 /* PMPickerViewController.m in Sources */,
 				847D87D11B4334EE0044A676 /* PMSearchMailVC.m in Sources */,
 				8497B11B1B370CD5009CEC5E /* PMPreviewContentView.m in Sources */,
 				847B60FA1B617A7B0025DF58 /* PMMailComposeBodyTVCell.m in Sources */,
