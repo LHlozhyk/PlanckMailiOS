@@ -19,6 +19,7 @@
 @end
 
 @implementation AppDelegate
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //TODO: don't remove this code
     //    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
@@ -44,7 +45,6 @@
     //
     //        [application registerUserNotificationSettings: settings];
     //    }
-    application.applicationIconBadgeNumber = 0;
     
     [self setUpCustomDesign];
     
@@ -52,14 +52,7 @@
     [PMLocalNotification cancelNotifications];
     
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    
-    NSArray *lNamespacesArray = [[DBManager instance] getNamespaces];
-    if (lNamespacesArray.count > 0) {
-        //        UITabBarController *lMainTabBar = [STORYBOARD instantiateViewControllerWithIdentifier:@"MainTabBar"];
-        //        [(UINavigationController *)self.window.rootViewController setNavigationBarHidden:YES];
-        //        [(UINavigationController *)self.window.rootViewController pushViewController:lMainTabBar animated:NO];
-    }
-    
+
     [PMLocalNotification checkDisabledLocalNotification:^(DisabledLocalNotificationType type) {
         NSString *lStatusString = nil;
         switch (type) {
@@ -132,7 +125,7 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBarTintColor:NAVIGATION_BAR_TIN_COLOR];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UITabBar appearance] setSelectedImageTintColor:NAVIGATION_BAR_TIN_COLOR];
+    [[UITabBar appearance] setTintColor:NAVIGATION_BAR_TIN_COLOR];
 }
 
 #pragma mark - UIAlertView delegates
@@ -142,7 +135,6 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
     }
 }
-
 
 #pragma mark - WatchKit Extention
 

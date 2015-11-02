@@ -50,6 +50,7 @@
 
 - (IBAction)menuBtnPressed:(id)sender;
 - (IBAction)createEventBtnPressed:(id)sender;
+- (IBAction)eventListBtnPressed:(id)sender;
 @end
 
 @implementation PMCalendarVC
@@ -71,6 +72,12 @@
                                   @"offset" : @(_offset)
                                   };
     __weak typeof(self)__self = self;
+    
+    [[PMAPIManager shared] getTheadWithAccount:[[PMAPIManager shared] namespaceId] completion:^(id error, BOOL success) {
+        
+    }];
+    
+    
     [[PMAPIManager shared] getEventsWithAccount:[[PMAPIManager shared] namespaceId] eventParams:eventParams comlpetion:^(id data, id error, BOOL success) {
         dispatch_async(dispatch_get_main_queue(), ^{
             __self.eventsArray = data;

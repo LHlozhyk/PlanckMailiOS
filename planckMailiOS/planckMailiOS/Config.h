@@ -16,4 +16,14 @@
 
 #define NAVIGATION_BAR_TIN_COLOR [UIColor colorWithRed:90.0f/255.0f green:196.0f/255.0f blue:180.0f/255.0f alpha:1.0f]
 
+//mail labels
+
+#define LABEL_ALL       @"all"
+#define LABEL_SENT      @"sent"
+#define LABEL_INBOX     @"inbox"
+#define LABEL_IMPORTANT @"important"
+#define LABEL_TRASH     @"trash"
+#define LABEL_SPAM      @"spam"
+#define LABEL_DRAFTS    @"drafts"
+
 #endif

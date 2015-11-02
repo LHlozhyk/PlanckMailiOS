@@ -62,6 +62,7 @@
             lNewNamespace.email_address = lFirstItem[@"email_address"];
             lNewNamespace.name = lFirstItem[@"name"];
             lNewNamespace.namespace_id = lFirstItem[@"namespace_id"];
+            lNewNamespace.organizationUnit = lFirstItem[@"organization_unit"];
             
             DLog(@"namespace id - %@", lFirstItem[@"namespace_id"]);
             
@@ -75,7 +76,9 @@
                 lNewNamespace.unreadCount = responseObject[@"count"];
                 
                 [self saveToken:token andEmail:lNewNamespace.email_address completion:^(id error, BOOL success) {
-                    handler(nil, YES);
+                    [self addUserToPriorityListWithAccount:lNewNamespace completion:^(id data, id error, BOOL success) {
+                        handler(nil, YES);
+                    }];
                 }];
                 
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -100,7 +103,6 @@
     [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
 }
 
-
 - (void)getInboxMailWithAccount:(id<PMAccountProtocol>)account limit:(NSUInteger)limit offset:(NSUInteger)offset completion:(ExtendedBlockHandler)handler {
     
     
@@ -114,26 +116,12 @@
 - (void)getReadLaterMailWithAccount:(id<PMAccountProtocol>)account
                               limit:(NSUInteger)limit
                              offset:(NSUInteger)offset
-                         completion:(ExtendedBlockHandler)handler{
-    NSDictionary *lParameters = @{@"in" : @"READ_LATER",
+                         completion:(ExtendedBlockHandler)handler {
+    NSDictionary *lParameters = @{@"in" : @"READ LATER",
                                   @"limit" : @(limit),
                                   @"offset" : @(offset)
                                   };
     [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
-}
-
--(void)getFollowUpsMailWithAccount:(id<PMAccountProtocol>)account
-                             limit:(NSUInteger)limit
-                            offset:(NSUInteger)offset
-                        completion:(ExtendedBlockHandler)handler{
-
-
-    NSDictionary *lParameters = @{@"in" : SCHEDULED,
-                                  @"limit" : @(limit),
-                                  @"offset" : @(offset)
-                                  };
-    [self getMailsWithAccount:account parameters:lParameters path:@"/threads" completion:handler];
-
 }
 
 - (void)searchMailWithKeyword:(NSString *)keyword account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
@@ -179,12 +167,12 @@
     }];
 }
 
-- (void)archiveMailWithThreadId:(NSString *)threadId account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler{
+- (void)archiveMailWithThreadId:(PMInboxMailModel *)thread account:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler{
     
     NSString *archiveFolderId = [PMStorageManager getFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id forKey:ARCHIVE];
     DLog(@"archiveFolderId = %@", archiveFolderId);
     
-    [[PMAPIManager shared] moveMailWithThreadId:threadId account:[PMAPIManager shared].namespaceId toFolder:archiveFolderId completion:^(id data, id error, BOOL success) {
+    [[PMAPIManager shared] moveMailWithThreadId:thread account:[PMAPIManager shared].namespaceId toFolder:archiveFolderId completion:^(id data, id error, BOOL success) {
         if (success) {
             handler(data, nil, YES);
         }else {
@@ -254,7 +242,7 @@
 
 - (void)getFoldersWithAccount:(id<PMAccountProtocol>)account comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
+    [_networkManager GET:[PMRequest foldersWithNamespaceId:account folderId:nil] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
         if(handler) {
             handler(responseObject, nil, YES);
         }
@@ -266,7 +254,7 @@
 
 - (void)getFoldersWithAccount:(id<PMAccountProtocol>)account folderId:(NSString*)folderId comlpetion:(ExtendedBlockHandler)handler {
     [_networkManager setCurrentToken:account.token];
-    [_networkManager GET:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
+    [_networkManager GET:[PMRequest foldersWithNamespaceId:account folderId:folderId] parameters:nil success:^ (NSURLSessionDataTask *task, id responseObject) {
         if(handler) {
             handler(responseObject, nil, YES);
         }
@@ -282,13 +270,13 @@
     
     NSDictionary *lParams = @{@"display_name":folderName};
     [_networkManager setCurrentToken:account.token];
-    [_networkManager POST:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:nil] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
+    [_networkManager POST:[PMRequest foldersWithNamespaceId:account folderId:nil] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
         if(handler) {
             handler(responseObject, nil, YES);
         }
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
         if(handler) {
-            handler(nil, error, NO); 
+            handler(nil, error, NO);
         }
     }];
     
@@ -301,7 +289,7 @@
     
     NSDictionary *lParams = @{@"display_name":newFolderName};
     [_networkManager setCurrentToken:account.token];
-    [_networkManager PUT:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
+    [_networkManager PUT:[PMRequest foldersWithNamespaceId:account folderId:folderId] parameters:lParams success:^ (NSURLSessionDataTask *task, id responseObject) {
         if(handler) {
             handler(responseObject, nil, YES);
         }
@@ -312,15 +300,12 @@
     }];
 }
 
--(void)deleteFolderWithId:(NSString*)folderId
-                  account:(id<PMAccountProtocol>)account
-               completion:(ExtendedBlockHandler)handler {
-
-//    NSLog(@"iddd %@",[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId]);
-//    NSLog(@"getScheduledFolderIdForAccount");
+- (void)deleteFolderWithId:(NSString*)folderId
+                   account:(id<PMAccountProtocol>)account
+                completion:(ExtendedBlockHandler)handler {
     
     [_networkManager setCurrentToken:account.token];
-    [_networkManager DELETE:[PMRequest foldersWithNamespaceId:account.namespace_id folderId:folderId] parameters:nil
+    [_networkManager DELETE:[PMRequest foldersWithNamespaceId:account folderId:folderId] parameters:nil
                     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
                         if (handler) {
                             handler(responseObject, nil, YES);
@@ -330,16 +315,25 @@
                             handler(nil, error, NO);
                         }
                     }];
-
+    
 }
 
--(void)moveMailWithThreadId:(NSString*)threadId account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId completion:(ExtendedBlockHandler)handler {
-    
-    NSDictionary *lParameters = @{@"folder_id" : folderId};
+- (void)moveMailWithThreadId:(PMInboxMailModel*)thread account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId completion:(ExtendedBlockHandler)handler {
+    NSDictionary *lParameters = nil;
+    if(thread.folders) {
+        lParameters = @{@"folder_id" : folderId};
+    } else {
+        NSMutableArray *labelIDs = [NSMutableArray arrayWithArray:@[folderId]];
+        NSString *sentID = [thread sentLabelID];
+        if(sentID) {
+            [labelIDs addObject:sentID];
+        }
+        lParameters = @{@"label_ids" : labelIDs};
+    }
     
     [_networkManager setCurrentToken:account.token];
-
-    [_networkManager PUT:[PMRequest messageId:threadId] parameters:lParameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    
+    [_networkManager PUT:[PMRequest threadId:thread.messageId] parameters:lParameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         DLog(@"success");
         handler(responseObject, nil, YES);
     } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
@@ -347,7 +341,7 @@
         DLog(@"error = %@",[error localizedDescription]);
         handler(nil, error, NO);
     }];
-
+    
 }
 
 #pragma mark - Calendars
@@ -400,8 +394,14 @@
     [_networkManager setCurrentToken:account.token];
     [_networkManager POST:@"/events" parameters:eventParams success:^ (NSURLSessionDataTask *task, id responseObject) {
         DLog(@"createCalendarEventWithAccount - %@", responseObject);
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
     } failure:^ (NSURLSessionDataTask *task, NSError *error) {
-        
+        DLog(@"error: %@", error);
+        if(handler) {
+            handler(nil, error, NO);
+        }
     }];
 }
 
@@ -457,7 +457,7 @@
     }];
 }
 
-- (void)getTokenWithEmail:(NSString *)email completion:(BasicBlockHandler)handler {
+- (void)getTokenWithEmail:(NSString *)email completion:(ExtendedBlockHandler)handler {
     AFHTTPSessionManager *lNewSessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://token-store-dev.elasticbeanstalk.com/server/"]];
     lNewSessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [lNewSessionManager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -471,11 +471,11 @@
     [lNewSessionManager POST:@"get_token" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
         DLog(@"getTokenWithEmail -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
         if(handler) {
-            handler(nil, YES);
+            handler(responseObject, nil, YES);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if(handler) {
-            handler(nil, NO);
+            handler(error, nil, NO);
         }
         DLog(@"getTokenWithEmail - ftask - %@  / error - %@", task, error);
     }];
@@ -500,6 +500,59 @@
             handler(nil, NO);
         }
         DLog(@"deleteTokenWithEmail - ftask - %@  / error - %@", task, error);
+    }];
+}
+
+- (void)addUserToPriorityListWithAccount:(id<PMAccountProtocol>)account completion:(ExtendedBlockHandler)handler {
+    AFHTTPSessionManager *lNewSessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://token-store-dev.elasticbeanstalk.com/server/"]];
+    lNewSessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [lNewSessionManager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+     __block NSString* lEmail = ((DBNamespace*)account).email_address;
+    
+    NSDictionary *lParams = @{@"email_id" : lEmail,
+                              @"token" : account.token
+                              };
+    
+    [lNewSessionManager POST:@"add_user_to_priority_list" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
+        DLog(@"getTheadWithAccount -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+        if(handler) {
+            handler(responseObject, nil, YES);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if(handler) {
+            handler(error, nil, NO);
+        }
+        DLog(@"getTheadWithAccount - ftask - %@  / error - %@", task, error);
+    }];
+    
+}
+
+- (void)getTheadWithAccount:(id<PMAccountProtocol>)account completion:(BasicBlockHandler)handler {
+    AFHTTPSessionManager *lNewSessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://token-store-dev.elasticbeanstalk.com/server/"]];
+    lNewSessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [lNewSessionManager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    __block NSString* lEmail = ((DBNamespace*)account).email_address;
+    
+    [self getTokenWithEmail:lEmail completion:^(id data, id error, BOOL success) {
+        NSLog(@"data - %@", data);
+        NSDictionary * lResponseDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        NSDictionary *lParams = @{@"email_id" : lEmail,
+                                  @"token" : lResponseDic[@"token"],
+                                  @"important_thread_count" : @10,
+                                  @"unimportant_thread_count" : @20
+                                  };
+        
+        [lNewSessionManager POST:@"get_top_threads_with_msgs_by_tag" parameters:lParams success:^(NSURLSessionDataTask *task, id responseObject) {
+            DLog(@"getTheadWithAccount -  stask - %@  / response - %@", task, [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+            if(handler) {
+                handler(nil, YES);
+            }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            if(handler) {
+                handler(nil, NO);
+            }
+            DLog(@"getTheadWithAccount - ftask - %@  / error - %@", task, error);
+        }];
     }];
 }
 

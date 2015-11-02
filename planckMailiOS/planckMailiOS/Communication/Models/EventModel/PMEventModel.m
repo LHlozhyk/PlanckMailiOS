@@ -8,6 +8,7 @@
 
 #import "PMEventModel.h"
 #import "PMParticipantModel.h"
+#import "NSDate+DateConverter.h"
 
 @interface PMEventModel ()
 - (id)whenEventTakePlaceParams;
@@ -26,7 +27,7 @@
         self.location = stringValue(eventDictionary[@"location"]);
         self.calendarId = eventDictionary[@"calendar_id"];
         self.eventDescription = stringValue(eventDictionary[@"description"]);
-        self.owner = eventDictionary[@"owner"];
+        self.owner = stringValue(eventDictionary[@"owner"]);
         
         _readonly = [eventDictionary[@"read_only"] boolValue];
         
@@ -106,7 +107,8 @@
              @"when" : [self whenEventTakePlaceParams],
              @"location" : _location,
              @"calendar_id" : _calendarId,
-             @"participants" : [self partisipantsParams]
+             @"participants" : [self partisipantsParams],
+             @"owner" : _owner
              };
 }
 
@@ -128,16 +130,17 @@
 
 - (id)whenEventTakePlaceParams {
     return @{
-             @"start_time" : _startTime,
-             @"end_time" : _endTime
+             @"start_time" : [NSString stringWithFormat:@"%f", [[NSDate eventDateFromString:_startTime dateFormat:@"dd MMM. yyyy HH:mm"] timeIntervalSince1970]],
+             @"end_time" : [NSString stringWithFormat:@"%f", [[NSDate eventDateFromString:_endTime dateFormat:@"dd MMM. yyyy HH:mm"] timeIntervalSince1970]]
              };
 }
 
 - (id)partisipantsParams {
     return @[
              @{
-                 @"email": @"example@gmail.com",
-                 @"name": @"Ben Bitdiddle"
+                 @"email": @"lyubomyr.hlozhyk@gmail.com",
+                 @"name": @"Lyubomyr Hlozhyk",
+                 @"status" : @"yes"
                  }
              ];
 }

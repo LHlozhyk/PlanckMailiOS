@@ -352,22 +352,23 @@ IB_DESIGNABLE
 }
 
 -(void)updateFollowsUp {
-    
-    
-    //[[PMAPIManager shared] getFollowUpsMailWithAccount:[PMAPIManager shared].namespaceId limit:COUNT_MESSAGES offset:_offsetFollowUps completion:^(id data, id error, BOOL success) {
-        [MBProgressHUD hideAllHUDsForView:_view3 animated:YES];
-        [_itemFollowUpsArray addObjectsFromArray:[[DBManager instance] getInboxMailModel]];
-        [[self currentTableView] reloadMessagesTableView];
-        _offsetFollowUps += COUNT_MESSAGES;
-        
-    //}];
-    
+    NSString *folderID = [PMStorageManager getScheduledFolderIdForAccount:[PMAPIManager shared].namespaceId.namespace_id];
+    if(folderID) {
+        [[PMAPIManager shared] getMailsWithAccount:[PMAPIManager shared].namespaceId limit:COUNT_MESSAGES offset:_offsetFollowUps filter:folderID completion:^(id data, id error, BOOL success) {
+            [MBProgressHUD hideAllHUDsForView:_view3 animated:YES];
+            [_itemFollowUpsArray addObjectsFromArray:data];
+            [[self currentTableView] reloadMessagesTableView];
+            _offsetFollowUps += COUNT_MESSAGES;
+        }];
+    }
 }
 
 - (void)updateFolders {
     __weak typeof(id<PMAccountProtocol>)account = [PMAPIManager shared].namespaceId;
     [[PMAPIManager shared] getFoldersWithAccount:[PMAPIManager shared].namespaceId comlpetion:^(id data, id error, BOOL success) {
-        [PMStorageManager setFolders:data forAccount:account.namespace_id];
+        if(data) {
+            [PMStorageManager setFolders:data forAccount:account.namespace_id];
+        }
     }];
 }
 
@@ -481,20 +482,22 @@ IB_DESIGNABLE
 #pragma mark - PMAlertViewControllerDelegate
 
 -(void)PMAlertViewControllerDissmis:(PMAlertViewController *)viewContorller {
-
-    
     [UIView animateWithDuration:0.4 animations:^{
         [UIApplication sharedApplication].keyWindow.window.backgroundColor = [UIColor clearColor];
         UIViewController *controller = kMainViewController;
         controller.view.backgroundColor = [UIColor whiteColor];
         [self animateAlpha:1];
         self.tabBarController.tabBar.userInteractionEnabled = YES;
-
-
     }];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"enableSwipe" object:nil];
+}
 
+- (void)didShoozedMeil:(PMInboxMailModel *)meil {
+    [_itemFollowUpsArray addObject:meil];
+    [[self selectedDataSource] removeObject:meil];
     
+    [[self currentTableView] reloadMessagesTableView];
+
 }
 
 #pragma mark - PMPreviewMailVC delegate
@@ -589,9 +592,7 @@ IB_DESIGNABLE
     return lNewArray;
 }
 
-- (NSArray *)selectedDataSource {
-
-  
+- (NSMutableArray *)selectedDataSource {
     if (_selectedTableType == ImportantMessagesSelected) {
         return _itemMailArray;
     }else if (_selectedTableType == ReadLaterMessagesSelected) {

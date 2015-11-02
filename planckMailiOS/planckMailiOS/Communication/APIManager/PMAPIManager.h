@@ -14,6 +14,7 @@
 typedef void (^BasicBlockHandler)(id error, BOOL success);
 typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 
+@class PMInboxMailModel;
 @interface PMAPIManager : NSObject 
 
 + (PMAPIManager *)shared;
@@ -29,15 +30,6 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                          offset:(NSUInteger)offset
                      completion:(ExtendedBlockHandler)handler;
 
--(void)getFollowUpsMailWithAccount:(id<PMAccountProtocol>)account
-                             limit:(NSUInteger)limit
-                            offset:(NSUInteger)offset
-                        completion:(ExtendedBlockHandler)handler;
-
-//- (void)getDetailWithMessageId:(NSString *)messageId
-//                  account:(id<PMAccountProtocol>)account
-//                    completion:(ExtendedBlockHandler)handle;
-
 - (void)searchMailWithKeyword:(NSString *)keyword
                       account:(id<PMAccountProtocol>)account
                    completion:(ExtendedBlockHandler)handler;
@@ -46,7 +38,7 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                        account:(id<PMAccountProtocol>)account
                     completion:(ExtendedBlockHandler)handler;
 
-- (void)archiveMailWithThreadId:(NSString *)threadId
+- (void)archiveMailWithThreadId:(PMInboxMailModel *)thread
                         account:(id<PMAccountProtocol>)account
                      completion:(ExtendedBlockHandler)handler;
 
@@ -83,7 +75,7 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 -(void)deleteFolderWithId:(NSString*)folderId
                   account:(id<PMAccountProtocol>)account
                completion:(ExtendedBlockHandler)handler;
--(void)moveMailWithThreadId:(NSString*)threadId account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId completion:(ExtendedBlockHandler)handler;
+-(void)moveMailWithThreadId:(PMInboxMailModel*)thread account:(id<PMAccountProtocol>)account toFolder:(NSString*)folderId completion:(ExtendedBlockHandler)handler;
 //----
 
 - (void)deleteTokenWithEmail:(NSString *)email
@@ -115,6 +107,9 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
 - (void)updateCalendarEventWithAccount:(id<PMAccountProtocol>)account
                            eventParams:(NSDictionary *)eventParams
                             comlpetion:(ExtendedBlockHandler)handler;
+
+- (void)getTheadWithAccount:(id<PMAccountProtocol>)account
+                 completion:(BasicBlockHandler)handler;
 
 @property (nonatomic, readonly) DBNamespace *namespaceId;
 @property (nonatomic, readonly) NSString *emailAddress;

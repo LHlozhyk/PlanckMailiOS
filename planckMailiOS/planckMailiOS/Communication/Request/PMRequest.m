@@ -8,6 +8,7 @@
 
 #import "PMRequest.h"
 #import "Config.h"
+#import "DBNamespace.h"
 
 @implementation PMRequest
 
@@ -53,19 +54,25 @@
 + (NSString *)unreadMessagesCount {
   return [NSString stringWithFormat:@"%@/messages?tag=inbox&unread=true&view=count", APP_SERVER_LINK];
 }
-+ (NSString *)foldersWithNamespaceId:(NSString *)namespaceId
-                            folderId:(NSString *)folderId{
++ (NSString *)foldersWithNamespaceId:(DBNamespace *)namespaceId
+                            folderId:(NSString *)folderId {
+    NSString *unitName = [namespaceId.organizationUnit isEqualToString:@"label"]? @"labels" : @"folders";
+    
     if (folderId){
-    return [NSString stringWithFormat:@"%@/n/%@/folders/%@",APP_SERVER_LINK,namespaceId,folderId];
-    }
-    else {
-    return [NSString stringWithFormat:@"%@/n/%@/folders",APP_SERVER_LINK,namespaceId];
+        return [NSString stringWithFormat:@"%@/%@/%@",APP_SERVER_LINK, unitName, folderId];
+    } else {
+        return [NSString stringWithFormat:@"%@/%@",APP_SERVER_LINK, unitName];
     }
 }
 
 + (NSString*)messageId:(NSString*)messageId {
 
     return [NSString stringWithFormat:@"%@/messages/%@",APP_SERVER_LINK,messageId];
+}
+
++ (NSString*)threadId:(NSString*)messageId {
+    
+    return [NSString stringWithFormat:@"%@/threads/%@",APP_SERVER_LINK,messageId];
 }
 
 @end

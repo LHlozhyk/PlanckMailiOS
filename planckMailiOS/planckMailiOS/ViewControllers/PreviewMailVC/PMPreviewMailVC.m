@@ -207,7 +207,7 @@
                 break;
             }
             case 1: {
-                [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel.messageId account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
+                [[PMAPIManager shared] archiveMailWithThreadId:_inboxMailModel account:[PMAPIManager shared].namespaceId completion:^(id data, id error, BOOL success) {
                     
                     DLog(@"archiveMailWithThreadId - %@", data);
                     if (_delegate && [_delegate respondsToSelector:@selector(PMPreviewMailVCDelegateAction:mail:)]) {

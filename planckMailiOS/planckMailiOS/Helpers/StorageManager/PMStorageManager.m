@@ -36,14 +36,6 @@
 
 #pragma mark - Follow-up methods
 
-/*
- "id": "4zv7pgvihjvuptbwv57kiz62",
- "object": "folder",
- "name": "inbox",
- "display_name": "INBOX",
- "account_id": "awa6ltos76vz5hvphkp8k17nt"
- */
-
 + (void)setFolders:(NSArray *)folders forAccount:(NSString *)accountId {
     NSMutableDictionary *accountInfo = [self infoForAccount:accountId];
     [accountInfo setObject:folders forKey:ACCOUNT_FOLDERS];
