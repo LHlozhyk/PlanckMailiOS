@@ -13,6 +13,8 @@
 
 typedef void (^BasicBlockHandler)(id error, BOOL success);
 typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
+typedef void (^DownloadBlockHandler)(NSURLResponse *responseData, NSURL *filepath, NSError *error);
+typedef void (^UploadBlockHandler)(NSURLResponse *response, id responseObject, NSError *error);
 
 @class PMInboxMailModel;
 @interface PMAPIManager : NSObject 
@@ -108,6 +110,12 @@ typedef void (^ExtendedBlockHandler)(id data, id error, BOOL success);
                            eventParams:(NSDictionary *)eventParams
                             comlpetion:(ExtendedBlockHandler)handler;
 
+-(NSURLSessionDownloadTask*)downloadFileWithAccount:(id<PMAccountProtocol>)account
+                        file:(NSDictionary*)file
+                        completion:(DownloadBlockHandler)handler;
+-(NSURLSessionUploadTask*)uploadFileWithAccount:(id<PMAccountProtocol>)account
+                                         filepath:(NSString*)filepath
+                                         completion:(UploadBlockHandler)handler;
 - (void)getTheadWithAccount:(id<PMAccountProtocol>)account
                  completion:(BasicBlockHandler)handler;
 

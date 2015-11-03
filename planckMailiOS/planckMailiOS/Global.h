@@ -19,6 +19,10 @@
 
 #define KEYBOARD_HEIGHT_OFFSET  (([UIScreen mainScreen].bounds.size.height < 568.0f) ? 175.0f : 90.0f)
 
+
+// Emelyan
+#define FILE_DOWNLOAD_FAILURE "File download was failed"
+
 //screen
 
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)

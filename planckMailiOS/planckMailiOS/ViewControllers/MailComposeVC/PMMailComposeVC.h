@@ -29,4 +29,6 @@ typedef enum {
 @property(nonatomic, copy) NSString *emails;
 @property(nonatomic, retain) PMDraftModel *draft;
 @property(nonatomic, weak) id<PMMailComposeVCDelegate> mailComposeDelegate;
+
+@property(nonatomic, strong) NSMutableArray *files;
 @end

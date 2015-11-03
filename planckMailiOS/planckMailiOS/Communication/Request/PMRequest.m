@@ -75,4 +75,13 @@
     return [NSString stringWithFormat:@"%@/threads/%@",APP_SERVER_LINK,messageId];
 }
 
++(NSString *)downloadFileWithFileId:(NSString *)fileId namespacesId:(NSString *)namespacesId
+{
+    return [NSString stringWithFormat:@"%@/n/%@/files/%@/download", APP_SERVER_LINK, namespacesId, fileId];
+}
+
++(NSString *)uploadFileWithAccount:(NSString *)namespacesId
+{
+    return [NSString stringWithFormat:@"%@/n/%@/files", APP_SERVER_LINK, namespacesId];
+}
 @end

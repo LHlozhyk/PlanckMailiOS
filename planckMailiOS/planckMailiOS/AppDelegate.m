@@ -12,6 +12,10 @@
 #import "PMWatchRequestHandler.h"
 #import "Config.h"
 #import "AFNetworkActivityIndicatorManager.h"
+
+#import <DropboxSDK/DropboxSDK.h>
+#import <BoxContentSDK/BOXContentSDK.h>
+#import <OneDriveSDK/OneDriveSDK.h>
 #import "PMLocalNotification.h"
 
 @interface AppDelegate () <UIAlertViewDelegate>
@@ -80,9 +84,36 @@
         }
     }];
     
+	
+	// ======================= DropBox Settings ============================
+    DBSession *dbSession = [[DBSession alloc]
+                            initWithAppKey:@DROPBOX_APP_KEY
+                            appSecret:@DROPBOX_APP_SECRET
+                            root:kDBRootDropbox]; // either kDBRootAppFolder or kDBRootDropbox
+    [DBSession setSharedSession:dbSession];
+    
+    // ======================= Box Settings =========================
+    [BOXContentClient setClientID:@BOX_CLIENT_ID clientSecret:@BOX_CLIENT_SECRET];
+    
+    // ======================= OneDrive Settings ====================
+    [ODClient setMicrosoftAccountAppId:@ONEDRIVE_APP_ID scopes:@[@"onedrive.readwrite"] ];
+    
+
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
+  sourceApplication:(NSString *)source annotation:(id)annotation {
+    if ([[DBSession sharedSession] handleOpenURL:url]) {
+        if ([[DBSession sharedSession] isLinked]) {
+            NSLog(@"App linked successfully!");
+            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"OPEN_DROPBOX_VIEW" object:nil]];
+        }
+        return YES;
+    }
+    // Add whatever other url handling code your app requires here
+    return NO;
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     
 }
@@ -149,6 +180,16 @@
                                                                    }];
     
     [[PMWatchRequestHandler sharedHandler] handleWatchKitExtensionRequest:userInfo reply:reply];
+}
+
+
+
+
+
+// =========================== Custom Method ==========================
++(instancetype)sharedInstance
+{
+    return (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 
 @end

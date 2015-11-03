@@ -13,9 +13,15 @@
 #import "PMMailComposeBodyTVCell.h"
 #import "PMAPIManager.h"
 #import "MBProgressHUD.h"
+#import "PMFileItem.h"
+#import "PMFileManager.h"
+#import "PMMailComposeAttachCell.h"
+#import <AFNetworking/UIProgressView+AFNetworking.h>
+#import "PMFilesNC.h"
 
-@interface PMMailComposeVC () <PMSelectionEmailViewDelegate, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, PMMailComposeTVCellDelegate, PMMailComposeBodyTVCellDelegate> {
+@interface PMMailComposeVC () <PMSelectionEmailViewDelegate, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, PMMailComposeTVCellDelegate, PMMailComposeBodyTVCellDelegate, PMMailComposeAttachCellDelegate> {
     __weak IBOutlet UIBarButtonItem *_sentBarBtn;
+    __weak IBOutlet UIBarButtonItem *attachBarBtn;
     __weak IBOutlet UIButton *_emailBtn;
     __weak IBOutlet UITableView *_tableView;
     
@@ -25,11 +31,18 @@
     __weak IBOutlet UITextView *_bodyTextView;
     
     NSMutableDictionary *_dataInfo;
+    
+    
+    NSMutableDictionary *uploadedFlags;
+    NSMutableDictionary *fileIds;
 }
 - (IBAction)closeBtnPressed:(id)sender;
 - (IBAction)sentBtnPressed:(id)sender;
 - (IBAction)selectMailBtnPressed:(id)sender;
+- (IBAction)attachBtnPressed:(id)sender;
 @end
+
+static int nUploadingCount = 0;
 
 @implementation PMMailComposeVC
 
@@ -47,13 +60,69 @@
     [_emailBtn setTitle:lItemModel.email_address forState:UIControlStateNormal];
     
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    
+
+    
+    uploadedFlags = [[NSMutableDictionary alloc] init];
+    
+    [self performSelector:@selector(uploadFiles) withObject:nil afterDelay:.1];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Private methods 
+-(void) uploadFiles
+{
+    for(int i=0; i<_files.count; i++)
+    {
+        NSString *filepath = _files[i];
+        
+        NSNumber *uploadedFlag = [uploadedFlags objectForKey:filepath];
+        if(uploadedFlag==nil || [uploadedFlag boolValue]==NO)
+        {
+            
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:4+i inSection:0];
+            PMMailComposeAttachCell *attachcell = [_tableView cellForRowAtIndexPath:indexPath];
+            
+            
+            NSURLSessionUploadTask *uploadTask = [[PMAPIManager shared] uploadFileWithAccount:[PMAPIManager shared].namespaceId filepath:filepath completion:^(NSURLResponse *response, id responseObject, NSError *error) {
+                
+                NSDictionary *jsonResult = (NSDictionary*)responseObject[0];
+                
+                NSLog(@"File upload response: %@", jsonResult);
+                NSString *fileId = [jsonResult objectForKey:@"id"];
+                
+                
+                if(fileIds==nil) fileIds = [[NSMutableDictionary alloc] init];
+                [fileIds setObject:fileId forKey:filepath];
+                
+                nUploadingCount--;
+                if(nUploadingCount == 0) _sentBarBtn.enabled = YES;
+                
+                attachcell.progressView.hidden = YES;
+            }];
+            _sentBarBtn.enabled = NO; nUploadingCount++;
+            [uploadTask resume];
+            
+            [attachcell.progressView setProgressWithUploadProgressOfTask:uploadTask animated:YES];
+            
+            
+            
+            [uploadedFlags setObject:[NSNumber numberWithBool:YES] forKey:filepath];
+            
+        }
+    }
+}
+
+-(void)didClickAttachDeleteButton:(NSString *)filepath
+{
+    [_files removeObject:filepath];
+    [fileIds removeObjectForKey:filepath];
+    [_tableView reloadData];
+}
+#pragma mark - Private methods
 
 //- (BOOL)validateEmailWithString:(NSString*)checkString {
 //    BOOL stricterFilter = NO; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
@@ -152,7 +221,11 @@
         
         NSString *lSubject = _dataInfo[@"SubjectCell"] ? : _draft.subject;
         
+        
         NSString *lBody = _dataInfo[@"TextViewCell"] ? : @"Sent from PlanckMailiOS";
+        
+        NSArray *fileIdArray = [fileIds allValues];
+        
         
         if ([_messageId isEqualToString:@""] || _messageId == nil) {
             
@@ -168,6 +241,7 @@
                                               @"email": _emails
                                               }
                                           ],
+                                  @"file_ids": fileIdArray,
                                   @"version" : [NSNumber numberWithInt:1]
                                   };
         } else {
@@ -184,6 +258,7 @@
                                               @"email": _emails
                                               }
                                           ],
+                                  @"file_ids": fileIdArray,
                                   @"version" : [NSNumber numberWithInt:1]
                                   };
         }
@@ -222,6 +297,40 @@
     [lNewSelectEmailView showInView:self.view];
 }
 
+- (IBAction)attachBtnPressed:(id)sender {
+    PMFilesNC *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PMFilesNC"];
+    
+    controller.isSelecting = YES;
+    [self presentViewController:controller animated:YES completion:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doneSelectFile:) name:@"DoneSelectFile" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(canceledSelectFile:) name:@"CanceledSelectFile" object:nil];
+}
+-(void) doneSelectFile:(NSNotification*) notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    
+    NSString *filepath = [userInfo objectForKey:@"filepath"];
+    
+    if(_files == nil) _files = [[NSMutableArray alloc] init];
+    
+    if(![_files containsObject:filepath])
+    {
+        [_files addObject:filepath];
+        [_tableView reloadData];
+        
+        [self performSelector:@selector(uploadFiles) withObject:nil afterDelay:.1];
+        
+    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void) canceledSelectFile:(NSNotification*) notification
+{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 #pragma mark - PMSelectionEmailView delegates
 
 - (void)PMSelectionEmailViewDelegate:(PMSelectionEmailView *)view didSelectEmail:(NSString *)emeil {
@@ -270,20 +379,34 @@
         if ([_dataInfo count] == 0) {
             [(PMMailComposeTVCell*)lCell setContentText:_draft.subject];
         }
-    } else if (indexPath.row == 4) {
+    } else if (indexPath.row == (4+_files.count)) {
         lCell = [tableView dequeueReusableCellWithIdentifier:@"TextViewCell"];
         [(PMMailComposeBodyTVCell*)lCell setDelegate:self];
+    }
+    
+    if(_files.count > 0)
+    {
+        if(indexPath.row >= 4 && indexPath.row < 4 + _files.count)
+        {
+            
+            lCell = [tableView dequeueReusableCellWithIdentifier:@"AttachCell"];
+            
+            NSString *filepath = _files[indexPath.row - 4];
+            
+            [((PMMailComposeAttachCell*)lCell) bindModel:filepath];
+            ((PMMailComposeAttachCell*)lCell).delegate = self;
+        }
     }
 
     return lCell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 5 + _files.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 4) {
+    if (indexPath.row == (4+_files.count)) {
         return 1000;
     } else return 44;
 }

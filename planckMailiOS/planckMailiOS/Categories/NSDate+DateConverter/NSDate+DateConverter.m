@@ -46,6 +46,48 @@
     return convertedValue;
 }
 
+-(NSString*)relativeDateTimeString
+{
+    NSTimeInterval timestamp = [self timeIntervalSince1970];
+    NSDate *aDate = [NSDate dateWithTimeIntervalSince1970:timestamp];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    unsigned int unitFlags =  NSYearCalendarUnit|NSMonthCalendarUnit|NSWeekCalendarUnit|NSWeekdayOrdinalCalendarUnit|NSWeekdayCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit;
+    NSDateComponents *messageDateComponents = [calendar components:unitFlags fromDate:aDate];
+    NSDateComponents *todayDateComponents = [calendar components:unitFlags fromDate:[NSDate date]];
+    
+    NSUInteger dayOfYearForMessage = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSYearCalendarUnit forDate:aDate];
+    NSUInteger dayOfYearForToday = [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSYearCalendarUnit forDate:[NSDate date]];
+    
+    
+    NSString *dateString;
+    
+    if ([messageDateComponents year] == [todayDateComponents year] &&
+        [messageDateComponents month] == [todayDateComponents month] &&
+        [messageDateComponents day] == [todayDateComponents day])
+    {
+        dateString = [NSString stringWithFormat:@"%02d:%02d", [messageDateComponents hour], [messageDateComponents minute]];
+    } else if ([messageDateComponents year] == [todayDateComponents year] &&
+               dayOfYearForMessage == (dayOfYearForToday-1))
+    {
+        dateString = @"Yesterday";
+    } else if ([messageDateComponents year] == [todayDateComponents year] &&
+               dayOfYearForMessage > (dayOfYearForToday-6))
+    {
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"EEEE"];
+        dateString = [dateFormatter stringFromDate:aDate];
+    } else {
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yy"];
+        dateString = [NSString stringWithFormat:@"%02d/%02d/%@", [messageDateComponents day], [messageDateComponents month], [dateFormatter stringFromDate:aDate]];
+        
+    }
+    
+    return dateString;
+}
+
 + (NSDate *)eventDateFromString:(NSString *)string {
     NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
     [dateFormater setDateFormat:@"YYYY-MM-dd"];

@@ -13,6 +13,8 @@
 #import "PMNetworkManager.h"
 #import "PMEventModel.h"
 #import "PMStorageManager.h"
+#import "PMFileManager.h"
+
 #import "Config.h"
 #define TOKEN @"namespaces"
 
@@ -566,8 +568,19 @@
         NSMutableArray *lResultItems = [NSMutableArray new];
         NSArray *lResponse = responseObject;
         for (NSDictionary *item in lResponse) {
+            
             PMInboxMailModel *lNewItem = [PMInboxMailModel initWithDicationary:item];
+            
             lNewItem.namespace_id = lNewItem.namespace_id?:namespace_id;
+            lNewItem.token = account.token;
+            
+            lNewItem.snippet = item[@"snippet"];
+            lNewItem.subject = item[@"subject"];
+            lNewItem.namespaceId = item[@"namespace_id"];
+            lNewItem.messageId = item[@"id"];
+            lNewItem.version = [item[@"version"] unsignedIntegerValue];
+            lNewItem.labels = item[@"labels"];
+            lNewItem.isUnread = NO;
             lNewItem.token = account.token;
             
             NSArray *participants = item[@"participants"];
@@ -578,6 +591,20 @@
                     break;
                 }
             }
+            
+            
+            NSTimeInterval lastTimeStamp = [item[@"last_message_timestamp"] doubleValue];
+            lNewItem.lastMessageDate = [NSDate dateWithTimeIntervalSince1970:lastTimeStamp];
+            
+            NSArray *lTagsArray =  item[@"tags"];
+            
+            for (NSDictionary *itemTag in lTagsArray) {
+                if ([itemTag[@"id"] isEqualToString:@"unread"]) {
+                    lNewItem.isUnread = YES;
+                }
+            }
+            
+            lNewItem.hasAttachments = [item[@"has_attachments"] intValue] > 0;
             
             [lResultItems addObject:lNewItem];
         }
@@ -593,4 +620,76 @@
     }];
 }
 
+
+- (NSURLSessionDownloadTask*)downloadFileWithAccount:(id<PMAccountProtocol>)account file:(NSDictionary *)file
+                     completion:(DownloadBlockHandler)handler {
+    [_networkManager setCurrentToken:account.token];
+    
+    
+    /*[_networkManager GET:[NSString stringWithFormat:@"/files/%@/download", fileId] parameters:nil success:^(NSURLSessionDataTask *task, id responseObjet) {
+        DLog(@"downloadResponse - %@", responseObjet);
+        
+        if(handler) {
+            handler(responseObjet, nil, nil);
+        }
+    } failure:^ (NSURLSessionDataTask * task, NSError *error) {
+        DLog(@"error: %@", error);
+        if(handler) {
+            handler(nil, nil, nil);
+        }
+    }];*/
+    
+    //[_networkManager setResponseSerializer: [AFHTTPResponseSerializer serializer]];
+    
+    NSURL *url = [NSURL URLWithString:[PMRequest downloadFileWithFileId:file[@"id"] namespacesId:account.namespace_id]];
+    
+    
+    // NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [_networkManager.requestSerializer requestWithMethod:@"GET" URLString:[url absoluteString] parameters:nil error:nil];
+    
+    
+    NSURLSessionDownloadTask *downloadTask = [_networkManager downloadTaskWithRequest:request  progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response){
+        NSURL *documentsDirectoryPath = [NSURL fileURLWithPath:[PMFileManager MobileDirectory]];
+        return [documentsDirectoryPath URLByAppendingPathComponent:file[@"filename"]];
+    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error){
+        NSLog(@"File Download Error: %@", error);
+        NSLog(@"File downloaded to: %@", filePath);
+        NSLog(@"Response Data: %@", response);
+        
+        if(handler!=nil)
+            handler(response, filePath, error);
+    }];
+    
+    
+    return downloadTask;
+}
+
+- (NSURLSessionUploadTask*)uploadFileWithAccount:(id<PMAccountProtocol>)account filepath:(NSString*)filepath
+                                          completion:(UploadBlockHandler)handler {
+    [_networkManager setCurrentToken:account.token];
+    
+    NSURL *url = [NSURL URLWithString:[PMRequest uploadFileWithAccount:account.namespace_id]];
+    
+    NSString *filename = [filepath lastPathComponent];
+    
+    NSMutableURLRequest *request = [_networkManager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:[url absoluteString] parameters:nil constructingBodyWithBlock:^(id formData) {
+        [formData appendPartWithFileURL:[NSURL fileURLWithPath:filepath] name:@"file" fileName:filename mimeType:[PMFileManager MimeTypeForFile:filepath] error:nil];
+    } error:nil];
+    
+    NSProgress *progress = nil;
+    
+    NSURLSessionUploadTask *uploadTask = [_networkManager uploadTaskWithStreamedRequest:request progress:&progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Nylas file upload error: %@", error);
+        } else {
+            //NSLog(@"%@ %@", response, responseObject);
+        }
+        
+        if(handler)
+            handler(response, responseObject, error);
+    }];
+    
+    
+    return uploadTask;
+}
 @end

@@ -23,6 +23,7 @@
 @property(nonatomic, assign) NSUInteger version;
 @property(nonatomic) BOOL isUnread;
 @property(nonatomic) BOOL isLoadMore;
+@property(nonatomic) BOOL hasAttachments;
 
 +(PMInboxMailModel *)initWithDicationary:(NSDictionary *)info;
 

@@ -14,7 +14,7 @@
 
 - (NSString *)timeStringValue;
 - (NSString *)dateStringValue;
-
+- (NSString *)relativeDateTimeString;
 + (NSDate *)eventDateFromString:(NSString *)string;
 + (NSDate *)eventDateFromString:(NSString *)string dateFormat:(NSString*)dateFormat;
 

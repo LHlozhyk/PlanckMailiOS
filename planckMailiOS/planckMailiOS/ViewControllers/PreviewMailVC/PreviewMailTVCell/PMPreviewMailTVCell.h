@@ -9,11 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "PMPreviewContentView.h"
 
+@protocol PMAttachmentViewCellDelegate <NSObject>
+
+- (void)didSelectAttachment:(NSDictionary *)file;
+
+@end
+
 @interface PMPreviewMailTVCell : UITableViewCell
+
+@property(nonatomic, weak) id<PMAttachmentViewCellDelegate> delegate;
 
 + (instancetype)newCell;
 
 - (void)updateCellWithInfo:(NSDictionary *)dataInfo;
 - (NSInteger)height;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tblFileListHeightConstraint;
 @end

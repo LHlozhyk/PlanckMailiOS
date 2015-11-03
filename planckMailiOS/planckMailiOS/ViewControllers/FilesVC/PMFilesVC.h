@@ -10,4 +10,6 @@
 
 @interface PMFilesVC : UIViewController
 
+@property BOOL isSelecting;
+
 @end

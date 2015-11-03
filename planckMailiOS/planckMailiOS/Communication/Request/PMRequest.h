@@ -41,4 +41,8 @@
 + (NSString*)messageId:(NSString*)messageId;
 + (NSString*)threadId:(NSString*)messageId;
 
++ (NSString *)downloadFileWithFileId:(NSString *)fileId
+                        namespacesId:(NSString *)namespacesId;
+
++(NSString *)uploadFileWithAccount:(NSString *)namespacesId;
 @end

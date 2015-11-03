@@ -13,8 +13,9 @@
 #import "PMMessageModel.h"
 #import "PMAPIManager.h"
 #import "PMPreviewTableView.h"
+#import "PMFilePreviewViewController.h"
 
-@interface PMPreviewMailVC () <UIAlertViewDelegate, UIScrollViewDelegate, PMPreviewTableViewDelegate> {
+@interface PMPreviewMailVC () <UIAlertViewDelegate, UIScrollViewDelegate, PMPreviewTableViewDelegate, PMAttachmentViewCellDelegate> {
     __weak IBOutlet UIScrollView *emailsScrollView;
     
     NSMutableArray *_currentSelectedArray;
@@ -336,4 +337,12 @@
 
 
 
+-(void)didSelectAttachment:(NSDictionary *)file
+{
+    PMFilePreviewViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PMFilePreviewViewController"];
+    
+    controller.file = file;
+    
+    [self.navigationController pushViewController:controller animated:YES];
+}
 @end

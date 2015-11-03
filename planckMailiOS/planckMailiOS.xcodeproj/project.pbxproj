@@ -81,6 +81,43 @@
 		84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F9A9891B11F78E0067C3D0 /* PMMailMenuView.xib */; };
 		84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */; };
 		84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */; };
+		A515BDFB1BE8C5B700637635 /* PMFilePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BDFA1BE8C5B700637635 /* PMFilePreviewViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BDFF1BE8DF2F00637635 /* PMAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BDFD1BE8DF2F00637635 /* PMAttachmentCell.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE001BE8DF2F00637635 /* PMAttachmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A515BDFE1BE8DF2F00637635 /* PMAttachmentCell.xib */; settings = {ASSET_TAGS = (); }; };
+		A515BE201BE8DF4C00637635 /* PMBoxFileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE021BE8DF4B00637635 /* PMBoxFileListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE211BE8DF4C00637635 /* PMBoxFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE041BE8DF4B00637635 /* PMBoxFileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE221BE8DF4C00637635 /* PMDropboxFileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE061BE8DF4B00637635 /* PMDropboxFileListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE231BE8DF4C00637635 /* PMDropboxFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE081BE8DF4B00637635 /* PMDropboxFileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE241BE8DF4C00637635 /* PMFileItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE0A1BE8DF4B00637635 /* PMFileItem.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE251BE8DF4C00637635 /* PMFileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE0C1BE8DF4B00637635 /* PMFileListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE261BE8DF4C00637635 /* PMFilesNC.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE0E1BE8DF4B00637635 /* PMFilesNC.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE271BE8DF4C00637635 /* PMFileViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE101BE8DF4B00637635 /* PMFileViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE281BE8DF4C00637635 /* PMFileViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A515BE111BE8DF4B00637635 /* PMFileViewCell.xib */; settings = {ASSET_TAGS = (); }; };
+		A515BE291BE8DF4C00637635 /* PMFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE131BE8DF4B00637635 /* PMFileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE2A1BE8DF4C00637635 /* PMGoogleDriveFileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE151BE8DF4B00637635 /* PMGoogleDriveFileListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE2B1BE8DF4C00637635 /* PMGoogleDriveFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE171BE8DF4C00637635 /* PMGoogleDriveFileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE2C1BE8DF4C00637635 /* PMLocalFileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE191BE8DF4C00637635 /* PMLocalFileListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE2D1BE8DF4C00637635 /* PMLocalFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE1B1BE8DF4C00637635 /* PMLocalFileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE2E1BE8DF4C00637635 /* PMOneDriveFileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE1D1BE8DF4C00637635 /* PMOneDriveFileListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE2F1BE8DF4C00637635 /* PMOneDriveFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE1F1BE8DF4C00637635 /* PMOneDriveFileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE371BE8DFA900637635 /* AlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE311BE8DFA900637635 /* AlertManager.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE381BE8DFA900637635 /* FTWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE341BE8DFA900637635 /* FTWCache.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE391BE8DFAA00637635 /* PMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE361BE8DFA900637635 /* PMFileManager.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE3D1BE8DFDA00637635 /* UIImageView+Network.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE3C1BE8DFDA00637635 /* UIImageView+Network.m */; settings = {ASSET_TAGS = (); }; };
+		A515BE491BE8E00D00637635 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = A515BE3F1BE8E00D00637635 /* delete.png */; settings = {ASSET_TAGS = (); }; };
+		A515BE4A1BE8E00D00637635 /* file.png in Resources */ = {isa = PBXBuildFile; fileRef = A515BE401BE8E00D00637635 /* file.png */; settings = {ASSET_TAGS = (); }; };
+		A515BE4B1BE8E00D00637635 /* file_icons.psd in Resources */ = {isa = PBXBuildFile; fileRef = A515BE411BE8E00D00637635 /* file_icons.psd */; settings = {ASSET_TAGS = (); }; };
+		A515BE4C1BE8E00D00637635 /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = A515BE421BE8E00D00637635 /* folder.png */; settings = {ASSET_TAGS = (); }; };
+		A515BE4D1BE8E00D00637635 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = A515BE431BE8E00D00637635 /* music.png */; settings = {ASSET_TAGS = (); }; };
+		A515BE4E1BE8E00D00637635 /* pdf.png in Resources */ = {isa = PBXBuildFile; fileRef = A515BE441BE8E00D00637635 /* pdf.png */; settings = {ASSET_TAGS = (); }; };
+		A515BE4F1BE8E00D00637635 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = A515BE451BE8E00D00637635 /* photo.png */; settings = {ASSET_TAGS = (); }; };
+		A515BE501BE8E00D00637635 /* video.png in Resources */ = {isa = PBXBuildFile; fileRef = A515BE461BE8E00D00637635 /* video.png */; settings = {ASSET_TAGS = (); }; };
+		A515BE511BE8E00D00637635 /* word.png in Resources */ = {isa = PBXBuildFile; fileRef = A515BE471BE8E00D00637635 /* word.png */; settings = {ASSET_TAGS = (); }; };
+		A515BE521BE8E00D00637635 /* zip.png in Resources */ = {isa = PBXBuildFile; fileRef = A515BE481BE8E00D00637635 /* zip.png */; settings = {ASSET_TAGS = (); }; };
+		A515BE541BE8E37200637635 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A515BE531BE8E37200637635 /* DropboxSDK.framework */; settings = {ASSET_TAGS = (); }; };
+		A515BE561BE8E3BB00637635 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A515BE551BE8E3BB00637635 /* QuartzCore.framework */; };
+		A515BE581BE8E3C700637635 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A515BE571BE8E3C700637635 /* Security.framework */; };
+		A515BE5B1BE8E52E00637635 /* PMMailComposeAttachCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A515BE5A1BE8E52E00637635 /* PMMailComposeAttachCell.m */; settings = {ASSET_TAGS = (); }; };
 		AE6DB4CB1BCABC9900949124 /* UITableView+BackgroundText.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4CA1BCABC9900949124 /* UITableView+BackgroundText.m */; };
 		AE6DB4CF1BCABD7F00949124 /* PMResposeBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4CE1BCABD7F00949124 /* PMResposeBuilder.m */; };
 		AE6DB4D21BCAC13B00949124 /* PMEventDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6DB4D11BCAC13B00949124 /* PMEventDayModel.m */; };
@@ -329,6 +366,65 @@
 		84F9A98E1B1214DB0067C3D0 /* UIView+PMViewCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+PMViewCreator.m"; path = "Categories/UIView+PMViewCreator/UIView+PMViewCreator.m"; sourceTree = "<group>"; };
 		84F9A9911B1215FC0067C3D0 /* UIViewController+PMStoryboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+PMStoryboard.h"; path = "Categories/UIViewController+PMStoryboard/UIViewController+PMStoryboard.h"; sourceTree = "<group>"; };
 		84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+PMStoryboard.m"; path = "Categories/UIViewController+PMStoryboard/UIViewController+PMStoryboard.m"; sourceTree = "<group>"; };
+		A515BDF91BE8C5B700637635 /* PMFilePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFilePreviewViewController.h; sourceTree = "<group>"; };
+		A515BDFA1BE8C5B700637635 /* PMFilePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMFilePreviewViewController.m; sourceTree = "<group>"; };
+		A515BDFC1BE8DF2F00637635 /* PMAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMAttachmentCell.h; path = ViewControllers/PreviewMailVC/PreviewMailTVCell/PMAttachmentCell.h; sourceTree = "<group>"; };
+		A515BDFD1BE8DF2F00637635 /* PMAttachmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMAttachmentCell.m; path = ViewControllers/PreviewMailVC/PreviewMailTVCell/PMAttachmentCell.m; sourceTree = "<group>"; };
+		A515BDFE1BE8DF2F00637635 /* PMAttachmentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMAttachmentCell.xib; path = ViewControllers/PreviewMailVC/PreviewMailTVCell/PMAttachmentCell.xib; sourceTree = "<group>"; };
+		A515BE011BE8DF4B00637635 /* PMBoxFileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMBoxFileListViewController.h; path = ViewControllers/FilesVC/PMBoxFileListViewController.h; sourceTree = "<group>"; };
+		A515BE021BE8DF4B00637635 /* PMBoxFileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMBoxFileListViewController.m; path = ViewControllers/FilesVC/PMBoxFileListViewController.m; sourceTree = "<group>"; };
+		A515BE031BE8DF4B00637635 /* PMBoxFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMBoxFileViewController.h; path = ViewControllers/FilesVC/PMBoxFileViewController.h; sourceTree = "<group>"; };
+		A515BE041BE8DF4B00637635 /* PMBoxFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMBoxFileViewController.m; path = ViewControllers/FilesVC/PMBoxFileViewController.m; sourceTree = "<group>"; };
+		A515BE051BE8DF4B00637635 /* PMDropboxFileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMDropboxFileListViewController.h; path = ViewControllers/FilesVC/PMDropboxFileListViewController.h; sourceTree = "<group>"; };
+		A515BE061BE8DF4B00637635 /* PMDropboxFileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMDropboxFileListViewController.m; path = ViewControllers/FilesVC/PMDropboxFileListViewController.m; sourceTree = "<group>"; };
+		A515BE071BE8DF4B00637635 /* PMDropboxFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMDropboxFileViewController.h; path = ViewControllers/FilesVC/PMDropboxFileViewController.h; sourceTree = "<group>"; };
+		A515BE081BE8DF4B00637635 /* PMDropboxFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMDropboxFileViewController.m; path = ViewControllers/FilesVC/PMDropboxFileViewController.m; sourceTree = "<group>"; };
+		A515BE091BE8DF4B00637635 /* PMFileItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMFileItem.h; path = ViewControllers/FilesVC/PMFileItem.h; sourceTree = "<group>"; };
+		A515BE0A1BE8DF4B00637635 /* PMFileItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMFileItem.m; path = ViewControllers/FilesVC/PMFileItem.m; sourceTree = "<group>"; };
+		A515BE0B1BE8DF4B00637635 /* PMFileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMFileListViewController.h; path = ViewControllers/FilesVC/PMFileListViewController.h; sourceTree = "<group>"; };
+		A515BE0C1BE8DF4B00637635 /* PMFileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMFileListViewController.m; path = ViewControllers/FilesVC/PMFileListViewController.m; sourceTree = "<group>"; };
+		A515BE0D1BE8DF4B00637635 /* PMFilesNC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMFilesNC.h; path = ViewControllers/FilesVC/PMFilesNC.h; sourceTree = "<group>"; };
+		A515BE0E1BE8DF4B00637635 /* PMFilesNC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMFilesNC.m; path = ViewControllers/FilesVC/PMFilesNC.m; sourceTree = "<group>"; };
+		A515BE0F1BE8DF4B00637635 /* PMFileViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMFileViewCell.h; path = ViewControllers/FilesVC/PMFileViewCell.h; sourceTree = "<group>"; };
+		A515BE101BE8DF4B00637635 /* PMFileViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMFileViewCell.m; path = ViewControllers/FilesVC/PMFileViewCell.m; sourceTree = "<group>"; };
+		A515BE111BE8DF4B00637635 /* PMFileViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMFileViewCell.xib; path = ViewControllers/FilesVC/PMFileViewCell.xib; sourceTree = "<group>"; };
+		A515BE121BE8DF4B00637635 /* PMFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMFileViewController.h; path = ViewControllers/FilesVC/PMFileViewController.h; sourceTree = "<group>"; };
+		A515BE131BE8DF4B00637635 /* PMFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMFileViewController.m; path = ViewControllers/FilesVC/PMFileViewController.m; sourceTree = "<group>"; };
+		A515BE141BE8DF4B00637635 /* PMGoogleDriveFileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMGoogleDriveFileListViewController.h; path = ViewControllers/FilesVC/PMGoogleDriveFileListViewController.h; sourceTree = "<group>"; };
+		A515BE151BE8DF4B00637635 /* PMGoogleDriveFileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMGoogleDriveFileListViewController.m; path = ViewControllers/FilesVC/PMGoogleDriveFileListViewController.m; sourceTree = "<group>"; };
+		A515BE161BE8DF4C00637635 /* PMGoogleDriveFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMGoogleDriveFileViewController.h; path = ViewControllers/FilesVC/PMGoogleDriveFileViewController.h; sourceTree = "<group>"; };
+		A515BE171BE8DF4C00637635 /* PMGoogleDriveFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMGoogleDriveFileViewController.m; path = ViewControllers/FilesVC/PMGoogleDriveFileViewController.m; sourceTree = "<group>"; };
+		A515BE181BE8DF4C00637635 /* PMLocalFileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLocalFileListViewController.h; path = ViewControllers/FilesVC/PMLocalFileListViewController.h; sourceTree = "<group>"; };
+		A515BE191BE8DF4C00637635 /* PMLocalFileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMLocalFileListViewController.m; path = ViewControllers/FilesVC/PMLocalFileListViewController.m; sourceTree = "<group>"; };
+		A515BE1A1BE8DF4C00637635 /* PMLocalFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMLocalFileViewController.h; path = ViewControllers/FilesVC/PMLocalFileViewController.h; sourceTree = "<group>"; };
+		A515BE1B1BE8DF4C00637635 /* PMLocalFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMLocalFileViewController.m; path = ViewControllers/FilesVC/PMLocalFileViewController.m; sourceTree = "<group>"; };
+		A515BE1C1BE8DF4C00637635 /* PMOneDriveFileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMOneDriveFileListViewController.h; path = ViewControllers/FilesVC/PMOneDriveFileListViewController.h; sourceTree = "<group>"; };
+		A515BE1D1BE8DF4C00637635 /* PMOneDriveFileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMOneDriveFileListViewController.m; path = ViewControllers/FilesVC/PMOneDriveFileListViewController.m; sourceTree = "<group>"; };
+		A515BE1E1BE8DF4C00637635 /* PMOneDriveFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMOneDriveFileViewController.h; path = ViewControllers/FilesVC/PMOneDriveFileViewController.h; sourceTree = "<group>"; };
+		A515BE1F1BE8DF4C00637635 /* PMOneDriveFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMOneDriveFileViewController.m; path = ViewControllers/FilesVC/PMOneDriveFileViewController.m; sourceTree = "<group>"; };
+		A515BE301BE8DFA900637635 /* AlertManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertManager.h; path = Utils/AlertManager.h; sourceTree = "<group>"; };
+		A515BE311BE8DFA900637635 /* AlertManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertManager.m; path = Utils/AlertManager.m; sourceTree = "<group>"; };
+		A515BE331BE8DFA900637635 /* FTWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTWCache.h; sourceTree = "<group>"; };
+		A515BE341BE8DFA900637635 /* FTWCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTWCache.m; sourceTree = "<group>"; };
+		A515BE351BE8DFA900637635 /* PMFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMFileManager.h; path = Utils/PMFileManager.h; sourceTree = "<group>"; };
+		A515BE361BE8DFA900637635 /* PMFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMFileManager.m; path = Utils/PMFileManager.m; sourceTree = "<group>"; };
+		A515BE3B1BE8DFDA00637635 /* UIImageView+Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Network.h"; sourceTree = "<group>"; };
+		A515BE3C1BE8DFDA00637635 /* UIImageView+Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Network.m"; sourceTree = "<group>"; };
+		A515BE3F1BE8E00D00637635 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		A515BE401BE8E00D00637635 /* file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file.png; sourceTree = "<group>"; };
+		A515BE411BE8E00D00637635 /* file_icons.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = file_icons.psd; sourceTree = "<group>"; };
+		A515BE421BE8E00D00637635 /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
+		A515BE431BE8E00D00637635 /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music.png; sourceTree = "<group>"; };
+		A515BE441BE8E00D00637635 /* pdf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pdf.png; sourceTree = "<group>"; };
+		A515BE451BE8E00D00637635 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
+		A515BE461BE8E00D00637635 /* video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video.png; sourceTree = "<group>"; };
+		A515BE471BE8E00D00637635 /* word.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = word.png; sourceTree = "<group>"; };
+		A515BE481BE8E00D00637635 /* zip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zip.png; sourceTree = "<group>"; };
+		A515BE531BE8E37200637635 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
+		A515BE551BE8E3BB00637635 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A515BE571BE8E3C700637635 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A515BE591BE8E52E00637635 /* PMMailComposeAttachCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMailComposeAttachCell.h; path = MailComposeTVCell/PMMailComposeAttachCell.h; sourceTree = "<group>"; };
+		A515BE5A1BE8E52E00637635 /* PMMailComposeAttachCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMailComposeAttachCell.m; path = MailComposeTVCell/PMMailComposeAttachCell.m; sourceTree = "<group>"; };
 		AE6DB4C91BCABC9900949124 /* UITableView+BackgroundText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+BackgroundText.h"; sourceTree = "<group>"; };
 		AE6DB4CA1BCABC9900949124 /* UITableView+BackgroundText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+BackgroundText.m"; sourceTree = "<group>"; };
 		AE6DB4CD1BCABD7F00949124 /* PMResposeBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMResposeBuilder.h; path = Communication/ResposeBuilder/PMResposeBuilder.h; sourceTree = "<group>"; };
@@ -446,6 +542,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A515BE581BE8E3C700637635 /* Security.framework in Frameworks */,
+				A515BE561BE8E3BB00637635 /* QuartzCore.framework in Frameworks */,
+				A515BE541BE8E37200637635 /* DropboxSDK.framework in Frameworks */,
 				C31ED38F1B949594006E1764 /* MessageUI.framework in Frameworks */,
 				F264A5F132A3A914AC722FF2 /* libPods-planckMailiOS.a in Frameworks */,
 			);
@@ -480,6 +579,9 @@
 		26F3D1D23964D69F4B927C4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A515BE571BE8E3C700637635 /* Security.framework */,
+				A515BE551BE8E3BB00637635 /* QuartzCore.framework */,
+				A515BE531BE8E37200637635 /* DropboxSDK.framework */,
 				C31ED38E1B949594006E1764 /* MessageUI.framework */,
 				CFD430BD0A5E0BF853AE648C /* libPods-planckMailiOS.a */,
 			);
@@ -512,6 +614,7 @@
 		840156D91B27A48100E92CA7 /* PreviewMailVC */ = {
 			isa = PBXGroup;
 			children = (
+				A515BDF81BE8C5B700637635 /* FilePreviewVC */,
 				C3654CE61BC94F0100A08521 /* PreviewTableView */,
 				8497B1181B370C7E009CEC5E /* PreviewContentView */,
 				8478A0541B369F3E003C09AF /* PreviewMailTVCell */,
@@ -594,6 +697,7 @@
 		842E2FE61AFEB13400B0C8DB /* planckMailiOS */ = {
 			isa = PBXGroup;
 			children = (
+				A515BE3E1BE8E00D00637635 /* Icons */,
 				780EA11A1BD50A5200CBA45A /* MGSwipeTableCell */,
 				8467F0191B8785FC00FA7827 /* CupertinoYankee */,
 				84B751D31AFF72A400331CC0 /* Global.h */,
@@ -753,6 +857,9 @@
 		8478A0541B369F3E003C09AF /* PreviewMailTVCell */ = {
 			isa = PBXGroup;
 			children = (
+				A515BDFC1BE8DF2F00637635 /* PMAttachmentCell.h */,
+				A515BDFD1BE8DF2F00637635 /* PMAttachmentCell.m */,
+				A515BDFE1BE8DF2F00637635 /* PMAttachmentCell.xib */,
 				8478A0551B36A1C4003C09AF /* PMPreviewMailTVCell.h */,
 				8478A0561B36A1C4003C09AF /* PMPreviewMailTVCell.m */,
 				C368ACA61BC94DE500DD21BF /* PMPreviewMailTVCell.xib */,
@@ -804,6 +911,37 @@
 		8479B7191B11B958006E4235 /* FilesVC */ = {
 			isa = PBXGroup;
 			children = (
+				A515BE011BE8DF4B00637635 /* PMBoxFileListViewController.h */,
+				A515BE021BE8DF4B00637635 /* PMBoxFileListViewController.m */,
+				A515BE031BE8DF4B00637635 /* PMBoxFileViewController.h */,
+				A515BE041BE8DF4B00637635 /* PMBoxFileViewController.m */,
+				A515BE051BE8DF4B00637635 /* PMDropboxFileListViewController.h */,
+				A515BE061BE8DF4B00637635 /* PMDropboxFileListViewController.m */,
+				A515BE071BE8DF4B00637635 /* PMDropboxFileViewController.h */,
+				A515BE081BE8DF4B00637635 /* PMDropboxFileViewController.m */,
+				A515BE091BE8DF4B00637635 /* PMFileItem.h */,
+				A515BE0A1BE8DF4B00637635 /* PMFileItem.m */,
+				A515BE0B1BE8DF4B00637635 /* PMFileListViewController.h */,
+				A515BE0C1BE8DF4B00637635 /* PMFileListViewController.m */,
+				A515BE0D1BE8DF4B00637635 /* PMFilesNC.h */,
+				A515BE0E1BE8DF4B00637635 /* PMFilesNC.m */,
+				A515BE0F1BE8DF4B00637635 /* PMFileViewCell.h */,
+				A515BE101BE8DF4B00637635 /* PMFileViewCell.m */,
+				A515BE111BE8DF4B00637635 /* PMFileViewCell.xib */,
+				A515BE121BE8DF4B00637635 /* PMFileViewController.h */,
+				A515BE131BE8DF4B00637635 /* PMFileViewController.m */,
+				A515BE141BE8DF4B00637635 /* PMGoogleDriveFileListViewController.h */,
+				A515BE151BE8DF4B00637635 /* PMGoogleDriveFileListViewController.m */,
+				A515BE161BE8DF4C00637635 /* PMGoogleDriveFileViewController.h */,
+				A515BE171BE8DF4C00637635 /* PMGoogleDriveFileViewController.m */,
+				A515BE181BE8DF4C00637635 /* PMLocalFileListViewController.h */,
+				A515BE191BE8DF4C00637635 /* PMLocalFileListViewController.m */,
+				A515BE1A1BE8DF4C00637635 /* PMLocalFileViewController.h */,
+				A515BE1B1BE8DF4C00637635 /* PMLocalFileViewController.m */,
+				A515BE1C1BE8DF4C00637635 /* PMOneDriveFileListViewController.h */,
+				A515BE1D1BE8DF4C00637635 /* PMOneDriveFileListViewController.m */,
+				A515BE1E1BE8DF4C00637635 /* PMOneDriveFileViewController.h */,
+				A515BE1F1BE8DF4C00637635 /* PMOneDriveFileViewController.m */,
 				846E2FD01B8C20F800A019AC /* PMFilesVC.h */,
 				846E2FD11B8C20F800A019AC /* PMFilesVC.m */,
 			);
@@ -952,6 +1090,11 @@
 		8497B11E1B37298A009CEC5E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A515BE301BE8DFA900637635 /* AlertManager.h */,
+				A515BE311BE8DFA900637635 /* AlertManager.m */,
+				A515BE321BE8DFA900637635 /* FTWCache */,
+				A515BE351BE8DFA900637635 /* PMFileManager.h */,
+				A515BE361BE8DFA900637635 /* PMFileManager.m */,
 				AEB91A831BDD723F00599BC0 /* Masonry */,
 				AE9892791BDC07A2000AF215 /* PickerCells */,
 				AE9892751BDBB993000AF215 /* PMLocalNotification */,
@@ -1003,6 +1146,8 @@
 		84A9E3741B5F02E5009DD409 /* MailComposeTVCell */ = {
 			isa = PBXGroup;
 			children = (
+				A515BE591BE8E52E00637635 /* PMMailComposeAttachCell.h */,
+				A515BE5A1BE8E52E00637635 /* PMMailComposeAttachCell.m */,
 				84A9E3751B5F031A009DD409 /* PMMailComposeTVCell.h */,
 				84A9E3761B5F031A009DD409 /* PMMailComposeTVCell.m */,
 			);
@@ -1148,6 +1293,7 @@
 		84F9A98B1B1214700067C3D0 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				A515BE3A1BE8DFDA00637635 /* UIImageView+Network */,
 				AE6DB4C81BCABC9900949124 /* UITableView+BackgroundText */,
 				C31ED3571B90AE4F006E1764 /* UIImage+ImageSize */,
 				C356524F1B57F860000ECF99 /* NSDate+DateConverter */,
@@ -1173,6 +1319,53 @@
 				84F9A9921B1215FC0067C3D0 /* UIViewController+PMStoryboard.m */,
 			);
 			name = "UIViewController+PMStoryboard";
+			sourceTree = "<group>";
+		};
+		A515BDF81BE8C5B700637635 /* FilePreviewVC */ = {
+			isa = PBXGroup;
+			children = (
+				A515BDF91BE8C5B700637635 /* PMFilePreviewViewController.h */,
+				A515BDFA1BE8C5B700637635 /* PMFilePreviewViewController.m */,
+			);
+			name = FilePreviewVC;
+			path = ViewControllers/PreviewMailVC/FilePreviewVC;
+			sourceTree = "<group>";
+		};
+		A515BE321BE8DFA900637635 /* FTWCache */ = {
+			isa = PBXGroup;
+			children = (
+				A515BE331BE8DFA900637635 /* FTWCache.h */,
+				A515BE341BE8DFA900637635 /* FTWCache.m */,
+			);
+			name = FTWCache;
+			path = Utils/FTWCache;
+			sourceTree = "<group>";
+		};
+		A515BE3A1BE8DFDA00637635 /* UIImageView+Network */ = {
+			isa = PBXGroup;
+			children = (
+				A515BE3B1BE8DFDA00637635 /* UIImageView+Network.h */,
+				A515BE3C1BE8DFDA00637635 /* UIImageView+Network.m */,
+			);
+			name = "UIImageView+Network";
+			path = "Categories/UIImageView+Network";
+			sourceTree = "<group>";
+		};
+		A515BE3E1BE8E00D00637635 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				A515BE3F1BE8E00D00637635 /* delete.png */,
+				A515BE401BE8E00D00637635 /* file.png */,
+				A515BE411BE8E00D00637635 /* file_icons.psd */,
+				A515BE421BE8E00D00637635 /* folder.png */,
+				A515BE431BE8E00D00637635 /* music.png */,
+				A515BE441BE8E00D00637635 /* pdf.png */,
+				A515BE451BE8E00D00637635 /* photo.png */,
+				A515BE461BE8E00D00637635 /* video.png */,
+				A515BE471BE8E00D00637635 /* word.png */,
+				A515BE481BE8E00D00637635 /* zip.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 		AE6DB4C81BCABC9900949124 /* UITableView+BackgroundText */ = {
@@ -1681,18 +1874,30 @@
 			files = (
 				780EA1371BD54C4B00CBA45A /* PMAlertViewController.xib in Resources */,
 				8483D5BD1B94F6A0008E8B6A /* PMMenuHeaderView.xib in Resources */,
+				A515BE511BE8E00D00637635 /* word.png in Resources */,
 				847885661B96078000681EBA /* PMMessagesTableView.xib in Resources */,
 				8475C1621B963DD40091F955 /* PMLoadMoreTVCell.xib in Resources */,
 				78AD2A941BD6986000D0C963 /* PMAlertCollectionViewCell.xib in Resources */,
 				783BAD9C1BE7AA7700FF3022 /* PMPickerViewController.xib in Resources */,
 				842E2FF31AFEB13400B0C8DB /* Main.storyboard in Resources */,
+				A515BE4C1BE8E00D00637635 /* folder.png in Resources */,
 				84A9E3721B5F02DD009DD409 /* PMSelectionEmailView.xib in Resources */,
 				C3654CE81BC94F1D00A08521 /* PMPreviewTableView.xib in Resources */,
 				8475C1641B963DF90091F955 /* PMMailTVCell.xib in Resources */,
 				C3E1FC6A1B7F629C008F815C /* planckMailiOS WatchKit App.app in Resources */,
+				A515BE4E1BE8E00D00637635 /* pdf.png in Resources */,
+				A515BE4A1BE8E00D00637635 /* file.png in Resources */,
+				A515BE001BE8DF2F00637635 /* PMAttachmentCell.xib in Resources */,
+				A515BE4D1BE8E00D00637635 /* music.png in Resources */,
+				A515BE521BE8E00D00637635 /* zip.png in Resources */,
 				C368ACA71BC94DE500DD21BF /* PMPreviewMailTVCell.xib in Resources */,
+				A515BE501BE8E00D00637635 /* video.png in Resources */,
+				A515BE4F1BE8E00D00637635 /* photo.png in Resources */,
 				842E2FF81AFEB13400B0C8DB /* LaunchScreen.xib in Resources */,
 				842E2FF51AFEB13400B0C8DB /* Images.xcassets in Resources */,
+				A515BE4B1BE8E00D00637635 /* file_icons.psd in Resources */,
+				A515BE281BE8DF4C00637635 /* PMFileViewCell.xib in Resources */,
+				A515BE491BE8E00D00637635 /* delete.png in Resources */,
 				AEB91A5F1BDD577900599BC0 /* PMCalendarGridView.xib in Resources */,
 				84F9A98A1B11F78E0067C3D0 /* PMMailMenuView.xib in Resources */,
 			);
@@ -1771,24 +1976,32 @@
 				C3DDB8421B5E7539002131FA /* PMWatchRequestHandler.m in Sources */,
 				781259B91BE770EF008D4921 /* DBInboxMailModel.m in Sources */,
 				84F9A98F1B1214DB0067C3D0 /* UIView+PMViewCreator.m in Sources */,
+				A515BE231BE8DF4C00637635 /* PMDropboxFileViewController.m in Sources */,
 				AEB91AA11BDD723F00599BC0 /* MASViewAttribute.m in Sources */,
 				848E6F901B94846000EA935D /* LGSideMenuController.m in Sources */,
 				84ECA4341B13550D00770F88 /* OPDataLoader.m in Sources */,
+				A515BE211BE8DF4C00637635 /* PMBoxFileViewController.m in Sources */,
+				A515BE221BE8DF4C00637635 /* PMDropboxFileListViewController.m in Sources */,
+				A515BE261BE8DF4C00637635 /* PMFilesNC.m in Sources */,
 				840D8C9B1BAF5E3C001C8B60 /* PMSwitchTVCell.m in Sources */,
 				780EA1361BD54C4B00CBA45A /* PMAlertViewController.m in Sources */,
 				AEB91A5D1BDD575800599BC0 /* PMCalendarGridView.m in Sources */,
 				84B751D21AFF718300331CC0 /* PMMainVC.m in Sources */,
+				A515BDFB1BE8C5B700637635 /* PMFilePreviewViewController.m in Sources */,
 				840156DC1B27A51600E92CA7 /* PMPreviewMailVC.m in Sources */,
+				A515BE241BE8DF4C00637635 /* PMFileItem.m in Sources */,
 				AEB91A9D1BDD723F00599BC0 /* MASCompositeConstraint.m in Sources */,
 				8478A0571B36A1C4003C09AF /* PMPreviewMailTVCell.m in Sources */,
 				84C79A151B60D34300F2C855 /* PMDraftModel.m in Sources */,
 				846E2FD21B8C20F800A019AC /* PMFilesVC.m in Sources */,
+				A515BE371BE8DFA900637635 /* AlertManager.m in Sources */,
 				844F3BF61B12A882009634D2 /* PMPeopleVC.m in Sources */,
 				84776F0B1B1447610020AB6E /* PMLoadMoreTVCell.m in Sources */,
 				C3E00EC71BD7A4990009AE78 /* PMStorageManager.m in Sources */,
 				848E6F971B9484F000EA935D /* LeftViewController.m in Sources */,
 				848C11071B2F6CF7000D3CA2 /* PMPreviewPeopleVC.m in Sources */,
 				84A037C41B49F2850076491A /* PMMailTitleView.m in Sources */,
+				A515BE201BE8DF4C00637635 /* PMBoxFileListViewController.m in Sources */,
 				AE9892781BDBBA5C000AF215 /* PMLocalNotification.m in Sources */,
 				846096171B13061400924B61 /* CLContactLibrary.m in Sources */,
 				781259B81BE770EF008D4921 /* DBInboxMailModel+CoreDataProperties.m in Sources */,
@@ -1801,13 +2014,16 @@
 				847885641B96074200681EBA /* PMMessagesTableView.m in Sources */,
 				780EA11F1BD50A5200CBA45A /* MGSwipeButton.m in Sources */,
 				84A9E3771B5F031A009DD409 /* PMMailComposeTVCell.m in Sources */,
+				A515BE2A1BE8DF4C00637635 /* PMGoogleDriveFileListViewController.m in Sources */,
 				84A9A0E01B52C6A80005F5AF /* PMMessageModel.m in Sources */,
 				84A9E3731B5F02DD009DD409 /* PMMailComposeVC.m in Sources */,
 				AE9892731BDBAFBB000AF215 /* DBCalendar.m in Sources */,
+				A515BE251BE8DF4C00637635 /* PMFileListViewController.m in Sources */,
 				847D68271B43A87B005FE7EF /* PMSearchMailTVCell.m in Sources */,
 				840D8C9F1BAF6425001C8B60 /* PMEventCalendarListVC.m in Sources */,
 				AEB91AA21BDD723F00599BC0 /* MASViewConstraint.m in Sources */,
 				84A3BCB91B5ACBF1005A244F /* PMCalendarVC.m in Sources */,
+				A515BE5B1BE8E52E00637635 /* PMMailComposeAttachCell.m in Sources */,
 				AE6DB4CB1BCABC9900949124 /* UITableView+BackgroundText.m in Sources */,
 				848C50FE1B13DBF200515E47 /* PMMailTVCell.m in Sources */,
 				8483D5BB1B94F671008E8B6A /* PMMenuHeaderView.m in Sources */,
@@ -1817,21 +2033,29 @@
 				8467F01C1B8785FC00FA7827 /* NSDate+CupertinoYankee.m in Sources */,
 				848E6F8C1B94839900EA935D /* MainViewController.m in Sources */,
 				AEF343381BD40B39000566D3 /* PMCalendarListVC.m in Sources */,
+				A515BE2B1BE8DF4C00637635 /* PMGoogleDriveFileViewController.m in Sources */,
 				C31ED35A1B90AE5B006E1764 /* UIImage+ImageSize.m in Sources */,
 				C35652521B57F9FF000ECF99 /* NSDate+DateConverter.m in Sources */,
 				848E6F961B9484F000EA935D /* LeftViewCell.m in Sources */,
+				A515BE2F1BE8DF4C00637635 /* PMOneDriveFileViewController.m in Sources */,
 				842E2FED1AFEB13400B0C8DB /* AppDelegate.m in Sources */,
 				AEB91A9F1BDD723F00599BC0 /* MASConstraintMaker.m in Sources */,
 				84F9A9881B11F7270067C3D0 /* PMMailMenuView.m in Sources */,
+				A515BDFF1BE8DF2F00637635 /* PMAttachmentCell.m in Sources */,
 				AE9892721BDBAFBB000AF215 /* DBCalendar+CoreDataProperties.m in Sources */,
 				84ECA42C1B134E5400770F88 /* DBManager.m in Sources */,
 				AEB91AA01BDD723F00599BC0 /* MASLayoutConstraint.m in Sources */,
+				A515BE3D1BE8DFDA00637635 /* UIImageView+Network.m in Sources */,
 				8460961C1B13063300924B61 /* CLPerson.m in Sources */,
 				84F9A9801B11E08D0067C3D0 /* PMRequest.m in Sources */,
 				84A9E3711B5F02DD009DD409 /* PMSelectionEmailView.m in Sources */,
+				A515BE271BE8DF4C00637635 /* PMFileViewCell.m in Sources */,
+				A515BE391BE8DFAA00637635 /* PMFileManager.m in Sources */,
+				A515BE381BE8DFA900637635 /* FTWCache.m in Sources */,
 				84F9A9931B1215FC0067C3D0 /* UIViewController+PMStoryboard.m in Sources */,
 				AEB91AA31BDD723F00599BC0 /* NSArray+MASAdditions.m in Sources */,
 				C33768711BB15C5800DE82FC /* PMParticipantModel.m in Sources */,
+				A515BE291BE8DF4C00637635 /* PMFileViewController.m in Sources */,
 				8479B7141B11B852006E4235 /* PMLoginVC.m in Sources */,
 				84D8C2E11B8E3B4400D82BB4 /* PMNetworkManager.m in Sources */,
 				84776F071B1428A00020AB6E /* PMInboxMailModel.m in Sources */,
@@ -1845,12 +2069,15 @@
 				84B751D81AFF74C000331CC0 /* PMAPIManager.m in Sources */,
 				84ECA4281B134C1800770F88 /* planckMailiOS.xcdatamodeld in Sources */,
 				C35BC1DF1B5EF9D100CCDC4D /* PMTypeContainer.m in Sources */,
+				A515BE2E1BE8DF4C00637635 /* PMOneDriveFileListViewController.m in Sources */,
 				AEB91AA61BDD723F00599BC0 /* ViewController+MASAdditions.m in Sources */,
 				AEB91A9E1BDD723F00599BC0 /* MASConstraint.m in Sources */,
 				AEB91AA41BDD723F00599BC0 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				8493D4171BB0231C00D5D5F7 /* PMEventInviteesVC.m in Sources */,
+				A515BE2D1BE8DF4C00637635 /* PMLocalFileViewController.m in Sources */,
 				84ECA4301B13500000770F88 /* DBNamespace.m in Sources */,
 				8431BB291BAE062500C8F6DC /* PMCreateEventVC.m in Sources */,
+				A515BE2C1BE8DF4C00637635 /* PMLocalFileListViewController.m in Sources */,
 				C33768751BB169A000DE82FC /* PMCalendarCell.m in Sources */,
 				840D8C981BAF5DDD001C8B60 /* PMTextFieldTVCell.m in Sources */,
 			);
@@ -2039,11 +2266,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/planckMailiOS/Frameworks/Parse",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2061,11 +2289,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/planckMailiOS/Frameworks/Parse",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/planckMailiOS/planckMailiOS-Prefix.pch";
 				INFOPLIST_FILE = planckMailiOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

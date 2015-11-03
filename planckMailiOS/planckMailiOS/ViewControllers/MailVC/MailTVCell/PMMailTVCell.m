@@ -46,12 +46,12 @@
 }
 
 - (void)updateWithModel:(PMInboxMailModel *)model {
-    _attachedFileImageView.hidden = YES;
+    _attachedFileImageView.hidden = !model.hasAttachments;
     _replyImageView.hidden = !model.isUnread;
     
     //nsdate *lNewDate = [NSDate dateWithTimeIntervalSince1970:model.]
     
-    timeLabel.hidden = YES;
+    timeLabel.hidden = NO; timeLabel.text = [model.lastMessageDate relativeDateTimeString];
     _personNameLabel.text = model.ownerName;
     _titleNameLabel.text = model.subject;
     descriptionLabel.text = model.snippet;

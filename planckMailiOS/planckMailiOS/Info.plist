@@ -27,6 +27,7 @@
 			<string>inboxapp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>db-cqo7bu26krtwrvh</string>
 				<string>in-5girg6tjmjuenujbsg0lnatlq</string>
 			</array>
 			<key>INAPIPath</key>
@@ -56,6 +57,35 @@
 				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
 				<false/>
 			</dict>
+            
+            <key>login.windows.net</key>
+            <dict>
+                <key>NSIncludeSubdomains</key>
+                <true/>
+                <key>NSExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
+            <key>secure.aadcdn.microsoftonline-p.com</key>
+            <dict>
+                <key>NSIncludeSubmdomains</key>
+                <true/>
+                <key>NSExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
+            <key>login.microsoftonline.com</key>
+            <dict>
+                <key>NSIncludeSubmdomains</key>
+                <true/>
+                <key>NSExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
+            <key>login.live.com</key>
+            <dict>
+                <key>NSIncludeSubmdomains</key>
+                <true/>
+                <key>NSExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
 		</dict>
 	</dict>
 	<key>NSUserActivityTypes</key>

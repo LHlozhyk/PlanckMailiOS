@@ -9,6 +9,8 @@ target "planckMailiOS" do
     pod 'UIAlertView+Blocks'
     pod 'SWTableViewCell', '~> 0.3.7'
     pod 'JTCalendar'
-    
+    pod 'box-ios-sdk'
+    pod 'Google-API-Client/Drive', '~> 1.0'
+    pod 'OneDriveSDK'
 end
 

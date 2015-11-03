@@ -106,6 +106,7 @@
     NSDictionary *lItem = _messages[indexPath.row];
     [lTableViewCell updateCellWithInfo:lItem];
     
+    lTableViewCell.delegate = self.delegate;
     return lTableViewCell;
 }
 
